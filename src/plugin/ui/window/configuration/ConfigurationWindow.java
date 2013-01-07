@@ -241,7 +241,6 @@ public class ConfigurationWindow {
 			TreeItem trtmBuildMachineNightlySGE = new TreeItem(trtmPhaseIi, SWT.NONE);
 			trtmBuildMachineNightlySGE.setText("Build Machine Nightly (static+generation+execution)");
 			trtmBuildMachineNightlySGE.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
-			System.out.println("********************\n" + Const.HYPERCUBE_ICON_PATH);
 			trtmBuildMachineNightlySGE.setExpanded(true);
 
 			TreeItem trtmDeveloperstaticexecution = new TreeItem(trtmPhaseIi, SWT.NONE);
