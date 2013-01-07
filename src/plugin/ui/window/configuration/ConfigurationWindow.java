@@ -1,4 +1,4 @@
-package plugin.configuration;
+package plugin.ui.window.configuration;
 
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -10,17 +10,13 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormAttachment;
-import org.eclipse.wb.swt.SWTResourceManager;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.custom.SashForm;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.custom.StackLayout;
-import org.eclipse.swt.layout.RowLayout;
-import org.eclipse.swt.layout.RowData;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.TabFolder;
@@ -29,7 +25,9 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.DateTime;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
-import org.eclipse.swt.widgets.TableItem;
+
+import plugin.configuration.Const;
+import plugin.util.SWTResourceManager;
 
 public class ConfigurationWindow {
 
@@ -44,23 +42,6 @@ public class ConfigurationWindow {
 	private Text text_ConnectingToRunningApp;
 	private Text text_ReadPrerecordFile;
 	
-	private FormLayout usualFormlayout;
-	
-	/**
-	 * Launch the application.
-	 * 
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		try {
-			ConfigurationWindow window = new ConfigurationWindow();
-			window.open();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
-
 	/**
 	 * a method for add image to tree items of a tree
 	 * 

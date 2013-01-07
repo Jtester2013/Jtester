@@ -1,4 +1,4 @@
-package core.analysis.staticanalysis.verybusy_exp;
+package core.jtester.staticanalysis.verybusy_exp;
 
 import core.common.cfg.interfaces.IBasicBlock;
 import core.common.model.functionblock.AnalysisBlockImpl;

@@ -23,7 +23,6 @@ import org.eclipse.swt.widgets.Shell;
 
 import plugin.configuration.Const;
 import plugin.run.JtesterProgress;
-import plugin.util.ConsoleFactory;
 
 import core.common.model.jobflow.ICaller;
 import core.common.model.test.TestResult;

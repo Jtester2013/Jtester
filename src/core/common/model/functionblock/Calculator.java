@@ -5,9 +5,6 @@ import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.InfixExpression;
 import org.eclipse.jdt.core.dom.SimpleName;
 
-import core.analysis.api.RuleSet;
-import core.analysis.staticanalysis.const_propagation.Var2Value;
-import core.analysis.staticanalysis.reaching_def.DefLocPair;
 import core.common.cfg.interfaces.*;
 import core.common.cfg.model.AbstractBasicBlock;
 import core.common.model.functionblock.AnalysisBlock;
@@ -16,6 +13,9 @@ import core.common.model.jobflow.IJob;
 import core.common.model.test.TestData;
 import core.common.model.test.TestResult;
 import core.common.model.test.TestResultItem;
+import core.jtester.api.RuleSet;
+import core.jtester.staticanalysis.const_propagation.Var2Value;
+import core.jtester.staticanalysis.reaching_def.DefLocPair;
 
 public abstract class Calculator implements IJob {
 	protected String name = this.getClass().getSimpleName();

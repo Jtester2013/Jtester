@@ -1,4 +1,4 @@
-package core.analysis.staticanalysis.verybusy_exp;
+package core.jtester.staticanalysis.verybusy_exp;
 
 import java.util.ArrayList;
 import java.util.Collection;

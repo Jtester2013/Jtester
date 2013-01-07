@@ -1,4 +1,4 @@
-package plugin.configuration;
+package plugin.ui.window.configuration;
 
 import org.eclipse.swt.layout.FormLayout;
 

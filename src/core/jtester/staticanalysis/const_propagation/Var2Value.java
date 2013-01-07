@@ -1,4 +1,4 @@
-package core.analysis.staticanalysis.const_propagation;
+package core.jtester.staticanalysis.const_propagation;
 
 public class Var2Value implements Cloneable{
 	private String _varName;

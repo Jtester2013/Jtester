@@ -2,8 +2,8 @@ package plugin.run;
 
 import java.util.List;
 
-import core.analysis.api.API;
 import core.common.model.jobflow.ICaller;
+import core.jtester.api.API;
 
 public class JtesterCaller extends Thread {
 	private boolean isDelay;

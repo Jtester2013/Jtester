@@ -8,7 +8,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWindowActionDelegate;
 
-import core.analysis.api.RuleSet;
+import core.jtester.api.RuleSet;
 
 import plugin.ui.dialog.progress.ProgressDialog;
 import plugin.util.IOUtil;

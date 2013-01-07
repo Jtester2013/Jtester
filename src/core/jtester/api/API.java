@@ -1,4 +1,4 @@
-package core.analysis.api;
+package core.jtester.api;
 
 import java.io.IOException;
 import java.util.ArrayList;

@@ -16,6 +16,7 @@ public class TestConfiguration {
 	public void accept(List<String> methods) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		jobs.add(new JavaParser());
 		for (int i = 0; i < methods.size(); i++) {
+			System.out.println(methods.get(i));
 			Class<?> jobClass = Class.forName(methods.get(i));
 			IJob job = (IJob) jobClass.newInstance();
 			jobs.add(job);

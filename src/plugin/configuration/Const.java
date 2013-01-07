@@ -27,8 +27,7 @@ public class Const {
 
 	// added by John
 	// 各种根路径
-	public static final StringBuffer rootPath = new StringBuffer(
-			System.getProperty("user.dir"));
+	public static final StringBuffer rootPath = new StringBuffer(System.getProperty("user.dir"));
 	public static final String iconPath = rootPath.append("\\icons").toString();
 
 	// 比较具体的元素的路径

@@ -1,4 +1,4 @@
-package core.analysis.staticanalysis.const_propagation;
+package core.jtester.staticanalysis.const_propagation;
 
 import java.util.List;
 

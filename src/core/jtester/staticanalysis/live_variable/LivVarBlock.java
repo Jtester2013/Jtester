@@ -1,4 +1,4 @@
-package core.analysis.staticanalysis.live_variable;
+package core.jtester.staticanalysis.live_variable;
 
 import java.util.List;
 

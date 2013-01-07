@@ -10,7 +10,6 @@
       </perspective>
 	</extension>
 	
-	
 	<extension point="org.eclipse.ui.views">
 		<category
 			name="Jtester"
@@ -29,26 +28,35 @@
 	 	<actionSet 
 	 		label="SA Action Set"
 	 		visible="true"
-	 		id="ui.actionset">
+	 		id="plugin.ui.actionset">
 	 		<menu
 	 			label="Jtester"
-	 			id="ui.actionset.entry">
+	 			id="plugin.ui.actionset.entry">
 	 			<separator
 	 				name="entry">
 	 			</separator>
 	 		</menu>
 	 		<menu
-            	path="ui.actionset.entry/entry"
-            	label="Analyze Using..."
-            	id="ui.actionset.select">
+            	path="plugin.ui.actionset.entry/entry"
+            	label="Test Using..."
+            	id="plugin.ui.actionset.select">
             	<separator
             		name="select">
             	</separator>
             </menu>
+            
+            <action
+            	label="Test Configuration"
+            	class="plugin.run.Configuration"
+            	id="plugin.ui.actionset.configuration"
+            	path="plugin.ui.actionset.entry/entry"
+            	menubarPath="plugin.ui.actionset.entry/entry">
+            </action>
+            
             <menu
-            	path="ui.actionset.entry/ui.actionset.select/select"
+            	path="plugin.ui.actionset.entry/plugin.ui.actionset.select/select"
             	label="builtin"
-            	id="ui.actionset.builtin">
+            	id="plugin.ui.actionset.builtin">
             	<separator
             		name="builtin">
             	</separator>
@@ -57,7 +65,7 @@
             <action
                label="all..."
                class="plugin.run.Jtester"
-               menubarPath="ui.actionset.entry/ui.actionset.select/select"
+               menubarPath="plugin.ui.actionset.entry/plugin.ui.actionset.select/select"
                enablesFor="1"
                id="plugin.run.Jtester">
          	</action>

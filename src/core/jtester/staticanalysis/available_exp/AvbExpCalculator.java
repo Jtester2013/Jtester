@@ -1,4 +1,4 @@
-package core.analysis.staticanalysis.available_exp;
+package core.jtester.staticanalysis.available_exp;
 
 import java.util.ArrayList;
 import java.util.Collection;

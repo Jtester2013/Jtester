@@ -1,4 +1,4 @@
-package core.analysis.staticanalysis.available_exp;
+package core.jtester.staticanalysis.available_exp;
 
 import core.common.cfg.interfaces.IBasicBlock;
 import core.common.model.functionblock.AnalysisBlockImpl;
