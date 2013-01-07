@@ -27,6 +27,7 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 
 import plugin.util.Const;
+import plugin.util.LayoutFactory;
 import plugin.util.SWTResourceManager;
 
 public class ConfigurationWindow {
@@ -240,6 +241,7 @@ public class ConfigurationWindow {
 			TreeItem trtmBuildMachineNightlySGE = new TreeItem(trtmPhaseIi, SWT.NONE);
 			trtmBuildMachineNightlySGE.setText("Build Machine Nightly (static+generation+execution)");
 			trtmBuildMachineNightlySGE.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
+			System.out.println("********************\n" + Const.HYPERCUBE_ICON_PATH);
 			trtmBuildMachineNightlySGE.setExpanded(true);
 
 			TreeItem trtmDeveloperstaticexecution = new TreeItem(trtmPhaseIi, SWT.NONE);

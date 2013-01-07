@@ -14,9 +14,6 @@ public class ConfigWindowComposite extends Composite {
 	public ConfigWindowComposite(Composite parent, int style) {
 		super(parent, style);
 		
-		SashForm sashForm = new SashForm(this, SWT.NONE);
-		sashForm.setBounds(56, 48, 0, 0);
-
 	}
 
 	@Override
