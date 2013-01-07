@@ -44,17 +44,19 @@ public class API {
 //		paths.add("D:/JavaTest.java");
 //		paths.add("D:/JavaTest1.java");
 //		paths.add("D:/JavaTest2.java");
-		paths.add("D:/JavaTest3.java");
+//		paths.add("D:/JavaTest3.java");
+		paths.add("D:/JavaTest5.java");
 		List<String> rules = new ArrayList<String>();
 		rules.add(RuleSet.FUNCTION_INFO_VISITOR);
 //		rules.add(RuleSet.AVAILABLE_EXP);
 //		rules.add(RuleSet.VERY_BUSY_EXP);
 //		rules.add(RuleSet.LIVE_VAR);
 //		rules.add(RuleSet.REACHING_DEF);
-		rules.add(RuleSet.CONST_PROPAGATION);
+//		rules.add(RuleSet.CONST_PROPAGATION);
+		rules.add(RuleSet.SHAPE_ANALYSIS);
 		TestResult result = analyze(paths, rules, null);
 	
-		ArrayList<TestResultItem> items = result.getResult().get("D:/JavaTest3.java");
+		ArrayList<TestResultItem> items = result.getResult().get("D:/JavaTest5.java");
 		String lastRule = "";
 		for (int i = 0; i < items.size(); i++) {
 			if (lastRule != items.get(i).getRule()) {

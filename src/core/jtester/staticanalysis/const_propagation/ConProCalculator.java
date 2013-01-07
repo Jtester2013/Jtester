@@ -213,7 +213,7 @@ public class ConProCalculator extends Calculator implements IJob {
 		this.initWorklist();
 		this.calculateSolution();
 		this.displaySolution(data);
-		return false;
+		return true;
 	}
 
 }

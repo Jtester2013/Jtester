@@ -12,4 +12,6 @@ public class RuleSet {
 	public static final String LIVE_VAR = "core.jtester.staticanalysis.live_variable.LivVarCalculator";
 	public static final String REACHING_DEF = "core.jtester.staticanalysis.reaching_def.RchDefCalculator";
 	public static final String CONST_PROPAGATION = "core.jtester.staticanalysis.const_propagation.ConProCalculator";
+	public static final String SHAPE_ANALYSIS = "core.jtester.staticanalysis.shape_analysis.ShapeCalculator";
+
 }

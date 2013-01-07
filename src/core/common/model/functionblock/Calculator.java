@@ -16,6 +16,7 @@ import core.common.model.test.TestResultItem;
 import core.jtester.api.RuleSet;
 import core.jtester.staticanalysis.const_propagation.Var2Value;
 import core.jtester.staticanalysis.reaching_def.DefLocPair;
+import core.jtester.staticanalysis.shape_analysis.ShapeGraph;
 
 public abstract class Calculator implements IJob {
 	protected String name = this.getClass().getSimpleName();
@@ -26,7 +27,6 @@ public abstract class Calculator implements IJob {
 	
 	protected void initWorklist() {
 	}
-
 
 	protected void transfer(int first) {
 		
@@ -166,6 +166,8 @@ public abstract class Calculator implements IJob {
 							entry += ((DefLocPair) exp).displayPair();
 						} else if (exp instanceof Var2Value){
 							entry += ((Var2Value) exp).display() + "; ";
+						} else if (exp instanceof ShapeGraph){
+							entry += " ";
 						}
 					}
 				}
@@ -183,6 +185,9 @@ public abstract class Calculator implements IJob {
 							exit += ((DefLocPair) exp).displayPair();
 						} else if (exp instanceof Var2Value){
 							exit += ((Var2Value) exp).display() + "; ";
+						} else if (exp instanceof ShapeGraph){
+							exit += "ShapeGraph "+ j + ":";
+							exit += ((ShapeGraph) exp).displaySG();
 						}
 					}
 				}
