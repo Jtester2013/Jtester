@@ -26,7 +26,7 @@ import org.eclipse.swt.widgets.DateTime;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 
-import plugin.configuration.Const;
+import plugin.util.Const;
 import plugin.util.SWTResourceManager;
 
 public class ConfigurationWindow {

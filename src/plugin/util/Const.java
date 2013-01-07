@@ -1,4 +1,4 @@
-package plugin.configuration;
+package plugin.util;
 
 public class Const {
 	// Common
