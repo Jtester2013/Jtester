@@ -26,4 +26,3 @@ public class JavaTest1 {
 		return a;
 	}
 }
-

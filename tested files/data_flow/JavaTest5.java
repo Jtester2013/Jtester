@@ -1,3 +1,4 @@
+package examples;
 public class JavaTest5 {
 	
 	Link foo6(Link p){
