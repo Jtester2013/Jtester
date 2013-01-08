@@ -11,15 +11,28 @@ import org.eclipse.ui.IWorkbenchWindowActionDelegate;
 import core.jtester.api.RuleSet;
 
 import plugin.ui.dialog.progress.ProgressDialog;
+import plugin.ui.window.configuration.ConfigurationWindow;
+import plugin.util.Const;
 import plugin.util.IOUtil;
 
 public class Jtester implements IWorkbenchWindowActionDelegate{
 	private ISelection selection;
-	private IWorkbenchWindow window;
-	
+
 	public void run(IAction action) {
+		String id = action.getId();
+		switch(id){
+		case Const.JTESTER_ALL:
+			runAll();
+			break;
+		case Const.JTESTER_CONFIGURATION:
+			runConfiguration();
+			break;
+		}
+	}
+
+	public void runAll(){
 		List<String> filePaths = IOUtil.getSelectionPath(selection);
-		List<String> rules = retrieveRules();
+		List<String> rules = getAllRules();
 		
 		JtesterProgress progress = new JtesterProgress(filePaths.size());
 		
@@ -29,10 +42,14 @@ public class Jtester implements IWorkbenchWindowActionDelegate{
 		ProgressDialog dialog = new ProgressDialog(null, progress);
 		progress.register(dialog);
 		dialog.run();
-	
 	}
-
-	public List<String> retrieveRules(){
+	
+	public void runConfiguration(){
+		ConfigurationWindow cfgWindow = new ConfigurationWindow();
+		cfgWindow.open();
+	}
+	
+	public List<String> getAllRules(){
 		List<String> rules = new ArrayList<String>();
 		rules.add(RuleSet.FUNCTION_INFO_VISITOR);
 		rules.add(RuleSet.AVAILABLE_EXP);
@@ -40,6 +57,7 @@ public class Jtester implements IWorkbenchWindowActionDelegate{
 		rules.add(RuleSet.REACHING_DEF);
 		rules.add(RuleSet.LIVE_VAR);
 		rules.add(RuleSet.CONST_PROPAGATION);
+		rules.add(RuleSet.SHAPE_ANALYSIS);
 		return rules;
 	}
 
@@ -51,6 +69,5 @@ public class Jtester implements IWorkbenchWindowActionDelegate{
 	}
 
 	public void init(IWorkbenchWindow window) {
-		this.window = window;
 	}
 }

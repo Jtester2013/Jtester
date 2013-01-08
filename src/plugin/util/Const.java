@@ -6,10 +6,15 @@ public class Const {
 
 	public static final String EMPTY_LINE = "                      ";
 
+	// Plug-in run
+	public static final String JTESTER_ALL = "plugin.run.all";
+	public static final String JTESTER_CONFIGURATION = "plugin.run.configuration";
+	
+	
 	// Rule Configuration
 	public static final String DEMO = "JTester Demo Configuration";
 	public static final String DATA_FLOW = "JTester Data Flow Configuration";
-
+	
 	// Progress Dialog
 	public static final String STATIC_FILES_CHEKCED = "Files Checked (Coding Standards): ";
 

@@ -47,8 +47,8 @@
             
             <action
             	label="Test Configuration"
-            	class="plugin.run.Configuration"
-            	id="plugin.ui.actionset.configuration"
+            	class="plugin.run.Jtester"
+            	id="plugin.run.configuration"
             	path="plugin.ui.actionset.entry/entry"
             	menubarPath="plugin.ui.actionset.entry/entry">
             </action>
@@ -67,7 +67,7 @@
                class="plugin.run.Jtester"
                menubarPath="plugin.ui.actionset.entry/plugin.ui.actionset.select/select"
                enablesFor="1"
-               id="plugin.run.Jtester">
+               id="plugin.run.all">
          	</action>
             
 	 	</actionSet>
