@@ -1,14 +1,20 @@
 package plugin.ui.window.configuration;
 
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.actions.SimpleWildcardTester;
 
 public class ConfigWin {
 
 	protected Shell shell;
 	
-	public ConfigWindowComposite configWinComposite;
-
+	public static ConfigWindowComposite configWinComposite = null;
+	
+	private ConfigWin(){
+		super();
+//		configWinComposite = new ConfigWindowComposite(parent, style)
+	}
 	/**
 	 * Launch the application.
 	 * @param args
@@ -36,6 +42,7 @@ public class ConfigWin {
 			}
 		}
 	}
+	
 
 	/**
 	 * Create contents of the window.
@@ -43,8 +50,11 @@ public class ConfigWin {
 	protected void createContents() {
 		shell = new Shell();
 		shell.setSize(450, 300);
-		shell.setText("SWT Application");
-
+		shell.setText("Jtester");
+		// set layout
+		configWinComposite = new ConfigWindowComposite(shell, SWT.NONE);
+		
+		
 	}
 
 }

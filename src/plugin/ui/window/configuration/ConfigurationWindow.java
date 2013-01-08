@@ -42,6 +42,11 @@ public class ConfigurationWindow {
 	private Text text_monitoringNewApp;
 	private Text text_ConnectingToRunningApp;
 	private Text text_ReadPrerecordFile;
+	public Composite configWindowComposite;
+	
+	
+	// Composites
+	
 	
 	/**
 	 * a method for add image to tree items of a tree
@@ -84,27 +89,27 @@ public class ConfigurationWindow {
 		FormLayout fl_shell = LayoutFactory.getFormLayout();
 		shell.setLayout(fl_shell);
 
-		Composite composite = new Composite(shell, SWT.NONE);
-		composite.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+		configWindowComposite = new Composite(shell, SWT.NONE);
+		configWindowComposite.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		FillLayout fl_composite = new FillLayout(SWT.HORIZONTAL);
 		fl_composite.marginWidth = 5;
 		fl_composite.marginHeight = 3;
 		fl_composite.spacing = 5;
-		composite.setLayout(fl_composite);
+		configWindowComposite.setLayout(fl_composite);
 		FormData fd_composite = new FormData();
 		fd_composite.height = 60;
 		fd_composite.right = new FormAttachment(100);
 		fd_composite.top = new FormAttachment(0);
 		fd_composite.left = new FormAttachment(0);
-		composite.setLayoutData(fd_composite);
+		configWindowComposite.setLayoutData(fd_composite);
 
 		// set top composite
-		CLabel lblTitle = new CLabel(composite, SWT.NONE);
+		CLabel lblTitle = new CLabel(configWindowComposite, SWT.NONE);
 		lblTitle.setFont(SWTResourceManager.getFont("Î¢ÈíÑÅºÚ", 12, SWT.NORMAL));
 		lblTitle.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		lblTitle.setText(titleString);
 		lblTitle.setImage(null);
-		CLabel lblTitleImage = new CLabel(composite, SWT.NONE);
+		CLabel lblTitleImage = new CLabel(configWindowComposite, SWT.NONE);
 		lblTitleImage.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		lblTitleImage.setAlignment(SWT.RIGHT);
 		lblTitleImage.setImage(SWTResourceManager.getImage(Const.CONFIGURATION_ICON_PATH));
