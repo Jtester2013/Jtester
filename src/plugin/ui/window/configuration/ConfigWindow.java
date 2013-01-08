@@ -1,36 +1,36 @@
 package plugin.ui.window.configuration;
 
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Text;
-import org.eclipse.swt.widgets.Tree;
-import org.eclipse.swt.widgets.TreeItem;
-import org.eclipse.swt.layout.FormLayout;
-import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.layout.FormData;
-import org.eclipse.swt.layout.FormAttachment;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.layout.FillLayout;
-import org.eclipse.swt.custom.SashForm;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.custom.CLabel;
+import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.custom.StackLayout;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.FormAttachment;
+import org.eclipse.swt.layout.FormData;
+import org.eclipse.swt.layout.FormLayout;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.DateTime;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.TabItem;
-import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.DateTime;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.widgets.Tree;
+import org.eclipse.swt.widgets.TreeItem;
 
 import plugin.util.Const;
 import plugin.util.LayoutFactory;
 import plugin.util.SWTResourceManager;
 
-public class ConfigurationWindow {
+public class ConfigWindow {
 
 	protected Shell shell;
 	private Text textName;
@@ -43,24 +43,24 @@ public class ConfigurationWindow {
 	private Text text_ConnectingToRunningApp;
 	private Text text_ReadPrerecordFile;
 
-	public Composite configWindowComposite;
-	
-	
-	// Composites
-	
-	
-	/**
-	 * a method for add image to tree items of a tree
-	 * 
-	 * @param tree
-	 *            the tree to be trimmed
-	 * @param folderIconPath
-	 *            the path of icon for tree nodes which are not leaves
-	 * @param leafIconPath
-	 *            the path of icon for leaves
-	 */
-	public static void trim(Tree tree, String folderIconPath, String leafIconPath) {
+	public Composite titleWindowComposite;
+	public Composite bottomComposite;
+	private CenterSashForm centerSashFormComposite;
+	private Composite configListTreeComposite;
+	private Composite detailConfigComposite;
 
+	/**
+	 * Launch the application.
+	 * 
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		try {
+			ConfigWindow window = new ConfigWindow();
+			window.open();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -82,91 +82,32 @@ public class ConfigurationWindow {
 	 * Create contents of the window.
 	 */
 	protected void createContents() {
-		String titleString = "Create, manage and run test configuration.";
-
 		shell = new Shell();
-		shell.setSize(796, 609);
-		shell.setText("Test Configurations");
-		FormLayout fl_shell = LayoutFactory.getFormLayout();
-		shell.setLayout(fl_shell);
-
-		configWindowComposite = new Composite(shell, SWT.NONE);
-		configWindowComposite.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
-		FillLayout fl_composite = new FillLayout(SWT.HORIZONTAL);
-		fl_composite.marginWidth = 5;
-		fl_composite.marginHeight = 3;
-		fl_composite.spacing = 5;
-		configWindowComposite.setLayout(fl_composite);
-		FormData fd_composite = new FormData();
-		fd_composite.height = 60;
-		fd_composite.right = new FormAttachment(100);
-		fd_composite.top = new FormAttachment(0);
-		fd_composite.left = new FormAttachment(0);
-		configWindowComposite.setLayoutData(fd_composite);
-
-		// set top composite
-		CLabel lblTitle = new CLabel(configWindowComposite, SWT.NONE);
-		lblTitle.setFont(SWTResourceManager.getFont("Œ¢»Ì—≈∫⁄", 12, SWT.NORMAL));
-		lblTitle.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
-		lblTitle.setText(titleString);
-		lblTitle.setImage(null);
-		CLabel lblTitleImage = new CLabel(configWindowComposite, SWT.NONE);
-		lblTitleImage.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
-		lblTitleImage.setAlignment(SWT.RIGHT);
-		lblTitleImage.setImage(SWTResourceManager.getImage(Const.CONFIGURATION_ICON_PATH));
-
-		// set bottom composite
-		Composite bottomComposite = new Composite(shell, SWT.NONE);
-		bottomComposite.setLayout(new FormLayout());
-		FormData fd_bottomComposite = new FormData();
-		fd_bottomComposite.bottom = new FormAttachment(100);
-		fd_bottomComposite.height = 30;
-		fd_bottomComposite.left = new FormAttachment(0);
-		fd_bottomComposite.right = new FormAttachment(100);
-		bottomComposite.setLayoutData(fd_bottomComposite);
-
-		Button btnClose = new Button(bottomComposite, SWT.CENTER);
-		btnClose.setAlignment(SWT.CENTER);
-		FormData fd_btnNewButton = new FormData();
-		fd_btnNewButton.width = 70;
-		fd_btnNewButton.right = new FormAttachment(100);
-		btnClose.setLayoutData(fd_btnNewButton);
-		btnClose.setText("Close");
-
-		Button btnRunTest = new Button(bottomComposite, SWT.NONE);
-		FormData fd_btnNewButton_1 = new FormData();
-		fd_btnNewButton_1.right = new FormAttachment(btnClose);
-		fd_btnNewButton_1.width = 70;
-		btnRunTest.setLayoutData(fd_btnNewButton_1);
-		btnRunTest.setText("Run Test");
-
-		// set center composite
-		Composite centerComposite = new Composite(shell, SWT.NONE);
-		centerComposite.setLayout(new FormLayout());
-		FormData fd_centerComposite = new FormData();
-		fd_centerComposite.bottom = new FormAttachment(bottomComposite);
-		fd_centerComposite.left = new FormAttachment(0, 1);
-		fd_centerComposite.top = new FormAttachment(0, 62);
-		fd_centerComposite.right = new FormAttachment(100);
-		centerComposite.setLayoutData(fd_centerComposite);
-
-		SashForm sashForm = new SashForm(centerComposite, SWT.HORIZONTAL | SWT.SMOOTH);
-		FormData fd_sashForm = new FormData();
-		fd_sashForm.top = new FormAttachment(0, 5);
-		fd_sashForm.left = new FormAttachment(0, 5);
-		fd_sashForm.bottom = new FormAttachment(100, -5);
-		fd_sashForm.right = new FormAttachment(100, -5);
-		sashForm.setLayoutData(fd_sashForm);
-		// add list composite(left part) and detail composite(right part) into
-		// sashform
-		Composite listComposite = new Composite(sashForm, SWT.NONE);
-		Composite detailComposite = new Composite(sashForm, SWT.NONE);
-		sashForm.setWeights(new int[] { 3, 7 });// must be called after all
-												// parts added in sashForm.
-
+		shell.setSize(800, 600);
+		shell.setText("Jtester Configurations");
+		FormLayout nomalCompositeLayout = LayoutFactory.getFormLayout();
+		shell.setLayout(nomalCompositeLayout);
+		// add top comosite
+		titleWindowComposite = new TitleComposite(shell, SWT.None);
+		// add bottom composite
+		bottomComposite = new BottomComposite(shell, SWT.None);
+		// add center composite
+		centerSashFormComposite = new CenterSashForm(shell, SWT.HORIZONTAL | SWT.SMOOTH);
+		FormData fd_centerSashForm = new FormData();
+		fd_centerSashForm.bottom = new FormAttachment(bottomComposite);
+		fd_centerSashForm.left = new FormAttachment(0, 0);
+		fd_centerSashForm.top = new FormAttachment(titleWindowComposite);
+		fd_centerSashForm.right = new FormAttachment(100);
+		centerSashFormComposite.setLayoutData(fd_centerSashForm);
+		// set left part of centerSashformComposite
+		configListTreeComposite = centerSashFormComposite.leftComposite;
+		detailConfigComposite = centerSashFormComposite.rightComposite;
+//		configListTreeComposite = new Composite(centerSashFormComposite, SWT.NONE);
+//		detailConfigComposite = new Composite(centerSashFormComposite, SWT.NONE);
+		
 		// set left part of sash form
-		listComposite.setLayout(new FormLayout());
-		Composite operationComposite = new Composite(listComposite, SWT.NONE);
+		configListTreeComposite.setLayout(new FormLayout());
+		Composite operationComposite = new Composite(configListTreeComposite, SWT.NONE);
 		operationComposite.setLayout(new FillLayout(SWT.HORIZONTAL));
 		FormData fd_operationComposite = new FormData();
 		fd_operationComposite.left = new FormAttachment(0);
@@ -180,7 +121,7 @@ public class ConfigurationWindow {
 
 		Button btnDelete = new Button(operationComposite, SWT.NONE);
 		btnDelete.setText("Delete");
-		ScrolledComposite scrolledComposite = new ScrolledComposite(listComposite, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+		ScrolledComposite scrolledComposite = new ScrolledComposite(configListTreeComposite, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
 		FormData fd_scrolledComposite = new FormData();
 		fd_scrolledComposite.bottom = new FormAttachment(operationComposite);
 		fd_scrolledComposite.right = new FormAttachment(100);
@@ -454,12 +395,10 @@ public class ConfigurationWindow {
 
 		// set right part of sash form
 		StackLayout detaiLayout = new StackLayout();
-		detailComposite.setLayout(detaiLayout);
-		// when a configuration selected, this composite will appear in the
-		// detail composite
-		// otherwise the message "Select a configuration to view it." will
-		// appear
-		Composite oneConfigSelectedComposite = new Composite(detailComposite, SWT.NONE);
+		detailConfigComposite.setLayout(detaiLayout);
+		// when a configuration selected, this composite will appear in the detail composite
+		// otherwise the message "Select a configuration to view it." will appear
+		Composite oneConfigSelectedComposite = new Composite(detailConfigComposite, SWT.NONE);
 		oneConfigSelectedComposite.setLayout(new FormLayout());
 		// set the composite contains name and parent components
 		{
@@ -926,113 +865,114 @@ public class ConfigurationWindow {
 			btnAutomaticallyWithThorough.setLayoutData(fd_btnAutomaticallyWithThorForm);
 			btnAutomaticallyWithThorough.setText("Automatically with thorough symbolic analysis");
 			// add components related with "Monitoring a New Application Launch"
-				Button btnMonitoringANew = new Button(groupGenerateUnitTest, SWT.RADIO);
-				FormData fd_btnMonitoringANewForm = new FormData();
-				fd_btnMonitoringANewForm.top = new FormAttachment(btnAutomaticallyWithThorough, 15);
-				fd_btnMonitoringANewForm.left = new FormAttachment(btnAutomaticallyWithThorough, 0, SWT.LEFT);
-				btnMonitoringANew.setLayoutData(fd_btnMonitoringANewForm);
-				btnMonitoringANew.setText("Monitoring a New Application Launch: ");
+			Button btnMonitoringANew = new Button(groupGenerateUnitTest, SWT.RADIO);
+			FormData fd_btnMonitoringANewForm = new FormData();
+			fd_btnMonitoringANewForm.top = new FormAttachment(btnAutomaticallyWithThorough, 15);
+			fd_btnMonitoringANewForm.left = new FormAttachment(btnAutomaticallyWithThorough, 0, SWT.LEFT);
+			btnMonitoringANew.setLayoutData(fd_btnMonitoringANewForm);
+			btnMonitoringANew.setText("Monitoring a New Application Launch: ");
 
-				text_monitoringNewApp = new Text(groupGenerateUnitTest, SWT.BORDER);
-				FormData fd_text_monitoringNewAppLaunch = new FormData();
-				fd_text_monitoringNewAppLaunch.left = new FormAttachment(btnMonitoringANew);
-				fd_text_monitoringNewAppLaunch.bottom = new FormAttachment(btnMonitoringANew, 0, SWT.BOTTOM);
-				fd_text_monitoringNewAppLaunch.top = new FormAttachment(btnMonitoringANew, 0, SWT.TOP);
-				text_monitoringNewApp.setLayoutData(fd_text_monitoringNewAppLaunch);
+			text_monitoringNewApp = new Text(groupGenerateUnitTest, SWT.BORDER);
+			FormData fd_text_monitoringNewAppLaunch = new FormData();
+			fd_text_monitoringNewAppLaunch.left = new FormAttachment(btnMonitoringANew);
+			fd_text_monitoringNewAppLaunch.bottom = new FormAttachment(btnMonitoringANew, 0, SWT.BOTTOM);
+			fd_text_monitoringNewAppLaunch.top = new FormAttachment(btnMonitoringANew, 0, SWT.TOP);
+			text_monitoringNewApp.setLayoutData(fd_text_monitoringNewAppLaunch);
 
-				Button btn_edit_monitoringNewAppLaunch = new Button(groupGenerateUnitTest, SWT.NONE);
-				FormData fd_btn_edit_monitoringNewAppLaunch = new FormData();
-				fd_btn_edit_monitoringNewAppLaunch.bottom = new FormAttachment(text_monitoringNewApp, 0, SWT.BOTTOM);
-				fd_btn_edit_monitoringNewAppLaunch.left = new FormAttachment(text_monitoringNewApp, 6);
-				fd_btn_edit_monitoringNewAppLaunch.top = new FormAttachment(btnMonitoringANew, 0, SWT.TOP);
-				btn_edit_monitoringNewAppLaunch.setLayoutData(fd_btn_edit_monitoringNewAppLaunch);
-				btn_edit_monitoringNewAppLaunch.setText("Edit...");
+			Button btn_edit_monitoringNewAppLaunch = new Button(groupGenerateUnitTest, SWT.NONE);
+			FormData fd_btn_edit_monitoringNewAppLaunch = new FormData();
+			fd_btn_edit_monitoringNewAppLaunch.bottom = new FormAttachment(text_monitoringNewApp, 0, SWT.BOTTOM);
+			fd_btn_edit_monitoringNewAppLaunch.left = new FormAttachment(text_monitoringNewApp, 6);
+			fd_btn_edit_monitoringNewAppLaunch.top = new FormAttachment(btnMonitoringANew, 0, SWT.TOP);
+			btn_edit_monitoringNewAppLaunch.setLayoutData(fd_btn_edit_monitoringNewAppLaunch);
+			btn_edit_monitoringNewAppLaunch.setText("Edit...");
 
-				Button btn_clear_monitoringNewAppLaunch = new Button(groupGenerateUnitTest, SWT.NONE);
-				FormData fd_btn_clear_monitoringNewAppLaunch = new FormData();
-				fd_btn_clear_monitoringNewAppLaunch.bottom = new FormAttachment(text_monitoringNewApp, 0, SWT.BOTTOM);
-				fd_btn_clear_monitoringNewAppLaunch.top = new FormAttachment(btnMonitoringANew, 0, SWT.TOP);
-				fd_btn_clear_monitoringNewAppLaunch.left = new FormAttachment(btn_edit_monitoringNewAppLaunch, 6);
-				btn_clear_monitoringNewAppLaunch.setLayoutData(fd_btn_clear_monitoringNewAppLaunch);
-				btn_clear_monitoringNewAppLaunch.setText("Clear");
+			Button btn_clear_monitoringNewAppLaunch = new Button(groupGenerateUnitTest, SWT.NONE);
+			FormData fd_btn_clear_monitoringNewAppLaunch = new FormData();
+			fd_btn_clear_monitoringNewAppLaunch.bottom = new FormAttachment(text_monitoringNewApp, 0, SWT.BOTTOM);
+			fd_btn_clear_monitoringNewAppLaunch.top = new FormAttachment(btnMonitoringANew, 0, SWT.TOP);
+			fd_btn_clear_monitoringNewAppLaunch.left = new FormAttachment(btn_edit_monitoringNewAppLaunch, 6);
+			btn_clear_monitoringNewAppLaunch.setLayoutData(fd_btn_clear_monitoringNewAppLaunch);
+			btn_clear_monitoringNewAppLaunch.setText("Clear");
 
-			// add components related with "Connecting to a Running Applications:"
-				Button btnConnectingToRunningApp = new Button(groupGenerateUnitTest, SWT.RADIO);
-				FormData fd_btnConnectingToRunningApp = new FormData();
-				fd_btnConnectingToRunningApp.top = new FormAttachment(btnMonitoringANew, 15);
-				fd_btnConnectingToRunningApp.left = new FormAttachment(btnAutomaticallyWithThorough, 0, SWT.LEFT);
-				btnConnectingToRunningApp.setLayoutData(fd_btnConnectingToRunningApp);
-				btnConnectingToRunningApp.setText("Connecting to a Running Applications: ");
+			// add components related with
+			// "Connecting to a Running Applications:"
+			Button btnConnectingToRunningApp = new Button(groupGenerateUnitTest, SWT.RADIO);
+			FormData fd_btnConnectingToRunningApp = new FormData();
+			fd_btnConnectingToRunningApp.top = new FormAttachment(btnMonitoringANew, 15);
+			fd_btnConnectingToRunningApp.left = new FormAttachment(btnAutomaticallyWithThorough, 0, SWT.LEFT);
+			btnConnectingToRunningApp.setLayoutData(fd_btnConnectingToRunningApp);
+			btnConnectingToRunningApp.setText("Connecting to a Running Applications: ");
 
-				text_ConnectingToRunningApp = new Text(groupGenerateUnitTest, SWT.BORDER);
-				FormData fd_text_ConnectingToRunningApp = new FormData();
-				fd_text_ConnectingToRunningApp.left = new FormAttachment(btnConnectingToRunningApp);
-				fd_text_ConnectingToRunningApp.bottom = new FormAttachment(btnConnectingToRunningApp, 0, SWT.BOTTOM);
-				fd_text_ConnectingToRunningApp.top = new FormAttachment(btnConnectingToRunningApp, 0, SWT.TOP);
-				text_ConnectingToRunningApp.setLayoutData(fd_text_ConnectingToRunningApp);
+			text_ConnectingToRunningApp = new Text(groupGenerateUnitTest, SWT.BORDER);
+			FormData fd_text_ConnectingToRunningApp = new FormData();
+			fd_text_ConnectingToRunningApp.left = new FormAttachment(btnConnectingToRunningApp);
+			fd_text_ConnectingToRunningApp.bottom = new FormAttachment(btnConnectingToRunningApp, 0, SWT.BOTTOM);
+			fd_text_ConnectingToRunningApp.top = new FormAttachment(btnConnectingToRunningApp, 0, SWT.TOP);
+			text_ConnectingToRunningApp.setLayoutData(fd_text_ConnectingToRunningApp);
 
-				Button btn_edit_ConnectingToRunningApp = new Button(groupGenerateUnitTest, SWT.NONE);
-				FormData fd_btn_edit_ConnectingToRunningApp = new FormData();
-				fd_btn_edit_ConnectingToRunningApp.bottom = new FormAttachment(text_ConnectingToRunningApp, 0, SWT.BOTTOM);
-				fd_btn_edit_ConnectingToRunningApp.left = new FormAttachment(text_ConnectingToRunningApp, 6);
-				fd_btn_edit_ConnectingToRunningApp.top = new FormAttachment(btnConnectingToRunningApp, 0, SWT.TOP);
-				btn_edit_ConnectingToRunningApp.setLayoutData(fd_btn_edit_ConnectingToRunningApp);
-				btn_edit_ConnectingToRunningApp.setText("Edit...");
+			Button btn_edit_ConnectingToRunningApp = new Button(groupGenerateUnitTest, SWT.NONE);
+			FormData fd_btn_edit_ConnectingToRunningApp = new FormData();
+			fd_btn_edit_ConnectingToRunningApp.bottom = new FormAttachment(text_ConnectingToRunningApp, 0, SWT.BOTTOM);
+			fd_btn_edit_ConnectingToRunningApp.left = new FormAttachment(text_ConnectingToRunningApp, 6);
+			fd_btn_edit_ConnectingToRunningApp.top = new FormAttachment(btnConnectingToRunningApp, 0, SWT.TOP);
+			btn_edit_ConnectingToRunningApp.setLayoutData(fd_btn_edit_ConnectingToRunningApp);
+			btn_edit_ConnectingToRunningApp.setText("Edit...");
 
-				Button btn_clear_ConnectingToRunningApp = new Button(groupGenerateUnitTest, SWT.NONE);
-				FormData fd_btn_clear_ConnectingToRunningApp = new FormData();
-				fd_btn_clear_ConnectingToRunningApp.bottom = new FormAttachment(text_ConnectingToRunningApp, 0, SWT.BOTTOM);
-				fd_btn_clear_ConnectingToRunningApp.top = new FormAttachment(btnConnectingToRunningApp, 0, SWT.TOP);
-				fd_btn_clear_ConnectingToRunningApp.left = new FormAttachment(btn_edit_ConnectingToRunningApp, 6);
-				btn_clear_ConnectingToRunningApp.setLayoutData(fd_btn_clear_ConnectingToRunningApp);
-				btn_clear_ConnectingToRunningApp.setText("Clear");
-				
+			Button btn_clear_ConnectingToRunningApp = new Button(groupGenerateUnitTest, SWT.NONE);
+			FormData fd_btn_clear_ConnectingToRunningApp = new FormData();
+			fd_btn_clear_ConnectingToRunningApp.bottom = new FormAttachment(text_ConnectingToRunningApp, 0, SWT.BOTTOM);
+			fd_btn_clear_ConnectingToRunningApp.top = new FormAttachment(btnConnectingToRunningApp, 0, SWT.TOP);
+			fd_btn_clear_ConnectingToRunningApp.left = new FormAttachment(btn_edit_ConnectingToRunningApp, 6);
+			btn_clear_ConnectingToRunningApp.setLayoutData(fd_btn_clear_ConnectingToRunningApp);
+			btn_clear_ConnectingToRunningApp.setText("Clear");
+
 			// add components related with "Reading from a Pre-recorded Files:"
-				Button btnReadPrerecordFile = new Button(groupGenerateUnitTest, SWT.RADIO);
-				FormData fd_btnReadPrerecordFile = new FormData();
-				fd_btnReadPrerecordFile.top = new FormAttachment(btnConnectingToRunningApp, 15);
-				fd_btnReadPrerecordFile.left = new FormAttachment(btnAutomaticallyWithThorough, 0, SWT.LEFT);
-				btnReadPrerecordFile.setLayoutData(fd_btnReadPrerecordFile);
-				btnReadPrerecordFile.setText("Reading from a Pre-recorded Files: ");
+			Button btnReadPrerecordFile = new Button(groupGenerateUnitTest, SWT.RADIO);
+			FormData fd_btnReadPrerecordFile = new FormData();
+			fd_btnReadPrerecordFile.top = new FormAttachment(btnConnectingToRunningApp, 15);
+			fd_btnReadPrerecordFile.left = new FormAttachment(btnAutomaticallyWithThorough, 0, SWT.LEFT);
+			btnReadPrerecordFile.setLayoutData(fd_btnReadPrerecordFile);
+			btnReadPrerecordFile.setText("Reading from a Pre-recorded Files: ");
 
-				text_ReadPrerecordFile = new Text(groupGenerateUnitTest, SWT.BORDER);
-				FormData fd_text_ReadPrerecordFile = new FormData();
-				fd_text_ReadPrerecordFile.left = new FormAttachment(btnReadPrerecordFile);
-				fd_text_ReadPrerecordFile.bottom = new FormAttachment(btnReadPrerecordFile, 0, SWT.BOTTOM);
-				fd_text_ReadPrerecordFile.top = new FormAttachment(btnReadPrerecordFile, 0, SWT.TOP);
-				text_ReadPrerecordFile.setLayoutData(fd_text_ReadPrerecordFile);
+			text_ReadPrerecordFile = new Text(groupGenerateUnitTest, SWT.BORDER);
+			FormData fd_text_ReadPrerecordFile = new FormData();
+			fd_text_ReadPrerecordFile.left = new FormAttachment(btnReadPrerecordFile);
+			fd_text_ReadPrerecordFile.bottom = new FormAttachment(btnReadPrerecordFile, 0, SWT.BOTTOM);
+			fd_text_ReadPrerecordFile.top = new FormAttachment(btnReadPrerecordFile, 0, SWT.TOP);
+			text_ReadPrerecordFile.setLayoutData(fd_text_ReadPrerecordFile);
 
-				Button btn_edit_ReadPrerecordFile = new Button(groupGenerateUnitTest, SWT.NONE);
-				FormData fd_btn_edit_ReadPrerecordFile = new FormData();
-				fd_btn_edit_ReadPrerecordFile.bottom = new FormAttachment(text_ReadPrerecordFile, 0, SWT.BOTTOM);
-				fd_btn_edit_ReadPrerecordFile.left = new FormAttachment(text_ReadPrerecordFile, 6);
-				fd_btn_edit_ReadPrerecordFile.top = new FormAttachment(btnReadPrerecordFile, 0, SWT.TOP);
-				btn_edit_ReadPrerecordFile.setLayoutData(fd_btn_edit_ReadPrerecordFile);
-				btn_edit_ReadPrerecordFile.setText("‰Ø¿¿(B)...");
+			Button btn_edit_ReadPrerecordFile = new Button(groupGenerateUnitTest, SWT.NONE);
+			FormData fd_btn_edit_ReadPrerecordFile = new FormData();
+			fd_btn_edit_ReadPrerecordFile.bottom = new FormAttachment(text_ReadPrerecordFile, 0, SWT.BOTTOM);
+			fd_btn_edit_ReadPrerecordFile.left = new FormAttachment(text_ReadPrerecordFile, 6);
+			fd_btn_edit_ReadPrerecordFile.top = new FormAttachment(btnReadPrerecordFile, 0, SWT.TOP);
+			btn_edit_ReadPrerecordFile.setLayoutData(fd_btn_edit_ReadPrerecordFile);
+			btn_edit_ReadPrerecordFile.setText("‰Ø¿¿(B)...");
 
-				Button btn_clear_ReadPrerecordFile = new Button(groupGenerateUnitTest, SWT.NONE);
-				FormData fd_btn_clear_ReadPrerecordFile = new FormData();
-				fd_btn_clear_ReadPrerecordFile.bottom = new FormAttachment(text_ReadPrerecordFile, 0, SWT.BOTTOM);
-				fd_btn_clear_ReadPrerecordFile.top = new FormAttachment(btnReadPrerecordFile, 0, SWT.TOP);
-				fd_btn_clear_ReadPrerecordFile.left = new FormAttachment(btn_edit_ReadPrerecordFile, 6);
-				btn_clear_ReadPrerecordFile.setLayoutData(fd_btn_clear_ReadPrerecordFile);
-				btn_clear_ReadPrerecordFile.setText("Clear");
-				
-				Button btnGenerateOnlyOne = new Button(inputsOfGenerationComposite, SWT.CHECK);
-				FormData fd_btnGenerateOnlyOne = new FormData();
-				fd_btnGenerateOnlyOne.top = new FormAttachment(groupGenerateUnitTest, 5, SWT.BOTTOM);
-				btnGenerateOnlyOne.setLayoutData(fd_btnGenerateOnlyOne);
-				btnGenerateOnlyOne.setText("Generate only one test case to test all selected classes");
-				
-				TabItem tbtmFilter = new TabItem(tabFolderInGeneration, SWT.NONE);
-				tbtmFilter.setText("Filter");
-				
-				Composite filterInGenerationComposite = new Composite(tabFolderInGeneration, SWT.NONE);
-				tbtmFilter.setControl(filterInGenerationComposite);
+			Button btn_clear_ReadPrerecordFile = new Button(groupGenerateUnitTest, SWT.NONE);
+			FormData fd_btn_clear_ReadPrerecordFile = new FormData();
+			fd_btn_clear_ReadPrerecordFile.bottom = new FormAttachment(text_ReadPrerecordFile, 0, SWT.BOTTOM);
+			fd_btn_clear_ReadPrerecordFile.top = new FormAttachment(btnReadPrerecordFile, 0, SWT.TOP);
+			fd_btn_clear_ReadPrerecordFile.left = new FormAttachment(btn_edit_ReadPrerecordFile, 6);
+			btn_clear_ReadPrerecordFile.setLayoutData(fd_btn_clear_ReadPrerecordFile);
+			btn_clear_ReadPrerecordFile.setText("Clear");
+
+			Button btnGenerateOnlyOne = new Button(inputsOfGenerationComposite, SWT.CHECK);
+			FormData fd_btnGenerateOnlyOne = new FormData();
+			fd_btnGenerateOnlyOne.top = new FormAttachment(groupGenerateUnitTest, 5, SWT.BOTTOM);
+			btnGenerateOnlyOne.setLayoutData(fd_btnGenerateOnlyOne);
+			btnGenerateOnlyOne.setText("Generate only one test case to test all selected classes");
+
+			TabItem tbtmFilter = new TabItem(tabFolderInGeneration, SWT.NONE);
+			tbtmFilter.setText("Filter");
+
+			Composite filterInGenerationComposite = new Composite(tabFolderInGeneration, SWT.NONE);
+			tbtmFilter.setControl(filterInGenerationComposite);
 
 			scrolledCompositeGeneration.setContent(compositeInScrolledCompositeGeneration);
 			scrolledCompositeGeneration.setMinSize(compositeInScrolledCompositeGeneration.computeSize(SWT.DEFAULT, SWT.DEFAULT));
-			
+
 			TabItem tbtmExecution = new TabItem(tabFolder, SWT.NONE);
 			tbtmExecution.setImage(SWTResourceManager.getImage(Const.EXECUTION_ICON_PATH));
 			tbtmExecution.setText("Execution");
@@ -1054,4 +994,5 @@ public class ConfigurationWindow {
 		detaiLayout.topControl = oneConfigSelectedComposite;
 
 	}
+
 }

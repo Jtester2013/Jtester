@@ -8,8 +8,9 @@ import plugin.util.LayoutFactory;
 
 public class ConfigWindowComposite extends Composite {
 	
-	TitleComposite titleComposite;
-	ActionComposite actionComposite;
+	Composite titleComposite;
+	Composite actionComposite;
+	SashForm contentSashForm;
 	
 
 	/**
@@ -20,6 +21,7 @@ public class ConfigWindowComposite extends Composite {
 	public ConfigWindowComposite(Composite parent, int style) {
 		super(parent, style);
 		this.setLayout(LayoutFactory.getFormLayout());
+		titleComposite = new TitleComposite(this, SWT.NONE);
 		
 	}
 
