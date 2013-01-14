@@ -9,7 +9,8 @@ public class Const {
 	// Plug-in run
 	public static final String JTESTER_ALL = "plugin.run.all";
 	public static final String JTESTER_CONFIGURATION = "plugin.run.configuration";
-	
+	public static final String JTESTER_CONST_PROBLEM = "plugin.run.const_problem";
+	public static final String JTESTER_DATA_DETAINED = "plugin.run.data_detained";
 	
 	// Rule Configuration
 	public static final String DEMO = "JTester Demo Configuration";

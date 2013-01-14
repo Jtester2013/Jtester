@@ -26,7 +26,8 @@ public class JavaParser implements IJob{
 		FileASTRequestor requestor = new FileASTRequestor() {
 			public void acceptAST(String sourceFilePath, CompilationUnit ast) {
 				TestFile file = data.getFile(sourceFilePath);
-				file.put(JobConst.AST, ast);
+				if(file != null)
+					file.put(JobConst.AST, ast);
 			}
 		};
 		

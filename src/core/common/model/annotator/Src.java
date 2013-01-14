@@ -14,7 +14,6 @@ import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTParser;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
-import org.eclipse.jdt.core.dom.PackageDeclaration;
 
 import core.common.model.jobflow.JobConst;
 import core.common.model.test.TestFile;
@@ -35,6 +34,7 @@ public class Src {
 	public Src(TestFile file){
 		filePath = file.getPath();
 		astTree = (CompilationUnit) file.get(JobConst.AST);
+		src = file.getCode();
 	}
 	
 	public Src(String fileAbsolutePath) {

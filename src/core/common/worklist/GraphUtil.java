@@ -19,7 +19,8 @@ public class GraphUtil {
 		
 		for(T key : jobs){
 			for(Job t : key.getConstraint()){
-				result.get(t).add(key);
+				Set<T> set = result.get(t);
+				set.add(key);
 			}
 		}
 		return result;

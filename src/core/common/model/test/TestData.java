@@ -62,7 +62,7 @@ public class TestData {
 	
 	public TestFile getFile(String path){
 		for(TestFile file: files){
-			if(file.getPath().equals(path)){
+			if(file.getPath().equals(path) || file.getPath().replace('/', '\\').equals(path)){
 				return file;
 			}
 		}

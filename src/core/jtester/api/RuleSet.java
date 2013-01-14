@@ -3,7 +3,8 @@ package core.jtester.api;
 public class RuleSet {
 	// Result
 	public final static String RESULT = "Result";
-	public final static String ERROR = "Error";
+	public final static String ERROR = "Error"; 
+	public final static String WARNING = "Warning";
 
 	// static analysis
 	// data flow
@@ -16,5 +17,6 @@ public class RuleSet {
 	public static final String SHAPE_ANALYSIS = "core.jtester.staticanalysis.shape_analysis.ShapeCalculator";
 	// type inference
 	public static final String CONST_PROBLEM = "core.jtester.staticanalysis.const_problem.ConstProblemAnalyzer";
+	public static final String DATA_DETAINED = "core.jtester.staticanalysis.data_detained.DataDetainedAnalyzer";
 
 }

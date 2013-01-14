@@ -1,4 +1,4 @@
-package core.jtester.staticanalysis.const_problem;
+package core.jtester.staticanalysis.data_detained;
 
 import java.io.File;
 import java.util.Hashtable;
@@ -23,17 +23,14 @@ import core.common.model.om.ConstraintVariable;
 import core.common.model.om.OMShared;
 import core.common.model.test.TestData;
 import core.common.model.test.TestFile;
-import core.common.model.test.TestResult;
-import core.common.model.test.TestResultItem;
-import core.jtester.api.RuleSet;
 
-public class ConstProblemAnalyzer implements IJob{
+public class DataDetainedAnalyzer implements IJob{
 	private String name = this.getClass().getSimpleName();
-	private Configuration conf = ConfigurationReader.get(new File(JobConst.CONST_PROBLEM_PATH));
+	private Configuration conf = ConfigurationReader.get(new File(JobConst.DATA_DETAINED_PATH));
 	
 	public boolean run(TestData data) {
-		TestFile file = data.getCurrentTestFile();
-		if(file.isCheckedByRule(name)){
+		TestFile f = data.getCurrentTestFile();
+		if(f.isCheckedByRule(name)){
 			return true;
 		}
 		
@@ -43,13 +40,12 @@ public class ConstProblemAnalyzer implements IJob{
 		
 		constraint(srcs);
 		
-		worklist(data);
+		worklist();
 		
 		return true;
 	}
 	
 	private Map<String, Src> annotate(TestData data){
-		TestResult result = data.getTestResult();
 		Map<String, Src> srcs = new Hashtable<String, Src>();
 		
 		List<TestFile> files = data.getFiles();
@@ -69,9 +65,7 @@ public class ConstProblemAnalyzer implements IJob{
 					String message = String.format("%s : %s line: %s\n",
 							src.getFileAbsolutePath(), problem.getMessage(),
 							problem.getSourceLineNumber());
-					TestResultItem item = new TestResultItem(file.getPath(), getName(), RuleSet.WARNING);
-					item.add(message);
-					result.add(file.getPath(), item);
+					System.out.println(message);
 				}
 			}
 		}
@@ -95,23 +89,17 @@ public class ConstProblemAnalyzer implements IJob{
 		}
 	}
 	
-	private void worklist(TestData data){
-		TestResult result = data.getTestResult();
-		
+	private void worklist(){
 		TypeWorklist worklist = new TypeWorklist(OMShared.getConstraintTable().values().toArray(new ConstraintVariable[0]));
 		try{
 			worklist.executeAnalysis();
 		}catch(ConstraintError err){
-			TestResultItem item = new TestResultItem(data.getCurrentTestFile().getPath(), getName(), RuleSet.ERROR);
-			item.add(err.getMessage());
-			result.add(data.getCurrentTestFile().getPath(), item);
+			System.out.println("error: "+err.getMessage());
 		}
-		
 		OMShared.reset();
 	}
 
 	public String getName() {
 		return name;
 	}
-	
 }

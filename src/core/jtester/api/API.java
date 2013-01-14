@@ -45,12 +45,18 @@ public class API {
 //		paths.add("D:\\JavaTest2.java");
 //		paths.add("D:\\JavaTest3.java");
 //		paths.add("D:\\JavaTest5.java");
-		paths.add("D:\\Example\\ConstExample.java");
-		paths.add("D:\\Example\\NativeObjectImpl.java");
-		paths.add("D:\\Example\\NativeObjectInterface.java");
-		paths.add("D:\\Example\\NativeOjbectUtil.java");
+		
+		paths.add("D:\\Example\\const\\NativeOjbectUtil.java");
+		paths.add("D:\\Example\\const\\ConstExample.java");
+		paths.add("D:\\Example\\const\\NativeObjectInterface.java");
+		paths.add("D:\\Example\\const\\NativeObjectImpl.java");
+		
+//		paths.add("D:\\Example\\DatabaseAccessor.java");
+//		paths.add("D:\\Example\\User.java");
+//		paths.add("D:\\Example\\SecurityExample.java");
+
 		List<String> rules = new ArrayList<String>();
-		rules.add(RuleSet.FUNCTION_INFO_VISITOR);
+//		rules.add(RuleSet.FUNCTION_INFO_VISITOR);
 //		rules.add(RuleSet.AVAILABLE_EXP);
 //		rules.add(RuleSet.VERY_BUSY_EXP);
 //		rules.add(RuleSet.LIVE_VAR);
@@ -58,6 +64,7 @@ public class API {
 //		rules.add(RuleSet.CONST_PROPAGATION);
 //		rules.add(RuleSet.SHAPE_ANALYSIS);
 		rules.add(RuleSet.CONST_PROBLEM);
+//		rules.add(RuleSet.DATA_DETAINED);
 		
 		TestResult result = analyze(paths, rules, null);
 	

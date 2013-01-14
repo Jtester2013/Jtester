@@ -2,7 +2,6 @@ package core.common.model.test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class TestResult {
 	private int totalFileNum;

@@ -210,6 +210,10 @@ public class ConstraintVisitor extends ASTVisitor {
 	@SuppressWarnings("unchecked")
 	public boolean visit(MethodInvocation node) {
 		IMethodBinding binding = node.resolveMethodBinding();
+		if(binding == null){
+			return false;
+		}
+		
 		List<Expression> arguments = node.arguments();
 		boolean isStatic = (binding.getModifiers() & Modifier.STATIC) != 0;
 		boolean isConstructor = binding.isConstructor();

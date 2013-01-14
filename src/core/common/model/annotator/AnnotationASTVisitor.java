@@ -138,12 +138,12 @@ public class AnnotationASTVisitor extends ASTVisitor {
 	public boolean visit(MethodDeclaration node) {
 		String scope = ASTUtil.getMethodNodeScope(path, node);
 		MethodDeclaration matcher = conf.getMethods().get(scope);
-		System.out.println("method "+conf.getMethods().size());	
+//		System.out.println("method "+conf.getMethods().size());	
 		Iterator<String> ir = conf.getMethods().keySet().iterator();
-		while(ir.hasNext()){
-			System.out.println("method: "+ir.next());
-		}
-		System.out.println("scope "+scope);	
+//		while(ir.hasNext()){
+//			System.out.println("method: "+ir.next());
+//		}
+//		System.out.println("scope "+scope);	
 		if (matcher != null) {
 			Location loc = new Location(src.getFileAbsolutePath(),
 					src.getLineNumber(node));

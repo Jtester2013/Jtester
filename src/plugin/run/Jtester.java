@@ -27,7 +27,25 @@ public class Jtester implements IWorkbenchWindowActionDelegate{
 		case Const.JTESTER_CONFIGURATION:
 			runConfiguration();
 			break;
+		default:
+			List<String> rules = new ArrayList<String>();
+			rules.add(RuleSet.FUNCTION_INFO_VISITOR);
+			rules.add(id);
+			run(rules);
+			break;
 		}
+	}
+
+	private void run(List<String> rules) {
+		List<String> filePaths = IOUtil.getSelectionPath(selection);
+		JtesterProgress progress = new JtesterProgress(filePaths.size());
+		
+		JtesterCaller caller = new JtesterCaller(filePaths, rules, progress);
+		caller.start();
+		
+		ProgressDialog dialog = new ProgressDialog(null, progress);
+		progress.register(dialog);
+		dialog.run();
 	}
 
 	public void runAll(){
@@ -49,7 +67,7 @@ public class Jtester implements IWorkbenchWindowActionDelegate{
 		cfgWindow.open();
 	}
 	
-	public List<String> getAllRules(){
+	private List<String> getAllRules(){
 		List<String> rules = new ArrayList<String>();
 		rules.add(RuleSet.FUNCTION_INFO_VISITOR);
 		rules.add(RuleSet.AVAILABLE_EXP);
@@ -58,6 +76,8 @@ public class Jtester implements IWorkbenchWindowActionDelegate{
 		rules.add(RuleSet.LIVE_VAR);
 		rules.add(RuleSet.CONST_PROPAGATION);
 		rules.add(RuleSet.SHAPE_ANALYSIS);
+		rules.add(RuleSet.CONST_PROBLEM);
+		rules.add(RuleSet.DATA_DETAINED);
 		return rules;
 	}
 

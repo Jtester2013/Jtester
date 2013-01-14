@@ -13,7 +13,6 @@ import core.common.model.om.Job;
  */
 
 public abstract class Worklist<T extends Job> {
-	
 	private T[] jobs;
 	private Map<T, Set<T>> infl;
 	
@@ -36,9 +35,9 @@ public abstract class Worklist<T extends Job> {
 				}
 			}
 		}
+		
 		return this.jobs;
 	}
-	
 	
 	public abstract void insert(Job variable);
 	public abstract T extract();

@@ -136,7 +136,7 @@ public class ShapeCalculator extends Calculator {
 		this.initWorklist();
 		this.calculateSolution();
 		this.displaySolution(data);
-		return false;
+		return true;
 	}
 
 }

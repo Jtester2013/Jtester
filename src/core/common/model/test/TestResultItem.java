@@ -6,14 +6,16 @@ import java.util.List;
 public class TestResultItem {
 	private String filePath;
 	private String rule;
-	private String title;
+	private String type;
+	
+	private boolean isPrinted;
 
 	private List<String> contents;
 	
-	public TestResultItem(String filePath, String rule, String title) {
+	public TestResultItem(String filePath, String rule, String type) {
 		this.filePath = filePath;
 		this.rule = rule;
-		this.title = title;
+		this.type = type;
 		contents = new ArrayList<String>();
 	}
 
@@ -25,8 +27,8 @@ public class TestResultItem {
 		return rule;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getType() {
+		return type;
 	}
 	
 	public void add(String detail){
@@ -35,5 +37,13 @@ public class TestResultItem {
 	
 	public List<String> getDetail(){
 		return contents;
+	}
+	
+	public boolean isPrinted(){
+		if(isPrinted == false){
+			isPrinted = true;
+			return false;
+		}
+		return true;
 	}
 }

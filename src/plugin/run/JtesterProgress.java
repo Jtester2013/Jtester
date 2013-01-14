@@ -71,11 +71,15 @@ public class JtesterProgress implements IRunnableWithProgress, ICaller{
 		
 		ArrayList<TestResultItem> items = result.getResult().get(lastFile);
 		if(items != null){
+			ConsoleFactory.printToConsole("=======================\n");
+			ConsoleFactory.printToConsole("path: " + lastFile + " \nrule: " + lastRule +" \ntype: "+ items.get(0).getType());
+			ConsoleFactory.printToConsole("=======================\n");
 			for (int i = 0; i < items.size(); i++) {
 				if (lastRule != items.get(i).getRule()) {
-					ConsoleFactory.printToConsole("\npath: " + items.get(i).getFilePath() + " rule: " + items.get(i).getRule() + " title: " + items.get(i).getTitle());
+					ConsoleFactory.printToConsole("======\npath: " + items.get(i).getFilePath() + " \nrule: " + items.get(i).getRule() + " title: " + items.get(i).getType() + "\n====");
 					lastRule = items.get(i).getRule();
 				}
+				
 				ConsoleFactory.printToConsole("contents: " + items.get(i).getDetail());
 			}
 		}

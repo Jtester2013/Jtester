@@ -68,6 +68,74 @@
                menubarPath="plugin.ui.actionset.entry/plugin.ui.actionset.select/select"
                enablesFor="1"
                id="plugin.run.all">
+               <separator
+            		name="all">
+            	</separator>
+         	</action>
+         	
+         	<action
+               label="Available Exp"
+               class="plugin.run.Jtester"
+               menubarPath="plugin.ui.actionset.entry/plugin.ui.actionset.select/select"
+               enablesFor="1"
+               id="core.jtester.staticanalysis.available_exp.AvbExpCalculator">
+         	</action>
+         	
+         	<action
+               label="Very Busy Exp"
+               class="plugin.run.Jtester"
+               menubarPath="plugin.ui.actionset.entry/plugin.ui.actionset.select/select"
+               enablesFor="1"
+               id="core.jtester.staticanalysis.verybusy_exp.VeyBsyExpCalculator">
+         	</action>
+         	
+         	<action
+               label="Live Variable"
+               class="plugin.run.Jtester"
+               menubarPath="plugin.ui.actionset.entry/plugin.ui.actionset.select/select"
+               enablesFor="1"
+               id="core.jtester.staticanalysis.live_variable.LivVarCalculator">
+         	</action>
+         	
+         	<action
+               label="Reaching Definition"
+               class="plugin.run.Jtester"
+               menubarPath="plugin.ui.actionset.entry/plugin.ui.actionset.select/select"
+               enablesFor="1"
+               id="core.jtester.staticanalysis.reaching_def.RchDefCalculator"
+               >
+         	</action>
+         	
+         	<action
+               label="Const Propagation"
+               class="plugin.run.Jtester"
+               menubarPath="plugin.ui.actionset.entry/plugin.ui.actionset.select/select"
+               enablesFor="1"
+               id="core.jtester.staticanalysis.const_propagation.ConProCalculator">
+         	</action>
+         	
+         	<action
+               label="Shape Analyisis"
+               class="plugin.run.Jtester"
+               menubarPath="plugin.ui.actionset.entry/plugin.ui.actionset.select/select"
+               enablesFor="1"
+               id="core.jtester.staticanalysis.shape_analysis.ShapeCalculator">
+         	</action>
+         	
+         	<action
+               label="Const Problem Analysis"
+               class="plugin.run.Jtester"
+               menubarPath="plugin.ui.actionset.entry/plugin.ui.actionset.select/select"
+               enablesFor="1"
+               id="core.jtester.staticanalysis.const_problem.ConstProblemAnalyzer">
+         	</action>
+         	
+         	<action
+               label="Data Detained Analysis"
+               class="plugin.run.Jtester"
+               menubarPath="plugin.ui.actionset.entry/plugin.ui.actionset.select/select"
+               enablesFor="1"
+               id="core.jtester.staticanalysis.data_detained.DataDetainedAnalyzer">
          	</action>
             
 	 	</actionSet>
