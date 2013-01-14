@@ -72,10 +72,6 @@ public class JobConst {
 	public final static String VAR = "Variable";
 	public final static double narrow = 312;
 	
-	//Type Inference Analysis
-	public final static String CONST_PROBLEM_PATH = "D:/Config/const";
-	public final static String DATA_DETAINED_PATH = "D:/Config/data_detained/";
-	
 	// Rules
 	
 }

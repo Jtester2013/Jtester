@@ -33,6 +33,8 @@ public class ProgressDialog extends Dialog implements ICaller, Runnable {
 
 	private static int LABEL_DLUS = 21;
 	private static int BAR_DLUS = 9;
+	
+	private Shell shell;
 
 	protected ProgressIndicator progressIndicator;
 	protected Button stop;
@@ -205,7 +207,12 @@ public class ProgressDialog extends Dialog implements ICaller, Runnable {
 
 		// TODO
 		// set shell text using configuration
-		shell.setText(Const.DATA_FLOW);
+		this.shell = shell;
+		shell.setText(Const.JTESTER);
+	}
+	
+	public void setText(String text){
+		shell.setText(text);
 	}
 
 	protected void createButtonsForButtonBar(Composite parent) {

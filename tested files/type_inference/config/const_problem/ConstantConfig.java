@@ -1,4 +1,4 @@
-package ConstantProblem;
+package type_inference.const_problem;
 
 import ConstantProblem.ConstType;
 import ConstantProblem.NativeObjectImpl;
