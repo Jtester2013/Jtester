@@ -1,4 +1,4 @@
-package ConstantProblem;
+package type_inference.const_problem;
 
 
 public class NativeObjectImpl implements NativeObjectInterface {
@@ -36,6 +36,8 @@ public class NativeObjectImpl implements NativeObjectInterface {
 		int handle = createObject(10);
 		return new NativeObjectImpl(handle);
 	}
+	
+	
 	
 	public int getHandle() {
 		return handle;

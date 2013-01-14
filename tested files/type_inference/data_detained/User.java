@@ -1,4 +1,4 @@
-package DataTaintedExample;
+package type_inference.data_detained;
 
 public class User {
 	
@@ -11,5 +11,4 @@ public class User {
 	public void sendOutput(String result) {
 
 	}
-
 }

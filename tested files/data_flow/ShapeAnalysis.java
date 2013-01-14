@@ -1,5 +1,6 @@
-package examples;
-public class JavaTest5 {
+package data_flow;
+
+public class ShapeAnalysis {
 	
 	Link foo6(Link p){
 		Link q =  null;

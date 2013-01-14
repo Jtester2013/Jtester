@@ -1,6 +1,6 @@
-package examples;
+package data_flow;
 
-public class JavaTest1 {
+public class VeyBsyExp {
 	public int foo2() {
 		int a = 0;
 		int b = 1;
@@ -26,3 +26,4 @@ public class JavaTest1 {
 		return a;
 	}
 }
+

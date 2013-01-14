@@ -1,6 +1,6 @@
-package examples;
+package data_flow;
 
-public class JavaTest3 {
+public class RchDef {
 	int foo5() {
 		int x = 5;
 		int y = 0;

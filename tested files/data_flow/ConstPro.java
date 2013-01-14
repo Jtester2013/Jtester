@@ -1,6 +1,7 @@
-package examples;
+package data_flow;
 
-public class JavaTest {
+
+public class ConstPro {
 	public int test1() {
 		int a = 0;
 		int b = 1;

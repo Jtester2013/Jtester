@@ -1,6 +1,6 @@
-package examples;
+package data_flow;
 
-public class JavaTest2 {
+public class LivVar {
 	int a1() {
 		int x = 3;
 		int y = 4;

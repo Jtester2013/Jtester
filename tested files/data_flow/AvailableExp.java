@@ -1,6 +1,6 @@
-package examples;
+package data_flow;
 
-public class JavaTest4 {
+public class AvailableExp {
 	public int test1() {
 		int a = 0;
 		int b = 1;

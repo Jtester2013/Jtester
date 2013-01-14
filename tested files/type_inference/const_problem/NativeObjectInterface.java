@@ -1,4 +1,4 @@
-package ConstantProblem;
+package type_inference.const_problem;
 
 public interface NativeObjectInterface {
 	public boolean open();

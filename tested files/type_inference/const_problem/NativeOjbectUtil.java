@@ -1,6 +1,6 @@
-package ConstantProblem;
+package type_inference.const_problem;
 
-import ConstantProblem.ConstType.Level;
+import type_inference.const_problem.ConstType.Level;
 
 enum QualifiedScope {
 	This

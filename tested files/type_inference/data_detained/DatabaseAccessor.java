@@ -1,4 +1,4 @@
-package DataTaintedExample;
+package type_inference.data_detained;
 
 public class DatabaseAccessor {
 
