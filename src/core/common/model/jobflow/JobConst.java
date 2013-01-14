@@ -62,7 +62,7 @@ public class JobConst {
 	
 	public final static String XMLROOT = "XmlReportRoot";
 	
-	//Data Flow Analysts
+	//Data Flow Analysis
 	public final static String FUNCTIONSINFO = "FunctionsInfo";
 	public final static String AVAILABLE_EXPRESSION_INFO = "AEInfo";
 	public final static String AVAILABLE_EXPRESSION_SOLUTION = "AESolution";
@@ -72,6 +72,8 @@ public class JobConst {
 	public final static String VAR = "Variable";
 	public final static double narrow = 312;
 	
+	//Type Inference Analysis
+	public final static String CONST_PROBLEM_PATH = "D:/Config";
 	
 	// Rules
 	

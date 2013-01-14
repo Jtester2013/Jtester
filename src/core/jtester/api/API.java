@@ -8,7 +8,6 @@ import core.common.model.jobflow.ICaller;
 import core.common.model.jobflow.JobFlow;
 import core.common.model.test.TestData;
 import core.common.model.test.TestResult;
-import core.common.model.test.TestResultItem;
 
 public class API {
 	public static TestResult analyze(List<String> filePaths, List<String> rules, ICaller caller){
@@ -41,11 +40,15 @@ public class API {
 	
 	public static void main(String args[]) {
 		List<String> paths = new ArrayList<String>();
-//		paths.add("D:/JavaTest.java");
-//		paths.add("D:/JavaTest1.java");
-//		paths.add("D:/JavaTest2.java");
-//		paths.add("D:/JavaTest3.java");
-		paths.add("D:/JavaTest5.java");
+//		paths.add("D:\\JavaTest.java");
+//		paths.add("D:\\JavaTest1.java");
+//		paths.add("D:\\JavaTest2.java");
+//		paths.add("D:\\JavaTest3.java");
+//		paths.add("D:\\JavaTest5.java");
+		paths.add("D:\\Example\\ConstExample.java");
+		paths.add("D:\\Example\\NativeObjectImpl.java");
+		paths.add("D:\\Example\\NativeObjectInterface.java");
+		paths.add("D:\\Example\\NativeOjbectUtil.java");
 		List<String> rules = new ArrayList<String>();
 		rules.add(RuleSet.FUNCTION_INFO_VISITOR);
 //		rules.add(RuleSet.AVAILABLE_EXP);
@@ -53,19 +56,21 @@ public class API {
 //		rules.add(RuleSet.LIVE_VAR);
 //		rules.add(RuleSet.REACHING_DEF);
 //		rules.add(RuleSet.CONST_PROPAGATION);
-		rules.add(RuleSet.SHAPE_ANALYSIS);
+//		rules.add(RuleSet.SHAPE_ANALYSIS);
+		rules.add(RuleSet.CONST_PROBLEM);
+		
 		TestResult result = analyze(paths, rules, null);
 	
-		ArrayList<TestResultItem> items = result.getResult().get("D:/JavaTest5.java");
-		String lastRule = "";
-		for (int i = 0; i < items.size(); i++) {
-			if (lastRule != items.get(i).getRule()) {
-				System.out.println("\npath: " + items.get(i).getFilePath() + " rule: " + items.get(i).getRule() + " title: " + items.get(i).getTitle());
-				lastRule = items.get(i).getRule();
-			}
-			System.out.println("contents: " + items.get(i).getDetail());
-		}
-		
+//		ArrayList<TestResultItem> items = result.getResult().get("D:/JavaTest5.java");
+//		String lastRule = "";
+//		for (int i = 0; i < items.size(); i++) {
+//			if (lastRule != items.get(i).getRule()) {
+//				System.out.println("\npath: " + items.get(i).getFilePath() + " rule: " + items.get(i).getRule() + " title: " + items.get(i).getTitle());
+//				lastRule = items.get(i).getRule();
+//			}
+//			System.out.println("contents: " + items.get(i).getDetail());
+//		}
+//		
 //		items = result.getResult().get("D:/JavaTest1.java");
 //		lastRule = "";
 //		for (int i = 0; i < items.size(); i++) {
