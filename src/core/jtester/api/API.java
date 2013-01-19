@@ -17,6 +17,7 @@ public class API {
 		}
 		
 		TestData data = new TestData();
+		
 		try {
 			data.accept(filePaths);
 		} catch (IOException e) {

@@ -10,8 +10,6 @@ import core.common.cfg.interfaces.INodeFactory;
 import core.common.cfg.interfaces.IPlainNode;
 import core.common.cfg.model.NodeFactory;
 
-
-
 public class JavaNodeFactory extends NodeFactory implements INodeFactory {
 	public JavaNodeFactory() {
 		super();

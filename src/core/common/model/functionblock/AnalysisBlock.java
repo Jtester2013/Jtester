@@ -23,7 +23,6 @@ public class AnalysisBlock {
 		this._incoming = new  ArrayList<AnalysisBlock>();
 		this._outgoing = new  ArrayList<AnalysisBlock>();
 		this._visited = false;
-		
 	}
 	
 	public ArrayList<Object> getEntry(){

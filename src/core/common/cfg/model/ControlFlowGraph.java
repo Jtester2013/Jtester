@@ -26,8 +26,6 @@ import core.common.cfg.interfaces.IExitNode;
 import core.common.cfg.interfaces.ISingleOutgoing;
 import core.common.cfg.interfaces.IStartNode;
 
-
-
 /**
  * Implementation of control flow graph
  */
