@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configtree>
+	<configtype type="user">
+		<config file_path="" expandable="">
+			
+		</config>
+	</configtype>
+	<configtype type="builtin">
+	</configtype>
+	<configtype type="team">
+	</configtype>
+</configtree>

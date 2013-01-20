@@ -1,5 +1,8 @@
 package plugin.util;
 
+import org.eclipse.swt.layout.FormAttachment;
+import org.eclipse.swt.layout.FormData;
+
 public class Const {
 	// Common
 	public static final String JTESTER = "Jtester";
@@ -37,34 +40,23 @@ public class Const {
 
 	// added by John
 	// 各种根路径
-	public static final StringBuffer rootPath = new StringBuffer(System.getProperty("user.dir"));
-	public static final String iconPath = rootPath.append("\\icons").toString();
+	public static final String rootPath = System.getProperty("user.dir");
+	public static final String iconPath = rootPath + "\\icons";
 
 	// 比较具体的元素的路径
-	public static final String FOLDER_ICON_PATH = iconPath
-			+ "\\folder_icon.gif";
-	public static final String HYPERCUBE_ICON_PATH = iconPath
-			+ "\\hypercube-16.gif";
+	public static final String FOLDER_ICON_PATH = iconPath + "\\folder_icon.gif";
+	public static final String HYPERCUBE_ICON_PATH = iconPath + "\\hypercube-16.gif";
 	public static final String USER_ICON_PATH = iconPath + "\\user.gif";
 	public static final String TEAM_ICON_PATH = iconPath + "\\ovr16\\team.gif";
-	public static final String CONFIGURATION_ICON_PATH = iconPath
-			+ "\\configuration.gif";
+	public static final String CONFIGURATION_ICON_PATH = iconPath + "\\configuration.gif";
 
 	// icons used in detail configuration
-	public static final String SCOPE_ICON_PATH = iconPath
-			+ "\\diy\\scope_DIY.gif";
-	public static final String STATIC_ICON_PATH = iconPath
-			+ "\\diy\\static_DIY.gif";
-	public static final String GENERATION_ICON_PATH = iconPath
-			+ "\\diy\\generation_DIY.gif";
-	public static final String EXECUTION_ICON_PATH = iconPath
-			+ "\\diy\\execution_DIY.gif";
-	public static final String COMMON_ICON_PATH = iconPath
-			+ "\\diy\\common_DIY.gif";
-	public static final String CODEREVIEW_ICON_PATH = iconPath
-			+ "\\diy\\codereview_DIY.gif";
-	public static final String GOALS_ICON_PATH = iconPath
-			+ "\\diy\\goals_DIY.gif";
-	
+	public static final String SCOPE_ICON_PATH = iconPath + "\\diy\\scope_DIY.gif";
+	public static final String STATIC_ICON_PATH = iconPath + "\\diy\\static_DIY.gif";
+	public static final String GENERATION_ICON_PATH = iconPath + "\\diy\\generation_DIY.gif";
+	public static final String EXECUTION_ICON_PATH = iconPath + "\\diy\\execution_DIY.gif";
+	public static final String COMMON_ICON_PATH = iconPath + "\\diy\\common_DIY.gif";
+	public static final String CODEREVIEW_ICON_PATH = iconPath + "\\diy\\codereview_DIY.gif";
+	public static final String GOALS_ICON_PATH = iconPath + "\\diy\\goals_DIY.gif";
 	
 }
