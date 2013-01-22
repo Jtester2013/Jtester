@@ -78,6 +78,7 @@ public class Jtester implements IWorkbenchWindowActionDelegate{
 		rules.add(RuleSet.SHAPE_ANALYSIS);
 		rules.add(RuleSet.CONST_PROBLEM);
 		rules.add(RuleSet.DATA_DETAINED);
+		rules.add(RuleSet.VAR_INTERVAL);
 		return rules;
 	}
 

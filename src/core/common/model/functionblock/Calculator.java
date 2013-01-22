@@ -29,7 +29,6 @@ public abstract class Calculator implements IJob {
 	}
 
 	protected void transfer(int first) {
-		
 	}
 
 	protected void setExit(int lab, ArrayList<Object> exit) {

@@ -31,6 +31,6 @@ public class BranchNode extends PlainNode implements IBranchNode {
 
 	@Override
 	public String toStringData() {
-		return label;
+		return label + " " + getData().toString();
 	}
 }

@@ -20,15 +20,25 @@ public interface IBranchNode extends IBasicBlock, ISingleIncoming, ISingleOutgoi
 	/**
 	 * Then branch of "if" statement
 	 */
-	public static String THEN = "then"; //$NON-NLS-1$
+	public static String IF_THEN = "if then";
 	/**
 	 * Else branch of "if" statement
 	 */
-	public static String ELSE = "else"; //$NON-NLS-1$
+	public static String IF_ELSE = "if else";
+	
+	/**
+	 * Then branch of "if" statement
+	 */
+	public static String WHILE_THEN = "while then";
+	/**
+	 * Else branch of "if" statement
+	 */
+	public static String WHILE_ELSE = "while else";
+	
 	/**
 	 * Default branch of "switch" statement
 	 */
-	public static String DEFAULT = "default"; //$NON-NLS-1$
+	public static String DEFAULT = "default";
 
 	/**
 	 * @return label of a branch

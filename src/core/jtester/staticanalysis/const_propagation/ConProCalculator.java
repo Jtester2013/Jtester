@@ -58,7 +58,6 @@ public class ConProCalculator extends Calculator implements IJob {
 	}
 
 	protected void initWorklist() {
-
 		this.flow = new ArrayList<Flow>();
 		this.workList = new ArrayList<Flow>();
 		for (int i = 0; i < this.analysisBlocks.size(); i++) {

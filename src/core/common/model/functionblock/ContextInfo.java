@@ -1,5 +1,8 @@
 package core.common.model.functionblock;
 
+import java.util.List;
+
+import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.Initializer;
 
@@ -7,10 +10,9 @@ public class ContextInfo {
 	private Expression callerName;
 	private int callerLine;
 	private Expression calleeName;
-	private Initializer[] calleeArguments;
-
+	private List<ASTNode> calleeArguments;
 	
-	public ContextInfo(Expression erName, Expression eeName, Initializer[] arguments, int line){
+	public ContextInfo(Expression erName, Expression eeName, List<ASTNode> arguments, int line){
 		this.callerName = erName;
 		this.calleeName = eeName;
 		this.calleeArguments = arguments;
@@ -21,7 +23,7 @@ public class ContextInfo {
 		return this.calleeName;
 	}
 	
-	public Initializer[] getCallerArguments(){
+	public List getCallerArguments(){
 		return this.calleeArguments;
 	}
 	

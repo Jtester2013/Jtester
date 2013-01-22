@@ -13,7 +13,6 @@ import org.eclipse.jdt.core.dom.CatchClause;
 import org.eclipse.jdt.core.dom.ContinueStatement;
 import org.eclipse.jdt.core.dom.DoStatement;
 import org.eclipse.jdt.core.dom.EmptyStatement;
-import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.ExpressionStatement;
 import org.eclipse.jdt.core.dom.ForStatement;
 import org.eclipse.jdt.core.dom.IfStatement;
@@ -25,7 +24,6 @@ import org.eclipse.jdt.core.dom.SwitchStatement;
 import org.eclipse.jdt.core.dom.ThrowStatement;
 import org.eclipse.jdt.core.dom.TryStatement;
 import org.eclipse.jdt.core.dom.TypeDeclarationStatement;
-import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 import org.eclipse.jdt.core.dom.VariableDeclarationStatement;
 import org.eclipse.jdt.core.dom.WhileStatement;
 
@@ -125,30 +123,7 @@ public class ControlFlowGraphBuilder {
 		 * VariableDeclarationStatement 
 		 * deals with statement like " int x = a + b; "
 		 */
-		else if (body instanceof VariableDeclarationStatement){
-			// TODO
-		    // Delete the following test code when you see this
-						
-			VariableDeclarationStatement statement = (VariableDeclarationStatement)body;
-			
-//			System.out.println("target: "+statement);
-			
-			List fragments = statement.fragments();
-			for(int i=0;i<fragments.size();i++){
-				VariableDeclarationFragment fragment = (VariableDeclarationFragment)fragments.get(i);
-				Expression exp = fragment.getInitializer();
-				
-//				System.out.println("target: "+statement+"exp: "+ exp);
-//				if(exp instanceof InfixExpression){
-//					System.out.println("  exp is infix expression: ");
-//					System.out.println("	left operand: " + ((InfixExpression)exp).getLeftOperand());
-//					System.out.println("	right operand: " + ((InfixExpression)exp).getRightOperand());
-//					System.out.println("	operator: "+((InfixExpression)exp).getOperator());
-//				}else if( exp instanceof NumberLiteral){
-//					System.out.println("exp is number: "+ exp);
-//				}
-			}
-			
+		else if (body instanceof VariableDeclarationStatement){		
 			JavaPlainNode node = factory.createPlainNode(body);
 			addOutgoing(prev, node);
 			return node;
@@ -209,7 +184,7 @@ public class ControlFlowGraphBuilder {
 		} else if (body instanceof TryStatement) {
 			return createTry(prev, (TryStatement) body);
 		} else {
-			System.err.println("unknown statement for cfg: " + body); //$NON-NLS-1$
+			System.err.println("unknown statement for cfg: " + body); 
 		}
 		return prev;
 	}
@@ -252,12 +227,12 @@ public class ControlFlowGraphBuilder {
 		IConnectorNode mergeNode = factory.createConnectorNode();
 		ifNode.setMergeNode(mergeNode);
 		
-		IBranchNode thenNode = factory.createBranchNode(IBranchNode.THEN);
+		IBranchNode thenNode = factory.createBranchNode(IBranchNode.IF_THEN, body.getExpression());
 		addOutgoing(ifNode, thenNode);
 		IBasicBlock then = createSubGraph(thenNode, body.getThenStatement());
 		addJump(then, mergeNode);
 		
-		IBranchNode elseNode = factory.createBranchNode(IBranchNode.ELSE);
+		IBranchNode elseNode = factory.createBranchNode(IBranchNode.IF_ELSE, body.getExpression());
 		addOutgoing(ifNode, elseNode);
 		IBasicBlock els = createSubGraph(elseNode, body.getElseStatement());
 		addJump(els, mergeNode);
@@ -276,7 +251,7 @@ public class ControlFlowGraphBuilder {
 		IConnectorNode nBreak = factory.createConnectorNode();
 		decision.setMergeNode(nBreak);
 		// create body and jump to continue node
-		IBranchNode loopStart = factory.createBranchNode(IBranchNode.THEN);
+		IBranchNode loopStart = factory.createBranchNode(IBranchNode.WHILE_THEN, body.getExpression());
 		addOutgoing(decision, loopStart);
 		// set break/continue
 		IConnectorNode savedContinue = outerContinue;
@@ -290,7 +265,7 @@ public class ControlFlowGraphBuilder {
 		// backward jump
 		addJump(endBody, nContinue, true);
 		// connect with else branch
-		IBranchNode loopEnd = factory.createBranchNode(IBranchNode.ELSE);
+		IBranchNode loopEnd = factory.createBranchNode(IBranchNode.WHILE_ELSE, body.getExpression());
 		addOutgoing(decision, loopEnd);
 		addJump(loopEnd, nBreak);
 		return nBreak;
@@ -317,7 +292,7 @@ public class ControlFlowGraphBuilder {
 		JavaDecisionNode decision = factory.createDecisionNode(body.getExpression());
 		addOutgoing(nContinue, decision);
 		// then branch
-		IBranchNode thenNode = factory.createBranchNode(IBranchNode.THEN);
+		IBranchNode thenNode = factory.createBranchNode(IBranchNode.WHILE_THEN, body.getExpression());
 		addOutgoing(decision, thenNode);
 		IJumpNode jumpToStart = factory.createJumpNode();
 		addOutgoing(thenNode, jumpToStart);
@@ -325,7 +300,7 @@ public class ControlFlowGraphBuilder {
 		// connect with backward link
 		addOutgoing(jumpToStart, loopStart);
 		// connect with else branch
-		IBranchNode loopEnd = factory.createBranchNode(IBranchNode.ELSE);
+		IBranchNode loopEnd = factory.createBranchNode(IBranchNode.WHILE_ELSE, body.getExpression());
 		addOutgoing(decision, loopEnd);
 		// add break connector
 		decision.setMergeNode(nBreak);
@@ -352,7 +327,7 @@ public class ControlFlowGraphBuilder {
 		IConnectorNode nBreak = factory.createConnectorNode();
 		decision.setMergeNode(nBreak);
 		// create body and jump to continue node
-		IBranchNode loopStart = factory.createBranchNode(IBranchNode.THEN);
+		IBranchNode loopStart = factory.createBranchNode(IBranchNode.WHILE_THEN, forNode.getExpression());
 		addOutgoing(decision, loopStart);
 		// set break/continue
 		IConnectorNode nContinue = factory.createConnectorNode();
@@ -387,7 +362,7 @@ public class ControlFlowGraphBuilder {
 		// connect with backward link
 		addJump(endNode, beforeCheck, true);
 		// add "else" branch
-		IBranchNode loopEnd = factory.createBranchNode(IBranchNode.ELSE);
+		IBranchNode loopEnd = factory.createBranchNode(IBranchNode.WHILE_ELSE, forNode.getExpression());
 		addOutgoing(decision, loopEnd);
 		addJump(loopEnd, nBreak);
 		return nBreak;
@@ -470,7 +445,7 @@ public class ControlFlowGraphBuilder {
 		addOutgoing(prev, ifNode);
 		IConnectorNode mergeNode = factory.createConnectorNode();
 		ifNode.setMergeNode(mergeNode);
-		IBranchNode thenNode = factory.createBranchNode(IBranchNode.THEN);
+		IBranchNode thenNode = factory.createBranchNode(IBranchNode.IF_THEN);
 		addOutgoing(ifNode, thenNode);
 		IBasicBlock then = createSubGraph(thenNode, body.getBody());
 		addJump(then, mergeNode);

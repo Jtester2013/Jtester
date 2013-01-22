@@ -4,6 +4,7 @@ import org.eclipse.jdt.core.dom.ASTNode;
 
 import core.common.cfg.interfaces.IBranchNode;
 import core.common.cfg.interfaces.ICfgData;
+import core.common.cfg.interfaces.IConnectorNode;
 import core.common.cfg.interfaces.IDecisionNode;
 import core.common.cfg.interfaces.IExitNode;
 import core.common.cfg.interfaces.INodeFactory;
@@ -48,6 +49,12 @@ public class JavaNodeFactory extends NodeFactory implements INodeFactory {
 	public IBranchNode createBranchNode(ASTNode caseSt) {
 		IBranchNode node = createBranchNode("Java Branch");
 		((ICfgData) node).setData(caseSt);
+		return node;
+	}
+	
+	public IBranchNode createBranchNode(String label, ASTNode expression) {
+		IBranchNode node = createBranchNode(label);
+		((ICfgData) node).setData(expression);
 		return node;
 	}
 }

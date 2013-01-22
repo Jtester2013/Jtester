@@ -19,7 +19,6 @@ import core.common.model.test.TestFile;
 public class AvbExpCalculator extends Calculator implements IJob {
 	
 	public void initAnalysisBlocks(FunctionInfo functionInfo) {
-
 		analysisBlocks = new ArrayList<AnalysisBlock>();
 		// 通过getNodes获取一个cfg中所有的节点
 		Collection<IBasicBlock> bbRes = functionInfo.getJavaControlFlowGraph().getNodes();
@@ -31,6 +30,7 @@ public class AvbExpCalculator extends Calculator implements IJob {
 			AnalysisBlock alsBlock = new AvbExpBlock(bb, i++);
 			analysisBlocks.add(alsBlock);
 		}
+		
 		// 计算每一个AnalysisBlock的_incoming 和 _outgoing
 		for (i = 0; i < this.analysisBlocks.size(); i++) {
 			IBasicBlock[] incoming = this.analysisBlocks.get(i).getBasicBlock().getIncomingNodes();

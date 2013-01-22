@@ -57,6 +57,7 @@ public class FunctionsInfoVisitor extends ASTVisitor implements IJob {
 		JavaControlFlowGraph javacfg = JavaControlFlowGraph.build((MethodDeclaration) n);
 		functionInfo.setFuncName(functionName);
 		functionInfo.setJavaControlFlowGraph(javacfg);
+		functionInfo.setContextInfo(new ContextInfo(null, null, n.parameters(), 0));
 		functionsInfo.put("f" + funCount, functionInfo);
 		this.funCount++;
 

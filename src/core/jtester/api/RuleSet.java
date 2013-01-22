@@ -19,4 +19,7 @@ public class RuleSet {
 	public static final String CONST_PROBLEM = "core.jtester.staticanalysis.const_problem.ConstProblemAnalyzer";
 	public static final String DATA_DETAINED = "core.jtester.staticanalysis.data_detained.DataDetainedAnalyzer";
 
+	// var interval
+	public static final String VAR_INTERVAL = "core.jtester.staticanalysis.var_interval.EquationCalculator";
+	
 }
