@@ -333,6 +333,11 @@ public class ConfigTree {
 		return true;
 	}
 
+	private void addNode(Document configList, String configFileRootPath, String configName){
+		
+	}
+	
+
 	public static void main(String[] args) {
 		System.out.println(configTreeFilePath);
 		Document doc;
@@ -361,7 +366,7 @@ public class ConfigTree {
 			printAttributes(root);
 			// 打印该文档全部节点
 			System.out.println("打印全部节点");
-			printElement(root, 0);
+//			printElement(root, 0);
 		} catch (Exception exp) {
 			exp.printStackTrace();
 		}
