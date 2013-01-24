@@ -2,26 +2,34 @@ package plugin.ui.window.configuration;
 
 import java.io.FileInputStream;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import plugin.util.Const;
 import plugin.util.SWTResourceManager;
 
-import org.w3c.dom.*;
-import javax.xml.parsers.*;
-
 public class ConfigTree {
 	// configTreeFilePath point to the xml file which describe the configTree's
 	// constructor
-	String configTreeFilePath = "";
+	public static String configTreeFilePath = System.getProperty("user.dir") + "\\src\\plugin\\ui\\window\\configuration\\configuration_list.xml";
 	public Tree tree;
 	public TreeItem trtmUser;
 	public TreeItem trtmBuiltin;
 	public TreeItem trtmTeam;
+
+	// todo: duplicate, New child, Delete, export, set as default
+
+	private static String defaultConfigName = "N";
 
 	public ConfigTree(Composite parent, int style) {
 		// TODO Auto-generated constructor stub
@@ -30,20 +38,17 @@ public class ConfigTree {
 		trtmUser.setImage(SWTResourceManager.getImage(Const.FOLDER_ICON_PATH));
 		trtmUser.setText("User-defined");
 		trtmUser.setExpanded(true);
-		
+
 		trtmBuiltin = new TreeItem(tree, SWT.NONE);
 		trtmBuiltin.setImage(SWTResourceManager.getImage(Const.FOLDER_ICON_PATH));
 		trtmBuiltin.setText("Builtin");
 		trtmBuiltin.setExpanded(true);
-		
 
 		trtmTeam = new TreeItem(tree, SWT.NONE);
 		trtmTeam.setImage(SWTResourceManager.getImage(Const.FOLDER_ICON_PATH));
 		trtmTeam.setText("Team");
 		trtmTeam.setExpanded(true);
-		
-		
-		
+
 		TreeItem trtmCodeReview = new TreeItem(trtmBuiltin, SWT.NONE);
 		trtmCodeReview.setImage(SWTResourceManager.getImage(Const.FOLDER_ICON_PATH));
 		trtmCodeReview.setText("Code Review");
@@ -286,7 +291,8 @@ public class ConfigTree {
 	 * @param filePath
 	 */
 	private void constructTreeFromConfigFile(String filePath) {
-
+		// 逐条读取config，并实例化。添加相应的图标，设置相应的菜单，注册事件。
+		
 	}
 
 	/**
@@ -300,20 +306,47 @@ public class ConfigTree {
 	 *            tree:the new item can be attached by another item
 	 */
 	public void addTreeItem(TreeItem parent, String name, boolean expandable) {
+		TreeItem newItem = new TreeItem(parent, SWT.NONE);
+		String imagePath;
+		if (expandable) {
+			imagePath = "";
+		} else {
+			imagePath = "";
+		}
+		newItem.setImage(SWTResourceManager.getImage(Const.FOLDER_ICON_PATH));
+		newItem.setText(name);
+	}
 
+	private boolean removeConfig(String configName) {
+		// 删除对应的配置文件
+
+		// 删除config tree的对应项
+
+		return true;
+	}
+
+	private boolean createConfig(String configName) {
+		// 创建对应的配置文件
+
+		// 创建config tree的对应项
+
+		return true;
 	}
 
 	public static void main(String[] args) {
-		String configListPath = Const.rootPath + "\\src\\configuration_list.xml";
+		System.out.println(configTreeFilePath);
 		Document doc;
 		DocumentBuilderFactory factory;
 		DocumentBuilder docBuilder;
 		Element root;
 		String elementName;
+		String[] elementsName = new String[]{
+				
+		};
 		FileInputStream in;
 		try {
 			// get the xml file
-			in = new FileInputStream(configListPath);
+			in = new FileInputStream(configTreeFilePath);
 			// 解析XML文件,生成document对象
 			factory = DocumentBuilderFactory.newInstance();
 			factory.setValidating(false);

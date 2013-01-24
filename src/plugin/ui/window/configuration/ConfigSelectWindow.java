@@ -8,12 +8,6 @@ import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Tree;
-import org.eclipse.swt.widgets.TreeItem;
-
-import plugin.util.Const;
-import plugin.util.SWTResourceManager;
 
 public class ConfigSelectWindow {
 	public Composite configSelectComposite;
