@@ -31,11 +31,4 @@ public class ConfigDetailWindow{
 		return showedComposite;
 	}
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-//		new ConfigDetailComposite(new Shell(), SWT.None, "");
-	}
 }

@@ -6,6 +6,9 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
@@ -283,6 +286,28 @@ public class ConfigTree {
 
 		trtmUnitTesting.setExpanded(true);
 
+		// add event listener to tree
+		tree.addMouseListener(new MouseAdapter() {
+			public void mouseDoubleClick(MouseEvent evt) {
+				treeMouseDoubleClick(evt);
+			}
+			
+			public void mouseDown(MouseEvent evt) {
+				treeMouseDown(evt);
+			}
+			
+			
+
+			private void treeMouseDoubleClick(MouseEvent evt) {
+				// TODO Auto-generated method stub
+
+			}
+
+			private void treeMouseDown(MouseEvent evt) {
+				// TODO Auto-generated method stub
+
+			}
+		});
 	}
 
 	/**
@@ -292,7 +317,7 @@ public class ConfigTree {
 	 */
 	private void constructTreeFromConfigFile(String filePath) {
 		// 逐条读取config，并实例化。添加相应的图标，设置相应的菜单，注册事件。
-		
+
 	}
 
 	/**
@@ -333,10 +358,9 @@ public class ConfigTree {
 		return true;
 	}
 
-	private void addNode(Document configList, String configFileRootPath, String configName){
-		
+	private void addNode(Document configList, String configFileRootPath, String configName) {
+
 	}
-	
 
 	public static void main(String[] args) {
 		System.out.println(configTreeFilePath);
@@ -345,8 +369,8 @@ public class ConfigTree {
 		DocumentBuilder docBuilder;
 		Element root;
 		String elementName;
-		String[] elementsName = new String[]{
-				
+		String[] elementsName = new String[] {
+
 		};
 		FileInputStream in;
 		try {
@@ -366,7 +390,7 @@ public class ConfigTree {
 			printAttributes(root);
 			// 打印该文档全部节点
 			System.out.println("打印全部节点");
-//			printElement(root, 0);
+			// printElement(root, 0);
 		} catch (Exception exp) {
 			exp.printStackTrace();
 		}
@@ -432,4 +456,26 @@ public class ConfigTree {
 
 	}
 
+}
+
+class treeEventHandler implements MouseListener{
+
+	@Override
+	public void mouseDoubleClick(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseDown(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseUp(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }
