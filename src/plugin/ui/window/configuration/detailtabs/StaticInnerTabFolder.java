@@ -16,6 +16,8 @@ public class StaticInnerTabFolder {
 		// set tabFolder's layout
 		
 		// create the tabs in static's inner TabFolder
-		
+		rulesTreeTabInStatic = new RulesTreeTabInStatic(tabFolder);
+		metricsTabInStatic = new MetricsTabInStatic(tabFolder);
+		optionsTabInStatic = new OptionsTabInStatic(tabFolder);
 	}
 }
