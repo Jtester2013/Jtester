@@ -76,6 +76,7 @@ public class DataDetainedAnalyzer implements IJob{
 			CompilationUnit cu = (CompilationUnit) src.getAstTree();
 			cu.accept(visitor);
 			IProblem[] problems = cu.getProblems();
+			
 			if (problems != null && problems.length > 0) {
 				for (int i = 0; i < problems.length; ++i) {
 					IProblem problem = problems[i];

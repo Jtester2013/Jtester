@@ -1,5 +1,4 @@
-package DataTaintedExample;
-
+package type_inference.data_detained;
 
 @interface DataType {
 	enum Level {
@@ -9,9 +8,8 @@ package DataTaintedExample;
 }
 
 class DatabaseAccessor {
-
 	public String getCriticalData(
-			@DataType(level = DataType.Level.untainted) String sql) {
+	@DataType(level = DataType.Level.untainted) String sql) {
 	}
 }
 

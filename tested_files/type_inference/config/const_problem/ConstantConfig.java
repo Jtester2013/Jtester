@@ -21,7 +21,7 @@ public class NativeObjectImpl implements NativeObjectInterface {
 		this.handle = handle;
 	}
 	
-	@ConstType(level = Level.Mutable,qual=QualifiedScope.This)
+	@ConstType(level = Level.Mutable, qual=QualifiedScope.This)
 	public void setHandle(int handle){
 		this.handle = handle;
 	}

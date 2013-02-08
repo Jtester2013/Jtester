@@ -62,8 +62,7 @@ public class AnnotationASTVisitor extends ASTVisitor {
 		String scope = ASTUtil.getVariableNodeScope(path, node);
 		VariableDeclarationStatement matcher = conf.getVariables().get(scope);
 		if (matcher != null) {
-			Location loc = new Location(src.getFileAbsolutePath(),
-					src.getLineNumber(node));
+			Location loc = new Location(src.getFileAbsolutePath(), src.getLineNumber(node));
 			loc.setStartPosition(node.getStartPosition());
 			loc.setLength(node.getLength());
 			Map<Integer, Integer> values = new Hashtable<Integer, Integer>();
@@ -74,8 +73,7 @@ public class AnnotationASTVisitor extends ASTVisitor {
 					node.modifiers().add(0, copy);
 					String typeName = annot.getTypeName().toString();
 					int typeId = OMShared.getTypeIDByName(typeName);
-					MemberValuePair mvp = (MemberValuePair) annot.values().get(
-							0);
+					MemberValuePair mvp = (MemberValuePair) annot.values().get(0);
 					String value = mvp.getValue().toString();
 					value = value.substring(value.lastIndexOf(".") + 1);
 					int valueId = OMShared.getValueIDByName(typeName, value);
