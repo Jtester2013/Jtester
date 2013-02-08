@@ -519,6 +519,9 @@ public class ControlFlowGraphBuilder {
 		if(exp instanceof Assignment){
 			Assignment assignment = (Assignment) exp;
 			Expression var = assignment.getLeftHandSide();
+			if(fields.get(var.toString()) == null){
+				return;
+			}
 			Expression rightHandExp = assignment.getRightHandSide();
 			int value = Abacus.computeExpression(rightHandExp, fields);
 			fields.put(var.toString(), value);

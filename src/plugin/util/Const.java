@@ -31,8 +31,8 @@ public class Const {
 	public static final String FILE_UNDER_CHECK = "Check: ";
 	
 	//Type Inference Analysis Config Path
-	public final static String CONST_PROBLEM_PATH = "/tested files/type_inference/config/const_problem";
-	public final static String DATA_DETAINED_PATH = "/tested files/type_inference/config/data_detained/";
+	public final static String CONST_PROBLEM_PATH = "/tested_files/type_inference/config/const_problem";
+	public final static String DATA_DETAINED_PATH = "/tested_files/type_inference/config/data_detained/";
 
 	// added by John
 	// 各种根路径

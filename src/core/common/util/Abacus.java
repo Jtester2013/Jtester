@@ -53,7 +53,10 @@ public class Abacus {
 		} else if( exp == null){
 			result = 0;
 		} else {
-			result = fields.get(exp.toString());
+			Object r = fields.get(exp.toString());
+			if(r != null){
+				result = (Integer)r;
+			}
 		}
 		return result;
 	}
