@@ -7,7 +7,7 @@ public class SecurityExample {
 		/*
 		 * This place is translate user input to sql And mock this behavior
 		 */
-		String sql = "Select * from data table where a = " + input + ";";
+		String sql = input;
 		DatabaseAccessor db = new DatabaseAccessor();
 		String output = db.getCriticalData(sql);
 		user.sendOutput(output);

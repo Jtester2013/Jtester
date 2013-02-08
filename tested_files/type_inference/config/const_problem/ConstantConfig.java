@@ -1,11 +1,5 @@
 package type_inference.const_problem;
 
-import ConstantProblem.ConstType;
-import ConstantProblem.NativeObjectImpl;
-import ConstantProblem.NativeObjectInterface;
-import ConstantProblem.ConstType.Level;
-import ConstantProblem.ConstType.QualifiedScope;
-
 enum QualifiedScope { This };
 
 @interface ConstType{

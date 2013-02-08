@@ -29,6 +29,9 @@ import core.common.model.om.ConstraintVariable;
 import core.common.model.om.OMShared;
 import core.common.model.test.TestData;
 import core.common.model.test.TestFile;
+import core.common.model.test.TestResult;
+import core.common.model.test.TestResultItem;
+import core.jtester.api.RuleSet;
 
 public class DataDetainedAnalyzer implements IJob{
 	private String name = this.getClass().getSimpleName();
@@ -57,7 +60,7 @@ public class DataDetainedAnalyzer implements IJob{
 		
 		constraint(srcs);
 		
-		worklist();
+		worklist(data);
 		
 		return true;
 	}
@@ -107,12 +110,17 @@ public class DataDetainedAnalyzer implements IJob{
 		}
 	}
 	
-	private void worklist(){
+	private void worklist(TestData data){
+		TestResult result = data.getTestResult();
+		
 		TypeWorklist worklist = new TypeWorklist(OMShared.getConstraintTable().values().toArray(new ConstraintVariable[0]));
 		try{
 			worklist.executeAnalysis();
 		}catch(ConstraintError err){
 			System.out.println("error: "+err.getMessage());
+			TestResultItem item = new TestResultItem(data.getCurrentTestFile().getPath(), getName(), RuleSet.ERROR);
+			item.add(err.getMessage());
+			result.add(data.getCurrentTestFile().getPath(), item);
 		}
 		OMShared.reset();
 	}

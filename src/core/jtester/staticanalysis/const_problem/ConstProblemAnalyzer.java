@@ -119,7 +119,7 @@ public class ConstProblemAnalyzer implements IJob{
 		try{
 			worklist.executeAnalysis();
 		}catch(ConstraintError err){
-			System.err.println("happened!");
+			System.out.println("error: "+err.getMessage());
 			TestResultItem item = new TestResultItem(data.getCurrentTestFile().getPath(), getName(), RuleSet.ERROR);
 			item.add(err.getMessage());
 			result.add(data.getCurrentTestFile().getPath(), item);
