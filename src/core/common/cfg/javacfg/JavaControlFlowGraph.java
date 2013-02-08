@@ -14,6 +14,10 @@ public class JavaControlFlowGraph extends ControlFlowGraph {
 		super(start, exitNodes);
 	}
 
+	public static JavaControlFlowGraph build(MethodDeclaration def, boolean cut) {
+		return new ControlFlowGraphBuilder().build(def, cut);
+	}
+	
 	public static JavaControlFlowGraph build(MethodDeclaration def) {
 		return new ControlFlowGraphBuilder().build(def);
 	}

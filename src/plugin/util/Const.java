@@ -1,8 +1,5 @@
 package plugin.util;
 
-import org.eclipse.swt.layout.FormAttachment;
-import org.eclipse.swt.layout.FormData;
-
 public class Const {
 	// Common
 	public static final String JTESTER = "Jtester";
@@ -32,7 +29,6 @@ public class Const {
 	public static final String STATIC_NUM_OF_RULES_VIOLATED = "Numbers of Rules Violated: ";
 
 	public static final String FILE_UNDER_CHECK = "Check: ";
-	
 	
 	//Type Inference Analysis Config Path
 	public final static String CONST_PROBLEM_PATH = "/tested files/type_inference/config/const_problem";

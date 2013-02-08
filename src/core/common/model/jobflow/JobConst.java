@@ -6,6 +6,7 @@ public class JobConst {
 	public final static String PREFIX = "shootsoft_testing_";
 	public final static String ENTER= "\r\n";
 	public final static String CONTROL_FLOW_GRAPH = "ControlFlowGraph";
+	public final static String INT = "int";
 	
 	//visitor
 	public final static String TARGET_SOURCE = "TargetSource";

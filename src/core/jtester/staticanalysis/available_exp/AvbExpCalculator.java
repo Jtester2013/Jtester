@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.eclipse.jdt.core.dom.ASTNode;
+import org.eclipse.jdt.core.dom.WhileStatement;
+
 import core.common.cfg.interfaces.*;
 import core.common.model.functionblock.AnalysisBlock;
 import core.common.model.functionblock.Calculator;
@@ -15,6 +18,8 @@ import core.common.model.jobflow.IJob;
 import core.common.model.jobflow.JobConst;
 import core.common.model.test.TestData;
 import core.common.model.test.TestFile;
+
+import core.common.cfg.model.*;
 
 public class AvbExpCalculator extends Calculator implements IJob {
 	

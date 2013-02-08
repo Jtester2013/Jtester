@@ -5,27 +5,36 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.jdt.core.dom.ASTNode;
+import org.eclipse.jdt.core.dom.Assignment;
 import org.eclipse.jdt.core.dom.Block;
 import org.eclipse.jdt.core.dom.BreakStatement;
 import org.eclipse.jdt.core.dom.CatchClause;
 import org.eclipse.jdt.core.dom.ContinueStatement;
 import org.eclipse.jdt.core.dom.DoStatement;
 import org.eclipse.jdt.core.dom.EmptyStatement;
+import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.ExpressionStatement;
 import org.eclipse.jdt.core.dom.ForStatement;
 import org.eclipse.jdt.core.dom.IfStatement;
+import org.eclipse.jdt.core.dom.InfixExpression;
 import org.eclipse.jdt.core.dom.LabeledStatement;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
+import org.eclipse.jdt.core.dom.NumberLiteral;
 import org.eclipse.jdt.core.dom.ReturnStatement;
+import org.eclipse.jdt.core.dom.SimpleName;
+import org.eclipse.jdt.core.dom.SingleVariableDeclaration;
 import org.eclipse.jdt.core.dom.SwitchCase;
 import org.eclipse.jdt.core.dom.SwitchStatement;
 import org.eclipse.jdt.core.dom.ThrowStatement;
 import org.eclipse.jdt.core.dom.TryStatement;
 import org.eclipse.jdt.core.dom.TypeDeclarationStatement;
+import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 import org.eclipse.jdt.core.dom.VariableDeclarationStatement;
 import org.eclipse.jdt.core.dom.WhileStatement;
+import org.eclipse.jdt.core.dom.InfixExpression.Operator;
 
 import core.common.cfg.interfaces.IBasicBlock;
 import core.common.cfg.interfaces.IBranchNode;
@@ -38,6 +47,8 @@ import core.common.cfg.interfaces.ISingleOutgoing;
 import core.common.cfg.interfaces.IStartNode;
 import core.common.cfg.model.AbstractBasicBlock;
 import core.common.cfg.model.JumpNode;
+import core.common.model.jobflow.JobConst;
+import core.common.util.Abacus;
 
 public class ControlFlowGraphBuilder {
 	JavaStartNode start;
@@ -49,7 +60,20 @@ public class ControlFlowGraphBuilder {
 	IConnectorNode outerContinue;
 	HashMap<String, IBasicBlock> labels = new HashMap<String, IBasicBlock>(0);
 	
+	boolean cut = false;
+	// only deal with NumberLiteral field
+	private Map<String, Integer> fields = new HashMap<String, Integer>();
+
+	public JavaControlFlowGraph build(MethodDeclaration def, boolean cutUnaccessibleBranch) {
+		cut = cutUnaccessibleBranch;
+		return build(def);
+	}
+	
 	public JavaControlFlowGraph build(MethodDeclaration def) {
+		if(cut){
+			parseParameters(def.parameters());
+		}
+		
 		Block body = def.getBody();
 		start = new JavaStartNode();
 		exits = new ArrayList<IExitNode>();
@@ -74,7 +98,7 @@ public class ControlFlowGraphBuilder {
 		graph.setUnconnectedNodes(dead);
 		return graph;
 	}
-	
+
 	public IBasicBlock findLast(IBasicBlock node) {
 		if (node instanceof IJumpNode)
 			return null;
@@ -124,6 +148,10 @@ public class ControlFlowGraphBuilder {
 		 * deals with statement like " int x = a + b; "
 		 */
 		else if (body instanceof VariableDeclarationStatement){		
+			if(cut){
+				parseField((VariableDeclarationStatement)body);
+			}
+			
 			JavaPlainNode node = factory.createPlainNode(body);
 			addOutgoing(prev, node);
 			return node;
@@ -138,6 +166,10 @@ public class ControlFlowGraphBuilder {
 			if (isThrowStatement(body)) {
 				JavaExitNode node = createExitNode(prev, body);
 				return node;
+			}
+			
+			if(cut){
+				parseField((ExpressionStatement)body);
 			}
 			
 			JavaPlainNode node = factory.createPlainNode(body);
@@ -188,7 +220,7 @@ public class ControlFlowGraphBuilder {
 		}
 		return prev;
 	}
-	
+
 	private IJumpNode addJump(IBasicBlock prev, IConnectorNode conn) {
 		return addJump(prev, conn, false);
 	}
@@ -221,6 +253,7 @@ public class ControlFlowGraphBuilder {
 	}
 	
 	protected IBasicBlock createIf(IBasicBlock prev, IfStatement body) {
+		
 		JavaDecisionNode ifNode = factory.createDecisionNode(body.getExpression());
 		addOutgoing(prev, ifNode);
 		
@@ -241,6 +274,10 @@ public class ControlFlowGraphBuilder {
 	}
 	
 	protected IBasicBlock createWhile(IBasicBlock prev, WhileStatement body) {
+		if(cut && !parseDecision(body.getExpression())){
+			return prev;
+		}
+		
 		// add continue connector
 		IConnectorNode nContinue = factory.createConnectorNode();
 		addOutgoing(prev, nContinue);
@@ -270,7 +307,7 @@ public class ControlFlowGraphBuilder {
 		addJump(loopEnd, nBreak);
 		return nBreak;
 	}
-	
+
 	protected IBasicBlock createDoWhile(IBasicBlock prev, DoStatement body) {
 		// create body and jump to continue node
 		IConnectorNode loopStart = factory.createConnectorNode();
@@ -458,5 +495,57 @@ public class ControlFlowGraphBuilder {
 			addJump(els, mergeNode);
 		}
 		return mergeNode;
+	}
+	
+
+	private void parseField(VariableDeclarationStatement body) {
+		// deal with int field only
+		if(!body.getType().toString().equals(JobConst.INT)){
+			return;
+		}
+		
+		@SuppressWarnings("unchecked")
+		List<VariableDeclarationFragment> fragments = body.fragments();
+		for(int i=0;i< fragments.size();i++){
+			SimpleName var = fragments.get(i).getName();
+			Expression exp = fragments.get(i).getInitializer();
+			int value = Abacus.computeExpression(exp, fields);
+			fields.put(var.toString(), value);
+		}
+	}
+	
+	private void parseField(ExpressionStatement body){
+		Expression exp = body.getExpression();
+		if(exp instanceof Assignment){
+			Assignment assignment = (Assignment) exp;
+			Expression var = assignment.getLeftHandSide();
+			Expression rightHandExp = assignment.getRightHandSide();
+			int value = Abacus.computeExpression(rightHandExp, fields);
+			fields.put(var.toString(), value);
+		}
+	}
+
+	private void parseParameters(List<SingleVariableDeclaration> parameters) {
+		for(SingleVariableDeclaration declaration: parameters){
+			if(!declaration.getType().toString().equals(JobConst.INT)){
+				continue;
+			}
+			fields.put(declaration.getName().toString(), 0);
+		}
+	}
+	
+	private boolean parseDecision(Expression exp) {
+		if(exp instanceof InfixExpression){
+			Expression left = ((InfixExpression) exp).getLeftOperand();
+			Expression right = ((InfixExpression) exp).getRightOperand();
+			
+			int leftVal = Abacus.computeExpression(left, fields);
+			int rightVal = Abacus.computeExpression(right, fields);
+			
+			Operator op = ((InfixExpression) exp).getOperator();
+			
+			return Abacus.compareValue(op, leftVal, rightVal);
+		}
+		return false;
 	}
 }

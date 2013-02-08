@@ -18,13 +18,19 @@ public class FunctionsInfoVisitor extends ASTVisitor implements IJob {
 	
 	private HashMap<String, FunctionInfo> functionsInfo;
 	private int funCount = 0;
-
+	private boolean cutUnaccessibleBranch = false;
+	
 	public FunctionsInfoVisitor() {
-		this(true);
+		this(true, true);
+	}
+	
+	public FunctionsInfoVisitor(boolean cut){
+		this(true, cut);
 	}
 
-	public FunctionsInfoVisitor(boolean visitNodes) {
+	public FunctionsInfoVisitor(boolean visitNodes, boolean cut) {
 		super(visitNodes);
+		cutUnaccessibleBranch = cut;
 	}
 
 	@Override
@@ -54,7 +60,7 @@ public class FunctionsInfoVisitor extends ASTVisitor implements IJob {
 	public boolean visit(MethodDeclaration n) {
 		FunctionInfo functionInfo = new FunctionInfo();
 		String functionName = ((MethodDeclaration) n).getName().getFullyQualifiedName();
-		JavaControlFlowGraph javacfg = JavaControlFlowGraph.build((MethodDeclaration) n);
+		JavaControlFlowGraph javacfg = JavaControlFlowGraph.build((MethodDeclaration) n, cutUnaccessibleBranch);
 		functionInfo.setFuncName(functionName);
 		functionInfo.setJavaControlFlowGraph(javacfg);
 		functionInfo.setContextInfo(new ContextInfo(null, null, n.parameters(), 0));
