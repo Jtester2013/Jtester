@@ -22,9 +22,6 @@ public class ConfigurationWindow {
 		public ConfigDetailWindow detailConfigComposite;
 	private int[] compositePortion = new int[] { 3, 7 };
 
-//	private Composite configListTreeComposite;
-//	private Composite detailConfigComposite;
-
 	/**
 	 * Launch the application.
 	 * 
