@@ -25,7 +25,7 @@ public class OptionsTabInStatic {
 		tabItem = new TabItem(tabFolder, SWT.None);
 		tabItem.setText("Options");
 
-		ScrolledComposite scrolledComposite = new ScrolledComposite(tabFolder, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+		ScrolledComposite scrolledComposite = new ScrolledComposite(tabFolder, SWT.H_SCROLL | SWT.V_SCROLL);
 		tabItem.setControl(scrolledComposite);
 		scrolledComposite.setExpandHorizontal(true);
 		scrolledComposite.setExpandVertical(true);
@@ -40,7 +40,7 @@ public class OptionsTabInStatic {
 		fd_tabFolderData.right = new FormAttachment(100, 0);
 		fd_tabFolderData.top = new FormAttachment(0, 5);
 		fd_tabFolderData.bottom = new FormAttachment(100, -5);
-		tabFolder.setLayoutData(fd_tabFolderData);
+		subTabFolder.setLayoutData(fd_tabFolderData);
 
 		generalInOptionsTab = new GeneralInOptionsTab(subTabFolder);
 		bugDetectiveInOptionsTab = new BugDetectiveInOptionsTab(subTabFolder);
