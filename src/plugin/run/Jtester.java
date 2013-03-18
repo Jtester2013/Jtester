@@ -22,11 +22,13 @@ public class Jtester implements IWorkbenchWindowActionDelegate{
 		String id = action.getId();
 		switch(id){
 		case Const.JTESTER_ALL:
-			runAll();
+			runAll(false);
 			break;
 		case Const.JTESTER_CONFIGURATION:
 			runConfiguration();
 			break;
+		case Const.JTESTER_ONTOLOGY:
+			runAll(true);
 		default:
 			List<String> rules = new ArrayList<String>();
 			rules.add(RuleSet.FUNCTION_INFO_VISITOR);
@@ -48,11 +50,11 @@ public class Jtester implements IWorkbenchWindowActionDelegate{
 		dialog.run();
 	}
 
-	public void runAll(){
+	public void runAll(boolean ontologyReasoner){
 		List<String> filePaths = IOUtil.getSelectionPath(selection);
-		List<String> rules = getAllRules();
+		List<String> rules = getAllRules(ontologyReasoner);
 		
-		JtesterProgress progress = new JtesterProgress(filePaths.size());
+		JtesterProgress progress = new JtesterProgress(filePaths.size(), ontologyReasoner);
 		
 		JtesterCaller caller = new JtesterCaller(filePaths, rules, progress);
 		caller.start();
@@ -67,7 +69,7 @@ public class Jtester implements IWorkbenchWindowActionDelegate{
 		cfgWindow.open();
 	}
 	
-	private List<String> getAllRules(){
+	private List<String> getAllRules(boolean ontologyReason){
 		List<String> rules = new ArrayList<String>();
 		rules.add(RuleSet.FUNCTION_INFO_VISITOR);
 		rules.add(RuleSet.AVAILABLE_EXP);
@@ -76,9 +78,9 @@ public class Jtester implements IWorkbenchWindowActionDelegate{
 		rules.add(RuleSet.LIVE_VAR);
 		rules.add(RuleSet.CONST_PROPAGATION);
 		rules.add(RuleSet.SHAPE_ANALYSIS);
-		rules.add(RuleSet.CONST_PROBLEM);
-		rules.add(RuleSet.DATA_DETAINED);
-		rules.add(RuleSet.VAR_INTERVAL);
+		if(ontologyReason){
+			rules.add(RuleSet.ONTOLOGY_REASONER);
+		}
 		return rules;
 	}
 

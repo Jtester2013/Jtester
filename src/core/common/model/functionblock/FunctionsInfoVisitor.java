@@ -80,9 +80,6 @@ public class FunctionsInfoVisitor extends ASTVisitor implements IJob {
 		return true;
 	}
 
-	// TODO
-	// i changed AmbiguousNode to ASTNode
-	// check it
 	public boolean visit(ASTNode astAmbiguousNode) {
 		return true;
 	}

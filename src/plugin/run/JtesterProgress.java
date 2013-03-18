@@ -15,13 +15,20 @@ public class JtesterProgress implements IRunnableWithProgress, ICaller{
 	private boolean stop = false;
 	private int worked = 0;
 	private int lastTimeNum = 0;
+	private boolean ontologyReasoner;
 	
 	private int progressSize;
 	
 	private List<ICaller> callers = new ArrayList<ICaller>();
 	
+	public JtesterProgress(int size, boolean reasoner) {
+		progressSize = size;
+		ontologyReasoner = reasoner;
+	}
+	
 	public JtesterProgress(int size) {
 		progressSize = size;
+		ontologyReasoner = false;
 	}
 
 	public void run(IProgressMonitor monitor) {
@@ -47,6 +54,7 @@ public class JtesterProgress implements IRunnableWithProgress, ICaller{
 	static String lastRule="";
 	static String lastFile="";
 	public boolean update(TestResult result) {
+		
 		for(int i=0;i<callers.size();i++){
 			if(!callers.get(i).update(result)){
 				System.err.println("caller "+ callers.get(i).getClass() + " updates failed!");
@@ -57,6 +65,13 @@ public class JtesterProgress implements IRunnableWithProgress, ICaller{
 		if(result.getFilesCheckNum() > lastTimeNum){
 			lastTimeNum = result.getFilesCheckNum();
 			worked = 1;
+		}
+		
+		// TODO
+		// delete this when you see it
+		// this is only for prototype
+		if(ontologyReasoner){
+			return true;
 		}
 		
 		// TODO 

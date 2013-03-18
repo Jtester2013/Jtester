@@ -1,0 +1,1033 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.pku.edu.cn/ontologies/2011/8/java6-spec.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     ontologyIRI="http://www.pku.edu.cn/ontologies/2011/8/java6-spec.owl">
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="" IRI="http://www.pku.edu.cn/ontologies/2011/8/java6-spec.owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#DONT_CALL_THREAD_RUN"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EMPTY_CATCH_BLOCK"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EMPTY_IF_STATEMENT"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EMPTY_WHILE_STATEMENT"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaAssignExpression"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaBinaryExpression"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaBlock"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaBlockStatement"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaClassDeclaration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaComment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaCompilationUnit"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaDeclaration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaEnumeration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaException"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaExpression"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaExpressionStatement"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaIfStatement"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaInterface"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaInterfaceDeclaration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaKeyword"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaLiteral"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaMethod"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaMethodCallExpression"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaNameExpression"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaOperator"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaOperatorPlus"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaSeparator"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaStatement"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaStringLiteralExpression"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaStringType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaThreadType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaTryStatemnt"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaVariableDeclarationExpression"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaVariableDeclaratiorID"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaWhileStatement"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MethodDeclaration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OVERRIDING_EQUALS_WITHOUT_OVERRIDING_HASHCODE"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OVERRIDING_TOSTRING"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RETURN_FROM_FINALLY_BLOCK"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SQL_QUERY_INJECTION"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SVDError"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SVDVulnerability"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SVDWarning"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#JavaAssignExpression_hasTarget"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#JavaAssignExpression_hasValue"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#JavaBinaryExpression_hasComponent"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#JavaBinaryExpression_hasLeft"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#JavaBinaryExpression_hasOperator"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#JavaBinaryExpression_hasRight"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#JavaClass_OverridingEquals"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#JavaClass_hasMethod"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#JavaElement_hasWarning"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#JavaExpressionStatement_hasExpression"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#JavaIfStatement_hasBlock"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#JavaMethodCallExpression_hasArgument"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#JavaMethodCallExpression_hasScope"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#JavaMethod_hasStatement"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#JavaMethod_returnFromFinallyBlock"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#JavaStatement_hasConcequent"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#JavaStatement_hasConsequent"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#JavaTryStatement_hasCatchBlock"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#JavaTryStatement_hasTryBlock"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#JavaVarabileDeclarationExpression_hasVariableDeclaratorID"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#JavaVariableDeclarationExpression_hasInitialValue"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#JavaVariableDeclaratorID_hasType"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#JavaWhileStatement_hasBlock"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#JavaBlockStatement_isNull"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#JavaClass_overridesEquals"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#JavaClass_overridesHashCode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#JavaDeclaratorID_hasName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#JavaElement_hasName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#JavaMethodCallExpression_hasName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#JavaNameExpression_hasName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#JavaVariableDeclaratorID_hasName"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#OVERRIDING_EQUALS_WITHOUT_OVERRIDING_HASHCODE_00000000-0000-0000-0000-000000000000"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#OVERRIDING_TOSTRING_00000000-0000-0000-0000-000000000000"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#DONT_CALL_THREAD_RUN"/>
+        <Class IRI="#SVDWarning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EMPTY_CATCH_BLOCK"/>
+        <Class IRI="#SVDWarning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EMPTY_IF_STATEMENT"/>
+        <Class IRI="#SVDWarning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EMPTY_WHILE_STATEMENT"/>
+        <Class IRI="#SVDWarning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#JavaAssignExpression"/>
+        <Class IRI="#JavaExpression"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#JavaBinaryExpression"/>
+        <Class IRI="#JavaExpression"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#JavaBlock"/>
+        <Class IRI="#JavaClass"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#JavaBlockStatement"/>
+        <Class IRI="#JavaStatement"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#JavaClassDeclaration"/>
+        <Class IRI="#JavaDeclaration"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#JavaCompilationUnit"/>
+        <Class IRI="#JavaDeclaration"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#JavaException"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#JavaExpressionStatement"/>
+        <Class IRI="#JavaStatement"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#JavaIfStatement"/>
+        <Class IRI="#JavaStatement"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#JavaInterface"/>
+        <Class IRI="#JavaVariableDeclaratiorID"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#JavaInterfaceDeclaration"/>
+        <Class IRI="#JavaDeclaration"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#JavaLiteral"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#JavaMethodCallExpression"/>
+        <Class IRI="#JavaExpression"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#JavaNameExpression"/>
+        <Class IRI="#JavaStringLiteralExpression"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#JavaOperatorPlus"/>
+        <Class IRI="#JavaOperator"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#JavaStringLiteralExpression"/>
+        <Class IRI="#JavaExpression"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#JavaStringType"/>
+        <Class IRI="#JavaType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#JavaThreadType"/>
+        <Class IRI="#JavaType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#JavaTryStatemnt"/>
+        <Class IRI="#JavaStatement"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#JavaVariableDeclarationExpression"/>
+        <Class IRI="#JavaExpression"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#JavaWhileStatement"/>
+        <Class IRI="#JavaStatement"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MethodDeclaration"/>
+        <Class IRI="#JavaDeclaration"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OVERRIDING_EQUALS_WITHOUT_OVERRIDING_HASHCODE"/>
+        <Class IRI="#SVDWarning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OVERRIDING_TOSTRING"/>
+        <Class IRI="#SVDWarning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RETURN_FROM_FINALLY_BLOCK"/>
+        <Class IRI="#SVDWarning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SQL_QUERY_INJECTION"/>
+        <Class IRI="#SVDVulnerability"/>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class IRI="#OVERRIDING_EQUALS_WITHOUT_OVERRIDING_HASHCODE"/>
+        <NamedIndividual IRI="#OVERRIDING_EQUALS_WITHOUT_OVERRIDING_HASHCODE_00000000-0000-0000-0000-000000000000"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OVERRIDING_TOSTRING"/>
+        <NamedIndividual IRI="#OVERRIDING_TOSTRING_00000000-0000-0000-0000-000000000000"/>
+    </ClassAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#JavaMethodCallExpression_hasArgument"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#JavaMethod_returnFromFinallyBlock"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#JavaTryStatement_hasTryBlock"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <AsymmetricObjectProperty>
+        <ObjectProperty IRI="#JavaClass_hasMethod"/>
+    </AsymmetricObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#JavaClass_hasMethod"/>
+    </IrreflexiveObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#JavaAssignExpression_hasTarget"/>
+        <Class IRI="#JavaAssignExpression"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#JavaAssignExpression_hasValue"/>
+        <Class IRI="#JavaAssignExpression"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#JavaBinaryExpression_hasComponent"/>
+        <Class IRI="#JavaBinaryExpression"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#JavaBinaryExpression_hasLeft"/>
+        <Class IRI="#JavaBinaryExpression"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#JavaBinaryExpression_hasOperator"/>
+        <Class IRI="#JavaBinaryExpression"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#JavaBinaryExpression_hasRight"/>
+        <Class IRI="#JavaBinaryExpression"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#JavaClass_hasMethod"/>
+        <Class IRI="#JavaClass"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#JavaElement_hasWarning"/>
+        <Class IRI="#JavaClass"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#JavaElement_hasWarning"/>
+        <Class IRI="#JavaCompilationUnit"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#JavaExpressionStatement_hasExpression"/>
+        <Class IRI="#JavaExpressionStatement"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#JavaIfStatement_hasBlock"/>
+        <Class IRI="#JavaIfStatement"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#JavaMethodCallExpression_hasArgument"/>
+        <Class IRI="#JavaMethodCallExpression"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#JavaMethodCallExpression_hasScope"/>
+        <Class IRI="#JavaMethodCallExpression"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#JavaMethod_hasStatement"/>
+        <Class IRI="#JavaMethod"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#JavaStatement_hasConcequent"/>
+        <Class IRI="#JavaStatement"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#JavaStatement_hasConsequent"/>
+        <Class IRI="#JavaStatement"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#JavaTryStatement_hasCatchBlock"/>
+        <Class IRI="#JavaTryStatemnt"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#JavaTryStatement_hasTryBlock"/>
+        <Class IRI="#JavaTryStatemnt"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#JavaVarabileDeclarationExpression_hasVariableDeclaratorID"/>
+        <Class IRI="#JavaVariableDeclarationExpression"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#JavaVariableDeclarationExpression_hasInitialValue"/>
+        <Class IRI="#JavaVariableDeclarationExpression"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#JavaVariableDeclaratorID_hasType"/>
+        <Class IRI="#JavaVariableDeclaratiorID"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#JavaWhileStatement_hasBlock"/>
+        <Class IRI="#JavaWhileStatement"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#JavaAssignExpression_hasTarget"/>
+        <Class IRI="#JavaExpression"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#JavaAssignExpression_hasValue"/>
+        <Class IRI="#JavaExpression"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#JavaBinaryExpression_hasComponent"/>
+        <Class IRI="#JavaExpression"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#JavaBinaryExpression_hasLeft"/>
+        <Class IRI="#JavaExpression"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#JavaBinaryExpression_hasOperator"/>
+        <Class IRI="#JavaOperator"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#JavaBinaryExpression_hasRight"/>
+        <Class IRI="#JavaExpression"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#JavaClass_hasMethod"/>
+        <Class IRI="#JavaMethod"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#JavaElement_hasWarning"/>
+        <Class IRI="#SVDWarning"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#JavaExpressionStatement_hasExpression"/>
+        <Class IRI="#JavaExpression"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#JavaIfStatement_hasBlock"/>
+        <Class IRI="#JavaBlockStatement"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#JavaMethodCallExpression_hasArgument"/>
+        <Class IRI="#JavaExpression"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#JavaMethodCallExpression_hasScope"/>
+        <Class IRI="#JavaExpression"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#JavaMethod_hasStatement"/>
+        <Class IRI="#JavaStatement"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#JavaStatement_hasConcequent"/>
+        <Class IRI="#JavaStatement"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#JavaStatement_hasConsequent"/>
+        <Class IRI="#JavaStatement"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#JavaTryStatement_hasCatchBlock"/>
+        <Class IRI="#JavaBlockStatement"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#JavaTryStatement_hasTryBlock"/>
+        <Class IRI="#JavaBlockStatement"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#JavaVarabileDeclarationExpression_hasVariableDeclaratorID"/>
+        <Class IRI="#JavaVariableDeclaratiorID"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#JavaVariableDeclarationExpression_hasInitialValue"/>
+        <Class IRI="#JavaExpression"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#JavaVariableDeclaratorID_hasType"/>
+        <Class IRI="#JavaType"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#JavaWhileStatement_hasBlock"/>
+        <Class IRI="#JavaBlockStatement"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#JavaElement_hasName"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="#JavaBlockStatement_isNull"/>
+        <Class IRI="#JavaBlockStatement"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#JavaClass_overridesEquals"/>
+        <Class IRI="#JavaClass"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#JavaClass_overridesHashCode"/>
+        <Class IRI="#JavaClass"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#JavaDeclaratorID_hasName"/>
+        <Class IRI="#JavaVariableDeclaratiorID"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#JavaElement_hasName"/>
+        <Class IRI="#JavaClass"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#JavaElement_hasName"/>
+        <Class IRI="#JavaMethod"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#JavaMethodCallExpression_hasName"/>
+        <Class IRI="#JavaMethodCallExpression"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#JavaNameExpression_hasName"/>
+        <Class IRI="#JavaNameExpression"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#JavaVariableDeclaratorID_hasName"/>
+        <Class IRI="#JavaVariableDeclaratiorID"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#JavaBlockStatement_isNull"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#JavaClass_overridesEquals"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#JavaClass_overridesHashCode"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#JavaDeclaratorID_hasName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#JavaElement_hasName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#JavaMethodCallExpression_hasName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#JavaNameExpression_hasName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#JavaVariableDeclaratorID_hasName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DLSafeRule>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#JavaBinaryExpression"/>
+                <Variable IRI="urn:swrl#inie"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#JavaClass"/>
+                <Variable IRI="urn:swrl#c"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#JavaExpressionStatement"/>
+                <Variable IRI="urn:swrl#s"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#JavaNameExpression"/>
+                <Variable IRI="urn:swrl#varib"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#JavaOperatorPlus"/>
+                <Variable IRI="urn:swrl#plus"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#JavaStringType"/>
+                <Variable IRI="urn:swrl#type"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#JavaVariableDeclarationExpression"/>
+                <Variable IRI="urn:swrl#e"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#JavaBinaryExpression_hasComponent"/>
+                <Variable IRI="urn:swrl#inie"/>
+                <Variable IRI="urn:swrl#varib"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#JavaBinaryExpression_hasOperator"/>
+                <Variable IRI="urn:swrl#inie"/>
+                <Variable IRI="urn:swrl#plus"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#JavaClass_hasMethod"/>
+                <Variable IRI="urn:swrl#c"/>
+                <Variable IRI="urn:swrl#m"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#JavaExpressionStatement_hasExpression"/>
+                <Variable IRI="urn:swrl#s"/>
+                <Variable IRI="urn:swrl#e"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#JavaMethod_hasStatement"/>
+                <Variable IRI="urn:swrl#m"/>
+                <Variable IRI="urn:swrl#s"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#JavaVarabileDeclarationExpression_hasVariableDeclaratorID"/>
+                <Variable IRI="urn:swrl#e"/>
+                <Variable IRI="urn:swrl#id"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#JavaVariableDeclarationExpression_hasInitialValue"/>
+                <Variable IRI="urn:swrl#e"/>
+                <Variable IRI="urn:swrl#inie"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#JavaVariableDeclaratorID_hasType"/>
+                <Variable IRI="urn:swrl#id"/>
+                <Variable IRI="urn:swrl#type"/>
+            </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#JavaNameExpression_hasName"/>
+                <Variable IRI="urn:swrl#varib"/>
+                <Variable IRI="urn:swrl#nameID"/>
+            </DataPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#JavaVariableDeclaratorID_hasName"/>
+                <Variable IRI="urn:swrl#id"/>
+                <Variable IRI="urn:swrl#nameID"/>
+            </DataPropertyAtom>
+        </Body>
+        <Head>
+            <ClassAtom>
+                <Class IRI="#SQL_QUERY_INJECTION"/>
+                <Variable IRI="urn:swrl#m"/>
+            </ClassAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#JavaClass"/>
+                <Variable IRI="urn:swrl#x"/>
+            </ClassAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#JavaClass_overridesEquals"/>
+                <Variable IRI="urn:swrl#x"/>
+                <Literal datatypeIRI="&xsd;boolean">true</Literal>
+            </DataPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#JavaClass_overridesHashCode"/>
+                <Variable IRI="urn:swrl#x"/>
+                <Literal datatypeIRI="&xsd;boolean">false</Literal>
+            </DataPropertyAtom>
+        </Body>
+        <Head>
+            <ClassAtom>
+                <Class IRI="#OVERRIDING_EQUALS_WITHOUT_OVERRIDING_HASHCODE"/>
+                <Variable IRI="urn:swrl#x"/>
+            </ClassAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#JavaIfStatement"/>
+                <Variable IRI="urn:swrl#s"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#JavaIfStatement_hasBlock"/>
+                <Variable IRI="urn:swrl#s"/>
+                <Variable IRI="urn:swrl#b"/>
+            </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#JavaBlockStatement_isNull"/>
+                <Variable IRI="urn:swrl#b"/>
+                <Literal datatypeIRI="&xsd;boolean">true</Literal>
+            </DataPropertyAtom>
+        </Body>
+        <Head>
+            <ClassAtom>
+                <Class IRI="#EMPTY_IF_STATEMENT"/>
+                <Variable IRI="urn:swrl#s"/>
+            </ClassAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#JavaMethodCallExpression"/>
+                <Variable IRI="urn:swrl#e2"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#JavaThreadType"/>
+                <Variable IRI="urn:swrl#type"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#JavaMethodCallExpression_hasScope"/>
+                <Variable IRI="urn:swrl#e2"/>
+                <Variable IRI="urn:swrl#id"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#JavaVarabileDeclarationExpression_hasVariableDeclaratorID"/>
+                <Variable IRI="urn:swrl#e"/>
+                <Variable IRI="urn:swrl#id"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#JavaVariableDeclaratorID_hasType"/>
+                <Variable IRI="urn:swrl#id"/>
+                <Variable IRI="urn:swrl#type"/>
+            </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#JavaMethodCallExpression_hasName"/>
+                <Variable IRI="urn:swrl#e2"/>
+                <Literal datatypeIRI="&rdf;PlainLiteral">run</Literal>
+            </DataPropertyAtom>
+        </Body>
+        <Head>
+            <ClassAtom>
+                <Class IRI="#DONT_CALL_THREAD_RUN"/>
+                <Variable IRI="urn:swrl#e2"/>
+            </ClassAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#JavaTryStatemnt"/>
+                <Variable IRI="urn:swrl#s"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#JavaTryStatement_hasCatchBlock"/>
+                <Variable IRI="urn:swrl#s"/>
+                <Variable IRI="urn:swrl#b"/>
+            </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#JavaBlockStatement_isNull"/>
+                <Variable IRI="urn:swrl#b"/>
+                <Literal datatypeIRI="&xsd;boolean">true</Literal>
+            </DataPropertyAtom>
+        </Body>
+        <Head>
+            <ClassAtom>
+                <Class IRI="#EMPTY_CATCH_BLOCK"/>
+                <Variable IRI="urn:swrl#s"/>
+            </ClassAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#JavaWhileStatement"/>
+                <Variable IRI="urn:swrl#s"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#JavaWhileStatement_hasBlock"/>
+                <Variable IRI="urn:swrl#s"/>
+                <Variable IRI="urn:swrl#b"/>
+            </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#JavaBlockStatement_isNull"/>
+                <Variable IRI="urn:swrl#b"/>
+                <Literal datatypeIRI="&xsd;boolean">true</Literal>
+            </DataPropertyAtom>
+        </Body>
+        <Head>
+            <ClassAtom>
+                <Class IRI="#EMPTY_WHILE_STATEMENT"/>
+                <Variable IRI="urn:swrl#s"/>
+            </ClassAtom>
+        </Head>
+    </DLSafeRule>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#JavaClass_hasMethod</IRI>
+        <Literal xml:lang="ch" datatypeIRI="&rdf;PlainLiteral">java类包含有各种method，此属性用来描述这种关系</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#JavaClass_overridesEquals</IRI>
+        <Literal xml:lang="ch" datatypeIRI="&rdf;PlainLiteral">类是否覆盖了Object类的equals(Object obj)方法？</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#JavaClass_overridesHashCode</IRI>
+        <Literal xml:lang="ch" datatypeIRI="&rdf;PlainLiteral">类是否覆盖了Object类对象的HashCode方法？</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#JavaComment</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">There are two kinds of comments:
+
+/* text */               A traditional comment: all the 
+                        text from the ASCII characters /* 
+                        to the ASCII characters */ is ignored
+                        (as in C and C++).
+
+// text                  A end-of-line comment: all the text 
+                        from the ASCII characters // to 
+                        the end of the line is ignored (as in C++).
+
+These comments are formally specified by the following productions:
+
+Comment:
+        TraditionalComment
+        EndOfLineComment
+
+TraditionalComment:
+        / * CommentTail
+
+EndOfLineComment:
+        / / CharactersInLineopt 
+
+CommentTail:
+        * CommentTailStar
+        NotStar CommentTail
+
+CommentTailStar:
+        /
+        * CommentTailStar
+        NotStarNotSlash CommentTail
+
+NotStar:
+        InputCharacter but not *
+        LineTerminator
+
+NotStarNotSlash:
+        InputCharacter but not * or /
+        LineTerminator
+
+CharactersInLine:
+        InputCharacter
+        CharactersInLine InputCharacter
+        
+
+These productions imply all of the following properties:
+
+Comments do not nest. 
+/* and */ have no special meaning in comments that begin with //. 
+// has no special meaning in comments that begin with /* or /**. 
+As a result, the text:
+
+/* this comment /* // /** ends here: */
+
+is a single complete comment.
+
+The lexical grammar implies that comments do not occur within character literals (§3.10.4) or string literals (§3.10.5).
+
+</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#JavaCompilationUnit</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">CompilationUnit is the goal symbol (§2.1) for the syntactic grammar (§2.3) of Java programs. It is defined by the following productions:
+
+CompilationUnit:
+        PackageDeclarationopt ImportDeclarationsopt TypeDeclarationsopt
+ImportDeclarations:
+        ImportDeclaration
+        ImportDeclarations ImportDeclaration
+
+TypeDeclarations:
+        TypeDeclaration
+        TypeDeclarations TypeDeclaration
+        
+
+Types declared in different compilation units can depend on each other, circularly. A Java compiler must arrange to compile all such types at the same time.
+A compilation unit consists of three parts, each of which is optional:
+
+
+A package declaration (§7.4), giving the fully qualified name (§6.7) of the package to which the compilation unit belongs. A compilation unit that has no package declaration is part of an unnamed package (§7.4.2). 
+import declarations (§7.5) that allow types from other packages and static members of types to be referred to using their simple names 
+Top level type declarations (§7.6) of class and interface types 
+Which compilation units are observable is determined by the host system. However, all the compilation units of the package java and its subpackages lang and io must always be observable. The observability of a compilation unit influences the observability of its package (§7.4.3).
+Every compilation unit automatically and implicitly imports every public type name declared by the predefined package java.lang, so that the names of all those types are available as simple names, as described in §7.5.5.
+
+</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#JavaEnumeration</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">An enum declaration has the form: 
+
+
+EnumDeclaration:
+	ClassModifiersopt enum Identifier Interfacesopt EnumBody
+
+EnumBody:
+	{ EnumConstantsopt ,opt EnumBodyDeclarationsopt }
+
+The body of an enum type may contain enum constants. An enum constant defines an instance of the enum type. An enum type has no instances other than those defined by its enum constants.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#JavaLiteral</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">A literal is the source code representation of a value of a primitive type (§4.2), the String type (§4.3.3), or the null type (§4.1):
+
+Literal:
+        IntegerLiteral
+        FloatingPointLiteral
+        BooleanLiteral
+        CharacterLiteral
+        StringLiteral
+        NullLiteral
+
+</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#JavaOperator</IRI>
+        <Literal datatypeIRI="&xsd;string">The following 37 tokens are the operators, formed from ASCII characters:
+
+Operator: one of
+        =       &gt;    &lt;    !       ~       ?       :
+        ==      &lt;=   &gt;=   !=      &amp;&amp;      ||      ++      --
+        +       -       *       /       &amp;   |       ^       %       &lt;&lt;        &gt;&gt;        &gt;&gt;&gt;
+        +=      -=      *=      /=      &amp;=  |=      ^=      %=      &lt;&lt;=       &gt;&gt;=       &gt;&gt;&gt;=
+
+</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#JavaSeparator</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">The following nine ASCII characters are the separators (punctuators):
+
+
+Separator: one of
+        (       )       {       }       [       ]       ;       ,       .
+
+</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+

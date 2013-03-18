@@ -10,6 +10,7 @@ public class Const {
 	public static final String JTESTER_CONFIGURATION = "plugin.run.configuration";
 	public static final String JTESTER_CONST_PROBLEM = "plugin.run.const_problem";
 	public static final String JTESTER_DATA_DETAINED = "plugin.run.data_detained";
+	public static final String JTESTER_ONTOLOGY = "plugin.run.ontology";
 	
 	// Rule Configuration
 	public static final String DEMO = "JTester Demo Configuration";
@@ -30,10 +31,14 @@ public class Const {
 
 	public static final String FILE_UNDER_CHECK = "Check: ";
 	
-	//Type Inference Analysis Config Path
+	// Type Inference Analysis Config Path
 	public final static String CONST_PROBLEM_PATH = "/tested_files/type_inference/config/const_problem";
 	public final static String DATA_DETAINED_PATH = "/tested_files/type_inference/config/data_detained/";
 
+	// OWL Path
+	public final static String OWL_PATH = "/tested_files/ontology/java-spec.owl";
+	public final static String FILE_Type = "file:";
+	
 	// added by John
 	// 各种根路径
 	public static final String rootPath = System.getProperty("user.dir");

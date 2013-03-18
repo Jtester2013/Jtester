@@ -22,4 +22,6 @@ public class RuleSet {
 	// var interval
 	public static final String VAR_INTERVAL = "core.jtester.staticanalysis.var_interval.EquationCalculator";
 	
+	// ontology reasoning
+	public static final String ONTOLOGY_REASONER = "core.jtester.ontology.reasoner.JtesterReasoner";
 }

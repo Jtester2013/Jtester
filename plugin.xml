@@ -37,8 +37,8 @@
 	 			</separator>
 	 		</menu>
 	 		<menu
-            	path="plugin.ui.actionset.entry/entry"
-            	label="Test Using..."
+            	path="plugin.ui.actionset.entry/select"
+            	label="Semantic Test"
             	id="plugin.ui.actionset.select">
             	<separator
             		name="select">
@@ -76,6 +76,15 @@
             	path="plugin.ui.actionset.entry/entry"
             	menubarPath="plugin.ui.actionset.entry/entry">
             </action>
+            
+             <action
+               label="Ontology Reasoning"
+               class="plugin.run.Jtester"
+               id="plugin.run.ontology"
+               enablesFor="1"
+               path="plugin.ui.actionset.entry/entry"
+               menubarPath="plugin.ui.actionset.entry/select" >
+         	</action>
             
             <action
                label="all..."
