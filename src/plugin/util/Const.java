@@ -35,9 +35,19 @@ public class Const {
 	public final static String CONST_PROBLEM_PATH = "/tested_files/type_inference/config/const_problem";
 	public final static String DATA_DETAINED_PATH = "/tested_files/type_inference/config/data_detained/";
 
-	// OWL Path
+	// OWL
 	public final static String OWL_PATH = "/tested_files/ontology/java-spec.owl";
 	public final static String FILE_Type = "file:";
+	public final static String OntologyID = "http://www.pku.edu.cn/ontologies/2013/3/java6-spec.owl";
+	public final static String OWL_WARNING = "#Warning"; 
+	public final static String OWL_REASONING = "Ontology Reasoning";
+	
+	// OWL Warning
+	public final static String EMPTY_WHILE = "Empty While Statement\n";
+	public final static String RETURN_FROM_FINALLY = "Return From Finally\n";
+	public final static String SQL_INJECTION = "SQL Injection\n";
+	public final static String IF_ALWAYS_TRUE = "If Always True\n";
+	public final static String IF_ALWAYS_FALSE = "If Always False\n";
 	
 	// added by John
 	// 各种根路径

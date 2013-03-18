@@ -67,13 +67,6 @@ public class JtesterProgress implements IRunnableWithProgress, ICaller{
 			worked = 1;
 		}
 		
-		// TODO
-		// delete this when you see it
-		// this is only for prototype
-		if(ontologyReasoner){
-			return true;
-		}
-		
 		// TODO 
 		// use UI for information output instead of console
 		if(lastFile != result.getCurrentFilePath()){
@@ -85,17 +78,28 @@ public class JtesterProgress implements IRunnableWithProgress, ICaller{
 		}
 		
 		ArrayList<TestResultItem> items = result.getResult().get(lastFile);
+		
 		if(items != null){
-			ConsoleFactory.printToConsole("=======================\n");
-			ConsoleFactory.printToConsole("path: " + lastFile + " \nrule: " + lastRule +" \ntype: "+ items.get(0).getType());
-			ConsoleFactory.printToConsole("=======================\n");
+			if(!ontologyReasoner){
+				ConsoleFactory.printToConsole("=======================\n");
+				ConsoleFactory.printToConsole("path: " + lastFile + " \nrule: " + lastRule +" \ntype: "+ items.get(0).getType());
+				ConsoleFactory.printToConsole("=======================\n");
+			}
+			
 			for (int i = 0; i < items.size(); i++) {
 				if (lastRule != items.get(i).getRule()) {
-					ConsoleFactory.printToConsole("======\npath: " + items.get(i).getFilePath() + " \nrule: " + items.get(i).getRule() + " title: " + items.get(i).getType() + "\n====");
+					if(!ontologyReasoner){
+						ConsoleFactory.printToConsole("======\npath: " + items.get(i).getFilePath() + " \nrule: " + items.get(i).getRule() + " title: " + items.get(i).getType() + "\n====");
+					}else if(items.get(i).getRule().equals("Ontology Reasoning")){
+						ConsoleFactory.printToConsole("======\npath: " + items.get(i).getFilePath() + " \nrule: " + items.get(i).getRule() + " title: " + items.get(i).getType() + "\n====");
+						ConsoleFactory.printToConsole("contents: "+ items.get(i).getDetail());
+					}
 					lastRule = items.get(i).getRule();
 				}
 				
-				ConsoleFactory.printToConsole("contents: " + items.get(i).getDetail());
+				if(!ontologyReasoner){
+					ConsoleFactory.printToConsole("contents: "+ items.get(i).getDetail());
+				}
 			}
 		}
 		

@@ -9,15 +9,20 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.WhileStatement;
 
+import plugin.util.Const;
+
 import core.common.model.jobflow.JobConst;
-import core.common.model.test.TestFile;
+import core.common.model.test.TestData;
+import core.common.model.test.TestResultItem;
+import core.jtester.api.RuleSet;
 import core.jtester.ontology.reasoner.IChecker;
 
 public class EmptyLoopChecker extends ASTVisitor implements IChecker{
-	public void check(TestFile file){
-		Object astObj = file.get(JobConst.AST);
+	TestData data;
+	public void check(TestData data){
+		this.data = data;
+		Object astObj = data.getCurrentTestFile().get(JobConst.AST);
 		ASTNode n = (ASTNode) astObj;
-		
 		n.accept(this);
 	}
 
@@ -38,7 +43,10 @@ public class EmptyLoopChecker extends ASTVisitor implements IChecker{
 		} else if (body instanceof WhileStatement){
 			Block statements = (Block) ((WhileStatement)body).getBody();
 			if(statements.statements().isEmpty()){
-				System.out.println("===Empty While Loop===\n" + body);
+				System.err.println("Empty While Statement Checked!");
+				TestResultItem item = new TestResultItem(data.getCurrentTestFile().getPath(), Const.OWL_REASONING, RuleSet.WARNING);
+				item.add(Const.EMPTY_WHILE + body);
+				data.getTestResult().add(data.getCurrentTestFile().getPath(), item);
 			}
 		} 
 	}

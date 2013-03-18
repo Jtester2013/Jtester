@@ -10,17 +10,20 @@
 
 
 <Ontology xmlns="http://www.w3.org/2002/07/owl#"
-     xml:base="http://www.pku.edu.cn/ontologies/2011/8/java6-spec.owl"
+     xml:base="http://www.pku.edu.cn/ontologies/2013/3/java6-spec.owl"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
-     ontologyIRI="http://www.pku.edu.cn/ontologies/2011/8/java6-spec.owl">
+     ontologyIRI="http://www.pku.edu.cn/ontologies/2013/3/java6-spec.owl">
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
-    <Prefix name="" IRI="http://www.pku.edu.cn/ontologies/2011/8/java6-spec.owl#"/>
+    <Prefix name="" IRI="http://www.pku.edu.cn/ontologies/2013/3/java6-spec.owl#"/>
     <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#BooleanLiteral"/>
+    </Declaration>
     <Declaration>
         <Class IRI="#DONT_CALL_THREAD_RUN"/>
     </Declaration>
@@ -32,6 +35,24 @@
     </Declaration>
     <Declaration>
         <Class IRI="#EMPTY_WHILE_STATEMENT"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EmptyBlock"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Empty_CatchBlock"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Error"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#False"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FinallyBlock"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#IF_STATEMENT_ALWAYS_TRUE_OR_FALSE"/>
     </Declaration>
     <Declaration>
         <Class IRI="#JavaAssignExpression"/>
@@ -56,6 +77,9 @@
     </Declaration>
     <Declaration>
         <Class IRI="#JavaCompilationUnit"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaConditionExpression"/>
     </Declaration>
     <Declaration>
         <Class IRI="#JavaDeclaration"/>
@@ -136,25 +160,31 @@
         <Class IRI="#MethodDeclaration"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#OVERRIDING_EQUALS_WITHOUT_OVERRIDING_HASHCODE"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#OVERRIDING_TOSTRING"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="#RETURN_FROM_FINALLY_BLOCK"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Return"/>
     </Declaration>
     <Declaration>
         <Class IRI="#SQL_QUERY_INJECTION"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#SVDError"/>
+        <Class IRI="#True"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#SVDVulnerability"/>
+        <Class IRI="#Vulnerability"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#SVDWarning"/>
+        <Class IRI="#Warning"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#Always"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#Has"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#In"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#JavaAssignExpression_hasTarget"/>
@@ -255,21 +285,78 @@
     <Declaration>
         <NamedIndividual IRI="#OVERRIDING_TOSTRING_00000000-0000-0000-0000-000000000000"/>
     </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#EMPTY_WHILE_STATEMENT"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#JavaWhileStatement"/>
+            <ObjectExactCardinality cardinality="1">
+                <ObjectProperty IRI="#Has"/>
+                <Class IRI="#EmptyBlock"/>
+            </ObjectExactCardinality>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#IF_STATEMENT_ALWAYS_TRUE_OR_FALSE"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#JavaIfStatement"/>
+            <ObjectUnionOf>
+                <Class IRI="#False"/>
+                <ObjectExactCardinality cardinality="1">
+                    <ObjectProperty IRI="#Always"/>
+                    <Class IRI="#True"/>
+                </ObjectExactCardinality>
+            </ObjectUnionOf>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#RETURN_FROM_FINALLY_BLOCK"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Return"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#In"/>
+                <Class IRI="#FinallyBlock"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#BooleanLiteral"/>
+        <Class IRI="#JavaLiteral"/>
+    </SubClassOf>
     <SubClassOf>
         <Class IRI="#DONT_CALL_THREAD_RUN"/>
-        <Class IRI="#SVDWarning"/>
+        <Class IRI="#Warning"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#EMPTY_CATCH_BLOCK"/>
-        <Class IRI="#SVDWarning"/>
+        <Class IRI="#Warning"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#EMPTY_IF_STATEMENT"/>
-        <Class IRI="#SVDWarning"/>
+        <Class IRI="#Warning"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#EMPTY_WHILE_STATEMENT"/>
-        <Class IRI="#SVDWarning"/>
+        <Class IRI="#Warning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EmptyBlock"/>
+        <Class IRI="#JavaBlock"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Empty_CatchBlock"/>
+        <Class IRI="#JavaBlockStatement"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#False"/>
+        <Class IRI="#BooleanLiteral"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FinallyBlock"/>
+        <Class IRI="#JavaBlock"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#IF_STATEMENT_ALWAYS_TRUE_OR_FALSE"/>
+        <Class IRI="#Warning"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#JavaAssignExpression"/>
@@ -278,10 +365,6 @@
     <SubClassOf>
         <Class IRI="#JavaBinaryExpression"/>
         <Class IRI="#JavaExpression"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#JavaBlock"/>
-        <Class IRI="#JavaClass"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#JavaBlockStatement"/>
@@ -293,7 +376,11 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#JavaCompilationUnit"/>
-        <Class IRI="#JavaDeclaration"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#JavaConditionExpression"/>
+        <Class IRI="#JavaExpression"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#JavaException"/>
@@ -309,7 +396,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#JavaInterface"/>
-        <Class IRI="#JavaVariableDeclaratiorID"/>
+        <Class abbreviatedIRI="owl:Thing"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#JavaInterfaceDeclaration"/>
@@ -360,29 +447,25 @@
         <Class IRI="#JavaDeclaration"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#OVERRIDING_EQUALS_WITHOUT_OVERRIDING_HASHCODE"/>
-        <Class IRI="#SVDWarning"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#OVERRIDING_TOSTRING"/>
-        <Class IRI="#SVDWarning"/>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="#RETURN_FROM_FINALLY_BLOCK"/>
-        <Class IRI="#SVDWarning"/>
+        <Class IRI="#Warning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Return"/>
+        <Class IRI="#JavaKeyword"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#SQL_QUERY_INJECTION"/>
-        <Class IRI="#SVDVulnerability"/>
+        <Class IRI="#Vulnerability"/>
     </SubClassOf>
-    <ClassAssertion>
-        <Class IRI="#OVERRIDING_EQUALS_WITHOUT_OVERRIDING_HASHCODE"/>
-        <NamedIndividual IRI="#OVERRIDING_EQUALS_WITHOUT_OVERRIDING_HASHCODE_00000000-0000-0000-0000-000000000000"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#OVERRIDING_TOSTRING"/>
-        <NamedIndividual IRI="#OVERRIDING_TOSTRING_00000000-0000-0000-0000-000000000000"/>
-    </ClassAssertion>
+    <SubClassOf>
+        <Class IRI="#True"/>
+        <Class IRI="#BooleanLiteral"/>
+    </SubClassOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#In"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#JavaMethodCallExpression_hasArgument"/>
         <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
@@ -490,6 +573,10 @@
         <Class IRI="#JavaWhileStatement"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="#Has"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="#JavaAssignExpression_hasTarget"/>
         <Class IRI="#JavaExpression"/>
     </ObjectPropertyRange>
@@ -519,7 +606,7 @@
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#JavaElement_hasWarning"/>
-        <Class IRI="#SVDWarning"/>
+        <Class IRI="#Warning"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#JavaExpressionStatement_hasExpression"/>
@@ -729,30 +816,6 @@
             <ClassAtom>
                 <Class IRI="#SQL_QUERY_INJECTION"/>
                 <Variable IRI="urn:swrl#m"/>
-            </ClassAtom>
-        </Head>
-    </DLSafeRule>
-    <DLSafeRule>
-        <Body>
-            <ClassAtom>
-                <Class IRI="#JavaClass"/>
-                <Variable IRI="urn:swrl#x"/>
-            </ClassAtom>
-            <DataPropertyAtom>
-                <DataProperty IRI="#JavaClass_overridesEquals"/>
-                <Variable IRI="urn:swrl#x"/>
-                <Literal datatypeIRI="&xsd;boolean">true</Literal>
-            </DataPropertyAtom>
-            <DataPropertyAtom>
-                <DataProperty IRI="#JavaClass_overridesHashCode"/>
-                <Variable IRI="urn:swrl#x"/>
-                <Literal datatypeIRI="&xsd;boolean">false</Literal>
-            </DataPropertyAtom>
-        </Body>
-        <Head>
-            <ClassAtom>
-                <Class IRI="#OVERRIDING_EQUALS_WITHOUT_OVERRIDING_HASHCODE"/>
-                <Variable IRI="urn:swrl#x"/>
             </ClassAtom>
         </Head>
     </DLSafeRule>
