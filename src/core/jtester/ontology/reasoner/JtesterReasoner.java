@@ -50,8 +50,8 @@ public class JtesterReasoner implements IJob{
 			String filePath = Const.FILE_Type + FileLocator.toFileURL(url).getFile();
 			System.out.println("file path: " + filePath);
 				
-			OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-			IRI docIRI = IRI.create(filePath);
+//			OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
+//			IRI docIRI = IRI.create(filePath);
 //			OWLOntology ont = manager.loadOntologyFromOntologyDocument(docIRI);
 //		    System.out.println("Loaded " + ont.getOntologyID());
 		    
