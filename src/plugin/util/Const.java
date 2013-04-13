@@ -43,11 +43,11 @@ public class Const {
 	public final static String OWL_REASONING = "Ontology Reasoning";
 	
 	// OWL Warning
-	public final static String EMPTY_WHILE = "Empty While Statement\n";
-	public final static String RETURN_FROM_FINALLY = "Return From Finally\n";
-	public final static String SQL_INJECTION = "SQL Injection\n";
-	public final static String IF_ALWAYS_TRUE = "If Always True\n";
-	public final static String IF_ALWAYS_FALSE = "If Always False\n";
+	public final static String EMPTY_WHILE = "[Empty While Statement]\n";
+	public final static String RETURN_FROM_FINALLY = "[Return From Finally]\n";
+	public final static String SQL_INJECTION = "[SQL Injection]\n";
+	public final static String IF_ALWAYS_TRUE = "[If Always True]\n";
+	public final static String IF_ALWAYS_FALSE = "[If Always False]\n";
 	
 	// added by John
 	// 各种根路径

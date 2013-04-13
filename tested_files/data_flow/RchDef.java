@@ -1,7 +1,7 @@
 package data_flow;
 
 public class RchDef {
-	int foo5() {
+	int test() {
 		int x = 5;
 		int y = 0;
 		int z = 1;
@@ -14,15 +14,5 @@ public class RchDef {
 			x = x - 1;
 		}
 		return 0;
-	}
-
-	int foo(int a) {	
-
-		if (a > 0)
-			a = 1;
-		else
-			a = 2;
-
-		return a;
 	}
 }

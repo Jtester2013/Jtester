@@ -2,7 +2,7 @@ package data_flow;
 
 public class ShapeAnalysis {
 	
-	Link foo6(Link p){
+	Link test(Link p){
 		Link q =  null;
 		Link temp = null;
 		temp = p;

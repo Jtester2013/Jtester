@@ -46,7 +46,6 @@ public class IOUtil {
 						break;
 					}
 				}
-				
 				String elementAbsPath = getWorkspacePath() + elementToFind.getPath().toPortableString().substring(1);
 				List<String> srcs = getAllSrcs(elementAbsPath);
 				return srcs;

@@ -150,7 +150,7 @@ public abstract class Calculator implements IJob {
 					&& (!(this.analysisBlocks.get(i).getBasicBlock() instanceof IBranchNode))) {
 				
 				lineNumber = this.analysisBlocks.get(i).getLable() + "";
-				src = ((AbstractBasicBlock) this.analysisBlocks	.get(i).getBasicBlock()).toStringData();
+				src = ((AbstractBasicBlock) this.analysisBlocks	.get(i).getBasicBlock()).toStringData().replace("\n", "");
 				
 				if (this.analysisBlocks.get(i).getEntry().size() == 0) {
 					entry = "null";
@@ -158,15 +158,15 @@ public abstract class Calculator implements IJob {
 					for (int j = 0; j < this.analysisBlocks.get(i).getEntry().size(); j++) {
 						Object exp =  this.analysisBlocks.get(i).getEntry().get(j);
 						if( exp instanceof InfixExpression){
-							entry += ((InfixExpression) exp)+ "; ";			
+							entry += ((InfixExpression) exp)+ ";";			
 						} else if (exp instanceof SimpleName){
-							entry += ((SimpleName) exp)+ "; ";		
+							entry += ((SimpleName) exp)+ ";";		
 						} else if (exp instanceof DefLocPair){
 							entry += ((DefLocPair) exp).displayPair();
 						} else if (exp instanceof Var2Value){
-							entry += ((Var2Value) exp).display() + "; ";
+							entry += ((Var2Value) exp).display() + ";";
 						} else if (exp instanceof ShapeGraph){
-							entry += " ";
+							entry += "";
 						}
 					}
 				}
@@ -177,15 +177,15 @@ public abstract class Calculator implements IJob {
 					for (int j = 0; j < this.analysisBlocks.get(i).getExit().size(); j++) {
 						Object exp =  this.analysisBlocks.get(i).getExit().get(j);
 						if( exp instanceof InfixExpression){
-							exit += ((InfixExpression) exp)+ "; ";			
+							exit += ((InfixExpression) exp)+ ";";			
 						} else if (exp instanceof SimpleName){
-							exit += ((SimpleName) exp)+ "; ";		
+							exit += ((SimpleName) exp)+ ";";		
 						} else if (exp instanceof DefLocPair){
 							exit += ((DefLocPair) exp).displayPair();
 						} else if (exp instanceof Var2Value){
-							exit += ((Var2Value) exp).display() + "; ";
+							exit += ((Var2Value) exp).display() + ";";
 						} else if (exp instanceof ShapeGraph){
-							exit += "ShapeGraph "+ j + ":";
+							exit += "\nShapeGraph "+ j + ":\n";
 							exit += ((ShapeGraph) exp).displaySG();
 						}
 					}

@@ -1,9 +1,7 @@
 package type_inference.const_problem;
 
-
 public class ConstExample {
 	public static void main(String[] args) {
-
 		NativeObjectInterface nativeObject = NativeObjectImpl.create(10);
 		NativeObjectImpl nativeObjectImpl = (NativeObjectImpl) nativeObject;
 
@@ -18,9 +16,7 @@ public class ConstExample {
 			nativeObjectImpl.close();
 			nativeObjectImpl.setHandle(nativeObjectImpl.getHandle() + 4);
 		}
-
 	}
-
 	public void doit() {
 		this.getClass();
 	}

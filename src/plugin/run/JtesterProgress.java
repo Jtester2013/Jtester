@@ -92,19 +92,53 @@ public class JtesterProgress implements IRunnableWithProgress, ICaller{
 						ConsoleFactory.printToConsole("======\npath: " + items.get(i).getFilePath() + " \nrule: " + items.get(i).getRule() + " title: " + items.get(i).getType() + "\n====");
 					}else if(items.get(i).getRule().equals("Ontology Reasoning")){
 						ConsoleFactory.printToConsole("======\npath: " + items.get(i).getFilePath() + " \nrule: " + items.get(i).getRule() + " title: " + items.get(i).getType() + "\n====");
-						ConsoleFactory.printToConsole("contents: "+ items.get(i).getDetail());
+						ConsoleFactory.printToConsole(formatReport(items.get(i).getDetail()));
 					}
 					lastRule = items.get(i).getRule();
+				}else if(ontologyReasoner){
+					if(items.get(i).getRule().equals("Ontology Reasoning")){
+						ConsoleFactory.printToConsole("======\npath: " + items.get(i).getFilePath() + " \nrule: " + items.get(i).getRule() + " title: " + items.get(i).getType() + "\n====");
+						ConsoleFactory.printToConsole(formatReport(items.get(i).getDetail()));
+					}
 				}
 				
 				if(!ontologyReasoner){
-					ConsoleFactory.printToConsole("contents: "+ items.get(i).getDetail());
+					ConsoleFactory.printToConsole(formatReport(items.get(i).getDetail()));
 				}
 			}
 		}
 		
 		return true;
 	}	
+	
+	private String formatReport(List<String> report){
+		StringBuilder sb = new StringBuilder();
+		for(int i=0; i<report.size();i++){
+			String item = report.get(i);
+			formatReportHelper(sb, item);
+		}
+		return sb.toString();
+	}
+	
+	private void formatReportHelper(StringBuilder sb, String item){
+		if(item.length() < 3){
+			sb.append(item);
+			sb.append(createSpace(5-item.length()));
+		} else if(item.length() < 15){
+			sb.append(item);
+			sb.append(createSpace(15-item.length()));
+		} else{
+			sb.append(item + createSpace(10));
+		}
+	}
+	
+	private String createSpace(int number){
+		StringBuilder sb = new StringBuilder();
+		for(int i=0; i<number;i++){
+			sb.append(" ");
+		}
+		return sb.toString();
+	}
 	
 	public void stop(){
 		stop = true;

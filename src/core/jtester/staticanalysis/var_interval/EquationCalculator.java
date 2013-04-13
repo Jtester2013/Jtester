@@ -216,8 +216,8 @@ public class EquationCalculator implements IJob{
 			variables = env.get(flow_content.get(i).getOutLabel() + "") + "";
 			
 			TestResultItem item = new TestResultItem(data.getCurrentTestFile().getPath(), getName(), RuleSet.RESULT);
-			item.add(condition);
-			item.add(src);
+			//item.add(condition);
+			//item.add(src);
 			item.add(variables);
 			result.add(data.getCurrentTestFile().getPath(), item);
 		}

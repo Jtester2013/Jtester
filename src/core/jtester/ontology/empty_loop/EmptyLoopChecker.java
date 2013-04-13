@@ -7,6 +7,7 @@ import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.Block;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
+import org.eclipse.jdt.core.dom.TryStatement;
 import org.eclipse.jdt.core.dom.WhileStatement;
 
 import plugin.util.Const;
@@ -40,6 +41,9 @@ public class EmptyLoopChecker extends ASTVisitor implements IChecker{
 				ASTNode node = (ASTNode) children.get(i);
 				checkSubTree(node);
 			}
+		} else if(body instanceof TryStatement){
+			TryStatement stmt = (TryStatement)body;
+			checkSubTree(stmt.getBody());
 		} else if (body instanceof WhileStatement){
 			Block statements = (Block) ((WhileStatement)body).getBody();
 			if(statements.statements().isEmpty()){

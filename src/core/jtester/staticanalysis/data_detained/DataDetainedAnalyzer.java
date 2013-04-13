@@ -119,7 +119,7 @@ public class DataDetainedAnalyzer implements IJob{
 		}catch(ConstraintError err){
 			System.out.println("error: "+err.getMessage());
 			TestResultItem item = new TestResultItem(data.getCurrentTestFile().getPath(), getName(), RuleSet.ERROR);
-			item.add(err.getMessage());
+			item.add(err.getMessage().replace("~", "~\n"));
 			result.add(data.getCurrentTestFile().getPath(), item);
 		}
 		OMShared.reset();

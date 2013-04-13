@@ -1,7 +1,7 @@
 package data_flow;
 
 public class LivVar {
-	int a1() {
+	int test() {
 		int x = 3;
 		int y = 4;
 		x = 1;
@@ -13,15 +13,5 @@ public class LivVar {
 		}
 		x = z;
 		return 0;
-	}
-
-	int a2(int a) {
-
-		if (a > 0)
-			a = 1;
-		else
-			a = 2;
-
-		return a;
 	}
 }
