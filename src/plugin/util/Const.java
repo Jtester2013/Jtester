@@ -48,6 +48,7 @@ public class Const {
 	public final static String SQL_INJECTION = "[SQL Injection]\n";
 	public final static String IF_ALWAYS_TRUE = "[If Always True]\n";
 	public final static String IF_ALWAYS_FALSE = "[If Always False]\n";
+	public final static String ARRAY_OUT_OF_BOUNDARY = "[Array Out Of Boundary]\n";
 	
 	// added by John
 	// 各种根路径
