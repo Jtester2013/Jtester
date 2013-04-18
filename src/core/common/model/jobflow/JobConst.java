@@ -37,7 +37,6 @@ public class JobConst {
 	public final static String CONDITION_TYPE = "ConditionType";
 	
 	//Tester
-	
 	public final static String RESULT_CONVERAGE = "ResultConverage";
 	public final static String RESULT_CONVERAGE_PATH = "ResultConveragePath";
 	/**
@@ -83,5 +82,8 @@ public class JobConst {
 	// Method Override Checker
 	public final static String METHOD_EQUALS = "equals";
 	public final static String METHOD_HASHCODE = "hashCode";
+	
+	// IProblem
+	public final static String COMPILER_PROBLEM = "Compiler Problems";
 	
 }

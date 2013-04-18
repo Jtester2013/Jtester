@@ -43,7 +43,7 @@ public class MethodOverrideChecker implements IChecker {
 		if(exceptions != null && !exceptions.isEmpty()){
 			for(MethodSemantics ms: exceptions){
 				if(ms.getName().toString().equals(JobConst.METHOD_EQUALS)){
-					System.err.println("Warning: 类中覆盖了equals方法，但是没有覆盖hashcode方法!");
+					System.err.println("Warning: 类中重写了equals方法，但是没有重写hashcode方法!");
 					System.err.println("\t" + ms);
 				}
 			}

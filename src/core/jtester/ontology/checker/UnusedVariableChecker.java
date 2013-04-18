@@ -12,7 +12,7 @@ import core.common.model.test.TestData;
 import core.common.model.test.TestFile;
 import core.jtester.ontology.reasoner.IChecker;
 
-public class CloseStreamChecker implements IChecker{
+public class UnusedVariableChecker implements IChecker{
 
 	public void check(TestData data) {
 		TestFile file = data.getCurrentTestFile();
@@ -24,54 +24,37 @@ public class CloseStreamChecker implements IChecker{
 	}
 	
 	private List<DeclarationSemantics> handleSemantics(SemanticsStore store){
-		List<String> rules = getRules();
-		List<DeclarationSemantics> toCheck = new ArrayList<DeclarationSemantics>();
 		List<DeclarationSemantics> violations = new ArrayList<DeclarationSemantics>();
 		
 		// add variables to check
 		Iterator<DeclarationSemantics> ir1 = store.iterator1();
 		while(ir1.hasNext()){
 			DeclarationSemantics ds = ir1.next();
-			for(String rule: rules){
-				if(ds.getType().toString().equals(rule)){
-					toCheck.add(ds);
-				}
-			}
-		}
-
-		// check variables
-		for(DeclarationSemantics ds: toCheck){
-			boolean closed = false;
+			
+			boolean used = false;
+			String name = ds.getName().toString();
 			Iterator<InferenceSemantics> ir2 = store.iterator2();
 			while(ir2.hasNext()){
 				InferenceSemantics is = ir2.next();
-				if(is.getName().toString().equals(ds.getName().toString()) && JobConst.STREAM_CLOSE.equals(is.getMethod().toString())){
-					closed = true;
+				if(name.equals(is.getName().toString())){
+					used = true;
+					break;
 				}
 			}
-			if(!closed){
+			
+			if(!used){
 				violations.add(ds);
 			}
 		}
-
 		return violations;
-	}
-	
-	private List<String> getRules(){
-		List<String> rules = new ArrayList<String>();
-		rules.add(JobConst.STREAM_TYPE_1);
-		rules.add(JobConst.STREAM_TYPE_2);
-		return rules;	
 	}
 	
 	private void generateReport(List<DeclarationSemantics> exceptions){
 		if(exceptions != null && !exceptions.isEmpty()){
-			System.err.println("Warning: 未关闭流变量!");
+			System.err.println("Warning: 以下变量未被使用：");
 			for(DeclarationSemantics ds: exceptions){
 				System.err.println("\t" + ds);
 			}
-			
-			
 		}
 	}
 }

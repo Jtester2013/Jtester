@@ -9,10 +9,12 @@ import org.eclipse.jdt.core.dom.Assignment;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.ExpressionStatement;
+import org.eclipse.jdt.core.dom.InfixExpression;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.MethodInvocation;
 import org.eclipse.jdt.core.dom.Name;
 import org.eclipse.jdt.core.dom.NumberLiteral;
+import org.eclipse.jdt.core.dom.SimpleName;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 import org.eclipse.jdt.core.dom.VariableDeclarationStatement;
 
@@ -95,6 +97,9 @@ public class SemanticsExtractor implements IJob{
 			//System.out.println(exp.structuralPropertiesForType());
 			break;
 		case ASTNode.INFIX_EXPRESSION:
+			InfixExpression ife = (InfixExpression)node;
+			handleExpression(ife);
+			break;
 		case ASTNode.TRY_STATEMENT:
 		case ASTNode.SINGLE_VARIABLE_DECLARATION:
 		case ASTNode.RETURN_STATEMENT:
@@ -110,10 +115,24 @@ public class SemanticsExtractor implements IJob{
 		if(exp == null){
 			return;
 		}
-		
+
 		switch(exp.getNodeType()){
 		case ASTNode.NUMBER_LITERAL:
+		case ASTNode.NULL_LITERAL:
+		case ASTNode.THIS_EXPRESSION:
+			break;
 		case ASTNode.SIMPLE_NAME:
+			SimpleName name = (SimpleName) exp;
+			InferenceSemantics snSemantics = new InferenceSemantics();
+			snSemantics.setLine(getLineNumber(name));
+			snSemantics.setName(name);
+			snSemantics.setIndex(0);
+			store.putInferenceStore(snSemantics);
+			break;
+		case ASTNode.INFIX_EXPRESSION:
+			InfixExpression ife = (InfixExpression)exp;
+			handleExpression(ife.getLeftOperand());
+			handleExpression(ife.getRightOperand());
 			break;
 		case ASTNode.ARRAY_ACCESS:
 			ArrayAccess aa = (ArrayAccess)exp;

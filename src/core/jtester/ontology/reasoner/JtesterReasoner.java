@@ -26,6 +26,7 @@ import core.common.model.test.TestData;
 import core.jtester.ontology.array_out_of_boundary.ArrayOutOfBoundaryChecker;
 import core.jtester.ontology.checker.CloseStreamChecker;
 import core.jtester.ontology.checker.MethodOverrideChecker;
+import core.jtester.ontology.checker.UnusedVariableChecker;
 import core.jtester.ontology.empty_loop.EmptyLoopChecker;
 import core.jtester.ontology.ifalwaystrueorfalse.IfAlwaysTrueOrFalseChecker;
 import core.jtester.ontology.return_from_finally.FinallyBlockChecker;
@@ -44,8 +45,10 @@ public class JtesterReasoner implements IJob{
 
 	private void init() {
 		checkers = new ArrayList<IChecker>();
+		//UnusedVariableChecker uvc = new UnusedVariableChecker();
 		CloseStreamChecker cfc = new CloseStreamChecker();
 		MethodOverrideChecker moc = new MethodOverrideChecker();
+		//checkers.add(uvc);
 		checkers.add(moc);
 		checkers.add(cfc);
 		
