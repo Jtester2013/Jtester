@@ -9,7 +9,8 @@ import core.common.cfg.interfaces.IStartNode;
 import core.common.cfg.model.ControlFlowGraph;
 
 public class JavaControlFlowGraph extends ControlFlowGraph {
-
+	private MethodDeclaration method;
+	
 	public JavaControlFlowGraph(IStartNode start, Collection<IExitNode> exitNodes) {
 		super(start, exitNodes);
 	}
@@ -20,6 +21,14 @@ public class JavaControlFlowGraph extends ControlFlowGraph {
 	
 	public static JavaControlFlowGraph build(MethodDeclaration def) {
 		return new ControlFlowGraphBuilder().build(def);
+	}
+	
+	public void setMethod(MethodDeclaration method){
+		this.method = method;
+	}
+	
+	public MethodDeclaration getMethod(){
+		return method;
 	}
 	
 	@Override

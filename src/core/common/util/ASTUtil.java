@@ -241,6 +241,13 @@ public class ASTUtil {
 			}
 		}
 	}
+	
+	public static int getLineNumber(CompilationUnit ast, ASTNode node){
+		if(ast!=null && node != null){
+			return ast.getLineNumber(node.getStartPosition());
+		}
+		return -1;
+	}
 }
 
 class ResetASTVisitor extends ASTVisitor {

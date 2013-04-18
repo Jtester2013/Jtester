@@ -8,7 +8,6 @@ import core.common.model.jobflow.ICaller;
 import core.common.model.jobflow.JobFlow;
 import core.common.model.test.TestData;
 import core.common.model.test.TestResult;
-import core.common.model.test.TestResultItem;
 
 public class API {
 	public static TestResult analyze(List<String> filePaths, List<String> rules, ICaller caller){
@@ -42,24 +41,14 @@ public class API {
 	
 	public static void main(String args[]) {
 		List<String> paths = new ArrayList<String>();
-//		paths.add("D:\\VarInterval.java");
-		paths.add("tested_files/data_flow/AvailableExp.java");
+		paths.add("tested_files/ontology/Syndrome.java");
+		paths.add("tested_files/ontology/People.java");
 
 		List<String> rules = new ArrayList<String>();
 		rules.add(RuleSet.FUNCTION_INFO_VISITOR);
-		rules.add(RuleSet.AVAILABLE_EXP);
-//		rules.add(RuleSet.VAR_INTERVAL);
+		rules.add(RuleSet.SEMANTICS_EXTRACTION);
+		rules.add(RuleSet.ONTOLOGY_REASONER);
 		
-		TestResult result = analyze(paths, rules, null);
-	
-		ArrayList<TestResultItem> items = result.getResult().get("tested_files/data_flow/AvailableExp.java");
-		String lastRule = "";
-		for (int i = 0; i < items.size(); i++) {
-			if (lastRule != items.get(i).getRule()) {
-				System.out.println("\npath: " + items.get(i).getFilePath() + " rule: " + items.get(i).getRule() + " title: " + items.get(i).getType());
-				lastRule = items.get(i).getRule();
-			}
-			System.out.println("contents: " + items.get(i).getDetail());
-		}
+		API.analyze(paths, rules, null);
 	}
 }

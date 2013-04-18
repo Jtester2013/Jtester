@@ -1,25 +1,48 @@
 package ontology;
 
 public class Syndrome {
-	public int symptom() {
-		int sum = 0; // never used
-		int array[] = new int[10];
-		try{
-			int a = 100;
-			int b = 99;
-			if(a > b){
-				while(a < b){ //can't be executed
-					throw new Exception("should not be here");
-				}
-			}else{ // if statement is always true
-				System.out.println("result is: " + result); // ERROR: use un-defined variable
+	public void symptom1() {
+		int[] a = new int[10];
+		int x = 10;
+		int y = 2;
+		if (x > y) {
+			a[10] = x;
+		} else {
+			a[10] = y;
+		}
+	}
+	
+	public String symptom2() {
+		try {
+			int a = 1;
+			int b = 2;
+			int d = a;
+			while (a < b) {
 			}
-		}catch(Exception e){
-			array[10] = 1; // OutOfBoundaryException
+		} catch (Exception e) {
+			int c = 2;
+		} finally {
+			return "should not return from here";
 		}
-		finally{
-			// return should not be in finally block
-			return 1;
-		}
+	}
+	
+	public void readFileByBytes(String fileName) {
+		File file = new File(fileName);
+        try {
+            System.out.println("以字节为单位读取文件内容，一次读一个字节：");
+            // 一次读一个字节
+            InputStream in = new FileInputStream(file);
+            int tempbyte;
+            while ((tempbyte = in.read()) != -1) {
+                System.out.write(tempbyte);
+            }
+            
+            OutputStream out;
+            //in.close();
+            //out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
 	}
 }

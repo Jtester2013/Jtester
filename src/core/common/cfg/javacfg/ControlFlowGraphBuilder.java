@@ -22,7 +22,6 @@ import org.eclipse.jdt.core.dom.IfStatement;
 import org.eclipse.jdt.core.dom.InfixExpression;
 import org.eclipse.jdt.core.dom.LabeledStatement;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
-import org.eclipse.jdt.core.dom.NumberLiteral;
 import org.eclipse.jdt.core.dom.ReturnStatement;
 import org.eclipse.jdt.core.dom.SimpleName;
 import org.eclipse.jdt.core.dom.SingleVariableDeclaration;
@@ -60,6 +59,7 @@ public class ControlFlowGraphBuilder {
 	IConnectorNode outerContinue;
 	HashMap<String, IBasicBlock> labels = new HashMap<String, IBasicBlock>(0);
 	
+	
 	boolean cut = false;
 	// only deal with NumberLiteral field
 	private Map<String, Integer> fields = new HashMap<String, Integer>();
@@ -94,6 +94,7 @@ public class ControlFlowGraphBuilder {
 				}
 			}
 		}
+		
 		JavaControlFlowGraph graph = new JavaControlFlowGraph(start, exits);
 		graph.setUnconnectedNodes(dead);
 		return graph;

@@ -1,11 +1,14 @@
 package core.common.model.functionblock;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
-import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 import core.common.cfg.javacfg.JavaControlFlowGraph;
 import core.common.model.jobflow.IJob;
@@ -54,6 +57,14 @@ public class FunctionsInfoVisitor extends ASTVisitor implements IJob {
 		ASTNode n = (ASTNode) astObj;
 		n.accept(this);
 
+		Iterator<FunctionInfo> ir = functionsInfo.values().iterator();
+		List<JavaControlFlowGraph> cfgs = new ArrayList<JavaControlFlowGraph>();
+		while(ir.hasNext()){
+			FunctionInfo fi = ir.next();
+			cfgs.add(fi.getJavaControlFlowGraph());
+		}
+		
+		file.put(JobConst.CONTROL_FLOW_GRAPH, cfgs);
 		file.put(JobConst.FUNCTIONSINFO, functionsInfo);
 		return true;
 	}
@@ -62,6 +73,7 @@ public class FunctionsInfoVisitor extends ASTVisitor implements IJob {
 		FunctionInfo functionInfo = new FunctionInfo();
 		String functionName = ((MethodDeclaration) n).getName().getFullyQualifiedName();
 		JavaControlFlowGraph javacfg = JavaControlFlowGraph.build((MethodDeclaration) n, cutUnaccessibleBranch);
+		javacfg.setMethod(n);
 		functionInfo.setFuncName(functionName);
 		functionInfo.setJavaControlFlowGraph(javacfg);
 		functionInfo.setContextInfo(new ContextInfo(null, null, n.parameters(), 0));

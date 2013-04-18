@@ -20,6 +20,7 @@ public class JobConst {
 	public final static String ASTVIEW = "ASTView";
 	public final static String ASTXML = "ASTXml";
 	public final static String MOCKMETHOD = "NeedMock";
+	public final static String SEMANTICS = "Semantics";
 
 	//Compiler
 	public final static String CLASS_PATH = "ClassPath";
@@ -73,6 +74,14 @@ public class JobConst {
 	public final static String VAR = "Variable";
 	public final static double narrow = 312;
 	
-	// Rules
+	// semantics
+	// File Close Checker
+	public final static String STREAM_TYPE_1 = "InputStream";
+	public final static String STREAM_TYPE_2 = "OutputStream";
+	public final static String STREAM_CLOSE = "close";
+	
+	// Method Override Checker
+	public final static String METHOD_EQUALS = "equals";
+	public final static String METHOD_HASHCODE = "hashCode";
 	
 }
