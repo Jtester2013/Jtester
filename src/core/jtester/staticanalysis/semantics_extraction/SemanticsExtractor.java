@@ -6,6 +6,7 @@ import java.util.List;
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ArrayAccess;
 import org.eclipse.jdt.core.dom.Assignment;
+import org.eclipse.jdt.core.dom.ClassInstanceCreation;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.ExpressionStatement;
@@ -89,6 +90,9 @@ public class SemanticsExtractor implements IJob{
 				semantics.setName(vdf.getName());
 				semantics.setValue(vdf.getInitializer());
 				store.putDeclarationStore(semantics);
+				
+				// deal with variable inference
+				handleExpression(vdf.getInitializer());
 			}
 			break;
 		case ASTNode.EXPRESSION_STATEMENT:
@@ -119,7 +123,18 @@ public class SemanticsExtractor implements IJob{
 		switch(exp.getNodeType()){
 		case ASTNode.NUMBER_LITERAL:
 		case ASTNode.NULL_LITERAL:
+		case ASTNode.CAST_EXPRESSION:
+			break;
 		case ASTNode.THIS_EXPRESSION:
+			break;
+		case ASTNode.ARRAY_CREATION:
+			break;
+		case ASTNode.CLASS_INSTANCE_CREATION:
+			ClassInstanceCreation cic = (ClassInstanceCreation)exp;
+			List<Expression> arguments = cic.arguments();
+			for(Expression argu: arguments){
+				handleExpression(argu);
+			}
 			break;
 		case ASTNode.SIMPLE_NAME:
 			SimpleName name = (SimpleName) exp;

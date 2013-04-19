@@ -68,7 +68,9 @@ public class CloseStreamChecker implements IChecker{
 		if(exceptions != null && !exceptions.isEmpty()){
 			System.err.println("Warning: 未关闭流变量!");
 			for(DeclarationSemantics ds: exceptions){
-				System.err.println("\t" + ds);
+				System.err.print("\t" + ds + " \t");
+				StackTraceElement ste = new StackTraceElement("","","Syndrome.java",ds.getLine());
+				System.err.println(ste);
 			}
 			
 			

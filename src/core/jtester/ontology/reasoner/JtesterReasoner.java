@@ -45,10 +45,10 @@ public class JtesterReasoner implements IJob{
 
 	private void init() {
 		checkers = new ArrayList<IChecker>();
-		//UnusedVariableChecker uvc = new UnusedVariableChecker();
+		UnusedVariableChecker uvc = new UnusedVariableChecker();
 		CloseStreamChecker cfc = new CloseStreamChecker();
 		MethodOverrideChecker moc = new MethodOverrideChecker();
-		//checkers.add(uvc);
+		checkers.add(uvc);
 		checkers.add(moc);
 		checkers.add(cfc);
 		
