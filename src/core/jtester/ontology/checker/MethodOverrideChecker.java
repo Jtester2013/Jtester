@@ -44,9 +44,7 @@ public class MethodOverrideChecker implements IChecker {
 			for(MethodSemantics ms: exceptions){
 				if(ms.getName().toString().equals(JobConst.METHOD_EQUALS)){
 					System.err.println("Warning: 类中重写了equals方法，但是没有重写hashcode方法!");
-					System.err.print("\t" + ms + " \t");
-					StackTraceElement ste = new StackTraceElement("","","People.java",ms.getLine());
-					System.err.println(ste);
+					System.err.print("\t" + ms + " \t");  
 				}
 			}
 		}

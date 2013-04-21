@@ -15,6 +15,9 @@ import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.MethodInvocation;
 import org.eclipse.jdt.core.dom.Name;
 import org.eclipse.jdt.core.dom.NumberLiteral;
+import org.eclipse.jdt.core.dom.ParenthesizedExpression;
+import org.eclipse.jdt.core.dom.QualifiedName;
+import org.eclipse.jdt.core.dom.ReturnStatement;
 import org.eclipse.jdt.core.dom.SimpleName;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 import org.eclipse.jdt.core.dom.VariableDeclarationStatement;
@@ -106,7 +109,11 @@ public class SemanticsExtractor implements IJob{
 			break;
 		case ASTNode.TRY_STATEMENT:
 		case ASTNode.SINGLE_VARIABLE_DECLARATION:
+			break;
 		case ASTNode.RETURN_STATEMENT:
+			ReturnStatement rs = (ReturnStatement)node;
+			handleExpression(rs.getExpression());
+			break;
 		case ASTNode.INSTANCEOF_EXPRESSION:	
 			break;
 		default:
@@ -122,12 +129,19 @@ public class SemanticsExtractor implements IJob{
 
 		switch(exp.getNodeType()){
 		case ASTNode.NUMBER_LITERAL:
+		case ASTNode.BOOLEAN_LITERAL:
 		case ASTNode.NULL_LITERAL:
+		case ASTNode.FIELD_ACCESS:
+			break;
 		case ASTNode.CAST_EXPRESSION:
 			break;
 		case ASTNode.THIS_EXPRESSION:
 			break;
 		case ASTNode.ARRAY_CREATION:
+			break;
+		case ASTNode.QUALIFIED_NAME:
+			QualifiedName qn = (QualifiedName)exp;
+			handleExpression(qn.getQualifier());
 			break;
 		case ASTNode.CLASS_INSTANCE_CREATION:
 			ClassInstanceCreation cic = (ClassInstanceCreation)exp;
@@ -172,10 +186,28 @@ public class SemanticsExtractor implements IJob{
 			miSemantics.setMethod(mi.getName());
 			store.putInferenceStore(miSemantics);
 			break;
+		case ASTNode.PARENTHESIZED_EXPRESSION:
+			ParenthesizedExpression pte = (ParenthesizedExpression)exp;
+			handleExpression(pte.getExpression());
+			break;
+		case ASTNode.PREFIX_EXPRESSION:
+			break;
 		default:
 			System.err.println("unhandled expression type:" + exp.getNodeType() + "  " + exp);
 			break;
 		}
+	}
+	
+	/**
+	 * update variable values for assignments
+	 * 
+	 * NOTE: Now this method doesn't fulfill all the conditions.
+	 * 
+	 * @param semantics
+	 * @param value
+	 */
+	private void updateDeclarationSemantics(DeclarationSemantics semantics, Expression value){
+		
 	}
 	
 	private int getLineNumber(ASTNode node){

@@ -543,12 +543,14 @@ public class ControlFlowGraphBuilder {
 			Expression left = ((InfixExpression) exp).getLeftOperand();
 			Expression right = ((InfixExpression) exp).getRightOperand();
 			
-			int leftVal = Abacus.computeExpression(left, fields);
-			int rightVal = Abacus.computeExpression(right, fields);
-			
-			Operator op = ((InfixExpression) exp).getOperator();
-			
-			return Abacus.compareValue(op, leftVal, rightVal);
+			if(left instanceof SimpleName && right instanceof SimpleName){
+				int leftVal = Abacus.computeExpression(left, fields);
+				int rightVal = Abacus.computeExpression(right, fields);
+				Operator op = ((InfixExpression) exp).getOperator();
+				return Abacus.compareValue(op, leftVal, rightVal);
+			}else {
+				return true;
+			}
 		}
 		return false;
 	}

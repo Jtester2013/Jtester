@@ -43,7 +43,7 @@ public class Syndrome {
                 System.out.write(tempbyte);
             }
             
-            OutputStream out;
+            OutputStream out = null;
             //in.close();
             //out.close();
         } catch (IOException e) {

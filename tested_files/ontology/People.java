@@ -1,6 +1,5 @@
 import java.util.Date;
 
-
 public class People {
 	public int ID;
 	public String name;

@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.jdt.core.dom.Expression;
+import org.eclipse.jdt.core.dom.NullLiteral;
+
 import core.common.model.jobflow.JobConst;
 import core.common.model.semantics.DeclarationSemantics;
 import core.common.model.semantics.InferenceSemantics;
@@ -32,6 +35,11 @@ public class CloseStreamChecker implements IChecker{
 		Iterator<DeclarationSemantics> ir1 = store.iterator1();
 		while(ir1.hasNext()){
 			DeclarationSemantics ds = ir1.next();
+			if(ds.getValue() == null || ds.getValue() instanceof NullLiteral){
+				// no need to check uninitialized variable
+				continue;
+			}
+			// match rule
 			for(String rule: rules){
 				if(ds.getType().toString().equals(rule)){
 					toCheck.add(ds);
@@ -68,9 +76,7 @@ public class CloseStreamChecker implements IChecker{
 		if(exceptions != null && !exceptions.isEmpty()){
 			System.err.println("Warning: 未关闭流变量!");
 			for(DeclarationSemantics ds: exceptions){
-				System.err.print("\t" + ds + " \t");
-				StackTraceElement ste = new StackTraceElement("","","Syndrome.java",ds.getLine());
-				System.err.println(ste);
+				System.err.println("\t" + ds + " \t");
 			}
 			
 			
