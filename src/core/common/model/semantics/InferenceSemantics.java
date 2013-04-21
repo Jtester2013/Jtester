@@ -1,7 +1,7 @@
 package core.common.model.semantics;
 
+import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.Name;
-import org.eclipse.jdt.core.dom.SimpleName;
 
 public class InferenceSemantics {
 	private int line;
@@ -58,6 +58,15 @@ public class InferenceSemantics {
 			sb.append(method);
 		}
 		
+		
+		return sb.toString();
+	}
+	
+	public String toStringWithContext(){
+		StringBuilder sb = new StringBuilder();
+		sb.append(line);
+		sb.append(": ");
+		sb.append(name.getParent().getParent());
 		
 		return sb.toString();
 	}

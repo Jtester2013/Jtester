@@ -77,8 +77,6 @@ public class CloseStreamChecker implements IChecker{
 			for(DeclarationSemantics ds: exceptions){
 				System.err.println("\t" + ds + " \t");
 			}
-			
-			
 		}
 	}
 }

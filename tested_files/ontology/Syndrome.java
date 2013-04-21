@@ -8,13 +8,13 @@ import java.io.OutputStream;
 
 public class Syndrome {
 	public void symptom1() {
-		int[] a = new int[10];
+		int[] array = new int[10];
 		int x = 10;
 		int y = 2;
 		if (x > y) {
-			a[10] = x;
+			array[10] = x;
 		} else {
-			a[10] = y;
+			array[10] = y;
 		}
 	}
 	
