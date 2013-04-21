@@ -16,15 +16,18 @@ public class SemanticsStore {
 	}
 	
 	public void putDeclarationStore(DeclarationSemantics semantics){
-		declarationStore.add(semantics);
+		if(!declarationStore.contains(semantics))
+			declarationStore.add(semantics);
 	}
 	
 	public void putInferenceStore(InferenceSemantics semantics){
-		inferenceStore.add(semantics);
+		if(!inferenceStore.contains(semantics))
+			inferenceStore.add(semantics);
 	}
 	
 	public void putMethodStore(MethodSemantics semantics){
-		methodStore.add(semantics);
+		if(!methodStore.contains(semantics))
+			methodStore.add(semantics);
 	}
 	
 	public Iterator<DeclarationSemantics> iterator1(){

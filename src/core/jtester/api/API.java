@@ -42,7 +42,7 @@ public class API {
 	public static void main(String args[]) {
 		List<String> paths = new ArrayList<String>();
 		paths.add("tested_files/ontology/Syndrome.java");
-		paths.add("tested_files/ontology/People.java");
+		//paths.add("tested_files/ontology/People.java");
 
 		List<String> rules = new ArrayList<String>();
 		rules.add(RuleSet.FUNCTION_INFO_VISITOR);
