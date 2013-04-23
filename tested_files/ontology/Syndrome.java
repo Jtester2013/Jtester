@@ -18,18 +18,17 @@ public class Syndrome {
 		}
 	}
 	
-	public String symptom2() {
-		try {
-			int a = 1;
-			int b = 2;
-			int d = a;
-			while (a < b) {
-			}
-		} catch (Exception e) {
-			int c = 2;
-		} finally {
-			return "should not return from here";
-		}
+	public long divide() {
+		long dividend = 100;
+		long divisor = 0;
+		
+		long p = dividend;
+		long q = p * 100;
+		
+		divisor = q * q  - 100 * p * q + p - 100;
+		//divisor = 1;
+		
+		return dividend / divisor;
 	}
 	
 	public void readFileByBytes(String fileName) {

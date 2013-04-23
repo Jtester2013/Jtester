@@ -80,7 +80,6 @@ public class SemanticsExtractor implements IJob{
 		if(node == null){
 			return;
 		}
-		
 		switch(node.getNodeType()){
 		case ASTNode.VARIABLE_DECLARATION_STATEMENT:
 			VariableDeclarationStatement vds = (VariableDeclarationStatement)node;
@@ -177,6 +176,7 @@ public class SemanticsExtractor implements IJob{
 			Expression right = assign.getRightHandSide();
 			handleExpression(left);
 			handleExpression(right);
+			updateVariable(left, right);
 			break;
 		case ASTNode.METHOD_INVOCATION:
 			MethodInvocation mi = (MethodInvocation)exp;
@@ -206,8 +206,19 @@ public class SemanticsExtractor implements IJob{
 	 * @param semantics
 	 * @param value
 	 */
-	private void updateDeclarationSemantics(DeclarationSemantics semantics, Expression value){
+	private void updateVariable(Expression left, Expression right){
+		if(left == null || !(left instanceof Name)){
+			return;
+		}
 		
+		Iterator<DeclarationSemantics> ir = store.iterator1();
+		while(ir.hasNext()){
+			DeclarationSemantics ds = ir.next();
+			if(ds.getName().toString().equals(left.toString())){
+				ds.setValue(right);
+				break;
+			}
+		}
 	}
 	
 	private int getLineNumber(ASTNode node){

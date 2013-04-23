@@ -25,6 +25,7 @@ import core.common.model.jobflow.IJob;
 import core.common.model.test.TestData;
 import core.jtester.ontology.array_out_of_boundary.ArrayOutOfBoundaryChecker;
 import core.jtester.ontology.checker.CloseStreamChecker;
+import core.jtester.ontology.checker.DividedByZeroChecker;
 import core.jtester.ontology.checker.MethodOverrideChecker;
 import core.jtester.ontology.checker.NullPointerChecker;
 import core.jtester.ontology.checker.OutOfBoundaryChecker;
@@ -52,12 +53,14 @@ public class JtesterReasoner implements IJob{
 		CloseStreamChecker cfc = new CloseStreamChecker();
 		MethodOverrideChecker moc = new MethodOverrideChecker();
 		OutOfBoundaryChecker oobc = new OutOfBoundaryChecker();
+		DividedByZeroChecker dbzc = new DividedByZeroChecker();
 		
 		checkers.add(uvc);
 		checkers.add(npc);
 		checkers.add(moc);
 		checkers.add(cfc);
 		checkers.add(oobc);
+		checkers.add(dbzc);
 		
 //		EmptyLoopChecker elc = new EmptyLoopChecker();
 //		FinallyBlockChecker fbc = new FinallyBlockChecker();

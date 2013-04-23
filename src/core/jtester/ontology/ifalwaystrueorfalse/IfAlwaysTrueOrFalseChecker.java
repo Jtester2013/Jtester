@@ -85,12 +85,12 @@ public class IfAlwaysTrueOrFalseChecker extends ASTVisitor implements IChecker{
 			Expression left = ((InfixExpression) exp).getLeftOperand();
 			Expression right = ((InfixExpression) exp).getRightOperand();
 			
-			int leftVal = Abacus.computeExpression(left, fields);
-			int rightVal = Abacus.computeExpression(right, fields);
+			int leftVal = Abacus.compute(left, fields);
+			int rightVal = Abacus.compute(right, fields);
 			
 			Operator op = ((InfixExpression) exp).getOperator();
 			
-			return Abacus.compareValue(op, leftVal, rightVal);
+			return Abacus.compare(op, leftVal, rightVal);
 		}
 		return false;
 	}
@@ -106,7 +106,7 @@ public class IfAlwaysTrueOrFalseChecker extends ASTVisitor implements IChecker{
 		for(int i=0;i< fragments.size();i++){
 			SimpleName var = fragments.get(i).getName();
 			Expression exp = fragments.get(i).getInitializer();
-			int value = Abacus.computeExpression(exp, fields);
+			int value = Abacus.compute(exp, fields);
 			fields.put(var.toString(), value);
 		}
 	}
@@ -120,7 +120,7 @@ public class IfAlwaysTrueOrFalseChecker extends ASTVisitor implements IChecker{
 				return;
 			}
 			Expression rightHandExp = assignment.getRightHandSide();
-			int value = Abacus.computeExpression(rightHandExp, fields);
+			int value = Abacus.compute(rightHandExp, fields);
 			fields.put(var.toString(), value);
 		}
 	}

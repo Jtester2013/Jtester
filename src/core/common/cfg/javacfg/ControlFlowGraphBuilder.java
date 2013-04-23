@@ -510,7 +510,7 @@ public class ControlFlowGraphBuilder {
 		for(int i=0;i< fragments.size();i++){
 			SimpleName var = fragments.get(i).getName();
 			Expression exp = fragments.get(i).getInitializer();
-			int value = Abacus.computeExpression(exp, fields);
+			int value = Abacus.compute(exp, fields);
 			fields.put(var.toString(), value);
 		}
 	}
@@ -524,7 +524,7 @@ public class ControlFlowGraphBuilder {
 				return;
 			}
 			Expression rightHandExp = assignment.getRightHandSide();
-			int value = Abacus.computeExpression(rightHandExp, fields);
+			int value = Abacus.compute(rightHandExp, fields);
 			fields.put(var.toString(), value);
 		}
 	}
@@ -544,10 +544,10 @@ public class ControlFlowGraphBuilder {
 			Expression right = ((InfixExpression) exp).getRightOperand();
 			
 			if(left instanceof SimpleName && right instanceof SimpleName){
-				int leftVal = Abacus.computeExpression(left, fields);
-				int rightVal = Abacus.computeExpression(right, fields);
+				int leftVal = Abacus.compute(left, fields);
+				int rightVal = Abacus.compute(right, fields);
 				Operator op = ((InfixExpression) exp).getOperator();
-				return Abacus.compareValue(op, leftVal, rightVal);
+				return Abacus.compare(op, leftVal, rightVal);
 			}else {
 				return true;
 			}

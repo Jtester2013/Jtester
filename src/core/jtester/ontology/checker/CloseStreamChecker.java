@@ -38,6 +38,7 @@ public class CloseStreamChecker implements IChecker{
 				// no need to check uninitialized variable
 				continue;
 			}
+			
 			// match rule
 			for(String rule: rules){
 				if(ds.getType().toString().equals(rule)){

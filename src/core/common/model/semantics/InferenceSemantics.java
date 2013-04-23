@@ -40,6 +40,10 @@ public class InferenceSemantics {
 	public void setMethod(Name method) {
 		this.method = method;
 	}
+	
+	public ASTNode getContext(){
+		return name.getParent();
+	}
 
 	@Override
 	public String toString(){
