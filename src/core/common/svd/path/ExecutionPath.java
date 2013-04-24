@@ -1,4 +1,4 @@
-package core.common.path;
+package core.common.svd.path;
 
 import java.util.Iterator;
 import java.util.LinkedList;

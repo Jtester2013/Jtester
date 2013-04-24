@@ -1,4 +1,4 @@
-package core.common.path;
+package core.common.svd.path;
 
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTVisitor;

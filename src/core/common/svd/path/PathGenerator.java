@@ -1,4 +1,4 @@
-package core.common.path;
+package core.common.svd.path;
 
 import java.io.File;
 import java.io.FileInputStream;

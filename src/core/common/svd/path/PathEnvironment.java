@@ -1,4 +1,4 @@
-package core.common.path;
+package core.common.svd.path;
 
 public class PathEnvironment {
 

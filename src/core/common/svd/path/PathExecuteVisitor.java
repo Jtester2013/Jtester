@@ -1,4 +1,4 @@
-package core.common.path;
+package core.common.svd.path;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.AnnotationTypeDeclaration;
