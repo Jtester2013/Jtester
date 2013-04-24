@@ -7,14 +7,14 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class Syndrome {
-	public void symptom1() {
-		int[] array = new int[10];
-		int x = 10;
-		int y = 2;
-		if (x > y) {
-			array[10] = x;
+	public void setArray() {
+		String[] array = new String[10];
+		int arg1 = 10;
+		int arg2 = 2;
+		if (arg1 > arg2) {
+			array[10] = "hello world";
 		} else {
-			array[10] = y;
+			array[10] = "hello world";
 		}
 	}
 	
