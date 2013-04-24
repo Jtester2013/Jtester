@@ -24,7 +24,6 @@ import org.eclipse.jdt.core.dom.SingleVariableDeclaration;
 import org.eclipse.jdt.core.dom.Statement;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 import org.eclipse.jdt.core.dom.WhileStatement;
-import org.omg.CORBA.PRIVATE_MEMBER;
 
 import core.common.cfg.javacfg.*;
 
