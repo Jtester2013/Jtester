@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configtree>
+	<configtype type="user">
+		<config file_path="Platform.getPluginInstallLocation" name="test all files">
+			user demo
+		</config>
+	</configtype>
+	<configtype type="builtin">
+		<config file_path="" name="">
+		</config>
+	</configtype>
+	<configtype type="team">
+		<config file_path="" name="">
+		</config>
+	</configtype>
+</configtree>

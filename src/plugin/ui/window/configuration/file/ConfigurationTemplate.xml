@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<scope mincyclomatic="3" testdeprecated="false">
+		<filefilter></filefilter>
+		<linefilter></linefilter>
+		<methodfilter></methodfilter>
+	</scope>
+	<static enable="true" maxreportforperrule="100"
+		skipgeneratedclass="true">
+		<ruletree></ruletree>
+		<metrics></metrics>
+		<options></options>
+	</static>
+	<generation enable="false" onlyonetestcase="false">
+		<input></input>
+		<filter></filter>
+		<testclass></testclass>
+	</generation>
+	<execute enable="false">
+		<search></search>
+		<options></options>
+		<severity></severity>
+	</execute>
+	<common>
+		<beforetesting></beforetesting>
+		<workingdirectory></workingdirectory>
+		<incontainertest></incontainertest>
+	</common>
+	<codereview enable="false" generatereport="false"
+		autopublish="false"></codereview>
+	<goal>
+		<static></static>
+		<execution></execution>
+	</goal>
+</configuration>

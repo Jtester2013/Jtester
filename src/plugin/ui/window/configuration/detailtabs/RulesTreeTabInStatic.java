@@ -41,7 +41,7 @@ public class RulesTreeTabInStatic {
 		fd_compositeActionBar.height = 200;
 		fd_compositeActionBar.width = 90;
 		fd_compositeActionBar.top = new FormAttachment(lblNumberOfRules, 5);
-		fd_compositeActionBar.right = new FormAttachment(100, -5);
+		fd_compositeActionBar.right = new FormAttachment(50, -5);// for change
 		compositeActionBar.setLayoutData(fd_compositeActionBar);
 
 		Button btnHideDisabled = new Button(compositeActionBar, SWT.NONE);
@@ -83,9 +83,19 @@ public class RulesTreeTabInStatic {
 		scrolledCompositeRulesTree.setMinSize(rulesTree.computeSize(SWT.DEFAULT, SWT.DEFAULT));
 		
 		TreeItem item = new TreeItem(rulesTree, SWT.None);
-		item.setText("branch");
+		item.setText("Code Style");
 		TreeItem item2 = new TreeItem(item, SWT.None);
-		item2.setText("leaf");
+		item2.setText("Find Duplicated Code");
+		TreeItem item6 = new TreeItem(item, SWT.None);
+		item6.setText("Find Unused Code");
+		
+		TreeItem item3 = new TreeItem(rulesTree, SWT.None);
+		item3.setText("Static Vulnerability");
+		TreeItem item4 = new TreeItem(item3, SWT.None);
+		item4.setText("Find Null Point ");
+		TreeItem item5 = new TreeItem(item3, SWT.None);
+		item5.setText("Find Memory Problems ");
+		
 	}
 
 }

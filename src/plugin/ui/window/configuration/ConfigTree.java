@@ -1,15 +1,26 @@
 package plugin.ui.window.configuration;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.io.PrintWriter;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 import org.w3c.dom.Document;
@@ -25,13 +36,17 @@ public class ConfigTree {
 	// configTreeFilePath point to the xml file which describe the configTree's
 	// constructor
 	public static String configTreeFilePath = System.getProperty("user.dir") + "\\src\\plugin\\ui\\window\\configuration\\configuration_list.xml";
+	
 	public Tree tree;
-	public TreeItem trtmUser;
-	public TreeItem trtmBuiltin;
-	public TreeItem trtmTeam;
+	public static TreeItem trtmUser;
+	public static TreeItem trtmBuiltin;
+	public static TreeItem trtmTeam;
+	
+	public static TreeItem selectedItem = null;
+
+	private Action duplicateAction, newAction, deleteAction, exportAction, setAsDefaultAction;// 作用于树节点上的actions
 
 	// todo: duplicate, New child, Delete, export, set as default
-
 	private static String defaultConfigName = "N";
 
 	public ConfigTree(Composite parent, int style) {
@@ -47,11 +62,15 @@ public class ConfigTree {
 		trtmBuiltin.setText("Builtin");
 		trtmBuiltin.setExpanded(true);
 
+		
+	}
+
+	protected void contentCreate(){
 		trtmTeam = new TreeItem(tree, SWT.NONE);
 		trtmTeam.setImage(SWTResourceManager.getImage(Const.FOLDER_ICON_PATH));
 		trtmTeam.setText("Team");
 		trtmTeam.setExpanded(true);
-
+//
 		TreeItem trtmCodeReview = new TreeItem(trtmBuiltin, SWT.NONE);
 		trtmCodeReview.setImage(SWTResourceManager.getImage(Const.FOLDER_ICON_PATH));
 		trtmCodeReview.setText("Code Review");
@@ -142,7 +161,7 @@ public class ConfigTree {
 		TreeItem trtmCigitalJavaSecurity = new TreeItem(trtmSecurity, SWT.NONE);
 		trtmCigitalJavaSecurity.setText("Cigital Java Security Rule Pack");
 		trtmCigitalJavaSecurity.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
-
+//
 		TreeItem trtmOwaspTop = new TreeItem(trtmSecurity, SWT.NONE);
 		trtmOwaspTop.setText("OWASP Top 10 Security Vulnerabilities (Server Configuration)");
 		trtmOwaspTop.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
@@ -225,89 +244,193 @@ public class ConfigTree {
 		TreeItem trtmTestHibernateCode = new TreeItem(trtmStaticAnalysis, SWT.NONE);
 		trtmTestHibernateCode.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
 		trtmTestHibernateCode.setText("Test Hibernate Code");
-
-		TreeItem trtmThreadFeProgramming = new TreeItem(trtmStaticAnalysis, SWT.NONE);
+		
+		TreeItem trtmThreadFeProgramming = new TreeItem(trtmBuiltin, SWT.NONE);
 		trtmThreadFeProgramming.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
 		trtmThreadFeProgramming.setText("Thread Safe Programming");
-
-		TreeItem trtmWritingRobustJava = new TreeItem(trtmStaticAnalysis, SWT.NONE);
-		trtmWritingRobustJava.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
-		trtmWritingRobustJava.setText("Writing Robust Java Code by AmbySoft");
-		trtmStaticAnalysis.setExpanded(true);
-
-		TreeItem trtmTestDrivenDevelopment = new TreeItem(trtmBuiltin, SWT.NONE);
-		trtmTestDrivenDevelopment.setImage(SWTResourceManager.getImage(Const.FOLDER_ICON_PATH));
-		trtmTestDrivenDevelopment.setText("Test Driven Development");
-
-		TreeItem trtmCodeSmellstdd = new TreeItem(trtmTestDrivenDevelopment, SWT.NONE);
+		TreeItem trtmCodeSmellstdd = new TreeItem(trtmBuiltin, SWT.NONE);
 		trtmCodeSmellstdd.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
 		trtmCodeSmellstdd.setText("Code Smells (TDD Standards)");
-
-		TreeItem trtmTdd = new TreeItem(trtmTestDrivenDevelopment, SWT.NONE);
-		trtmTdd.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
-		trtmTdd.setText("TDD");
-
-		TreeItem trtmTddWithDesign = new TreeItem(trtmTestDrivenDevelopment, SWT.NONE);
-		trtmTddWithDesign.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
-		trtmTddWithDesign.setText("Tdd with Design by Contract");
-		trtmTestDrivenDevelopment.setExpanded(true);
-
-		TreeItem trtmUnitTesting = new TreeItem(trtmBuiltin, SWT.NONE);
-		trtmUnitTesting.setImage(SWTResourceManager.getImage(Const.FOLDER_ICON_PATH));
-		trtmUnitTesting.setText("Unit Testing");
-
-		TreeItem trtmBugdetectivelicenseRequired = new TreeItem(trtmUnitTesting, SWT.NONE);
-		trtmBugdetectivelicenseRequired.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
-		trtmBugdetectivelicenseRequired.setText("BugDetective (License Required)");
-
-		TreeItem trtmDemoConfiguration = new TreeItem(trtmUnitTesting, SWT.NONE);
+		
+		TreeItem trtmDemoConfiguration = new TreeItem(trtmUser, SWT.NONE);
 		trtmDemoConfiguration.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
 		trtmDemoConfiguration.setText("Demo Configuration");
-
-		TreeItem trtmGenerateAndRun = new TreeItem(trtmUnitTesting, SWT.NONE);
-		trtmGenerateAndRun.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
-		trtmGenerateAndRun.setText("Generate and Run Unit Tests");
-
-		TreeItem trtmMetrics = new TreeItem(trtmUnitTesting, SWT.NONE);
-		trtmMetrics.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
-		trtmMetrics.setText("Metrics");
-
-		TreeItem trtmRunStaticAnalysis = new TreeItem(trtmUnitTesting, SWT.NONE);
-		trtmRunStaticAnalysis.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
-		trtmRunStaticAnalysis.setText("Run Static Analysis");
-
-		TreeItem trtmRunStaticAnalysisAndTests = new TreeItem(trtmUnitTesting, SWT.NONE);
+		
+		TreeItem trtmRunStaticAnalysisAndTests = new TreeItem(trtmBuiltin, SWT.NONE);
 		trtmRunStaticAnalysisAndTests.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
 		trtmRunStaticAnalysisAndTests.setText("Run Static Analysis and Unit Tests");
 
-		TreeItem trtmRunUnitTests = new TreeItem(trtmUnitTesting, SWT.NONE);
-		trtmRunUnitTests.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
-		trtmRunUnitTests.setText("Run Unit Tests");
-
-		trtmUnitTesting.setExpanded(true);
+//		TreeItem trtmThreadFeProgramming = new TreeItem(trtmStaticAnalysis, SWT.NONE);
+//		trtmThreadFeProgramming.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
+//		trtmThreadFeProgramming.setText("Thread Safe Programming");
+//
+//		TreeItem trtmWritingRobustJava = new TreeItem(trtmStaticAnalysis, SWT.NONE);
+//		trtmWritingRobustJava.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
+//		trtmWritingRobustJava.setText("Writing Robust Java Code by AmbySoft");
+//		trtmStaticAnalysis.setExpanded(true);
+//
+//		TreeItem trtmTestDrivenDevelopment = new TreeItem(trtmBuiltin, SWT.NONE);
+//		trtmTestDrivenDevelopment.setImage(SWTResourceManager.getImage(Const.FOLDER_ICON_PATH));
+//		trtmTestDrivenDevelopment.setText("Test Driven Development");
+//
+//		TreeItem trtmCodeSmellstdd = new TreeItem(trtmTestDrivenDevelopment, SWT.NONE);
+//		trtmCodeSmellstdd.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
+//		trtmCodeSmellstdd.setText("Code Smells (TDD Standards)");
+//
+//		TreeItem trtmTdd = new TreeItem(trtmTestDrivenDevelopment, SWT.NONE);
+//		trtmTdd.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
+//		trtmTdd.setText("TDD");
+//
+//		TreeItem trtmTddWithDesign = new TreeItem(trtmTestDrivenDevelopment, SWT.NONE);
+//		trtmTddWithDesign.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
+//		trtmTddWithDesign.setText("Tdd with Design by Contract");
+//		trtmTestDrivenDevelopment.setExpanded(true);
+//
+//		TreeItem trtmUnitTesting = new TreeItem(trtmBuiltin, SWT.NONE);
+//		trtmUnitTesting.setImage(SWTResourceManager.getImage(Const.FOLDER_ICON_PATH));
+//		trtmUnitTesting.setText("Unit Testing");
+//
+//		TreeItem trtmBugdetectivelicenseRequired = new TreeItem(trtmUnitTesting, SWT.NONE);
+//		trtmBugdetectivelicenseRequired.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
+//		trtmBugdetectivelicenseRequired.setText("BugDetective (License Required)");
+//
+//		TreeItem trtmDemoConfiguration = new TreeItem(trtmUnitTesting, SWT.NONE);
+//		trtmDemoConfiguration.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
+//		trtmDemoConfiguration.setText("Demo Configuration");
+//
+//		TreeItem trtmGenerateAndRun = new TreeItem(trtmUnitTesting, SWT.NONE);
+//		trtmGenerateAndRun.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
+//		trtmGenerateAndRun.setText("Generate and Run Unit Tests");
+//
+//		TreeItem trtmMetrics = new TreeItem(trtmUnitTesting, SWT.NONE);
+//		trtmMetrics.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
+//		trtmMetrics.setText("Metrics");
+//
+//		TreeItem trtmRunStaticAnalysis = new TreeItem(trtmUnitTesting, SWT.NONE);
+//		trtmRunStaticAnalysis.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
+//		trtmRunStaticAnalysis.setText("Run Static Analysis");
+//
+//		TreeItem trtmRunStaticAnalysisAndTests = new TreeItem(trtmUnitTesting, SWT.NONE);
+//		trtmRunStaticAnalysisAndTests.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
+//		trtmRunStaticAnalysisAndTests.setText("Run Static Analysis and Unit Tests");
+//
+//		TreeItem trtmRunUnitTests = new TreeItem(trtmUnitTesting, SWT.NONE);
+//		trtmRunUnitTests.setImage(SWTResourceManager.getImage(Const.HYPERCUBE_ICON_PATH));
+//		trtmRunUnitTests.setText("Run Unit Tests");
+//
+//		trtmUnitTesting.setExpanded(true);
 
 		// add event listener to tree
 		tree.addMouseListener(new MouseAdapter() {
-			public void mouseDoubleClick(MouseEvent evt) {
-				treeMouseDoubleClick(evt);
-			}
-			
+//			public void mouseDoubleClick(MouseEvent evt) {
+//				treeMouseDoubleClick(evt);
+//			}
+
 			public void mouseDown(MouseEvent evt) {
-				treeMouseDown(evt);
-			}
-			
-			
-
-			private void treeMouseDoubleClick(MouseEvent evt) {
-				// TODO Auto-generated method stub
-
+				boolean isTreeitem = evt.getSource() instanceof Tree;
+				selectedItem = ((Tree)(evt.getSource())).getSelection()[0];
+				System.out.println(selectedItem.getText());
+				if (isTreeitem) {
+					initMenu(evt);
+				}
 			}
 
-			private void treeMouseDown(MouseEvent evt) {
-				// TODO Auto-generated method stub
-
-			}
 		});
+		
+		
+	/*	// 懒加载
+	   tree.addListener(SWT.Expand, new Listener () {  
+            public void handleEvent (final Event event) {  
+                final TreeItem root = (TreeItem) event.item;  
+                TreeItem[] items = root.getItems ();  
+                for(int i= 0; i<items.length; i++) {  
+                    // if have added children for the item, just return.  
+                    if(items[i].getData() != null)  
+                        return;  
+                    items[i].dispose();  
+                }  
+                  
+                TreeItem item = (TreeItem) root.get
+                TreeItem[] childrenItems = item.getItems();
+                  
+                // disc return  
+                if(childrenItems == null) return;  
+                for(int i= 0; i<childrenItems.length; i++) {  
+                    TreeItem item = new TreeItem(root, 0);  
+                    item.setText(files[i].getName());  
+                    item.setData(files[i]);  
+                    if(files[i].isDirectory()) {  
+                        // display '+' only for directory.  
+                        new TreeItem(item, 0);  
+                    }  
+                }  
+            }  
+        });  */
+	}
+	public  void initMenu(MouseEvent event) {
+		initializeMenu();
+	}
+
+	private void initializeMenu()  {
+		// test eclipse path
+		/*File file = new File("D:\\testetet.txt");
+		PrintStream writer;
+		try {
+			writer = new PrintStream(file);
+			System.setOut(writer);
+			System.out.print(Platform.getInstallLocation());
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		
+		createActions();
+		MenuManager mgr = new MenuManager();
+		
+		mgr.add(newAction);
+		mgr.add(duplicateAction);
+		mgr.add(deleteAction);
+		mgr.add(exportAction);
+		mgr.add(setAsDefaultAction);
+		
+		Menu menu = mgr.createContextMenu(tree);
+		tree.setMenu(menu);
+	}
+
+	/*
+	 * 事件处理方法
+	 */
+	private void createActions() {
+		newAction = new Action("新建") {
+			public void run() {
+				// .........
+			}
+		};
+		duplicateAction = new Action("复制") {
+			public void run() {
+				// .........
+				TreeItem item = new TreeItem(trtmUser, SWT.None);
+				item.setImage(selectedItem.getImage());
+				item.setText(selectedItem.getText());
+			}
+		};
+		deleteAction = new Action("删除") {
+			public void run() {
+				// .........
+			}
+		};
+
+		exportAction = new Action("导出") {
+			public void run() {
+				// .........
+			}
+		};
+		setAsDefaultAction = new Action("设为默认") {
+			public void run() {
+				// .........
+			}
+		};
+
 	}
 
 	/**
@@ -362,120 +485,4 @@ public class ConfigTree {
 
 	}
 
-	public static void main(String[] args) {
-		System.out.println(configTreeFilePath);
-		Document doc;
-		DocumentBuilderFactory factory;
-		DocumentBuilder docBuilder;
-		Element root;
-		String elementName;
-		String[] elementsName = new String[] {
-
-		};
-		FileInputStream in;
-		try {
-			// get the xml file
-			in = new FileInputStream(configTreeFilePath);
-			// 解析XML文件,生成document对象
-			factory = DocumentBuilderFactory.newInstance();
-			factory.setValidating(false);
-			docBuilder = factory.newDocumentBuilder();
-			doc = docBuilder.parse(in);
-			// 解析成功
-			System.out.println("parse successfull");
-			// 获取XML文档的根节点
-			root = doc.getDocumentElement();
-			elementName = root.getNodeName();
-			// 打印根节点的属性
-			printAttributes(root);
-			// 打印该文档全部节点
-			System.out.println("打印全部节点");
-			// printElement(root, 0);
-		} catch (Exception exp) {
-			exp.printStackTrace();
-		}
-	}
-
-	// 打印某个节点的全部属性
-	public static void printAttributes(Element elem) {
-		NamedNodeMap attributes;
-		int i, max;
-		String name, value;
-		Node curNode;
-
-		attributes = elem.getAttributes();
-		max = attributes.getLength();
-
-		for (i = 0; i < max; i++) {
-			curNode = attributes.item(i);
-			name = curNode.getNodeName();
-			value = curNode.getNodeValue();
-			System.out.println("\t" + name + " = " + value);
-		}
-	}
-
-	// 打印所有的节点的名称和值
-	// 改方法采用递归方式打印文档的全部节点
-	public static void printElement(Element elem, int depth) {
-		String elementName;
-		NodeList children;
-		int i, max;
-		Node curChild;
-		Element curElement;
-		String nodeName, nodeValue;
-
-		// elementName = elem.getNodeName();
-		// 获取输入节点的全部子节点
-		children = elem.getChildNodes();
-
-		// 按一定格式打印输入节点
-		for (int j = 0; j < depth; j++) {
-			System.out.print(" ");
-		}
-		printAttributes(elem);
-
-		// 采用递归方式打印全部子节点
-		max = children.getLength();
-		for (i = 0; i < max; i++) {
-
-			curChild = children.item(i);
-
-			// 递归退出条件
-			if (curChild instanceof Element) {
-				curElement = (Element) curChild;
-				printElement(curElement, depth + 1);
-			} else {
-				nodeName = curChild.getNodeName();
-				nodeValue = curChild.getNodeValue();
-
-				for (int j = 0; j < depth; j++)
-					System.out.print(" ");
-				System.out.println(nodeName + " = " + nodeValue);
-			}
-		}
-
-	}
-
-}
-
-class treeEventHandler implements MouseListener{
-
-	@Override
-	public void mouseDoubleClick(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseDown(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseUp(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 }
