@@ -1,9 +1,11 @@
 package core.jtester.ontology.reasoner;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Platform;
@@ -80,13 +82,24 @@ public class JtesterReasoner implements IJob{
 
 	private void reasonOntology(TestData data) {
 		try { 
-			Bundle bundle = Platform.getBundle(Const.JTESTER);  
-			URL url = bundle.getResource(Const.OWL_PATH);  
-			String filePath = Const.FILE_Type + FileLocator.toFileURL(url).getFile();
-				
+			File file = null;
+			String filePath = "";
+			Bundle bundle = Platform.getBundle(Const.JTESTER);
+			
+			if(bundle != null){
+				// used in plug in
+				URL url = bundle.getResource(Const.OWL_PATH);
+				filePath = Const.FILE_Type + FileLocator.toFileURL(url).getFile();
+			}else{
+				// test in console
+				filePath = Const.OWL_PATH;
+			}
+			file = new File(filePath);
+
 			OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-			IRI docIRI = IRI.create(filePath);
+			IRI docIRI = IRI.create(file);
 			OWLOntology ont = manager.loadOntologyFromOntologyDocument(docIRI);
+			ont.getABoxAxioms(true);
 		    System.out.println("Loaded " + ont.getOntologyID());
 		    
 		    // setup variables
@@ -96,6 +109,12 @@ public class JtesterReasoner implements IJob{
             
             OWLDataFactory fac = manager.getOWLDataFactory();
             OWLClass results = fac.getOWLClass(IRI.create(Const.OntologyID + Const.OWL_WARNING));
+            
+            Set<OWLClass> owls = ont.getClassesInSignature();
+            for(OWLClass cls: owls){
+            	System.out.println(reasoner.getInstances(cls, false));
+            }
+            
             //System.out.println(results);
 		} catch (IOException e) {
 			e.printStackTrace();

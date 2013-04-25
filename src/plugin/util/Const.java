@@ -36,7 +36,7 @@ public class Const {
 	public final static String DATA_DETAINED_PATH = "/tested_files/type_inference/config/data_detained/";
 
 	// OWL
-	public final static String OWL_PATH = "/tested_files/ontology/java-spec.owl";
+	public final static String OWL_PATH = "./tested_files/ontology/java-spec.owl";
 	public final static String FILE_Type = "file:";
 	public final static String OntologyID = "http://www.pku.edu.cn/ontologies/2013/3/java6-spec.owl";
 	public final static String OWL_WARNING = "#Warning"; 

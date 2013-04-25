@@ -44,7 +44,7 @@ public class Syndrome {
             
             OutputStream out = null;
             //in.close();
-            //out.close();
+            out.close();
         } catch (IOException e) {
             e.printStackTrace();
             return;
