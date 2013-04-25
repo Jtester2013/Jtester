@@ -1,4 +1,4 @@
-package test;
+package core.common.svd.test;
 
 import java.io.File;
 import java.io.FileInputStream;

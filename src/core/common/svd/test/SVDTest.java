@@ -1,4 +1,4 @@
-package test;
+package core.common.svd.test;
 
 public class SVDTest {
 	public int max(int a, int b) {

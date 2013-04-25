@@ -1,4 +1,4 @@
-package test;
+package core.common.svd.test;
 
 import org.eclipse.core.runtime.Platform;
 
