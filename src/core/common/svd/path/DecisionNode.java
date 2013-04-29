@@ -6,9 +6,9 @@ public class DecisionNode extends PathNode {
 	
 	JavaConnectorNode continueNode = null;
 	int visitime = 0;
-	public int increaseVisit(){
-		
-	}
+//	public int increaseVisit(){
+//		
+//	}
 	/**
 	 * @param args
 	 */
