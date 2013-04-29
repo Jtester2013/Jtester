@@ -7,7 +7,7 @@ import core.common.cfg.model.*;
 
 import org.eclipse.jdt.core.dom.ASTNode;
 
-public class ExecutionPath {
+public class TempExecutionPath {
 	// a program execution path formed with several ASTNodes
 	private LinkedList<AbstractBasicBlock> pathAstNodes;
 	private PathEnvironment environment;
@@ -58,8 +58,8 @@ public class ExecutionPath {
 	/**
 	 * 
 	 */
-	public ExecutionPath clone(){
-		ExecutionPath newPath = new ExecutionPath();
+	public TempExecutionPath clone(){
+		TempExecutionPath newPath = new TempExecutionPath();
 		newPath.setPathAstNodes((LinkedList<AbstractBasicBlock>)(this.getPathAstNodes().clone()));
 		newPath.setEnvironment(this.getEnvironment().clone());
 		if (this!=null) {

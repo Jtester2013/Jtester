@@ -92,8 +92,8 @@ public class PathGenerator {
 		}
 	}
 
-	public static LinkedList<ExecutionPath> getPaths(MethodDeclaration[] methDecs) {
-		LinkedList<ExecutionPath> pathCollection = new LinkedList<>();
+	public static LinkedList<TempExecutionPath> getPaths(MethodDeclaration[] methDecs) {
+		LinkedList<TempExecutionPath> pathCollection = new LinkedList<>();
 		/*
 		 * 此处需要针对几个特定java元素进行分析和处理，因为情形较少所以不需要用visitor模式 if else 模块 while 模块 do
 		 * while 模块 switch 模块 注：此处不用visitor，但是在符号执行的时候就需要了，已针对不同java元素对变量进行分析和运算
@@ -133,8 +133,8 @@ public class PathGenerator {
 	 *            输入的方法体
 	 * @return
 	 */
-	public static LinkedList<ExecutionPath> getPaths(MethodDeclaration methDec) {
-		LinkedList<ExecutionPath> pathCollection = new LinkedList<>();
+	public static LinkedList<TempExecutionPath> getPaths(MethodDeclaration methDec) {
+		LinkedList<TempExecutionPath> pathCollection = new LinkedList<>();
 		/*
 		 * 此处需要针对几个特定java元素进行分析和处理，因为情形较少所以不需要用visitor模式 if else 模块 while 模块 do
 		 * while 模块 switch 模块 注：此处不用visitor，但是在符号执行的时候就需要了，已针对不同java元素对变量进行分析和运算
@@ -145,7 +145,7 @@ public class PathGenerator {
 			LinkedList<Statement> pathSource = new LinkedList<>();
 			pathSource.clone();
 			if (statement instanceof IfStatement) {
-				PathPrintVisitor printVisitor = new PathPrintVisitor();
+				TempPathPrintVisitor printVisitor = new TempPathPrintVisitor();
 				// statement.accept(printVisitor);//打印statements in a path
 				print(statement);
 				print(((IfStatement) statement).getExpression());
@@ -172,7 +172,7 @@ public class PathGenerator {
 	 * 
 	 * @param block
 	 */
-	private static void analyse(ASTNode node, LinkedList<ExecutionPath> pathCollection, ExecutionPath path) {
+	private static void analyse(ASTNode node, LinkedList<TempExecutionPath> pathCollection, TempExecutionPath path) {
 		if (node instanceof MethodDeclaration) {
 			// 抽取参数加到path的环境中（PathEnvironment）
 			Block block = ((MethodDeclaration) node).getBody();
@@ -187,7 +187,7 @@ public class PathGenerator {
 				// getNegationExpr(ifExpression);
 			}
 
-			ExecutionPath negationPath = path.clone();
+			TempExecutionPath negationPath = path.clone();
 //			path.add(((IfStatement) node).getExpression());// 这里要处理数据流图节点和AST节点的转换
 
 		} else if (node instanceof WhileStatement) {

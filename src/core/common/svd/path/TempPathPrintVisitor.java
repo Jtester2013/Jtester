@@ -1,5 +1,6 @@
 package core.common.svd.path;
 
+import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.AnnotationTypeDeclaration;
 import org.eclipse.jdt.core.dom.AnnotationTypeMemberDeclaration;
@@ -36,6 +37,7 @@ import org.eclipse.jdt.core.dom.ImportDeclaration;
 import org.eclipse.jdt.core.dom.InfixExpression;
 import org.eclipse.jdt.core.dom.Initializer;
 import org.eclipse.jdt.core.dom.InstanceofExpression;
+import org.eclipse.jdt.core.dom.Javadoc;
 import org.eclipse.jdt.core.dom.LabeledStatement;
 import org.eclipse.jdt.core.dom.LineComment;
 import org.eclipse.jdt.core.dom.MarkerAnnotation;
@@ -85,16 +87,89 @@ import org.eclipse.jdt.core.dom.VariableDeclarationStatement;
 import org.eclipse.jdt.core.dom.WhileStatement;
 import org.eclipse.jdt.core.dom.WildcardType;
 
-public class PathExecuteVisitor extends ASTVisitor {
-
+public class TempPathPrintVisitor extends ASTVisitor {
+	
 	/**
-	 * @param args
+	 * Visits the given type-specific AST node.
+	 * <p>
+	 * The default implementation does nothing and return true.
+	 * Subclasses may reimplement.
+	 * </p>
+	 *
+	 * @param node the node to visit
+	 * @return <code>true</code> if the children of this node should be
+	 * visited, and <code>false</code> if the children of this node should
+	 * be skipped
 	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public boolean visit(IfStatement node) {
+		System.out.println(node.getExpression());
+		return true;
 	}
 	
+	/**
+	 * Visits the given type-specific AST node.
+	 * <p>
+	 * The default implementation does nothing and return true.
+	 * Subclasses may reimplement.
+	 * </p>
+	 *
+	 * @param node the node to visit
+	 * @return <code>true</code> if the children of this node should be
+	 * visited, and <code>false</code> if the children of this node should
+	 * be skipped
+	 */
+	public boolean visit(WhileStatement node) {
+		System.out.println(node.getExpression());
+		return true;
+	}
+	
+	/**
+	 * Visits the given AST node prior to the type-specific visit
+	 * (before <code>visit</code>).
+	 * <p>
+	 * The default implementation does nothing. Subclasses may reimplement.
+	 * </p>
+	 *
+	 * @param node the node to visit
+	 *
+	 * @see #preVisit2(ASTNode)
+	 */
+	public void preVisit(ASTNode node) {
+		// default implementation: do nothing
+	}
+
+	/**
+	 * Visits the given AST node prior to the type-specific visit (before <code>visit</code>).
+	 * <p>
+	 * The default implementation calls {@link #preVisit(ASTNode)} and then
+	 * returns true. Subclasses may reimplement.
+	 * </p>
+	 *
+	 * @param node the node to visit
+	 * @return <code>true</code> if <code>visit(node)</code> should be called,
+	 * and <code>false</code> otherwise.
+	 * @see #preVisit(ASTNode)
+	 * @since 3.5
+	 */
+	public boolean preVisit2(ASTNode node) {
+		preVisit(node);
+		return true;
+	}
+
+	/**
+	 * Visits the given AST node following the type-specific visit
+	 * (after <code>endVisit</code>).
+	 * <p>
+	 * The default implementation does nothing. Subclasses may reimplement.
+	 * </p>
+	 *
+	 * @param node the node to visit
+	 */
+	public void postVisit(ASTNode node) {
+		// default implementation: do nothing
+	}
+
+
 	/**
 	 * Visits the given type-specific AST node.
 	 * <p>
@@ -588,22 +663,7 @@ public class PathExecuteVisitor extends ASTVisitor {
 		return true;
 	}
 
-	/**
-	 * Visits the given type-specific AST node.
-	 * <p>
-	 * The default implementation does nothing and return true.
-	 * Subclasses may reimplement.
-	 * </p>
-	 *
-	 * @param node the node to visit
-	 * @return <code>true</code> if the children of this node should be
-	 * visited, and <code>false</code> if the children of this node should
-	 * be skipped
-	 */
-	public boolean visit(IfStatement node) {
-		
-		return true;
-	}
+	
 
 	/**
 	 * Visits the given type-specific AST node.
@@ -1450,26 +1510,11 @@ public class PathExecuteVisitor extends ASTVisitor {
 	 * @return <code>true</code> if the children of this node should be
 	 * visited, and <code>false</code> if the children of this node should
 	 * be skipped
-	 */
-	public boolean visit(WhileStatement node) {
-		return true;
-	}
-
-	/**
-	 * Visits the given type-specific AST node.
-	 * <p>
-	 * The default implementation does nothing and return true.
-	 * Subclasses may reimplement.
-	 * </p>
-	 *
-	 * @param node the node to visit
-	 * @return <code>true</code> if the children of this node should be
-	 * visited, and <code>false</code> if the children of this node should
-	 * be skipped
 	 * @since 3.1
 	 */
 	public boolean visit(WildcardType node) {
 		return true;
 	}
+
 
 }

@@ -11,9 +11,9 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-public class ParseJavaSource {
+public class TempParseJavaSource {
 
-	public ParseJavaSource() {
+	public TempParseJavaSource() {
 		// TODO Auto-generated constructor stub
 		super();
 	}

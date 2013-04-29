@@ -28,7 +28,7 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 import org.eclipse.jdt.core.dom.WhileStatement;
 
-public class PathSelectVisitor extends ASTVisitor {
+public class TempPathSelectVisitor extends ASTVisitor {
 	public static HashMap<InfixExpression.Operator, InfixExpression.Operator> infixOperator = new HashMap<>();
 	static {
 		// 存储相反逻辑运算符的hashmap，将来根据需要扩展，此处暂时就这么多
@@ -67,9 +67,9 @@ public class PathSelectVisitor extends ASTVisitor {
 	 * @param methodDeclaration
 	 * @return 程序路径集
 	 */
-	public static LinkedList<ExecutionPath> selectPath(MethodDeclaration methodDeclaration) {
+	public static LinkedList<TempExecutionPath> selectPath(MethodDeclaration methodDeclaration) {
 		// 存储从method找到的所有路径
-		LinkedList<ExecutionPath> pathCollection = null;
+		LinkedList<TempExecutionPath> pathCollection = null;
 		// System.out.println(methodDeclaration);// 输出method进行验证
 		// 解析method，先不管函数调用，需要解析的部分就是常用语句、if条件语句、while条件语句、等。
 		// 然后针对具体语句类型应用Visitor模式进行处理。
@@ -78,7 +78,7 @@ public class PathSelectVisitor extends ASTVisitor {
 			LinkedList<Statement> pathSource = new LinkedList<>();
 			pathSource.clone();
 			if (statement instanceof IfStatement) {
-				PathPrintVisitor printVisitor = new PathPrintVisitor();
+				TempPathPrintVisitor printVisitor = new TempPathPrintVisitor();
 				// print("hahaha");
 				// statement.accept(printVisitor);
 				// print("hahaha");
