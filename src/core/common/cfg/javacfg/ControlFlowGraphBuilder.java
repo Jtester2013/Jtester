@@ -46,6 +46,7 @@ import core.common.cfg.interfaces.ISingleOutgoing;
 import core.common.cfg.interfaces.IStartNode;
 import core.common.cfg.model.AbstractBasicBlock;
 import core.common.cfg.model.JumpNode;
+import core.common.model.functionblock.ConditionExpression;
 import core.common.model.jobflow.JobConst;
 import core.common.util.Abacus;
 
@@ -58,7 +59,7 @@ public class ControlFlowGraphBuilder {
 	IConnectorNode outerBreak;
 	IConnectorNode outerContinue;
 	HashMap<String, IBasicBlock> labels = new HashMap<String, IBasicBlock>(0);
-	
+	List<ConditionExpression> conditions = new ArrayList<ConditionExpression>();
 	
 	boolean cut = false;
 	// only deal with NumberLiteral field
@@ -96,6 +97,7 @@ public class ControlFlowGraphBuilder {
 		}
 		
 		JavaControlFlowGraph graph = new JavaControlFlowGraph(start, exits);
+		graph.setConditions(conditions);
 		graph.setUnconnectedNodes(dead);
 		return graph;
 	}
@@ -254,28 +256,48 @@ public class ControlFlowGraphBuilder {
 	}
 	
 	protected IBasicBlock createIf(IBasicBlock prev, IfStatement body) {
-		
+		IConnectorNode mergeNode = null;
 		JavaDecisionNode ifNode = factory.createDecisionNode(body.getExpression());
 		addOutgoing(prev, ifNode);
-		
-		IConnectorNode mergeNode = factory.createConnectorNode();
+		mergeNode = factory.createConnectorNode();
 		ifNode.setMergeNode(mergeNode);
-		
+		if(!cut) {
+			createIfHelper_then(ifNode, mergeNode, body);
+			createIfHelper_else(ifNode, mergeNode, body);
+		} else{
+			int condition = parseDecision(body.getExpression());
+			switch(condition){
+			case -1:
+				createIfHelper_then(ifNode, mergeNode, body);
+				createIfHelper_else(ifNode, mergeNode, body);
+				break;
+			case 0:
+				createIfHelper_else(ifNode, mergeNode, body);
+				break;
+			case 1:
+				createIfHelper_then(ifNode, mergeNode, body);
+				break;
+			}
+		}
+		return mergeNode;
+	}
+	
+	private void createIfHelper_then(JavaDecisionNode ifNode, IConnectorNode mergeNode, IfStatement body){
 		IBranchNode thenNode = factory.createBranchNode(IBranchNode.IF_THEN, body.getExpression());
 		addOutgoing(ifNode, thenNode);
 		IBasicBlock then = createSubGraph(thenNode, body.getThenStatement());
 		addJump(then, mergeNode);
-		
+	}
+	
+	private void createIfHelper_else(JavaDecisionNode ifNode, IConnectorNode mergeNode, IfStatement body){
 		IBranchNode elseNode = factory.createBranchNode(IBranchNode.IF_ELSE, body.getExpression());
 		addOutgoing(ifNode, elseNode);
 		IBasicBlock els = createSubGraph(elseNode, body.getElseStatement());
 		addJump(els, mergeNode);
-		
-		return mergeNode;
 	}
 	
 	protected IBasicBlock createWhile(IBasicBlock prev, WhileStatement body) {
-		if(cut && !parseDecision(body.getExpression())){
+		if (cut && parseDecision(body.getExpression()) == 0) {
 			return prev;
 		}
 		
@@ -538,7 +560,14 @@ public class ControlFlowGraphBuilder {
 		}
 	}
 	
-	private boolean parseDecision(Expression exp) {
+	/**
+	 * 
+	 * @param exp
+	 * @return -1: can't parse decision
+	 *         0: decision always false
+	 *         1: decision always true
+	 */
+	private int parseDecision(Expression exp) {
 		if(exp instanceof InfixExpression){
 			Expression left = ((InfixExpression) exp).getLeftOperand();
 			Expression right = ((InfixExpression) exp).getRightOperand();
@@ -547,11 +576,14 @@ public class ControlFlowGraphBuilder {
 				int leftVal = Abacus.compute(left, fields);
 				int rightVal = Abacus.compute(right, fields);
 				Operator op = ((InfixExpression) exp).getOperator();
-				return Abacus.compare(op, leftVal, rightVal);
+				boolean result = Abacus.compare(op, leftVal, rightVal);
+				
+				conditions.add(new ConditionExpression(exp, result));
+				return result==true? 1: 0;
 			}else {
-				return true;
+				return -1;
 			}
 		}
-		return false;
+		return -1;
 	}
 }

@@ -11,7 +11,8 @@ public class Syndrome {
 		String[] array = new String[10];
 		int arg1 = 10;
 		int arg2 = 2;
-		if (arg1 > arg2) {
+		
+		if (arg1 < arg2) {
 			array[10] = "hello world";
 		} else {
 			array[10] = "hello world";
@@ -24,7 +25,7 @@ public class Syndrome {
 		
 		long p = dividend;
 		long q = p * 100;
-		
+
 		divisor = q * q  - 100 * p * q + p - 100;
 		//divisor = 1;
 		

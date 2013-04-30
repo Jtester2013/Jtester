@@ -1,15 +1,18 @@
 package core.common.cfg.javacfg;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 
 import core.common.cfg.interfaces.IExitNode;
 import core.common.cfg.interfaces.IStartNode;
 import core.common.cfg.model.ControlFlowGraph;
+import core.common.model.functionblock.ConditionExpression;
 
 public class JavaControlFlowGraph extends ControlFlowGraph {
 	private MethodDeclaration method;
+	private List<ConditionExpression> conditions;
 	
 	public JavaControlFlowGraph(IStartNode start, Collection<IExitNode> exitNodes) {
 		super(start, exitNodes);
@@ -31,6 +34,14 @@ public class JavaControlFlowGraph extends ControlFlowGraph {
 		return method;
 	}
 	
+	public void setConditions(List<ConditionExpression> conditions) {
+		this.conditions = conditions;
+	}
+
+	public List<ConditionExpression> getConditions() {
+		return conditions;
+	}
+
 	@Override
 	public String toString() {
 		return super.toString();

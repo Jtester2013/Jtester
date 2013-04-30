@@ -25,6 +25,7 @@ import org.eclipse.jdt.core.dom.VariableDeclarationStatement;
 import core.common.cfg.interfaces.IBasicBlock;
 import core.common.cfg.javacfg.JavaControlFlowGraph;
 import core.common.cfg.model.AbstractBasicBlock;
+import core.common.model.functionblock.ConditionExpression;
 import core.common.model.jobflow.IJob;
 import core.common.model.jobflow.JobConst;
 import core.common.model.semantics.DeclarationSemantics;
@@ -54,6 +55,7 @@ public class SemanticsExtractor implements IJob{
 		List<JavaControlFlowGraph> cfgs = (List<JavaControlFlowGraph>) file.get(JobConst.CONTROL_FLOW_GRAPH);
 		for(JavaControlFlowGraph cfg: cfgs){
 			handleMethod(cfg.getMethod());
+			handleCondition(cfg.getConditions());
 			Iterator<IBasicBlock> nodes  = cfg.getNodes().iterator();
 			while(nodes.hasNext()){
 				AbstractBasicBlock node = (AbstractBasicBlock) nodes.next();
@@ -73,6 +75,16 @@ public class SemanticsExtractor implements IJob{
 		List<ASTNode> parametors = method.parameters();
 		for(ASTNode node: parametors){
 			handleSemantics(node);
+		}
+	}
+	
+	private void handleCondition(List<ConditionExpression> ces) {
+		if(ces == null || ces.isEmpty()){
+			return;
+		}
+		for(ConditionExpression condition: ces){
+			int line = getLineNumber(condition.getExpression());
+			condition.setLine(line);
 		}
 	}
 
