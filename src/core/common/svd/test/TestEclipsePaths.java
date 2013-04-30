@@ -1,6 +1,8 @@
 package core.common.svd.test;
 
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.jdt.core.dom.ASTNode;
+import org.eclipse.jdt.core.dom.*;
 
 public class TestEclipsePaths {
 
