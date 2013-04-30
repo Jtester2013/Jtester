@@ -294,7 +294,6 @@ public class PathGenerator {
 
 	/**
 	 * 简化的打印方法
-	 * 
 	 * @param o
 	 */
 	private static void print(Object o) {
@@ -306,7 +305,7 @@ public class PathGenerator {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String path = "D:\\eclipse\\junoee\\workspace\\Jtester\\src\\test\\SVDTest.java";
+		String path = "D:\\eclipse\\junoee\\workspace\\Jtester\\src\\core\\common\\svd\\test\\SVDTest.java";
 		CompilationUnit unit = getCompilationUnit(path);
 		MethodDeclaration[] methods = ((TypeDeclaration) (unit.types().get(0))).getMethods();
 		// print(methods[0]);
