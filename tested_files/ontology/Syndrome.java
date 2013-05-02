@@ -12,10 +12,6 @@ public class Syndrome {
 		int arg1 = 10;
 		int arg2 = 2;
 		
-		while(arg2> 0){
-			arg2 = arg2-1;
-		}
-		
 		if (arg1 < arg2) {
 			array[10] = "hello world1";
 		} else {
@@ -24,17 +20,17 @@ public class Syndrome {
 	}
 	
 	public long divide() {
-		long dividend = 100;
+		long dividend = 100; 
 		long divisor = 0;
 		
-		long p = dividend;
-		long q = p * 100;
+		long p = dividend; //100
+		long q = p * 100; //10000
 
-		divisor = q * q  - 100 * p * q + p - 100;
+		divisor = q * q  - 100 * p * q + p - 100; //100
 		//divisor = 1;
 		
-		long result = dividend / divisor
-		
+		long result = dividend / divisor; // 100\0
+				
 		return result;
 	}
 	

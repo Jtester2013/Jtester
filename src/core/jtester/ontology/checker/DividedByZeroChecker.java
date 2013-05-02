@@ -2,27 +2,35 @@ package core.jtester.ontology.checker;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.jdt.core.dom.ASTNode;
+import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.InfixExpression;
+import org.eclipse.jdt.core.dom.Name;
 
 import core.common.model.jobflow.JobConst;
+import core.common.model.semantics.DIPair;
 import core.common.model.semantics.DeclarationSemantics;
 import core.common.model.semantics.InferenceSemantics;
 import core.common.model.semantics.SemanticsStore;
 import core.common.model.test.TestData;
 import core.common.model.test.TestFile;
+import core.common.util.ASTUtil;
 import core.common.util.Abacus;
 import core.jtester.ontology.reasoner.IChecker;
 
 public class DividedByZeroChecker implements IChecker{
-
+	private CompilationUnit root;
+	
 	public void check(TestData data) {
 		TestFile file = data.getCurrentTestFile();
+		root = (CompilationUnit) file.get(JobConst.AST);
 		
 		SemanticsStore store = (SemanticsStore) file.get(JobConst.SEMANTICS);
 		List<InferenceSemantics> exceptions = handleSemantics(store);
@@ -58,14 +66,11 @@ public class DividedByZeroChecker implements IChecker{
 		}
 		
 		for(InferenceSemantics is: toCheck){
-			Iterator<DeclarationSemantics> ir2 = store.iterator1();
-			while(ir2.hasNext()){
-				DeclarationSemantics ds = ir2.next();
-				if(ds.getName().toString().equals(is.getName().toString())){
-					boolean isZero = isExpressionZero(ds.getValue(), store);
-					if(isZero){
-						violations.add(is);
-					}
+			List<DeclarationSemantics> declarations = is.getDeclaraions();
+			for(DeclarationSemantics ds: declarations){
+				if(isExpressionZero(ds.getName().toString(), ds.getValue(), store)){
+					violations.add(is);
+					break;
 				}
 			}
 		}
@@ -73,42 +78,113 @@ public class DividedByZeroChecker implements IChecker{
 		return violations;
 	}
 	
-	private boolean isExpressionZero(Expression exp, SemanticsStore store){
+	private boolean containsVariable(Expression exp){
+		boolean result = false;
+		switch(exp.getNodeType()){
+		case ASTNode.SIMPLE_NAME:
+			result = true;
+			break;
+		case ASTNode.INFIX_EXPRESSION:
+			InfixExpression ie = (InfixExpression)exp;
+			Expression left = ie.getLeftOperand();
+			Expression right = ie.getRightOperand();
+			result = containsVariable(left) | containsVariable(right);
+			
+			List<Name> extendedOprands = ie.extendedOperands();
+			for(Name var : extendedOprands){
+				result |= containsVariable(var);
+			}
+			break;
+		}
+		return result;
+	}
+	
+	private void findVariable(Expression exp, Set<String> names){
+		switch(exp.getNodeType()){
+		case ASTNode.SIMPLE_NAME:
+			names.add(exp.toString());
+			break;
+		case ASTNode.INFIX_EXPRESSION:
+			InfixExpression ie = (InfixExpression)exp;
+			Expression left = ie.getLeftOperand();
+			Expression right = ie.getRightOperand();
+			findVariable(left, names);
+			findVariable(right, names);
+			
+			List<Name> extendedOprands = ie.extendedOperands();
+			for(Name var : extendedOprands){
+				names.add(var.toString());
+			}
+			break;
+		}
+	}
+	
+	private Set<InferenceSemantics> getInferenceSemantics(int line, Set<String> names, SemanticsStore store){
+		Set<InferenceSemantics> ss = new HashSet<InferenceSemantics>();
+		for(String name: names){
+			Iterator<InferenceSemantics> ir = store.iterator2();
+			while(ir.hasNext()){
+				InferenceSemantics is = ir.next();
+				if(is.getLine() == line && is.getName().toString().equals(name)){
+					ss.add(is);
+					break;
+				}
+			}
+		}
+		return ss;
+	}
+	
+	private List<DeclarationSemantics> getDeclarations(Expression exp, SemanticsStore store){
+		List<DeclarationSemantics> semantics = new ArrayList<DeclarationSemantics>();
+		
+		Set<String> names = new HashSet<String>();
+		findVariable(exp, names);
+	
+		int line = ASTUtil.getLineNumber(root, exp);
+		Set<InferenceSemantics> ss = getInferenceSemantics(line, names, store);
+		for(InferenceSemantics is: ss){
+			List<DeclarationSemantics> dss = is.getDeclaraions();
+			semantics.addAll(dss);
+		}
+		
+		return semantics;
+	}
+	
+	private void isExpressionZeroHelper(String name, Expression exp, SemanticsStore store, Map<String, Integer> fields){
+		List<DeclarationSemantics> dss = getDeclarations(exp, store);
+		
+		for(DeclarationSemantics ds: dss){
+			Expression value = ds.getValue();
+			switch(value.getNodeType()){
+			case ASTNode.NUMBER_LITERAL:
+				fields.put(ds.getName().toString(), Integer.parseInt(value.toString()));
+				break;
+			case ASTNode.INFIX_EXPRESSION:
+				if(containsVariable(exp)){
+					isExpressionZeroHelper(ds.getName().toString(), value, store, fields);
+				}
+				fields.put(ds.getName().toString(), Abacus.compute(exp, fields));
+				break;
+			case ASTNode.SIMPLE_NAME:
+				isExpressionZeroHelper(ds.getName().toString(), value, store, fields);
+				break;
+			}
+		}
+		
+		int expValue = Abacus.compute(exp, fields);
+		fields.put(name, expValue);
+	}
+	
+	
+	private boolean isExpressionZero(String name, Expression exp, SemanticsStore store){
 		if(exp == null){
 			return false;
 		}
 		
 		Map<String, Integer> fields = new HashMap<String, Integer>();
-		Iterator<DeclarationSemantics> ir = store.iterator1();
-		while(ir.hasNext()){
-			DeclarationSemantics ds = ir.next();
-			if(!ds.getType().isPrimitiveType()){
-				// not primitive type
-				continue;
-			}
-			setFields(ds, fields);
-		}
 		
+		isExpressionZeroHelper(name, exp,store,fields);
 		return Abacus.compute(exp, fields) == 0;
-	}
-	
-	// try but not promise to get value of all variables
-	private void setFields(DeclarationSemantics ds, Map<String, Integer> fields){
-		Expression exp = ds.getValue();
-		switch(exp.getNodeType()){
-		case ASTNode.NUMBER_LITERAL:
-			fields.put(ds.getName().toString(), Integer.parseInt(exp.toString()));
-			break;
-		case ASTNode.SIMPLE_NAME:
-			int infer = fields.get(exp.toString());
-			fields.put(ds.getName().toString(), infer);
-			break;
-		case ASTNode.INFIX_EXPRESSION:
-			InfixExpression ie = (InfixExpression)exp;
-			int result = Abacus.compute(exp, fields);
-			fields.put(ds.getName().toString(), result);
-			break;
-		}
 	}
 	
 	private void generateReport(List<InferenceSemantics> exceptions){
