@@ -19,6 +19,21 @@ import core.common.cfg.interfaces.IBranchNode;
  */
 public class BranchNode extends PlainNode implements IBranchNode {
 	protected String label;
+	boolean visited = false;
+
+	public boolean isVisited() {
+		return visited;
+	}
+
+	public void setVisited(boolean visited) {
+		this.visited = visited;
+	}
+	
+	public boolean revertVisited(){
+		boolean revert = !visited;
+		visited = revert;
+		return visited;
+	}
 
 	protected BranchNode(String label) {
 		super();
