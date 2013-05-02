@@ -99,6 +99,7 @@ public class ControlFlowGraphBuilder {
 		JavaControlFlowGraph graph = new JavaControlFlowGraph(start, exits);
 		graph.setConditions(conditions);
 		graph.setUnconnectedNodes(dead);
+		graph.setMethod(def);
 		return graph;
 	}
 
