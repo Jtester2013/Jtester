@@ -33,10 +33,10 @@ import core.jtester.ontology.reasoner.IChecker;
 public class IfAlwaysTrueOrFalseChecker extends ASTVisitor implements IChecker{
 	TestData data;
 	// only deal with NumberLiteral field
-	private Map<String, Integer> fields;
+	private Map<String, Long> fields;
 	
 	public IfAlwaysTrueOrFalseChecker(){
-		fields = new HashMap<String, Integer>();
+		fields = new HashMap<String, Long>();
 	}
 	
 	public void check(TestData data){
@@ -85,8 +85,8 @@ public class IfAlwaysTrueOrFalseChecker extends ASTVisitor implements IChecker{
 			Expression left = ((InfixExpression) exp).getLeftOperand();
 			Expression right = ((InfixExpression) exp).getRightOperand();
 			
-			int leftVal = Abacus.compute(left, fields);
-			int rightVal = Abacus.compute(right, fields);
+			long leftVal = Abacus.compute(left, fields);
+			long rightVal = Abacus.compute(right, fields);
 			
 			Operator op = ((InfixExpression) exp).getOperator();
 			
@@ -106,7 +106,7 @@ public class IfAlwaysTrueOrFalseChecker extends ASTVisitor implements IChecker{
 		for(int i=0;i< fragments.size();i++){
 			SimpleName var = fragments.get(i).getName();
 			Expression exp = fragments.get(i).getInitializer();
-			int value = Abacus.compute(exp, fields);
+			long value = Abacus.compute(exp, fields);
 			fields.put(var.toString(), value);
 		}
 	}
@@ -120,7 +120,7 @@ public class IfAlwaysTrueOrFalseChecker extends ASTVisitor implements IChecker{
 				return;
 			}
 			Expression rightHandExp = assignment.getRightHandSide();
-			int value = Abacus.compute(rightHandExp, fields);
+			long value = Abacus.compute(rightHandExp, fields);
 			fields.put(var.toString(), value);
 		}
 	}

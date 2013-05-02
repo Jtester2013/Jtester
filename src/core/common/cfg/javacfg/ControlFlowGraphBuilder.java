@@ -63,7 +63,7 @@ public class ControlFlowGraphBuilder {
 	
 	boolean cut = false;
 	// only deal with NumberLiteral field
-	private Map<String, Integer> fields = new HashMap<String, Integer>();
+	private Map<String, Long> fields = new HashMap<String, Long>();
 
 	public JavaControlFlowGraph build(MethodDeclaration def, boolean cutUnaccessibleBranch) {
 		cut = cutUnaccessibleBranch;
@@ -533,7 +533,7 @@ public class ControlFlowGraphBuilder {
 		for(int i=0;i< fragments.size();i++){
 			SimpleName var = fragments.get(i).getName();
 			Expression exp = fragments.get(i).getInitializer();
-			int value = Abacus.compute(exp, fields);
+			long value = Abacus.compute(exp, fields);
 			fields.put(var.toString(), value);
 		}
 	}
@@ -547,7 +547,7 @@ public class ControlFlowGraphBuilder {
 				return;
 			}
 			Expression rightHandExp = assignment.getRightHandSide();
-			int value = Abacus.compute(rightHandExp, fields);
+			long value = Abacus.compute(rightHandExp, fields);
 			fields.put(var.toString(), value);
 		}
 	}
@@ -557,7 +557,7 @@ public class ControlFlowGraphBuilder {
 			if(!declaration.getType().toString().equals(JobConst.INT)){
 				continue;
 			}
-			fields.put(declaration.getName().toString(), 0);
+			fields.put(declaration.getName().toString(), 0l);
 		}
 	}
 	
@@ -574,8 +574,8 @@ public class ControlFlowGraphBuilder {
 			Expression right = ((InfixExpression) exp).getRightOperand();
 			
 			if(left instanceof SimpleName && right instanceof SimpleName){
-				int leftVal = Abacus.compute(left, fields);
-				int rightVal = Abacus.compute(right, fields);
+				long leftVal = Abacus.compute(left, fields);
+				long rightVal = Abacus.compute(right, fields);
 				Operator op = ((InfixExpression) exp).getOperator();
 				boolean result = Abacus.compare(op, leftVal, rightVal);
 				

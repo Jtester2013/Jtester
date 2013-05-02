@@ -153,13 +153,13 @@ public class DividedByZeroChecker implements IChecker{
 		return semantics;
 	}
 	
-	private void isExpressionZeroHelper(String name, Expression exp, SemanticsStore store, Map<String, Integer> fields){
+	private void isExpressionZeroHelper(String name, Expression exp, SemanticsStore store, Map<String, Long> fields){
 		List<DeclarationSemantics> dss = getDeclarations(exp, store);
 		for(DeclarationSemantics ds: dss){
 			Expression value = ds.getValue();
 			switch(value.getNodeType()){
 			case ASTNode.NUMBER_LITERAL:
-				fields.put(ds.getName().toString(), Integer.parseInt(value.toString()));
+				fields.put(ds.getName().toString(), Long.parseLong(value.toString()));
 				break;
 			case ASTNode.INFIX_EXPRESSION:
 				if(containsVariable(exp)){
@@ -173,7 +173,7 @@ public class DividedByZeroChecker implements IChecker{
 			}
 		}
 		
-		int expValue = Abacus.compute(exp, fields);
+		long expValue = Abacus.compute(exp, fields);
 		fields.put(name, expValue);
 	}
 	
@@ -183,7 +183,7 @@ public class DividedByZeroChecker implements IChecker{
 			return false;
 		}
 		
-		Map<String, Integer> fields = new HashMap<String, Integer>();
+		Map<String, Long> fields = new HashMap<String, Long>();
 		
 		isExpressionZeroHelper(name, exp,store,fields);
 		return Abacus.compute(exp, fields) == 0;

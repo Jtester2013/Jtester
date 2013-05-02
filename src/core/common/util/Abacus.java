@@ -31,15 +31,15 @@ public class Abacus {
 	 * @param fields contains all the (variable, value) pairs.
 	 * @return
 	 */
-	public static int compute(Expression exp, Map<String, Integer> fields){
-		int returnValue = 0;
+	public static long compute(Expression exp, Map<String, Long> fields){
+		long returnValue = 0;
 		if(exp instanceof InfixExpression){
 			InfixExpression ie = (InfixExpression)exp;
 			Expression left = ie.getLeftOperand();
 			Expression right = ie.getRightOperand();
 			
-			int leftValue = 0;
-			int rightValue = 0;
+			long leftValue = 0;
+			long rightValue = 0;
 			
 			if(left instanceof InfixExpression){
 				leftValue = compute(left, fields);
@@ -57,11 +57,11 @@ public class Abacus {
 			
 			List<Object> extendedOprands = ie.extendedOperands();
 			for(Object var : extendedOprands){
-				int varValue = 0;
+				long varValue = 0;
 				if(var instanceof SimpleName){
 					varValue = computeHelper((Expression) var, fields);
 				}else if(var instanceof NumberLiteral){
-					varValue = Integer.parseInt(var.toString());
+					varValue = Long.parseLong(var.toString());
 				}
 			
 				returnValue = computeValue(returnValue, varValue, ie.getOperator());
@@ -74,28 +74,28 @@ public class Abacus {
 		return returnValue;
 	}
 	
-	private static int computeHelper(Expression exp, Map<String, Integer> fields){
-		int result = 0;
+	private static long computeHelper(Expression exp, Map<String, Long> fields){
+		long result = 0;
 		try{
 			if(exp instanceof NumberLiteral){
-				result = Integer.parseInt(exp.toString());
+				result = Long.parseLong(exp.toString());
 			}else if(exp instanceof InfixExpression){
 				// only deal with binary expression
 				InfixExpression infix = (InfixExpression)exp;
 				Expression left = infix.getLeftOperand();
 				Expression right = infix.getRightOperand();
 				
-				int leftVal = 0;
-				int rightVal = 0;
+				long leftVal = 0;
+				long rightVal = 0;
 				
 				if(left instanceof NumberLiteral){
-					leftVal = Integer.parseInt(left.toString());
+					leftVal = Long.parseLong(left.toString());
 				}else{
 					leftVal = fields.get(left.toString());
 				}
 				
 				if(right instanceof NumberLiteral){
-					rightVal = Integer.parseInt(right.toString());
+					rightVal = Long.parseLong(right.toString());
 				}else{
 					rightVal = fields.get(right.toString());
 				}
@@ -107,7 +107,7 @@ public class Abacus {
 			} else {
 				Object r = fields.get(exp.toString());
 				if(r != null){
-					result = (Integer)r;
+					result = (Long)r;
 				}
 			}
 		}catch(Exception e){
@@ -116,8 +116,8 @@ public class Abacus {
 		return result;
 	}
 	
-	private static int computeValue(int leftVal, int rightVal, Operator op){
-		int result = 0;
+	private static long computeValue(long leftVal, long rightVal, Operator op){
+		long result = 0;
 		if(op.equals(InfixExpression.Operator.PLUS)){
 			result = leftVal + rightVal;
 		}else if(op.equals(InfixExpression.Operator.MINUS)){
@@ -144,7 +144,7 @@ public class Abacus {
 	 * @param right
 	 * @return
 	 */
-	public static boolean compare(Operator op, int left, int right){
+	public static boolean compare(Operator op, long left, long right){
 		boolean result = false;
 		if(op.equals(InfixExpression.Operator.GREATER)){
 			result = left > right ? true: false;
