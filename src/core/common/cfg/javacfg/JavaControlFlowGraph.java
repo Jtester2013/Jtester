@@ -41,7 +41,12 @@ public class JavaControlFlowGraph extends ControlFlowGraph {
 	public List<ConditionExpression> getConditions() {
 		return conditions;
 	}
-
+	
+	// get the method name of this cfg
+	public String getSignature(){
+		return method.getName().toString();
+	}
+	
 	@Override
 	public String toString() {
 		return super.toString();
