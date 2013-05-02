@@ -8,6 +8,7 @@ import org.eclipse.jdt.core.dom.InfixExpression;
 import org.eclipse.jdt.core.dom.Name;
 import org.eclipse.jdt.core.dom.NumberLiteral;
 import org.eclipse.jdt.core.dom.InfixExpression.Operator;
+import org.eclipse.jdt.core.dom.SimpleName;
 
 /**
  * Abacus is used to compute values from Expression
@@ -54,9 +55,15 @@ public class Abacus {
 			
 			returnValue = computeValue(leftValue, rightValue, ie.getOperator());
 			
-			List<Name> extendedOprands = ie.extendedOperands();
-			for(Name var : extendedOprands){
-				int varValue = computeHelper(var, fields);
+			List<Object> extendedOprands = ie.extendedOperands();
+			for(Object var : extendedOprands){
+				int varValue = 0;
+				if(var instanceof SimpleName){
+					varValue = computeHelper((Expression) var, fields);
+				}else if(var instanceof NumberLiteral){
+					varValue = Integer.parseInt(var.toString());
+				}
+			
 				returnValue = computeValue(returnValue, varValue, ie.getOperator());
 			}
 		}else{

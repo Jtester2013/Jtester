@@ -13,6 +13,7 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.InfixExpression;
 import org.eclipse.jdt.core.dom.Name;
+import org.eclipse.jdt.core.dom.SimpleName;
 
 import core.common.model.jobflow.JobConst;
 import core.common.model.semantics.DIPair;
@@ -90,9 +91,9 @@ public class DividedByZeroChecker implements IChecker{
 			Expression right = ie.getRightOperand();
 			result = containsVariable(left) | containsVariable(right);
 			
-			List<Name> extendedOprands = ie.extendedOperands();
-			for(Name var : extendedOprands){
-				result |= containsVariable(var);
+			List extendedOprands = ie.extendedOperands();
+			for(Object var : extendedOprands){
+				result |= containsVariable((Expression) var);
 			}
 			break;
 		}
@@ -111,9 +112,11 @@ public class DividedByZeroChecker implements IChecker{
 			findVariable(left, names);
 			findVariable(right, names);
 			
-			List<Name> extendedOprands = ie.extendedOperands();
-			for(Name var : extendedOprands){
-				names.add(var.toString());
+			List<Object> extendedOprands = ie.extendedOperands();
+			for(Object var : extendedOprands){
+				if(var instanceof SimpleName){
+					names.add(var.toString());
+				}
 			}
 			break;
 		}
@@ -152,7 +155,6 @@ public class DividedByZeroChecker implements IChecker{
 	
 	private void isExpressionZeroHelper(String name, Expression exp, SemanticsStore store, Map<String, Integer> fields){
 		List<DeclarationSemantics> dss = getDeclarations(exp, store);
-		
 		for(DeclarationSemantics ds: dss){
 			Expression value = ds.getValue();
 			switch(value.getNodeType()){
