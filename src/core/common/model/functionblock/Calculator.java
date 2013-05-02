@@ -208,7 +208,7 @@ public abstract class Calculator implements IJob {
 				item.add(entry);
 				item.add(exit);
 				result.add(data.getCurrentTestFile().getPath(), item);
-				System.out.println(lineNumber + ": "  + src + ";\t" + entry + ";\t" + exit);
+				//System.out.println(lineNumber + ": "  + src + ";\t" + entry + ";\t" + exit);
 			}
 		}
 	}

@@ -25,6 +25,14 @@ public class TestResult {
 		result.put(filePath, list);
 	}
 	
+	public ArrayList<TestResultItem> getFileTestResult(String filePath){
+		return result.get(filePath);
+	}
+	
+	public ArrayList<TestResultItem> getCurrentFileTestResult(){
+		return result.get(filePath);
+	}
+	
 	public HashMap<String, ArrayList<TestResultItem>> getResult(){
 		return result;
 	}

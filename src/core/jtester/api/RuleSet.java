@@ -25,6 +25,7 @@ public class RuleSet {
 	
 	// semantics extraction
 	public static final String SEMANTICS_EXTRACTION = "core.jtester.staticanalysis.semantics_extraction.SemanticsExtractor";
+	public static final String SEMANTICS_ADAPTER = "core.jtester.ontology.adapter.SemanticsAdapter";
 	
 	// ontology reasoning
 	public static final String ONTOLOGY_REASONER = "core.jtester.ontology.reasoner.JtesterReasoner";

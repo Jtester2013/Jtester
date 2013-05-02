@@ -26,6 +26,6 @@ public class DefLocPair {
 	}
 	
 	public String displayPair(){
-		return "( " + this._varName + ", " + this._startLine + " )";
+		return "(" + this._varName + "," + this._startLine + ")";
 	}
 }

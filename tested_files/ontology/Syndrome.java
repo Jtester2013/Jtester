@@ -12,6 +12,10 @@ public class Syndrome {
 		int arg1 = 10;
 		int arg2 = 2;
 		
+		while(arg2> 0){
+			arg2 = arg2-1;
+		}
+		
 		if (arg1 < arg2) {
 			array[10] = "hello world1";
 		} else {
@@ -29,7 +33,9 @@ public class Syndrome {
 		divisor = q * q  - 100 * p * q + p - 100;
 		//divisor = 1;
 		
-		return dividend / divisor;
+		long result = dividend / divisor
+		
+		return result;
 	}
 	
 	public void readFileByBytes(String fileName) {

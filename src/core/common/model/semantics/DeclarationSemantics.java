@@ -44,6 +44,6 @@ public class DeclarationSemantics {
 	
 	@Override
 	public String toString(){
-		return line + ": "  + type + " "+ name + " = " + value;
+		return line + ": " + name.getParent().getParent().toString().replace("\n", "");
 	}
 }

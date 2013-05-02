@@ -189,7 +189,7 @@ public class SemanticsExtractor implements IJob{
 			Expression right = assign.getRightHandSide();
 			handleExpression(left);
 			handleExpression(right);
-			updateVariable(left, right);
+			addVariableDeclaration(left, right);
 			break;
 		case ASTNode.METHOD_INVOCATION:
 			MethodInvocation mi = (MethodInvocation)exp;
@@ -212,23 +212,27 @@ public class SemanticsExtractor implements IJob{
 	}
 	
 	/**
-	 * update variable values for assignments
+	 * add variable declaration for re-assignments
 	 * 
 	 * NOTE: Now this method doesn't fulfill all the conditions.
 	 * 
 	 * @param semantics
 	 * @param value
 	 */
-	private void updateVariable(Expression left, Expression right){
+	private void addVariableDeclaration(Expression left, Expression right){
 		if(left == null || !(left instanceof Name)){
 			return;
 		}
-		
 		Iterator<DeclarationSemantics> ir = store.iterator1();
 		while(ir.hasNext()){
 			DeclarationSemantics ds = ir.next();
 			if(ds.getName().toString().equals(left.toString())){
-				ds.setValue(right);
+				DeclarationSemantics dsNew = new DeclarationSemantics();
+				dsNew.setLine(getLineNumber(left));
+				dsNew.setType(ds.getType());
+				dsNew.setName((Name)left);
+				dsNew.setValue(right);
+				store.putDeclarationStore(dsNew);
 				break;
 			}
 		}
