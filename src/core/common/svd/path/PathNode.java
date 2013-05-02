@@ -5,6 +5,8 @@ import core.common.cfg.interfaces.*;
 import core.common.cfg.javacfg.*;
 
 public class PathNode {
+	PathnodeType type;
+	boolean isPositive = true;
 	AbstractBasicBlock data;
 	
 	public AbstractBasicBlock getData() {

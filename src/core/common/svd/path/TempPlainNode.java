@@ -1,6 +1,6 @@
 package core.common.svd.path;
 
-public class PlainNode extends PathNode {
+public class TempPlainNode extends PathNode {
 
 	/**
 	 * @param args
