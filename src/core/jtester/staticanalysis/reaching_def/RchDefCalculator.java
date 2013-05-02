@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
@@ -19,14 +20,10 @@ import core.common.model.test.TestFile;
 
 public class RchDefCalculator extends Calculator implements IJob {
 
-	public void initAnalysisBlocks(TestData data) {
-		TestFile file = data.getCurrentTestFile();
-		
+	public void initAnalysisBlocks(FunctionInfo functionInfo, TestData data) {
 		analysisBlocks = new ArrayList<AnalysisBlock>();
-		HashMap<String, FunctionInfo> funsInfo = (HashMap<String, FunctionInfo>) file.get(JobConst.FUNCTIONSINFO);
-		FunctionInfo functionInfo0 = funsInfo.get("f0");
 		// 通过getNodes获取一个cfg中所有的节点
-		Collection<IBasicBlock> bbRes = functionInfo0.getJavaControlFlowGraph().getNodes();
+		Collection<IBasicBlock> bbRes = functionInfo.getJavaControlFlowGraph().getNodes();
 		// 将每一个node放到一个AnalysisBlock里面
 		Iterator<IBasicBlock> itr = bbRes.iterator();
 		int i = 0;
@@ -166,10 +163,17 @@ public class RchDefCalculator extends Calculator implements IJob {
 	
 	@Override
 	public boolean run(TestData data) {
-		this.initAnalysisBlocks(data);
-		this.initWorklist();
-		this.calculateSolution();
-		this.displaySolution(data);
+		TestFile file = data.getCurrentTestFile();
+		HashMap<String, FunctionInfo> funsInfo = (HashMap<String, FunctionInfo>) file.get(JobConst.FUNCTIONSINFO);
+		Iterator it = funsInfo.entrySet().iterator();
+		while (it.hasNext()) {
+			Map.Entry e = (Map.Entry) it.next();
+			FunctionInfo functionInfo = (FunctionInfo) e.getValue();
+			this.initAnalysisBlocks(functionInfo, data);
+			this.initWorklist();
+			this.calculateSolution();
+			this.displaySolution(data);
+		}
 		return true;
 	}
 }

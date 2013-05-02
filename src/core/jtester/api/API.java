@@ -47,6 +47,7 @@ public class API {
 		List<String> rules = new ArrayList<String>();
 		rules.add(RuleSet.FUNCTION_INFO_VISITOR);
 		rules.add(RuleSet.SEMANTICS_EXTRACTION);
+		rules.add(RuleSet.REACHING_DEF);
 		rules.add(RuleSet.ONTOLOGY_REASONER);
 		
 		API.analyze(paths, rules, null);

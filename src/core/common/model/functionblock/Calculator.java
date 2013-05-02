@@ -1,6 +1,9 @@
 package core.common.model.functionblock;
 
 import java.util.ArrayList;
+
+import org.eclipse.jdt.core.dom.ASTNode;
+import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.InfixExpression;
 import org.eclipse.jdt.core.dom.SimpleName;
@@ -10,9 +13,12 @@ import core.common.cfg.model.AbstractBasicBlock;
 import core.common.model.functionblock.AnalysisBlock;
 import core.common.model.functionblock.Flow;
 import core.common.model.jobflow.IJob;
+import core.common.model.jobflow.JobConst;
 import core.common.model.test.TestData;
+import core.common.model.test.TestFile;
 import core.common.model.test.TestResult;
 import core.common.model.test.TestResultItem;
+import core.common.util.ASTUtil;
 import core.jtester.api.RuleSet;
 import core.jtester.staticanalysis.const_propagation.Var2Value;
 import core.jtester.staticanalysis.reaching_def.DefLocPair;
@@ -138,6 +144,9 @@ public abstract class Calculator implements IJob {
 
 	protected void displaySolution(TestData data) {
 		TestResult result = data.getTestResult();
+		TestFile file = data.getCurrentTestFile();
+		CompilationUnit root = (CompilationUnit)file.get(JobConst.AST);
+		
 		for (int i = 0; i < this.analysisBlocks.size(); i++) {
 			String lineNumber="";
 			String src="";
@@ -149,7 +158,9 @@ public abstract class Calculator implements IJob {
 					|| (this.analysisBlocks.get(i).getBasicBlock() instanceof IExitNode)) 
 					&& (!(this.analysisBlocks.get(i).getBasicBlock() instanceof IBranchNode))) {
 				
-				lineNumber = this.analysisBlocks.get(i).getLable() + "";
+				//lineNumber = this.analysisBlocks.get(i).getLable() + "";
+				lineNumber = ASTUtil.getLineNumber(root, (ASTNode)(((AbstractBasicBlock)this.analysisBlocks.get(i).getBasicBlock()).getData())) + "";
+				
 				src = ((AbstractBasicBlock) this.analysisBlocks	.get(i).getBasicBlock()).toStringData().replace("\n", "");
 				
 				if (this.analysisBlocks.get(i).getEntry().size() == 0) {
@@ -197,11 +208,11 @@ public abstract class Calculator implements IJob {
 				item.add(entry);
 				item.add(exit);
 				result.add(data.getCurrentTestFile().getPath(), item);
-				//System.out.println(lineNumber + ": "  + src + ": " + entry + " :" + exit);
+				System.out.println(lineNumber + ": "  + src + ";\t" + entry + ";\t" + exit);
 			}
 		}
 	}
-
+	
 	@Override
 	public String getName() {
 		return name;

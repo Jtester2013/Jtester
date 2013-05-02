@@ -13,9 +13,9 @@ public class Syndrome {
 		int arg2 = 2;
 		
 		if (arg1 < arg2) {
-			array[10] = "hello world";
+			array[10] = "hello world1";
 		} else {
-			array[10] = "hello world";
+			array[10] = "hello world2";
 		}
 	}
 	

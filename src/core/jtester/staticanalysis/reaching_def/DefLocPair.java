@@ -20,6 +20,7 @@ public class DefLocPair {
 	public String getVarName(){
 		return this._varName;
 	}
+	
 	public void setVarName(String name){
 		this._varName = name;		
 	}
