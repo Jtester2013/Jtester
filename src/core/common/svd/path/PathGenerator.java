@@ -42,6 +42,7 @@ public class PathGenerator {
 	public static Path[] abstractPath(JavaControlFlowGraph cfg){
 		ArrayList<Path> paths = new ArrayList<>();
 		IBasicBlock start = cfg.getStartNode();
+		// 对给定的cfg进行路径抽取
 		
 		// 返回路径集
 		Path[] pathArray = new Path[paths.size()];
