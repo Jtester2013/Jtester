@@ -188,5 +188,4 @@ public class PathGenerator {
 		JavaControlFlowGraph[] cfgArrayControlFlowGraphs = new JavaControlFlowGraph[methods.length];
 		return cfgs.toArray(cfgArrayControlFlowGraphs);
 	}
-
 }
