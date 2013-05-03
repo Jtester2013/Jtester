@@ -22,6 +22,19 @@ import core.common.cfg.interfaces.IJumpNode;
 public class JumpNode extends AbstractSingleIncomingNode implements IJumpNode {
 	private IConnectorNode jump;
 	private boolean backward;
+	int visitedTime=1;
+
+	public int getVisitedTime() {
+		return visitedTime;
+	}
+
+	public void setVisitedTime(int visitedTime) {
+		this.visitedTime = visitedTime;
+	}
+	
+	public void increaseVisitedTime() {
+		visitedTime+=1;
+	}
 
 	protected JumpNode() {
 		super();
