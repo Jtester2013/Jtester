@@ -26,6 +26,30 @@ import core.common.cfg.interfaces.IDecisionNode;
 public class DecisionNode extends AbstractSingleIncomingNode implements IDecisionNode {
 	private List<IBasicBlock> next = new ArrayList<IBasicBlock>(2);
 	private IConnectorNode conn;
+	boolean detected = false;
+	public boolean isDetected() {
+		return detected;
+	}
+
+	public void setDetected(boolean detected) {
+		this.detected = detected;
+	}
+	
+	public boolean revertDetected(){
+		boolean revert = !detected;
+		detected = revert;
+		return detected;
+	}
+
+	IConnectorNode continueConn = null;
+
+	public IConnectorNode getContinueConn() {
+		return continueConn;
+	}
+
+	public void setContinueConn(IConnectorNode continueConn) {
+		this.continueConn = continueConn;
+	}
 
 	/**
 	 * @param prev
