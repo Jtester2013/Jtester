@@ -18,15 +18,23 @@ import core.common.cfg.interfaces.IBranchNode;
 import core.common.cfg.interfaces.IConnectorNode;
 import core.common.cfg.interfaces.IDecisionNode;
 
-
-
 /**
  * @see {@link IDecisionNode}
  */
 public class DecisionNode extends AbstractSingleIncomingNode implements IDecisionNode {
 	private List<IBasicBlock> next = new ArrayList<IBasicBlock>(2);
 	private IConnectorNode conn;
+	IConnectorNode continueConn = null;
 	boolean detected = false;
+	
+	public IConnectorNode getContinueConn() {
+		return continueConn;
+	}
+
+	public void setContinueConn(IConnectorNode continueConn) {
+		this.continueConn = continueConn;
+	}
+
 	public boolean isDetected() {
 		return detected;
 	}
@@ -39,16 +47,6 @@ public class DecisionNode extends AbstractSingleIncomingNode implements IDecisio
 		boolean revert = !detected;
 		detected = revert;
 		return detected;
-	}
-
-	IConnectorNode continueConn = null;
-
-	public IConnectorNode getContinueConn() {
-		return continueConn;
-	}
-
-	public void setContinueConn(IConnectorNode continueConn) {
-		this.continueConn = continueConn;
 	}
 
 	/**
