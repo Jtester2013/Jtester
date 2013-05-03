@@ -15,7 +15,14 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 import core.common.cfg.interfaces.IBasicBlock;
 import core.common.cfg.javacfg.ControlFlowGraphBuilder;
+import core.common.cfg.javacfg.JavaBranchNode;
+import core.common.cfg.javacfg.JavaConnectorNode;
 import core.common.cfg.javacfg.JavaControlFlowGraph;
+import core.common.cfg.javacfg.JavaDecisionNode;
+import core.common.cfg.javacfg.JavaExitNode;
+import core.common.cfg.javacfg.JavaJumpNode;
+import core.common.cfg.javacfg.JavaPlainNode;
+import core.common.cfg.javacfg.JavaStartNode;
 import core.common.cfg.model.AbstractBasicBlock;
 import core.common.cfg.model.ControlFlowGraph;
 
@@ -41,8 +48,33 @@ public class PathGenerator {
 
 	public static Path[] abstractPath(JavaControlFlowGraph cfg){
 		ArrayList<Path> paths = new ArrayList<>();
+		LinkedList<IBasicBlock> path = new LinkedList<>();
 		IBasicBlock start = cfg.getStartNode();
+		path.add(start);
+		IBasicBlock currentNode = start;
+		IBasicBlock nextBasicBlock;
 		// 对给定的cfg进行路径抽取
+		while (paths.size()!=0) {
+			if (currentNode instanceof JavaPlainNode) {
+				path.add(currentNode);
+				currentNode = ((JavaPlainNode) currentNode).getOutgoing();
+				continue;
+			}else if (currentNode instanceof JavaDecisionNode) {
+				
+			}else if (currentNode instanceof JavaBranchNode) {
+				
+			}else if (currentNode instanceof JavaJumpNode) {
+				if
+				
+			}else if (currentNode instanceof JavaExitNode) {
+				
+			}else if (currentNode instanceof JavaConnectorNode) {
+				
+			}else if (currentNode instanceof JavaStartNode) {
+				currentNode = ((JavaStartNode) currentNode).getOutgoing();
+				continue;
+			}
+		}
 		
 		// 返回路径集
 		Path[] pathArray = new Path[paths.size()];

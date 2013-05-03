@@ -6,6 +6,10 @@ import core.common.cfg.model.DecisionNode;
 
 
 public class JavaDecisionNode extends DecisionNode {
+	public JavaDecisionNode() {
+		// TODO Auto-generated constructor stub
+		super();
+	}
 	
 	public void setNode(ASTNode node) {
 		setData(node);
