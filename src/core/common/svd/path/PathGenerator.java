@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,10 +23,6 @@ import core.common.cfg.javacfg.JavaExitNode;
 import core.common.cfg.javacfg.JavaJumpNode;
 import core.common.cfg.javacfg.JavaPlainNode;
 import core.common.cfg.javacfg.JavaStartNode;
-import core.common.cfg.model.AbstractBasicBlock;
-import core.common.cfg.model.BranchNode;
-import core.common.cfg.model.ConnectorNode;
-import core.common.cfg.model.ControlFlowGraph;
 
 public class PathGenerator {
 
@@ -189,4 +184,3 @@ public class PathGenerator {
 		return cfgs.toArray(cfgArrayControlFlowGraphs);
 	}
 }
-
