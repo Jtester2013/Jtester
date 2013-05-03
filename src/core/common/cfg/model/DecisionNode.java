@@ -11,6 +11,7 @@
 package core.common.cfg.model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import core.common.cfg.interfaces.IBasicBlock;
@@ -21,12 +22,13 @@ import core.common.cfg.interfaces.IDecisionNode;
 /**
  * @see {@link IDecisionNode}
  */
-public class DecisionNode extends AbstractSingleIncomingNode implements IDecisionNode {
+public class DecisionNode extends AbstractSingleIncomingNode implements
+		IDecisionNode {
 	private List<IBasicBlock> next = new ArrayList<IBasicBlock>(2);
 	private IConnectorNode conn;
 	IConnectorNode continueConn = null;
 	boolean detected = false;
-	
+
 	public IConnectorNode getContinueConn() {
 		return continueConn;
 	}
@@ -36,19 +38,44 @@ public class DecisionNode extends AbstractSingleIncomingNode implements IDecisio
 	}
 
 	public boolean isDetected() {
-		return detected;
+		boolean isDetected = true;
+		for (Iterator iterator = next.iterator(); iterator.hasNext();) {
+			BranchNode tempBranch = (BranchNode) iterator.next();
+			if (!tempBranch.isDetected()) {
+				isDetected = false;
+				break;
+			}
+		}
+		return isDetected;
 	}
 
-	public void setDetected(boolean detected) {
+	/*public void setDetected(boolean detected) {
 		this.detected = detected;
-	}
-	
-	public boolean revertDetected(){
+	}*/
+
+	public boolean revertDetected() {
 		boolean revert = !detected;
 		detected = revert;
 		return detected;
 	}
 
+	public BranchNode getUndetectedBranch() {
+		BranchNode resultBranchNode = null;
+		for (Iterator iterator = next.iterator(); iterator.hasNext();) {
+			BranchNode tempBranch = (BranchNode) iterator.next();
+			if (!tempBranch.isDetected()) {
+				resultBranchNode= tempBranch;
+			}
+		}
+		return resultBranchNode;
+	}
+
+	public void cleanBranch(){
+		for (Iterator iterator = next.iterator(); iterator.hasNext();) {
+			BranchNode branch = (BranchNode) iterator.next();
+			branch.setDetected(false);
+		}
+	}
 	/**
 	 * @param prev
 	 */

@@ -153,7 +153,6 @@ public class TempPathGenerator {
 				// getNegationExpr(ifExpression);
 			}
 
-			Path negationPath = path.clone();
 //			path.add(((IfStatement) node).getExpression());// 这里要处理数据流图节点和AST节点的转换
 
 		} else if (node instanceof WhileStatement) {

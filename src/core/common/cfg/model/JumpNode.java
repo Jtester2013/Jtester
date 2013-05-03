@@ -75,7 +75,7 @@ public class JumpNode extends AbstractSingleIncomingNode implements IJumpNode {
 	public void setBackward(boolean backward) {
 		this.backward = backward;
 	}
-
+	
 	@Override
 	public void addOutgoing(IBasicBlock node) {
 		setJump((IConnectorNode) node, backward);
