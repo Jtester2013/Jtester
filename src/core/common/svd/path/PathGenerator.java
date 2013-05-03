@@ -64,7 +64,6 @@ public class PathGenerator {
 			}else if (currentNode instanceof JavaBranchNode) {
 				
 			}else if (currentNode instanceof JavaJumpNode) {
-				if
 				
 			}else if (currentNode instanceof JavaExitNode) {
 				
