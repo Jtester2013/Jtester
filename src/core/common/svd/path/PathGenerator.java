@@ -95,7 +95,8 @@ public class PathGenerator {
 				
 			}else if (currentNode instanceof JavaJumpNode) {// TODO
 				JavaJumpNode tempNode = (JavaJumpNode)currentNode;
-				/*if (tempNode.isBackwardArc()) {
+				path.add(tempNode);
+				/*if (tempNode.isBackwardArc()) {// 如果这是循环语句的跳转边
 					
 				}*/
 				currentNode = tempNode.getOutgoing();
