@@ -13,16 +13,9 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-import core.common.cfg.interfaces.IBasicBlock;
-import core.common.cfg.javacfg.ControlFlowGraphBuilder;
-import core.common.cfg.javacfg.JavaBranchNode;
-import core.common.cfg.javacfg.JavaConnectorNode;
-import core.common.cfg.javacfg.JavaControlFlowGraph;
-import core.common.cfg.javacfg.JavaDecisionNode;
-import core.common.cfg.javacfg.JavaExitNode;
-import core.common.cfg.javacfg.JavaJumpNode;
-import core.common.cfg.javacfg.JavaPlainNode;
-import core.common.cfg.javacfg.JavaStartNode;
+import core.common.cfg.interfaces.*;
+import core.common.cfg.javacfg.*;
+import core.common.cfg.model.*;
 
 public class PathGenerator {
 
@@ -55,36 +48,13 @@ public class PathGenerator {
 		LinkedList<IBasicBlock> path = new LinkedList<>();
 		IBasicBlock start = cfg.getStartNode();
 		IBasicBlock currentNode = start;
-		IBasicBlock nextBasicBlock;
 		// 对给定的cfg进行路径抽取
 		System.out.println("Begin path abstraction");
 		
-		while (currentNode!=null || path.size()!=0) {// To be consider
-			if (currentNode instanceof JavaPlainNode) {
-				JavaPlainNode tempNode = (JavaPlainNode)currentNode;
-				path.add(currentNode);
-				currentNode = ((JavaPlainNode) currentNode).getOutgoing();
-				
-			}else if (currentNode instanceof JavaDecisionNode) {// 维护detected信息
-				JavaDecisionNode tempNode = (JavaDecisionNode)currentNode;
-				if (tempNode.isDetected()) {// 如果这个DecisionNode的分支已经被全部探测完，则回溯到上一个DecisionNode
-					tempNode.cleanBranch();//将其各个branchnode 的detected设置为false
-					currentNode = findUpperDecision(path);
-				}else {
-					path.add(tempNode);
-					currentNode = tempNode.getUndetectedBranch();
-				}
-				/*BranchNode branchNode = tempNode.getUndetectedBranch();
-				if (branchNode != null) {
-					path.add(currentNode);
-					currentNode=branchNode;
-					continue;
-				}else{// 所有branch都被访问过，于是标记此decision也被访问过
-					tempNode.setDetected(true);
-				}*/
-				
-			}else if (currentNode instanceof JavaBranchNode) {
-				JavaBranchNode tempNode = (JavaBranchNode)currentNode;
+		while (currentNode!=null || path.size()!=0) {// 
+			
+			if (currentNode instanceof BranchNode) {// must solve BranchNode before PlainNode.
+				BranchNode tempNode = (BranchNode)currentNode;
 				if (tempNode.isDetected()) {
 					currentNode=findUpperDecision(path);
 				}else {
@@ -92,29 +62,53 @@ public class PathGenerator {
 					path.add(tempNode);
 					currentNode = tempNode.getOutgoing();
 				}
+				continue;
 				
-			}else if (currentNode instanceof JavaJumpNode) {// TODO
-				JavaJumpNode tempNode = (JavaJumpNode)currentNode;
+			}else if (currentNode instanceof PlainNode) {
+				PlainNode tempNode = (PlainNode)currentNode;
+				path.add(currentNode);
+				currentNode = ((PlainNode) currentNode).getOutgoing();
+				continue;
+				
+			}else if (currentNode instanceof DecisionNode) {// 维护detected信息
+				DecisionNode tempNode = (DecisionNode)currentNode;
+				if (tempNode.isDetected()) {// 如果这个DecisionNode的分支已经被全部探测完，则回溯到上一个DecisionNode
+					tempNode.cleanBranch();//将其各个branchnode 的detected设置为false
+					currentNode = findUpperDecision(path);
+				}else {
+					path.add(tempNode);
+					currentNode = tempNode.getUndetectedBranch();
+				}
+				continue;
+				
+			}else if (currentNode instanceof JumpNode) {// TODO
+				JumpNode tempNode = (JumpNode)currentNode;
 				path.add(tempNode);
 				/*if (tempNode.isBackwardArc()) {// 如果这是循环语句的跳转边
 					
 				}*/
 				currentNode = tempNode.getOutgoing();
+				continue;
 				
-			}else if (currentNode instanceof JavaExitNode) {
-				JavaExitNode tempNode = (JavaExitNode)currentNode;
+			}else if (currentNode instanceof ExitNode) {
+				ExitNode tempNode = (ExitNode)currentNode;
 				path.add(tempNode);
 				LinkedList<IBasicBlock> completePath = (LinkedList<IBasicBlock>)path.clone();
 				paths.add(new Path(completePath));
 				currentNode = findUpperDecision(path);
+				continue;
 				
-			}else if (currentNode instanceof JavaConnectorNode) {
-				JavaPlainNode tempNode = (JavaPlainNode)currentNode;
-				currentNode = tempNode.getOutgoing();
-				
-			}else if (currentNode instanceof JavaStartNode) {
+			}else if (currentNode instanceof ConnectorNode) {
+				ConnectorNode tempNode = (ConnectorNode)currentNode;
 				path.add(currentNode);
-				currentNode = ((JavaStartNode) currentNode).getOutgoing();
+				currentNode = tempNode.getOutgoing();
+				continue;
+				
+			}else if (currentNode instanceof StartNode) {
+				StartNode tempNode = (StartNode)currentNode;
+				path.add(currentNode);
+				currentNode = tempNode.getOutgoing();
+				continue;
 			}
 		}
 		
@@ -142,12 +136,12 @@ public class PathGenerator {
 	}
 
 	// 返回path中倒数第一的DecisionNode，并删除此DecisionNode之后的所有节点
-	private static  JavaDecisionNode findUpperDecision(LinkedList<IBasicBlock> path){
+	private static  DecisionNode findUpperDecision(LinkedList<IBasicBlock> path){
 		IBasicBlock tempBasicBlock;
 		for (int i = path.size(); i>0 ; i--) {
 			tempBasicBlock = path.remove();
-			if (tempBasicBlock instanceof JavaDecisionNode) {
-				return (JavaDecisionNode)tempBasicBlock;
+			if (tempBasicBlock instanceof DecisionNode) {
+				return (DecisionNode)tempBasicBlock;
 			}
 		}
 		return null;
