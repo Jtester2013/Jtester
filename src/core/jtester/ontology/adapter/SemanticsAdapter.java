@@ -44,6 +44,10 @@ public class SemanticsAdapter implements IJob{
 	}
 
 	private void refineSemantics(SemanticsStore store, List<TestResultItem> items) {
+		if(items == null || items.isEmpty()){
+			return;
+		}
+		
 		List<DIPair> diPairs = getDIPair(items);
 		
 		for(DIPair pair: diPairs){
