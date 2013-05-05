@@ -11,6 +11,7 @@ public class Syndrome {
 		String[] array = new String[10];
 		int arg1 = 10;
 		int arg2 = 2;
+		int arg3 = 5;
 		
 		if (arg1 < arg2) {
 			array[10] = "hello world1";
