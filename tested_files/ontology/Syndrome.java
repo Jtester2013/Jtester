@@ -56,20 +56,4 @@ public class Syndrome {
             return;
         }
 	}
-	
-	public void disposeAll() {
-		HashSet _hConsoles = new HashSet();
-
-		Iterator iterator = _hConsoles.iterator();
-		while (iterator.hasNext()) {
-			String console = (String) iterator.next();
-			if (console == null) {
-				continue;
-			}
-			console.toCharArray();
-			_hConsoles.remove(console); // VIOLATION
-			
-			//iterator.remove();
-		}
-	}
 }
