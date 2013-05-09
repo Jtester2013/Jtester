@@ -5,6 +5,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.HashSet;
+import java.util.Iterator;
+
+import org.eclipse.ui.console.IConsole;
 
 public class Syndrome {
 	public void setArray() {
@@ -27,12 +31,25 @@ public class Syndrome {
 		long p = dividend; //100
 		long q = p * 100; //10000
 
-		divisor = q * q  - 100 * p * q + p - 100; //100
+		divisor = q * q  - 100 * p * q + p - 100; // 0 
 		//divisor = 1;
 		
 		long result = dividend / divisor; // 100\0
 				
 		return result;
+	}
+
+	public void disposeAll() {
+		HashSet _hConsoles = new HashSet();
+		Iterator iterator = _hConsoles.iterator();
+		while (iterator.hasNext()) {
+			IConsole console = (IConsole) iterator.next();
+			if (console == null) {
+				continue;
+			}
+			console.getName();
+			_hConsoles.remove(console); // VIOLATION
+		}
 	}
 	
 	public void readFileByBytes(String fileName) {

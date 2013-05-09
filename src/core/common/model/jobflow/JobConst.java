@@ -78,6 +78,11 @@ public class JobConst {
 	public final static String STREAM_TYPE_1 = "InputStream";
 	public final static String STREAM_TYPE_2 = "OutputStream";
 	public final static String STREAM_CLOSE = "close";
+	// Iterator Remove Checker
+	public final static String REMOVE_TYPE_1  = "remove";
+	public final static String ITERATOR_TYPE = "Iterator";
+	public final static String ITERATOR_METHOD = "iterator";
+	public final static String ITERATOR_NEXT = "next";
 	
 	// Method Override Checker
 	public final static String METHOD_EQUALS = "equals";

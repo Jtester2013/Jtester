@@ -31,6 +31,7 @@ import core.jtester.ontology.checker.ConditionAlwaysSameValueChecker;
 import core.jtester.ontology.checker.MethodOverrideChecker;
 import core.jtester.ontology.checker.NullPointerChecker;
 import core.jtester.ontology.checker.OutOfBoundaryChecker;
+import core.jtester.ontology.checker.RemoveInIterationChecker;
 import core.jtester.ontology.checker.UnusedVariableChecker;
 
 public class JtesterReasoner implements IJob{
@@ -53,6 +54,7 @@ public class JtesterReasoner implements IJob{
 		CloseStreamChecker cfc = new CloseStreamChecker();
 		MethodOverrideChecker moc = new MethodOverrideChecker();
 		OutOfBoundaryChecker oobc = new OutOfBoundaryChecker();
+		RemoveInIterationChecker riic = new RemoveInIterationChecker();
 		DividedByZeroChecker dbzc = new DividedByZeroChecker();
 		
 		checkers.add(iasvc);
@@ -61,6 +63,7 @@ public class JtesterReasoner implements IJob{
 		checkers.add(moc);
 		checkers.add(cfc);
 		checkers.add(oobc);
+		checkers.add(riic);
 		checkers.add(dbzc);
 	}
 	

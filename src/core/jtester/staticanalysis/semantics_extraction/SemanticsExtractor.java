@@ -6,6 +6,7 @@ import java.util.List;
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ArrayAccess;
 import org.eclipse.jdt.core.dom.Assignment;
+import org.eclipse.jdt.core.dom.CastExpression;
 import org.eclipse.jdt.core.dom.ClassInstanceCreation;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.Expression;
@@ -125,6 +126,10 @@ public class SemanticsExtractor implements IJob{
 			ReturnStatement rs = (ReturnStatement)node;
 			handleExpression(rs.getExpression());
 			break;
+		case ASTNode.METHOD_INVOCATION:
+			MethodInvocation mi = (MethodInvocation)node;
+			handleExpression(mi);
+			break;
 		case ASTNode.INSTANCEOF_EXPRESSION:	
 			break;
 		default:
@@ -146,6 +151,8 @@ public class SemanticsExtractor implements IJob{
 		case ASTNode.FIELD_ACCESS:
 			break;
 		case ASTNode.CAST_EXPRESSION:
+			CastExpression ce = (CastExpression)exp;
+			handleExpression(ce.getExpression());
 			break;
 		case ASTNode.THIS_EXPRESSION:
 			break;
@@ -197,6 +204,7 @@ public class SemanticsExtractor implements IJob{
 			miSemantics.setLine(getLineNumber(mi));
 			miSemantics.setName((Name)mi.getExpression());
 			miSemantics.setMethod(mi.getName());
+			miSemantics.setArguments(mi.arguments());
 			store.putInferenceStore(miSemantics);
 			break;
 		case ASTNode.PARENTHESIZED_EXPRESSION:

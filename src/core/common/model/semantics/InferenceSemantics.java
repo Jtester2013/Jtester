@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jdt.core.dom.ASTNode;
+import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.Name;
 
 public class InferenceSemantics {
@@ -11,6 +12,7 @@ public class InferenceSemantics {
 	private Name name;
 	private int index;
 	private Name method;
+	private List<Expression> arguments = new ArrayList<Expression>();
 	private List<DeclarationSemantics> declarations = new ArrayList<DeclarationSemantics>();
 	
 	public int getLine() {
@@ -57,6 +59,14 @@ public class InferenceSemantics {
 		return declarations;
 	}
 
+	public List<Expression> getArguments() {
+		return arguments;
+	}
+
+	public void setArguments(List<Expression> arguments) {
+		this.arguments = arguments;
+	}
+
 	@Override
 	public String toString(){
 		StringBuilder sb = new StringBuilder();
@@ -74,9 +84,13 @@ public class InferenceSemantics {
 			sb.append(method);
 		}
 		
-		sb.append(" (");
-		for(DeclarationSemantics ds: declarations){
-			sb.append(ds.getLine() + " ");
+		sb.append("(");
+		if(!arguments.isEmpty()){
+			sb.append(arguments.get(0));
+		}
+		for(int i=1;i<arguments.size();i++){
+			sb.append(",");
+			sb.append(arguments.get(i));
 		}
 		sb.append(")");
 
@@ -89,6 +103,6 @@ public class InferenceSemantics {
 		sb.append(": ");
 		sb.append(name.getParent().getParent());
 		
-		return sb.toString();
+		return sb.toString().replace("\n", "");
 	}
 }
