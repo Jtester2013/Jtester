@@ -17,6 +17,7 @@ import org.eclipse.jdt.core.dom.MethodInvocation;
 import org.eclipse.jdt.core.dom.Name;
 import org.eclipse.jdt.core.dom.NumberLiteral;
 import org.eclipse.jdt.core.dom.ParenthesizedExpression;
+import org.eclipse.jdt.core.dom.PostfixExpression;
 import org.eclipse.jdt.core.dom.QualifiedName;
 import org.eclipse.jdt.core.dom.ReturnStatement;
 import org.eclipse.jdt.core.dom.SimpleName;
@@ -187,7 +188,11 @@ public class SemanticsExtractor implements IJob{
 			InferenceSemantics aaSemantics = new InferenceSemantics();
 			aaSemantics.setLine(getLineNumber(aa));
 			aaSemantics.setName((Name) aa.getArray());
-			aaSemantics.setIndex(Integer.parseInt(((NumberLiteral)aa.getIndex()).toString()));
+			Expression indexExp = aa.getIndex();
+			// need enhancement for arithmetics expression and Simple name
+			if(indexExp instanceof NumberLiteral){
+				aaSemantics.setIndex(Integer.parseInt(((NumberLiteral)indexExp).toString()));
+			}
 			store.putInferenceStore(aaSemantics);
 			break;
 		case ASTNode.ASSIGNMENT:

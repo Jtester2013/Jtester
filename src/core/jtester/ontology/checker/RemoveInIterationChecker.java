@@ -47,6 +47,7 @@ public class RemoveInIterationChecker implements IChecker{
 		while(ir.hasNext()){
 			InferenceSemantics is = ir.next();
 			Name methodInvocation = is.getMethod();
+			// deal with lines like: _hConsoles.remove(console); // VIOLATION
 			if(methodInvocation != null && methodInvocation.toString().equals(JobConst.REMOVE_TYPE_1)){
 				toCheck.add(is);
 			}
@@ -69,6 +70,10 @@ public class RemoveInIterationChecker implements IChecker{
 			boolean result = false;
 			List<DeclarationSemantics> declarations = semantics.getDeclaraions();
 			for(DeclarationSemantics ds: declarations){
+				if(!ds.getType().toString().equals(JobConst.ITERATOR_TYPE)){
+					continue;
+				}
+				
 				InferenceSemantics set = getIterator(ds.getValue(), store);
 				
 				// _hConsoles.remove(console) and Iterator iterator = _hConsoles.iterator();
@@ -80,7 +85,7 @@ public class RemoveInIterationChecker implements IChecker{
 				if(set.getMethod().toString().equals(JobConst.ITERATOR_METHOD)){
 					violations.add(is);
 				}
-			}			
+			}
 		}
 		return violations;
 	}
