@@ -8,8 +8,6 @@ import java.io.OutputStream;
 import java.util.HashSet;
 import java.util.Iterator;
 
-import org.eclipse.ui.console.IConsole;
-
 public class Syndrome {
 	public void setArray() {
 		String[] array = new String[10];
@@ -31,7 +29,7 @@ public class Syndrome {
 		long p = dividend; //100
 		long q = p * 100; //10000
 
-		divisor = q * q  - 100 * p * q + p - 100; // 0 
+		divisor = q * q  - 100 * p * q + p - 100; // 
 		//divisor = 1;
 		
 		long result = dividend / divisor; // 100\0
@@ -39,19 +37,6 @@ public class Syndrome {
 		return result;
 	}
 
-	public void disposeAll() {
-		HashSet _hConsoles = new HashSet();
-		Iterator iterator = _hConsoles.iterator();
-		while (iterator.hasNext()) {
-			IConsole console = (IConsole) iterator.next();
-			if (console == null) {
-				continue;
-			}
-			console.getName();
-			_hConsoles.remove(console); // VIOLATION
-		}
-	}
-	
 	public void readFileByBytes(String fileName) {
 		File file = new File(fileName);
         try {
@@ -70,5 +55,21 @@ public class Syndrome {
             e.printStackTrace();
             return;
         }
+	}
+	
+	public void disposeAll() {
+		HashSet _hConsoles = new HashSet();
+
+		Iterator iterator = _hConsoles.iterator();
+		while (iterator.hasNext()) {
+			String console = (String) iterator.next();
+			if (console == null) {
+				continue;
+			}
+			console.toCharArray();
+			_hConsoles.remove(console); // VIOLATION
+			
+			//iterator.remove();
+		}
 	}
 }
