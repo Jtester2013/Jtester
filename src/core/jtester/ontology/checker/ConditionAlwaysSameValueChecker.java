@@ -18,11 +18,15 @@ public class ConditionAlwaysSameValueChecker implements IChecker{
 	}
 	
 	private void generateReport(List<JavaControlFlowGraph> cfgs){
-		System.err.println("Warning: 条件值始终不变！");
+		boolean tipped = false;
 		for(JavaControlFlowGraph cfg: cfgs){
 			List<ConditionExpression> conditions = cfg.getConditions();
 			if(conditions != null && !conditions.isEmpty()){
 				for(ConditionExpression ce: conditions){
+					if(tipped == false){
+						tipped = true;
+						System.err.println("Warning: 条件值始终不变！");
+					}
 					System.err.println("\t" + ce + " \t");
 				}
 			}
