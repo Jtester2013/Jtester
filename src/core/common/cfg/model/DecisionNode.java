@@ -26,6 +26,9 @@ public class DecisionNode extends AbstractSingleIncomingNode implements
 		IDecisionNode {
 	private List<IBasicBlock> next = new ArrayList<IBasicBlock>(2);
 	private IConnectorNode conn;
+	private DecisionType type = DecisionType.unleagal_type;
+	private IConnectorNode continueNode = null;
+	
 	IConnectorNode continueConn = null;
 	boolean detected = false;
 
@@ -120,5 +123,29 @@ public class DecisionNode extends AbstractSingleIncomingNode implements
 
 	public void setMergeNode(IConnectorNode conn) {
 		this.conn = conn;
+	}
+	
+	/**
+	 * do with type of DecisionNode
+	 * @return
+	 */
+	public DecisionType getType() {
+		return type;
+	}
+	public void setType(DecisionType type) {
+		this.type = type;
+	}
+	
+	
+	/**
+	 * set and get continueNode of a DecisionNode in a loop element such as while/do-while/for/
+	 * @return
+	 */
+	public IConnectorNode getContinueNode() {
+		return continueNode;
+	}
+
+	public void setContinueNode(IConnectorNode continueNode) {
+		this.continueNode = continueNode;
 	}
 }

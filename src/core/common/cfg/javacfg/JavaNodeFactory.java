@@ -9,6 +9,7 @@ import core.common.cfg.interfaces.IDecisionNode;
 import core.common.cfg.interfaces.IExitNode;
 import core.common.cfg.interfaces.INodeFactory;
 import core.common.cfg.interfaces.IPlainNode;
+import core.common.cfg.model.DecisionType;
 import core.common.cfg.model.NodeFactory;
 
 public class JavaNodeFactory extends NodeFactory implements INodeFactory {
@@ -38,6 +39,19 @@ public class JavaNodeFactory extends NodeFactory implements INodeFactory {
 		IDecisionNode node = createDecisionNode();
 		((ICfgData) node).setData(ast);
 		return (JavaDecisionNode) node;
+	}
+	
+	/**
+	 * added by zzj
+	 * create a decision node with a type sign
+	 * @param ast
+	 * @param type core.common.svd.path.DecisionType
+	 * @return
+	 */
+	public JavaDecisionNode createDecisionNode(ASTNode ast, DecisionType type){
+		JavaDecisionNode node = createDecisionNode(ast);
+		node.setType(type);
+		return node;
 	}
 
 	public JavaExitNode createExitNode(ASTNode ast) {

@@ -10,6 +10,8 @@
  *******************************************************************************/
 package core.common.cfg.model;
 
+import org.eclipse.jdt.core.dom.Expression;
+
 import core.common.cfg.interfaces.IBranchNode;
 
 /**
@@ -42,6 +44,12 @@ public class BranchNode extends PlainNode implements IBranchNode {
 
 	public String getLabel() {
 		return label;
+	}
+	
+	// TODO 返回此分支对应的条件表达式
+	public Object getCondition(){
+//		Expression
+		return this.getData();
 	}
 
 	@Override

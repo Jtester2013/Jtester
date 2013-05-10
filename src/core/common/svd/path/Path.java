@@ -21,12 +21,10 @@ public class Path {
 		pathNodes.clone();
 	}
 	
-	/*public Path clone(){
-		Path copyPath=new Path();
-		LinkedList<IBasicBlock> copyPathNodes=new LinkedList<>();
-		for (Iterator iterator = pathNodes.iterator(); iterator.hasNext();) {
-			IBasicBlock pathNode = (IBasicBlock) iterator.next();
-		}
-		return null;
-	}*/
+	public Path clone(){
+		LinkedList<IBasicBlock> clonePathNodes = (LinkedList<IBasicBlock>) this.pathNodes.clone();
+		Path copyPath=new Path(clonePathNodes);
+		return copyPath;
+	}
+	
 }

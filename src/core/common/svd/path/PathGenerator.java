@@ -10,6 +10,7 @@ import java.util.List;
 import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.ASTParser;
 import org.eclipse.jdt.core.dom.CompilationUnit;
+import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
@@ -37,8 +38,8 @@ public class PathGenerator {
 			System.out.println(paths.length);
 			// 打印path
 			for (int j = 0; j < paths.length; j++) {
-				System.out.println("Print path："+i);
-				printPath(paths[i].pathNodes);
+				System.out.println("Print path："+ j);
+				printPath(paths[j].pathNodes);
 			}
 		}
 	}
@@ -51,9 +52,11 @@ public class PathGenerator {
 		// 对给定的cfg进行路径抽取
 		System.out.println("Begin path abstraction");
 		
-		while (currentNode!=null || path.size()!=0) {// 
-			
+//		while (!(currentNode instanceof DecisionNode && (()currentNode) && .!=0) {// 
+//		while (currentNode!=null || path.size()!=0) {// 
+		while(true){
 			if (currentNode instanceof BranchNode) {// must solve BranchNode before PlainNode.
+				System.out.println("currentNode is " + "BranchNode");
 				BranchNode tempNode = (BranchNode)currentNode;
 				if (tempNode.isDetected()) {
 					currentNode=findUpperDecision(path);
@@ -65,23 +68,40 @@ public class PathGenerator {
 				continue;
 				
 			}else if (currentNode instanceof PlainNode) {
+				System.out.println("currentNode is " + "PlainNode");
 				PlainNode tempNode = (PlainNode)currentNode;
 				path.add(currentNode);
 				currentNode = ((PlainNode) currentNode).getOutgoing();
 				continue;
 				
 			}else if (currentNode instanceof DecisionNode) {// 维护detected信息
-				DecisionNode tempNode = (DecisionNode)currentNode;
-				if (tempNode.isDetected()) {// 如果这个DecisionNode的分支已经被全部探测完，则回溯到上一个DecisionNode
-					tempNode.cleanBranch();//将其各个branchnode 的detected设置为false
-					currentNode = findUpperDecision(path);
-				}else {
-					path.add(tempNode);
-					currentNode = tempNode.getUndetectedBranch();
+				DecisionNode tempNode = (DecisionNode) currentNode;
+//				System.out.println("currentNode is DecisionNode "+((Expression)tempNode.getData()));// print Decision Expression
+				if (tempNode.getType()==DecisionType.switch_type || tempNode.getType()==DecisionType.if_type) {// 对于非循环节点
+					if (tempNode.isDetected() && !hasUpperDecisionNode(path)) {
+						System.out.println(cfg.getSignature()+" is manipulated");
+						break;
+					}else if (tempNode.isDetected() && hasUpperDecisionNode(path)) {// 如果这个DecisionNode的分支已经被全部探测完，则回溯到上一个DecisionNode
+						tempNode.cleanBranch();//将其各个branchnode 的detected设置为false
+						currentNode = findUpperDecision(path);
+					}else if(!tempNode.isDetected()){
+						path.add(tempNode);
+						currentNode = tempNode.getUndetectedBranch();
+					}
+					continue;
+				}else if (tempNode.getType()==DecisionType.while_type) {
+					
+
+				} else if (tempNode.getType() == DecisionType.dowhile_type) {
+
+				}else if (tempNode.getType()==DecisionType.for_type) {
+					
+				}else if (tempNode.getType()==DecisionType.unleagal_type) {
+					System.out.println("Unlegal DecisionNode: "+((Expression)tempNode.getData()));
 				}
-				continue;
-				
+
 			}else if (currentNode instanceof JumpNode) {// TODO
+				System.out.println("currentNode is " + "JumpNode");
 				JumpNode tempNode = (JumpNode)currentNode;
 				path.add(tempNode);
 				/*if (tempNode.isBackwardArc()) {// 如果这是循环语句的跳转边
@@ -91,24 +111,36 @@ public class PathGenerator {
 				continue;
 				
 			}else if (currentNode instanceof ExitNode) {
+				System.out.println("if there is a DecisionNode in path when meet a ExitNode " + hasUpperDecisionNode(path));
+				System.out.println("currentNode is " + "ExitNode");
 				ExitNode tempNode = (ExitNode)currentNode;
 				path.add(tempNode);
 				LinkedList<IBasicBlock> completePath = (LinkedList<IBasicBlock>)path.clone();
 				paths.add(new Path(completePath));
-				currentNode = findUpperDecision(path);
-				continue;
+				if(!hasUpperDecisionNode(path)){
+					break;
+				}else {
+					currentNode = findUpperDecision(path);
+					continue;
+				}
 				
 			}else if (currentNode instanceof ConnectorNode) {
+				System.out.println("currentNode is " + "ConnectorNode");
 				ConnectorNode tempNode = (ConnectorNode)currentNode;
 				path.add(currentNode);
 				currentNode = tempNode.getOutgoing();
 				continue;
 				
 			}else if (currentNode instanceof StartNode) {
+				System.out.println("if there is a DecisionNode in path when meet a StartNode " + hasUpperDecisionNode(path));
+				System.out.println("currentNode is " + "StartNode");
 				StartNode tempNode = (StartNode)currentNode;
 				path.add(currentNode);
 				currentNode = tempNode.getOutgoing();
 				continue;
+			}else {
+				System.out.println("currentNode is " + "NOT RECOGNIZED");
+				break;
 			}
 		}
 		
@@ -124,7 +156,7 @@ public class PathGenerator {
 			IBasicBlock dataBasicBlock=path.get(i);
 			if (dataBasicBlock instanceof JavaPlainNode) {
 				System.out.print("node "+i+"is: "+((JavaPlainNode)dataBasicBlock).getData());
-			}else if(dataBasicBlock instanceof JavaBranchNode){
+			}else if(dataBasicBlock instanceof JavaBranchNode){// TODO print the condition
 				System.out.print("node "+i+"is: "+((JavaBranchNode)dataBasicBlock).getData());
 			}else if(dataBasicBlock instanceof JavaExitNode){
 				JavaExitNode dataNode = (JavaExitNode)dataBasicBlock;
@@ -137,15 +169,33 @@ public class PathGenerator {
 
 	// 返回path中倒数第一的DecisionNode，并删除此DecisionNode之后的所有节点
 	private static  DecisionNode findUpperDecision(LinkedList<IBasicBlock> path){
+		if (!hasUpperDecisionNode(path)) {
+			return null;
+		}
 		IBasicBlock tempBasicBlock;
-		for (int i = path.size(); i>0 ; i--) {
-			tempBasicBlock = path.remove();
+		DecisionNode upperDecisionNode = null;
+		for (int i = path.size()-1; i>=0 ; i--) {
+			tempBasicBlock = path.remove(i);
 			if (tempBasicBlock instanceof DecisionNode) {
-				return (DecisionNode)tempBasicBlock;
+				upperDecisionNode = (DecisionNode)tempBasicBlock;
+				break;
 			}
 		}
-		return null;
+		return upperDecisionNode;
 	}
+	// 判断path里是否存在更上层的DecisionNode，本算法采用从path的开始节点往后查找（也可以从后向前）
+	private static boolean hasUpperDecisionNode(LinkedList<IBasicBlock> path){
+		boolean has = false;
+		IBasicBlock tempBasicBlock;
+		for (int i = 0; i<path.size() ; i++) {
+			tempBasicBlock = path.get(i);
+			if (tempBasicBlock instanceof DecisionNode) {
+				has = true;
+			}
+		}
+		return has;
+	}
+	
 	/**
 	 * 读取java源文件
 	 * @param filePath

@@ -45,6 +45,7 @@ import core.common.cfg.interfaces.IJumpNode;
 import core.common.cfg.interfaces.ISingleOutgoing;
 import core.common.cfg.interfaces.IStartNode;
 import core.common.cfg.model.AbstractBasicBlock;
+import core.common.cfg.model.DecisionType;
 import core.common.cfg.model.JumpNode;
 import core.common.model.functionblock.ConditionExpression;
 import core.common.model.jobflow.JobConst;
@@ -258,7 +259,7 @@ public class ControlFlowGraphBuilder {
 	
 	protected IBasicBlock createIf(IBasicBlock prev, IfStatement body) {
 		IConnectorNode mergeNode = null;
-		JavaDecisionNode ifNode = factory.createDecisionNode(body.getExpression());
+		JavaDecisionNode ifNode = factory.createDecisionNode(body.getExpression(), DecisionType.if_type);// create DecisionNode with type:if_type
 		addOutgoing(prev, ifNode);
 		mergeNode = factory.createConnectorNode();
 		ifNode.setMergeNode(mergeNode);
@@ -306,7 +307,8 @@ public class ControlFlowGraphBuilder {
 		IConnectorNode nContinue = factory.createConnectorNode();
 		addOutgoing(prev, nContinue);
 		// decision node
-		JavaDecisionNode decision = factory.createDecisionNode(body.getExpression());
+		JavaDecisionNode decision = factory.createDecisionNode(body.getExpression(), DecisionType.while_type);
+		decision.setContinueConn(nContinue);
 		addOutgoing(nContinue, decision);
 		// add break connector
 		IConnectorNode nBreak = factory.createConnectorNode();
@@ -350,7 +352,7 @@ public class ControlFlowGraphBuilder {
 		// add continue connector
 		addOutgoing(endBody, nContinue);
 		// decision node
-		JavaDecisionNode decision = factory.createDecisionNode(body.getExpression());
+		JavaDecisionNode decision = factory.createDecisionNode(body.getExpression(), DecisionType.dowhile_type);
 		addOutgoing(nContinue, decision);
 		// then branch
 		IBranchNode thenNode = factory.createBranchNode(IBranchNode.WHILE_THEN, body.getExpression());
@@ -382,7 +384,7 @@ public class ControlFlowGraphBuilder {
 		IConnectorNode beforeCheck = factory.createConnectorNode();
 		addOutgoing(prev, beforeCheck);
 		// decision node
-		JavaDecisionNode decision = factory.createDecisionNode(forNode.getExpression());
+		JavaDecisionNode decision = factory.createDecisionNode(forNode.getExpression(), DecisionType.for_type);
 		addOutgoing(beforeCheck, decision);
 		// add break connector
 		IConnectorNode nBreak = factory.createConnectorNode();
@@ -438,7 +440,7 @@ public class ControlFlowGraphBuilder {
 	}
 	
 	private IBasicBlock createSwitch(IBasicBlock prev, SwitchStatement body) {
-		JavaDecisionNode node = factory.createDecisionNode(body.getExpression());
+		JavaDecisionNode node = factory.createDecisionNode(body.getExpression(), DecisionType.switch_type);
 		addOutgoing(prev, node);
 		IConnectorNode conn = factory.createConnectorNode();
 		node.setMergeNode(conn);

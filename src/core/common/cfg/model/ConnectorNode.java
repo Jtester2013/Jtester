@@ -22,6 +22,8 @@ import core.common.cfg.interfaces.IJumpNode;
  * TODO: add description
  */
 public class ConnectorNode extends AbstractSingleOutgoingNode implements IConnectorNode {
+	boolean ifLoop = false;// var which point out if this connectorNode is for a loop node(its continue node)
+	
 	protected ArrayList<IBasicBlock> incoming = new ArrayList<IBasicBlock>(2);
 
 	protected ConnectorNode() {
@@ -66,5 +68,18 @@ public class ConnectorNode extends AbstractSingleOutgoingNode implements IConnec
 			}
 		}
 		return false;
+	}
+
+	
+	/**
+	 * set and get forLoop
+	 * @return
+	 */
+	public boolean ifLoop() {
+		return ifLoop;
+	}
+
+	public void setIfLoop(boolean forLoop) {
+		this.ifLoop = forLoop;
 	}
 }
