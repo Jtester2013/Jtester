@@ -155,13 +155,13 @@ public class PathGenerator {
 		for (int i = 0; i < path.size(); i++) {// TODO extracted
 			IBasicBlock dataBasicBlock=path.get(i);
 			if (dataBasicBlock instanceof JavaPlainNode) {
-				System.out.print("node "+i+"is: "+((JavaPlainNode)dataBasicBlock).getData());
+				System.out.print("node"+i+" is: "+((JavaPlainNode)dataBasicBlock).getData());
 			}else if(dataBasicBlock instanceof JavaBranchNode){// TODO print the condition
-				System.out.print("node "+i+"is: "+((JavaBranchNode)dataBasicBlock).getData());
+				System.out.print("node"+i+" is: "+((JavaBranchNode)dataBasicBlock).getData());
 			}else if(dataBasicBlock instanceof JavaExitNode){
 				JavaExitNode dataNode = (JavaExitNode)dataBasicBlock;
 				if (dataNode.getData()!=null) {
-					System.out.print("node "+i+"is: "+dataNode.getData());
+					System.out.print("node"+i+" is: "+dataNode.getData());
 				}
 			}
 		}
