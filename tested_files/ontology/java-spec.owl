@@ -16,25 +16,19 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      ontologyIRI="http://www.pku.edu.cn/ontologies/2013/3/java6-spec.owl">
-    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
-    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
     <Prefix name="" IRI="http://www.pku.edu.cn/ontologies/2013/3/java6-spec.owl#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
     <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Declaration>
         <Class IRI="#BooleanLiteral"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#DONT_CALL_THREAD_RUN"/>
+        <Class IRI="#CONDITION_ALWAYS_SAME_VALUE"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#EMPTY_CATCH_BLOCK"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#EMPTY_IF_STATEMENT"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#EMPTY_WHILE_STATEMENT"/>
+        <Class IRI="#DIVIDED_BY_ZERO"/>
     </Declaration>
     <Declaration>
         <Class IRI="#EmptyBlock"/>
@@ -50,9 +44,6 @@
     </Declaration>
     <Declaration>
         <Class IRI="#FinallyBlock"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#IF_STATEMENT_ALWAYS_TRUE_OR_FALSE"/>
     </Declaration>
     <Declaration>
         <Class IRI="#JavaAssignExpression"/>
@@ -160,16 +151,28 @@
         <Class IRI="#MethodDeclaration"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#RETURN_FROM_FINALLY_BLOCK"/>
+        <Class IRI="#OUT_OF_BOUNDARY"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OVERRIDE_METHOD_EQUALS_BUT_HASHCODE"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#REMOVE_IN_ITERATION"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Return"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#SQL_QUERY_INJECTION"/>
+        <Class IRI="#STREAM_NOT_CLOSED"/>
     </Declaration>
     <Declaration>
         <Class IRI="#True"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#UNUSED_VARIABLE"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#USE_NULL_POINTER"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Vulnerability"/>
@@ -285,58 +288,17 @@
     <Declaration>
         <NamedIndividual IRI="#OVERRIDING_TOSTRING_00000000-0000-0000-0000-000000000000"/>
     </Declaration>
-    <EquivalentClasses>
-        <Class IRI="#EMPTY_WHILE_STATEMENT"/>
-        <ObjectIntersectionOf>
-            <Class IRI="#JavaWhileStatement"/>
-            <ObjectExactCardinality cardinality="1">
-                <ObjectProperty IRI="#Has"/>
-                <Class IRI="#EmptyBlock"/>
-            </ObjectExactCardinality>
-        </ObjectIntersectionOf>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <Class IRI="#IF_STATEMENT_ALWAYS_TRUE_OR_FALSE"/>
-        <ObjectIntersectionOf>
-            <Class IRI="#JavaIfStatement"/>
-            <ObjectUnionOf>
-                <Class IRI="#False"/>
-                <ObjectExactCardinality cardinality="1">
-                    <ObjectProperty IRI="#Always"/>
-                    <Class IRI="#True"/>
-                </ObjectExactCardinality>
-            </ObjectUnionOf>
-        </ObjectIntersectionOf>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <Class IRI="#RETURN_FROM_FINALLY_BLOCK"/>
-        <ObjectIntersectionOf>
-            <Class IRI="#Return"/>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#In"/>
-                <Class IRI="#FinallyBlock"/>
-            </ObjectSomeValuesFrom>
-        </ObjectIntersectionOf>
-    </EquivalentClasses>
     <SubClassOf>
         <Class IRI="#BooleanLiteral"/>
         <Class IRI="#JavaLiteral"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#DONT_CALL_THREAD_RUN"/>
+        <Class IRI="#CONDITION_ALWAYS_SAME_VALUE"/>
         <Class IRI="#Warning"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#EMPTY_CATCH_BLOCK"/>
-        <Class IRI="#Warning"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#EMPTY_IF_STATEMENT"/>
-        <Class IRI="#Warning"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#EMPTY_WHILE_STATEMENT"/>
-        <Class IRI="#Warning"/>
+        <Class IRI="#DIVIDED_BY_ZERO"/>
+        <Class IRI="#Error"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#EmptyBlock"/>
@@ -353,10 +315,6 @@
     <SubClassOf>
         <Class IRI="#FinallyBlock"/>
         <Class IRI="#JavaBlock"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#IF_STATEMENT_ALWAYS_TRUE_OR_FALSE"/>
-        <Class IRI="#Warning"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#JavaAssignExpression"/>
@@ -447,7 +405,15 @@
         <Class IRI="#JavaDeclaration"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#RETURN_FROM_FINALLY_BLOCK"/>
+        <Class IRI="#OUT_OF_BOUNDARY"/>
+        <Class IRI="#Warning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OVERRIDE_METHOD_EQUALS_BUT_HASHCODE"/>
+        <Class IRI="#Warning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#REMOVE_IN_ITERATION"/>
         <Class IRI="#Warning"/>
     </SubClassOf>
     <SubClassOf>
@@ -455,12 +421,20 @@
         <Class IRI="#JavaKeyword"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#SQL_QUERY_INJECTION"/>
-        <Class IRI="#Vulnerability"/>
+        <Class IRI="#STREAM_NOT_CLOSED"/>
+        <Class IRI="#Warning"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#True"/>
         <Class IRI="#BooleanLiteral"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#UNUSED_VARIABLE"/>
+        <Class IRI="#Warning"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#USE_NULL_POINTER"/>
+        <Class IRI="#Warning"/>
     </SubClassOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#In"/>
@@ -731,204 +705,6 @@
         <DataProperty IRI="#JavaVariableDeclaratorID_hasName"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
-    <DLSafeRule>
-        <Body>
-            <ClassAtom>
-                <Class IRI="#JavaBinaryExpression"/>
-                <Variable IRI="urn:swrl#inie"/>
-            </ClassAtom>
-            <ClassAtom>
-                <Class IRI="#JavaClass"/>
-                <Variable IRI="urn:swrl#c"/>
-            </ClassAtom>
-            <ClassAtom>
-                <Class IRI="#JavaExpressionStatement"/>
-                <Variable IRI="urn:swrl#s"/>
-            </ClassAtom>
-            <ClassAtom>
-                <Class IRI="#JavaNameExpression"/>
-                <Variable IRI="urn:swrl#varib"/>
-            </ClassAtom>
-            <ClassAtom>
-                <Class IRI="#JavaOperatorPlus"/>
-                <Variable IRI="urn:swrl#plus"/>
-            </ClassAtom>
-            <ClassAtom>
-                <Class IRI="#JavaStringType"/>
-                <Variable IRI="urn:swrl#type"/>
-            </ClassAtom>
-            <ClassAtom>
-                <Class IRI="#JavaVariableDeclarationExpression"/>
-                <Variable IRI="urn:swrl#e"/>
-            </ClassAtom>
-            <ObjectPropertyAtom>
-                <ObjectProperty IRI="#JavaBinaryExpression_hasComponent"/>
-                <Variable IRI="urn:swrl#inie"/>
-                <Variable IRI="urn:swrl#varib"/>
-            </ObjectPropertyAtom>
-            <ObjectPropertyAtom>
-                <ObjectProperty IRI="#JavaBinaryExpression_hasOperator"/>
-                <Variable IRI="urn:swrl#inie"/>
-                <Variable IRI="urn:swrl#plus"/>
-            </ObjectPropertyAtom>
-            <ObjectPropertyAtom>
-                <ObjectProperty IRI="#JavaClass_hasMethod"/>
-                <Variable IRI="urn:swrl#c"/>
-                <Variable IRI="urn:swrl#m"/>
-            </ObjectPropertyAtom>
-            <ObjectPropertyAtom>
-                <ObjectProperty IRI="#JavaExpressionStatement_hasExpression"/>
-                <Variable IRI="urn:swrl#s"/>
-                <Variable IRI="urn:swrl#e"/>
-            </ObjectPropertyAtom>
-            <ObjectPropertyAtom>
-                <ObjectProperty IRI="#JavaMethod_hasStatement"/>
-                <Variable IRI="urn:swrl#m"/>
-                <Variable IRI="urn:swrl#s"/>
-            </ObjectPropertyAtom>
-            <ObjectPropertyAtom>
-                <ObjectProperty IRI="#JavaVarabileDeclarationExpression_hasVariableDeclaratorID"/>
-                <Variable IRI="urn:swrl#e"/>
-                <Variable IRI="urn:swrl#id"/>
-            </ObjectPropertyAtom>
-            <ObjectPropertyAtom>
-                <ObjectProperty IRI="#JavaVariableDeclarationExpression_hasInitialValue"/>
-                <Variable IRI="urn:swrl#e"/>
-                <Variable IRI="urn:swrl#inie"/>
-            </ObjectPropertyAtom>
-            <ObjectPropertyAtom>
-                <ObjectProperty IRI="#JavaVariableDeclaratorID_hasType"/>
-                <Variable IRI="urn:swrl#id"/>
-                <Variable IRI="urn:swrl#type"/>
-            </ObjectPropertyAtom>
-            <DataPropertyAtom>
-                <DataProperty IRI="#JavaNameExpression_hasName"/>
-                <Variable IRI="urn:swrl#varib"/>
-                <Variable IRI="urn:swrl#nameID"/>
-            </DataPropertyAtom>
-            <DataPropertyAtom>
-                <DataProperty IRI="#JavaVariableDeclaratorID_hasName"/>
-                <Variable IRI="urn:swrl#id"/>
-                <Variable IRI="urn:swrl#nameID"/>
-            </DataPropertyAtom>
-        </Body>
-        <Head>
-            <ClassAtom>
-                <Class IRI="#SQL_QUERY_INJECTION"/>
-                <Variable IRI="urn:swrl#m"/>
-            </ClassAtom>
-        </Head>
-    </DLSafeRule>
-    <DLSafeRule>
-        <Body>
-            <ClassAtom>
-                <Class IRI="#JavaIfStatement"/>
-                <Variable IRI="urn:swrl#s"/>
-            </ClassAtom>
-            <ObjectPropertyAtom>
-                <ObjectProperty IRI="#JavaIfStatement_hasBlock"/>
-                <Variable IRI="urn:swrl#s"/>
-                <Variable IRI="urn:swrl#b"/>
-            </ObjectPropertyAtom>
-            <DataPropertyAtom>
-                <DataProperty IRI="#JavaBlockStatement_isNull"/>
-                <Variable IRI="urn:swrl#b"/>
-                <Literal datatypeIRI="&xsd;boolean">true</Literal>
-            </DataPropertyAtom>
-        </Body>
-        <Head>
-            <ClassAtom>
-                <Class IRI="#EMPTY_IF_STATEMENT"/>
-                <Variable IRI="urn:swrl#s"/>
-            </ClassAtom>
-        </Head>
-    </DLSafeRule>
-    <DLSafeRule>
-        <Body>
-            <ClassAtom>
-                <Class IRI="#JavaMethodCallExpression"/>
-                <Variable IRI="urn:swrl#e2"/>
-            </ClassAtom>
-            <ClassAtom>
-                <Class IRI="#JavaThreadType"/>
-                <Variable IRI="urn:swrl#type"/>
-            </ClassAtom>
-            <ObjectPropertyAtom>
-                <ObjectProperty IRI="#JavaMethodCallExpression_hasScope"/>
-                <Variable IRI="urn:swrl#e2"/>
-                <Variable IRI="urn:swrl#id"/>
-            </ObjectPropertyAtom>
-            <ObjectPropertyAtom>
-                <ObjectProperty IRI="#JavaVarabileDeclarationExpression_hasVariableDeclaratorID"/>
-                <Variable IRI="urn:swrl#e"/>
-                <Variable IRI="urn:swrl#id"/>
-            </ObjectPropertyAtom>
-            <ObjectPropertyAtom>
-                <ObjectProperty IRI="#JavaVariableDeclaratorID_hasType"/>
-                <Variable IRI="urn:swrl#id"/>
-                <Variable IRI="urn:swrl#type"/>
-            </ObjectPropertyAtom>
-            <DataPropertyAtom>
-                <DataProperty IRI="#JavaMethodCallExpression_hasName"/>
-                <Variable IRI="urn:swrl#e2"/>
-                <Literal datatypeIRI="&rdf;PlainLiteral">run</Literal>
-            </DataPropertyAtom>
-        </Body>
-        <Head>
-            <ClassAtom>
-                <Class IRI="#DONT_CALL_THREAD_RUN"/>
-                <Variable IRI="urn:swrl#e2"/>
-            </ClassAtom>
-        </Head>
-    </DLSafeRule>
-    <DLSafeRule>
-        <Body>
-            <ClassAtom>
-                <Class IRI="#JavaTryStatemnt"/>
-                <Variable IRI="urn:swrl#s"/>
-            </ClassAtom>
-            <ObjectPropertyAtom>
-                <ObjectProperty IRI="#JavaTryStatement_hasCatchBlock"/>
-                <Variable IRI="urn:swrl#s"/>
-                <Variable IRI="urn:swrl#b"/>
-            </ObjectPropertyAtom>
-            <DataPropertyAtom>
-                <DataProperty IRI="#JavaBlockStatement_isNull"/>
-                <Variable IRI="urn:swrl#b"/>
-                <Literal datatypeIRI="&xsd;boolean">true</Literal>
-            </DataPropertyAtom>
-        </Body>
-        <Head>
-            <ClassAtom>
-                <Class IRI="#EMPTY_CATCH_BLOCK"/>
-                <Variable IRI="urn:swrl#s"/>
-            </ClassAtom>
-        </Head>
-    </DLSafeRule>
-    <DLSafeRule>
-        <Body>
-            <ClassAtom>
-                <Class IRI="#JavaWhileStatement"/>
-                <Variable IRI="urn:swrl#s"/>
-            </ClassAtom>
-            <ObjectPropertyAtom>
-                <ObjectProperty IRI="#JavaWhileStatement_hasBlock"/>
-                <Variable IRI="urn:swrl#s"/>
-                <Variable IRI="urn:swrl#b"/>
-            </ObjectPropertyAtom>
-            <DataPropertyAtom>
-                <DataProperty IRI="#JavaBlockStatement_isNull"/>
-                <Variable IRI="urn:swrl#b"/>
-                <Literal datatypeIRI="&xsd;boolean">true</Literal>
-            </DataPropertyAtom>
-        </Body>
-        <Head>
-            <ClassAtom>
-                <Class IRI="#EMPTY_WHILE_STATEMENT"/>
-                <Variable IRI="urn:swrl#s"/>
-            </ClassAtom>
-        </Head>
-    </DLSafeRule>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#JavaClass_hasMethod</IRI>
@@ -1092,5 +868,5 @@ Separator: one of
 
 
 
-<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
 
