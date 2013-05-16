@@ -91,4 +91,14 @@ public class JobConst {
 	// IProblem
 	public final static String COMPILER_PROBLEM = "Compiler Problems";
 	
+	// Ontology
+	public final static String ONTOLOGY_STREAM_NOT_CLOSED ="STREAM_NOT_CLOSED";
+	public final static String ONTOLOGY_OVERRIDE_METHOD_EQUALS_BUT_HASHCODE ="OVERRIDE_METHOD_EQUALS_BUT_HASHCODE";
+	public final static String ONTOLOGY_REMOVE_IN_ITERATION ="REMOVE_IN_ITERATION";
+	public final static String ONTOLOGY_UNUSED_VARIABLE ="UNUSED_VARIABLE";
+	public final static String ONTOLOGY_USE_NULL_POINTER ="USE_NULL_POINTER";
+	public final static String ONTOLOGY_CONDITION_ALWAYS_SAME_VALUE = "CONDITION_ALWAYS_SAME_VALUE";
+	public final static String ONTOLOGY_OUT_OF_BOUNDARY = "OUT_OF_BOUNDARY";
+	public final static String ONTOLOGY_DIVIDED_BY_ZERO = "DIVIDED_BY_ZERO";
+	
 }

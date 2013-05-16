@@ -42,7 +42,7 @@ public class JtesterReasoner implements IJob{
 	public boolean run(TestData data) {
 		init();
 		produceABox(data);
-		//reasonOntology(data);
+		reasonOntology(data);
 		return true;
 	}
 
@@ -98,14 +98,12 @@ public class JtesterReasoner implements IJob{
 		    // setup variables
 		    OWLReasonerFactory reasonerFactory = new Reasoner.ReasonerFactory();
             OWLReasoner reasoner = reasonerFactory.createReasoner(ont);
-            reasoner.precomputeInferences();
             
             OWLDataFactory fac = manager.getOWLDataFactory();
             OWLClass results = fac.getOWLClass(IRI.create(Const.OntologyID + Const.OWL_WARNING));
             
             Set<OWLClass> owls = ont.getClassesInSignature();
             for(OWLClass cls: owls){
-            	System.out.println(reasoner.getInstances(cls, false));
             }
             
             //System.out.println(results);
