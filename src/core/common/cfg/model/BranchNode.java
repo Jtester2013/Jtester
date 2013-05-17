@@ -22,6 +22,7 @@ import core.common.cfg.interfaces.IBranchNode;
 public class BranchNode extends PlainNode implements IBranchNode {
 	protected String label;
 	boolean detected = false;
+	int visitTime = 0;
 
 	public boolean isDetected() {
 		return detected;
@@ -44,6 +45,14 @@ public class BranchNode extends PlainNode implements IBranchNode {
 
 	public String getLabel() {
 		return label;
+	}
+	
+	public int getVisitTime() {
+		return visitTime;
+	}
+
+	public void increaseVisitTime() {
+		visitTime += 1;
 	}
 	
 	// TODO 返回此分支对应的条件表达式

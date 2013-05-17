@@ -17,31 +17,31 @@ public class SVDTest {
 //		} else {
 //			result = b;
 //		}
-		
-		switch (result) {
-		case 0:
-			System.out.println(0);
-			break;
-		case 1:
-			System.out.println(1);
-			break;
-		case 2:
-			System.out.println(2);
-			break;
-		default:
-			break;
-		}
-		
-		if(result<3){
-			System.out.println();
-		}else {
-			System.out.println();
-		}
-
-//		while (result > 0) {
-//			result--;
+//		
+//		switch (result) {
+//		case 0:
+//			System.out.println(0);
+//			break;
+//		case 1:
+//			System.out.println(1);
+//			break;
+//		case 2:
+//			System.out.println(2);
+//			break;
+//		default:
+//			break;
+//		}
+//		
+//		if(result<3){
+//			System.out.println();
+//		}else {
 //			System.out.println();
 //		}
+
+		while (result > 0) {
+			result--;
+			System.out.println();
+		}
 		return result;
 	}
 }

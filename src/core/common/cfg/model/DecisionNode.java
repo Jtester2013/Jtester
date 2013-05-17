@@ -24,7 +24,7 @@ import core.common.cfg.interfaces.IDecisionNode;
  */
 public class DecisionNode extends AbstractSingleIncomingNode implements
 		IDecisionNode {
-	private List<IBasicBlock> next = new ArrayList<IBasicBlock>(2);
+	private List<IBasicBlock> next = new ArrayList<IBasicBlock>(2);// branches of this decision
 	private IConnectorNode conn;
 	private DecisionType type = DecisionType.unleagal_type;
 	private IConnectorNode continueNode = null;
@@ -100,6 +100,35 @@ public class DecisionNode extends AbstractSingleIncomingNode implements
 	 */
 	public IBasicBlock[] getOutgoingNodes() {
 		return next.toArray(new IBasicBlock[next.size()]);
+	}
+	
+	/**
+	 * 对于循环体的Decision来说，取得其循环体分支的branch
+	 * @return
+	 */
+	public BranchNode getLoopBranch(){
+		BranchNode tempBranch = null;
+		for (Iterator iterator = next.iterator(); iterator.hasNext();) {
+			tempBranch= (BranchNode) iterator.next();
+			if (tempBranch.label.equals(IBranchNode.WHILE_THEN)) {
+				break;
+			}
+		}
+		return tempBranch;
+	}
+	/**
+	 * 对于循环体的Decision来说，取得退出循环的branch
+	 * @return
+	 */
+	public BranchNode getBreakBranch(){
+		BranchNode tempBranch = null;
+		for (Iterator iterator = next.iterator(); iterator.hasNext();) {
+			tempBranch= (BranchNode) iterator.next();
+			if (tempBranch.label.equals(IBranchNode.WHILE_ELSE)) {
+				break;
+			}
+		}
+		return tempBranch;
 	}
 
 	/*
