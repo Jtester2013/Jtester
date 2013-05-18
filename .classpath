@@ -8,5 +8,6 @@
 	<classpathentry kind="lib" path="lib/commons-logging-1.1.1.jar"/>
 	<classpathentry kind="lib" path="lib/jautomata-core-2.0-alpha-1.jar"/>
 	<classpathentry kind="lib" path="lib/owlapi-3.2.2.jar"/>
+	<classpathentry kind="lib" path="lib/choco-solver-2.1.5-with-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
