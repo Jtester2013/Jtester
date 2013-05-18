@@ -41,6 +41,11 @@ public class SVDTest {
 		while (result > 0) {
 			result--;
 			System.out.println();
+			if (result<5) {
+				result--;
+			}else {
+				result++;
+			}
 		}
 		return result;
 	}

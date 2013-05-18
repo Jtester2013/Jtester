@@ -45,6 +45,7 @@ import core.common.cfg.interfaces.IJumpNode;
 import core.common.cfg.interfaces.ISingleOutgoing;
 import core.common.cfg.interfaces.IStartNode;
 import core.common.cfg.model.AbstractBasicBlock;
+import core.common.cfg.model.ConnectorNode;
 import core.common.cfg.model.DecisionType;
 import core.common.cfg.model.JumpNode;
 import core.common.model.functionblock.ConditionExpression;
@@ -306,6 +307,7 @@ public class ControlFlowGraphBuilder {
 		// add continue connector
 		IConnectorNode nContinue = factory.createConnectorNode();
 		addOutgoing(prev, nContinue);
+		((ConnectorNode)nContinue).sig="zzj";
 		// decision node
 		JavaDecisionNode decision = factory.createDecisionNode(body.getExpression(), DecisionType.while_type);
 		decision.setContinueConn(nContinue);

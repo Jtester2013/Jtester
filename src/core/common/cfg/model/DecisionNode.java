@@ -77,7 +77,19 @@ public class DecisionNode extends AbstractSingleIncomingNode implements
 		for (Iterator iterator = next.iterator(); iterator.hasNext();) {
 			BranchNode branch = (BranchNode) iterator.next();
 			branch.setDetected(false);
+			if (branch.getLabel().equals(IBranchNode.WHILE_THEN)) {
+				branch.setVisitTime(0);
+			}
 		}
+	}
+	
+	
+	public void cleanWhileBranch(){
+		for (Iterator iterator = next.iterator(); iterator.hasNext();) {
+			BranchNode branch = (BranchNode) iterator.next();
+			branch.setDetected(false);
+		}
+		
 	}
 	/**
 	 * @param prev

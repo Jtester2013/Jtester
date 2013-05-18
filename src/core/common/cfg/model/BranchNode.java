@@ -50,9 +50,13 @@ public class BranchNode extends PlainNode implements IBranchNode {
 	public int getVisitTime() {
 		return visitTime;
 	}
+	
+	public void setVisitTime(int n) {
+		visitTime=n;
+	}
 
 	public void increaseVisitTime() {
-		visitTime += 1;
+		visitTime = visitTime+1;
 	}
 	
 	// TODO 返回此分支对应的条件表达式

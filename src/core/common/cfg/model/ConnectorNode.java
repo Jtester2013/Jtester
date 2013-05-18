@@ -23,6 +23,7 @@ import core.common.cfg.interfaces.IJumpNode;
  */
 public class ConnectorNode extends AbstractSingleOutgoingNode implements IConnectorNode {
 	boolean ifLoop = false;// var which point out if this connectorNode is for a loop node(its continue node)
+	public String sig = "";
 	
 	protected ArrayList<IBasicBlock> incoming = new ArrayList<IBasicBlock>(2);
 
