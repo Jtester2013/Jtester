@@ -31,7 +31,9 @@ public class RemoveInIterationChecker implements IChecker{
 		SemanticsStore store = (SemanticsStore) file.get(JobConst.SEMANTICS);
 		List<InferenceSemantics> exceptions = handleSemantics(store);
 		
-		generateReport(exceptions);
+		if(generateReport(exceptions)){
+			data.getTestResult().addViolation(JobConst.ONTOLOGY_REMOVE_IN_ITERATION);
+		}
 	}
 
 	/**
@@ -155,14 +157,19 @@ public class RemoveInIterationChecker implements IChecker{
 		return name;
 	}
 	
-	private void generateReport(List<InferenceSemantics> exceptions) {
+	private boolean generateReport(List<InferenceSemantics> exceptions) {
 		if(exceptions == null || exceptions.isEmpty()){
-			return;
+			return false;
 		}
 		
+		boolean report = false;
 		System.err.println("Warning: 不正确迭代操作！");
 		for(InferenceSemantics is : exceptions){
 			System.err.println("\t" + is.toStringWithContext());
+			if(report == false){
+				report = true;
+			}
 		}
+		return report;
 	}
 }

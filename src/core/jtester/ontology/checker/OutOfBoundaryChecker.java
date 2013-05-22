@@ -24,7 +24,9 @@ public class OutOfBoundaryChecker implements IChecker{
 		SemanticsStore store = (SemanticsStore) file.get(JobConst.SEMANTICS);
 		List<InferenceSemantics> exceptions = handleSemantics(store);
 		
-		generateReport(exceptions);
+		if(generateReport(exceptions)){
+			data.getTestResult().addViolation(JobConst.ONTOLOGY_OUT_OF_BOUNDARY);
+		}
 	}
 
 	private List<InferenceSemantics> handleSemantics(SemanticsStore store) {
@@ -63,14 +65,19 @@ public class OutOfBoundaryChecker implements IChecker{
 		return violations;
 	}
 	
-	private void generateReport(List<InferenceSemantics> exceptions) {
+	private boolean generateReport(List<InferenceSemantics> exceptions) {
 		if(exceptions == null || exceptions.isEmpty()){
-			return;
+			return false;
 		}
 		
+		boolean report = false;
 		System.err.println("Warning: 数组跨界操作！");
 		for(InferenceSemantics is : exceptions){
 			System.err.println("\t" + is.toStringWithContext());
+			if(report == false){
+				report = true;
+			}
 		}
+		return report;
 	}
 }

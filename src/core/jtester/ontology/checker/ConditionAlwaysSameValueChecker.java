@@ -14,10 +14,15 @@ public class ConditionAlwaysSameValueChecker implements IChecker{
 	public void check(TestData data) {
 		TestFile file = data.getCurrentTestFile();
 		List<JavaControlFlowGraph> cfgs = (List<JavaControlFlowGraph>) file.get(JobConst.CONTROL_FLOW_GRAPH);
-		generateReport(cfgs);
+		
+		if(generateReport(cfgs)){
+			data.getTestResult().addViolation(JobConst.ONTOLOGY_CONDITION_ALWAYS_SAME_VALUE);
+		}
 	}
 	
-	private void generateReport(List<JavaControlFlowGraph> cfgs){
+	private boolean generateReport(List<JavaControlFlowGraph> cfgs){
+		boolean report = false;
+		
 		boolean tipped = false;
 		for(JavaControlFlowGraph cfg: cfgs){
 			List<ConditionExpression> conditions = cfg.getConditions();
@@ -28,8 +33,13 @@ public class ConditionAlwaysSameValueChecker implements IChecker{
 						System.err.println("Warning: 条件值始终不变！");
 					}
 					System.err.println("\t" + ce + " \t");
+					if(report == false){
+						report = true;
+					}
 				}
 			}
 		}
+		
+		return report;
 	}
 }

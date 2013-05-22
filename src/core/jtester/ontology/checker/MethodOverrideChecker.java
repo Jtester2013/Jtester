@@ -18,7 +18,10 @@ public class MethodOverrideChecker implements IChecker {
 		
 		SemanticsStore store = (SemanticsStore) file.get(JobConst.SEMANTICS);
 		List<MethodSemantics> exceptions = handleSemantics(store);
-		generateReport(exceptions);
+		
+		if(generateReport(exceptions)){
+			data.getTestResult().addViolation(JobConst.ONTOLOGY_OVERRIDE_METHOD_EQUALS_BUT_HASHCODE);
+		}
 	}
 	
 	private List<MethodSemantics> handleSemantics(SemanticsStore store){
@@ -39,14 +42,20 @@ public class MethodOverrideChecker implements IChecker {
 		return null;
 	}
 
-	private void generateReport(List<MethodSemantics> exceptions){
+	private boolean generateReport(List<MethodSemantics> exceptions){
+		boolean report = false;
 		if(exceptions != null && !exceptions.isEmpty()){
 			for(MethodSemantics ms: exceptions){
 				if(ms.getName().toString().equals(JobConst.METHOD_EQUALS)){
 					System.err.println("Warning: 类中重写了equals方法，但是没有重写hashcode方法!");
 					System.err.print("\t" + ms + " \t");  
+					if(report == false){
+						report = true;
+					}
 				}
 			}
 		}
+		
+		return report;
 	}
 }

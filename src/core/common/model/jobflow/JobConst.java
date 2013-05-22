@@ -101,4 +101,8 @@ public class JobConst {
 	public final static String ONTOLOGY_OUT_OF_BOUNDARY = "OUT_OF_BOUNDARY";
 	public final static String ONTOLOGY_DIVIDED_BY_ZERO = "DIVIDED_BY_ZERO";
 	
+	// Ontology
+	public final static String ONTOLOGY_DESCRIPTION_CN = "ÃèÊö";
+	public final static String ONTOLOGY_LEVEL_CN = "¼¶±ð";
+	public final static String ONTOLOGY_EXAMPLE_CN = "Ê¾Àý";
 }

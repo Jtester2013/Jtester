@@ -434,7 +434,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#USE_NULL_POINTER"/>
-        <Class IRI="#Warning"/>
+        <Class IRI="#Error"/>
     </SubClassOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#In"/>
@@ -707,6 +707,58 @@
     </DataPropertyRange>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#CONDITION_ALWAYS_SAME_VALUE</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">1. 级别：Warning</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#CONDITION_ALWAYS_SAME_VALUE</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">2. 描述：这条规则检测程序中总是判定值不变的条件语句。这样的条件语句会降低代码的效率和产生dead code。</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#CONDITION_ALWAYS_SAME_VALUE</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">3. 示例：
+void fillArray(int array[], int size)
+{
+	for (int i = 0; i &lt;= size; i++) { // iterate from 0 to 100
+		array[i] = 0; // VIOLATION (accessing array out of bounds: &quot;array[i]&quot; where (i == 100))
+	}
+}
+
+void example()
+{
+	int[] array = new int[100];
+	fillArray(array, 100);
+	// ...
+}</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#DIVIDED_BY_ZERO</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">1. 级别： Error</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#DIVIDED_BY_ZERO</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">2. 描述：这一规则检测程序路径中可能导致分母为0的算术表达式。</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#DIVIDED_BY_ZERO</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">3. 示例：
+int test(int value)
+{
+     return value / zeroMethod(); // VIOLATION
+}
+
+int zeroMethod()
+{
+     return 0;
+}</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#JavaClass_hasMethod</IRI>
         <Literal xml:lang="ch" datatypeIRI="&rdf;PlainLiteral">java类包含有各种method，此属性用来描述这种关系</Literal>
     </AnnotationAssertion>
@@ -861,6 +913,198 @@ Operator: one of
 
 Separator: one of
         (       )       {       }       [       ]       ;       ,       .
+
+</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#OUT_OF_BOUNDARY</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">1. 级别： Warning</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#OUT_OF_BOUNDARY</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">2. 描述：这条规则检测可能导致越界的数组操作。当index值为负、大于或等于数组大小时会导致这一缺陷。</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#OUT_OF_BOUNDARY</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">3. 示例：
+void fillArray(int array[], int size)
+{
+	for (int i = 0; i &lt;= size; i++) { // iterate from 0 to 100
+		array[i] = 0; // VIOLATION (accessing array out of bounds: &quot;array[i]&quot; where (i == 100))
+	}
+}
+
+void example()
+{
+	int[] array = new int[100];
+	fillArray(array, 100);
+	// ...
+}</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#OVERRIDE_METHOD_EQUALS_BUT_HASHCODE</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">1. 级别：Warning</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#OVERRIDE_METHOD_EQUALS_BUT_HASHCODE</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">2. 描述：这条规则检测程序中覆盖了equals方法，但没有覆盖hashcode方法的类。这类问题通常会导致类在集合中不正常地保存。</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#OVERRIDE_METHOD_EQUALS_BUT_HASHCODE</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">3. 示例：
+public class People {
+	public int ID;
+	public String name;
+	public Date birthday;
+	public String address;
+	
+	@Override
+	public boolean equals(Object obj){
+		if(obj == null){
+			return false;
+		}
+		if(this == obj){
+			return true;
+		}
+		if(obj instanceof People){
+			People another = (People)obj;
+			return this.ID == another.ID;
+		}
+		return false;
+	}</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#REMOVE_IN_ITERATION</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">1. 级别：Warning</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#REMOVE_IN_ITERATION</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">2. 描述：这条规则检测在迭代器结束工作前对原集合进行修改的缺陷。通常这种缺陷会导致ConcurrentModification Exception被抛出。</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#REMOVE_IN_ITERATION</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">3. 示例：
+public abstract class TestIterator
+{
+    private HashSet _hConsoles = new HashSet();
+
+    void disposeAll()
+    {
+        Iterator iterator = _hConsoles.iterator();
+        while (iterator.hasNext()) {
+            IConsole console = (IConsole)iterator.next();
+            if (console == null) {
+                continue;
+            }
+            console.done();
+            _hConsoles.remove(console); // VIOLATION
+        }
+    }
+}</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#STREAM_NOT_CLOSED</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">1. 级别：Warning</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#STREAM_NOT_CLOSED</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">2. 描述：这条规则识别文件流被打开后未能关闭的缺陷。</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#STREAM_NOT_CLOSED</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">3. 示例：
+public void readFileByBytes(String fileName) {
+        File file = new File(fileName);
+        try {
+            System.out.println(&quot;以字节为单位读取文件内容，一次读一个字节：&quot;);
+            // 一次读一个字节
+            InputStream in = new FileInputStream(file);
+            int tempbyte;
+            while ((tempbyte = in.read()) != -1) {
+                System.out.write(tempbyte);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+}</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#UNUSED_VARIABLE</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">1. 级别：Warning</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#UNUSED_VARIABLE</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">2. 描述：这条规则识别并报告程序中被定义过、但未被使用的变量。</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#UNUSED_VARIABLE</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">3. 示例：
+static class User {
+        String name;
+        String password;
+        User(String name, String password) {
+            this.name = name;
+            this.password = password;
+            checkData();
+        }
+        void checkData() {
+            // empty implementation
+        }
+    }
+    static class RestrictedUser extends User {
+        int minLoginLength = 7;
+        RestrictedUser(String name, String password) {
+            super(name, password);
+        }
+        @Override
+        void checkData() {
+            // BUG: minLoginLength is not yet initialized when checkData() is called from base class constructor
+            if (super.name.length() &lt; this.minLoginLength) {
+                throw new IllegalArgumentException(&quot;length of name should be greater than 7&quot;);
+            }
+            // ..
+        }
+    }</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#USE_NULL_POINTER</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">1. 级别：Error</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#USE_NULL_POINTER</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">2. 描述：这条规则检测程序中使用空指针的错误。</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#USE_NULL_POINTER</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">3. 示例：
+public void foo(String arg)
+{
+    arg.length();  // VIOLATION !!!
+}
+
+public void goo()
+{
+    foo(null);
+}
 
 </Literal>
     </AnnotationAssertion>

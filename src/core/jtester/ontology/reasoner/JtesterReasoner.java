@@ -10,20 +10,18 @@ import java.util.Set;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
-import org.semanticweb.HermiT.Reasoner;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.IRI;
+import org.semanticweb.owlapi.model.OWLAnnotation;
 import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.reasoner.OWLReasoner;
-import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
 
 
 import plugin.util.Const;
 import core.common.model.jobflow.IJob;
+import core.common.model.jobflow.JobConst;
 import core.common.model.test.TestData;
 import core.jtester.ontology.checker.CloseStreamChecker;
 import core.jtester.ontology.checker.DividedByZeroChecker;
@@ -93,18 +91,12 @@ public class JtesterReasoner implements IJob{
 			IRI docIRI = IRI.create(file);
 			OWLOntology ont = manager.loadOntologyFromOntologyDocument(docIRI);
 			ont.getABoxAxioms(true);
-		    System.out.println("Loaded " + ont.getOntologyID());
-		    
-		    // setup variables
-		    OWLReasonerFactory reasonerFactory = new Reasoner.ReasonerFactory();
-            OWLReasoner reasoner = reasonerFactory.createReasoner(ont);
-            
-            OWLDataFactory fac = manager.getOWLDataFactory();
-            OWLClass results = fac.getOWLClass(IRI.create(Const.OntologyID + Const.OWL_WARNING));
-            
+		    System.out.println("Load: " + ont.getOntologyID());
+		
+		    Set<String> violations = data.getTestResult().getViolations();
             Set<OWLClass> owls = ont.getClassesInSignature();
-            for(OWLClass cls: owls){
-            }
+            
+            generateReport(violations, owls, ont);
             
             //System.out.println(results);
 		} catch (IOException e) {
@@ -112,6 +104,40 @@ public class JtesterReasoner implements IJob{
 		} catch (OWLOntologyCreationException e) {
 			e.printStackTrace();
 		} 
+	}
+	
+	private void generateReport(Set<String> violations,  Set<OWLClass> owls, OWLOntology ont){
+		for(OWLClass owl: owls){
+			String owlName = owl.toString();
+			for(String violation: violations){
+				if(owlName.contains(violation)){
+					// violation name
+					System.out.println(owlName);
+					
+					// violation description
+					Set<OWLAnnotation> annotations = owl.getAnnotations(ont);
+					for(OWLAnnotation annotation: annotations){
+						String desc = trim(annotation.getValue().toString());
+						if(!desc.isEmpty()){
+							System.out.println(desc);
+						}
+					}
+					
+					// line seperator
+					System.out.println("");
+				}
+			}
+		}
+	}
+	
+	private String trim(String text){
+		// do not print example
+		if(text.contains(JobConst.ONTOLOGY_EXAMPLE_CN)){
+			return "";
+		}
+		
+		String content = text.substring(1, text.length()-1);
+		return content;
 	}
 
 	@Override

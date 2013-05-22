@@ -20,7 +20,9 @@ public class UnusedVariableChecker implements IChecker{
 		SemanticsStore store = (SemanticsStore) file.get(JobConst.SEMANTICS);
 		List<DeclarationSemantics> exceptions = handleSemantics(store);
 
-		generateReport(exceptions);
+		if(generateReport(exceptions)){
+			data.getTestResult().addViolation(JobConst.ONTOLOGY_UNUSED_VARIABLE);
+		}
 	}
 	
 	private List<DeclarationSemantics> handleSemantics(SemanticsStore store){
@@ -49,12 +51,17 @@ public class UnusedVariableChecker implements IChecker{
 		return violations;
 	}
 	
-	private void generateReport(List<DeclarationSemantics> exceptions){
+	private boolean generateReport(List<DeclarationSemantics> exceptions){
+		boolean report = false;
 		if(exceptions != null && !exceptions.isEmpty()){
 			System.err.println("Warning: 以下变量未被使用：");
 			for(DeclarationSemantics ds: exceptions){
 				System.err.println("\t" + ds);
+				if(report == false){
+					report = true;
+				}
 			}
 		}
+		return report;
 	}
 }

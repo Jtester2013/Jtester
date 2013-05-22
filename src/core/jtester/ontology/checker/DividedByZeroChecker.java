@@ -12,11 +12,9 @@ import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.InfixExpression;
-import org.eclipse.jdt.core.dom.Name;
 import org.eclipse.jdt.core.dom.SimpleName;
 
 import core.common.model.jobflow.JobConst;
-import core.common.model.semantics.DIPair;
 import core.common.model.semantics.DeclarationSemantics;
 import core.common.model.semantics.InferenceSemantics;
 import core.common.model.semantics.SemanticsStore;
@@ -36,7 +34,9 @@ public class DividedByZeroChecker implements IChecker{
 		SemanticsStore store = (SemanticsStore) file.get(JobConst.SEMANTICS);
 		List<InferenceSemantics> exceptions = handleSemantics(store);
 
-		generateReport(exceptions);
+		if(generateReport(exceptions)){
+			data.getTestResult().addViolation(JobConst.ONTOLOGY_DIVIDED_BY_ZERO);
+		}
 	}
 	
 	private List<InferenceSemantics> handleSemantics(SemanticsStore store){
@@ -189,12 +189,18 @@ public class DividedByZeroChecker implements IChecker{
 		return Abacus.compute(exp, fields) == 0;
 	}
 	
-	private void generateReport(List<InferenceSemantics> exceptions){
+	private boolean generateReport(List<InferenceSemantics> exceptions){
+		boolean report = false;
 		if(exceptions != null && !exceptions.isEmpty()){
 			System.err.println("Error: ³ýÊýÎª0!");
 			for(InferenceSemantics ds: exceptions){
 				System.err.println("\t" + ds.toStringWithContext());
+				if(report == false){
+					report = true;
+				}
 			}
 		}
+		
+		return report;
 	}
 }

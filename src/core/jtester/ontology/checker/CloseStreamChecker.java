@@ -22,7 +22,9 @@ public class CloseStreamChecker implements IChecker{
 		SemanticsStore store = (SemanticsStore) file.get(JobConst.SEMANTICS);
 		List<DeclarationSemantics> exceptions = handleSemantics(store);
 
-		generateReport(exceptions);
+		if(generateReport(exceptions)){
+			data.getTestResult().addViolation(JobConst.ONTOLOGY_STREAM_NOT_CLOSED);
+		}
 	}
 	
 	private List<DeclarationSemantics> handleSemantics(SemanticsStore store){
@@ -72,12 +74,17 @@ public class CloseStreamChecker implements IChecker{
 		return rules;	
 	}
 	
-	private void generateReport(List<DeclarationSemantics> exceptions){
+	private boolean generateReport(List<DeclarationSemantics> exceptions){
+		boolean report = false;
 		if(exceptions != null && !exceptions.isEmpty()){
 			System.err.println("Warning: 未关闭流变量!");
 			for(DeclarationSemantics ds: exceptions){
 				System.err.println("\t" + ds + " \t");
+				if(report == false){
+					report = true;
+				}
 			}
 		}
+		return report;
 	}
 }

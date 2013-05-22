@@ -2,6 +2,8 @@ package core.common.model.test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class TestResult {
 	private int totalFileNum;
@@ -10,9 +12,11 @@ public class TestResult {
 	private String rule;
 	
 	private HashMap<String, ArrayList<TestResultItem>> result;
+	private HashSet<String> violations; // Ontology rules violations
 
 	public TestResult() {
 		result = new HashMap<String, ArrayList<TestResultItem>>();
+		violations = new HashSet<String>();
 	}
 
 	public void add(String filePath, TestResultItem item) {
@@ -66,5 +70,11 @@ public class TestResult {
 	}
 	public String getCurrentRule(){
 		return rule;
+	}
+	public void addViolation(String name){
+		violations.add(name);
+	}
+	public Set<String> getViolations(){
+		return violations;
 	}
 }
