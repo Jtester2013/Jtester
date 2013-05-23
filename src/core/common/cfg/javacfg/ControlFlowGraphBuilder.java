@@ -77,11 +77,14 @@ public class ControlFlowGraphBuilder {
 			parseParameters(def.parameters());
 		}
 		
-		Block body = def.getBody();
 		start = new JavaStartNode();
 		exits = new ArrayList<IExitNode>();
 		dead = new ArrayList<IBasicBlock>();
-		IBasicBlock last = createSubGraph(start, body);
+		
+		IBasicBlock bodyStart = connectContextInfo(start, def.parameters());
+		
+		Block body = def.getBody();
+		IBasicBlock last = createSubGraph(bodyStart, body);
 		if (!(last instanceof IExitNode) && !deadConnector(last)) {
 			returnExit = factory.createExitNode(null);
 			returnExit.setStartNode(start);
@@ -104,6 +107,7 @@ public class ControlFlowGraphBuilder {
 		graph.setMethod(def);
 		return graph;
 	}
+	
 
 	public IBasicBlock findLast(IBasicBlock node) {
 		if (node instanceof IJumpNode)
@@ -116,6 +120,15 @@ public class ControlFlowGraphBuilder {
 			return findLast(((IDecisionNode) node).getMergeNode().getOutgoing());
 		}
 		return node;
+	}
+	
+	private IBasicBlock connectContextInfo(IBasicBlock prev, List<ASTNode> arguments){
+		for(ASTNode arg: arguments){
+			JavaPlainNode node = factory.createPlainNode(arg);
+			addOutgoing(prev, node);
+			prev = node;
+		}
+		return prev;
 	}
 	
 	private boolean deadConnector(IBasicBlock conn) {
