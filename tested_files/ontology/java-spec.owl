@@ -40,6 +40,9 @@
         <Class IRI="#Error"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#FILE_CONTENT_INJECTION"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#False"/>
     </Declaration>
     <Declaration>
@@ -161,6 +164,9 @@
     </Declaration>
     <Declaration>
         <Class IRI="#Return"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SENSITIVE_DATA_EXPOSURE"/>
     </Declaration>
     <Declaration>
         <Class IRI="#STREAM_NOT_CLOSED"/>
@@ -309,6 +315,10 @@
         <Class IRI="#JavaBlockStatement"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#FILE_CONTENT_INJECTION"/>
+        <Class IRI="#Warning"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#False"/>
         <Class IRI="#BooleanLiteral"/>
     </SubClassOf>
@@ -419,6 +429,10 @@
     <SubClassOf>
         <Class IRI="#Return"/>
         <Class IRI="#JavaKeyword"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SENSITIVE_DATA_EXPOSURE"/>
+        <Class IRI="#Warning"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#STREAM_NOT_CLOSED"/>
@@ -759,6 +773,30 @@ int zeroMethod()
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#FILE_CONTENT_INJECTION</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">1. 级别: Warning</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#FILE_CONTENT_INJECTION</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">2. 描述：这条规则主要检测直接将从用户处获得的数据写入文件的情况。</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#FILE_CONTENT_INJECTION</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">3. 示例：
+public void save(HttpServletRequest req) throws IOException {
+	String sData = req.getParameter(&quot;user_params&quot;);
+	//sData = validate(sData);
+	
+	String fileName = &quot;user_data&quot;;
+	FileOutputStream fOut = new FileOutputStream(fileName);
+	fOut.write(sData.getBytes());  // file content injection
+	fOut.close();
+}</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#JavaClass_hasMethod</IRI>
         <Literal xml:lang="ch" datatypeIRI="&rdf;PlainLiteral">java类包含有各种method，此属性用来描述这种关系</Literal>
     </AnnotationAssertion>
@@ -1007,6 +1045,31 @@ public abstract class TestIterator
             }
             console.done();
             _hConsoles.remove(console); // VIOLATION
+        }
+    }
+}</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SENSITIVE_DATA_EXPOSURE</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">1. 级别: Warning</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SENSITIVE_DATA_EXPOSURE</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">2. 描述：这条规则主要检测程序内部的敏感数据向外界用户暴露的情况。通常这种安全问题会让攻击者获得程序信息用于破坏正常的程序流程，并且可能赋予他不应有的高权限。</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SENSITIVE_DATA_EXPOSURE</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">3. 示例：
+public void doGet(HttpServletRequest req, HttpServletResponse resp) {
+    try {
+        Class.forName(&quot;someClass&quot;);
+    } catch(Exception e) {
+        try {
+            resp.getWriter().write(e.getMessage()); //VIOLATION
+        } catch (IOException e1) {
         }
     }
 }</Literal>

@@ -11,7 +11,7 @@ public class Vulnerabilities {
 		
 		String fileName = "user_data";
 		FileOutputStream fOut = new FileOutputStream(fileName);
-		fOut.write(sData.getBytes());
+		fOut.write(sData.getBytes());  // file content injection
 		fOut.close();
 	}
 	

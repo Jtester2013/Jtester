@@ -42,7 +42,7 @@ public class JtesterReasoner implements IJob{
 	public boolean run(TestData data) {
 		init();
 		produceABox(data);
-		//reasonOntology(data);
+		reasonOntology(data);
 		return true;
 	}
 
