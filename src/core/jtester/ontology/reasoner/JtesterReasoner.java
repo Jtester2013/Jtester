@@ -31,6 +31,7 @@ import core.jtester.ontology.checker.MethodOverrideChecker;
 import core.jtester.ontology.checker.NullPointerChecker;
 import core.jtester.ontology.checker.OutOfBoundaryChecker;
 import core.jtester.ontology.checker.RemoveInIterationChecker;
+import core.jtester.ontology.checker.SensitiveDataExposureChecker;
 import core.jtester.ontology.checker.UnusedVariableChecker;
 
 public class JtesterReasoner implements IJob{
@@ -47,6 +48,8 @@ public class JtesterReasoner implements IJob{
 
 	private void init() {
 		checkers = new ArrayList<IChecker>();
+		
+		// È±ÏÝ
 		ConditionAlwaysSameValueChecker iasvc = new ConditionAlwaysSameValueChecker();
 		UnusedVariableChecker uvc = new UnusedVariableChecker();
 		NullPointerChecker npc = new NullPointerChecker(); 
@@ -56,7 +59,9 @@ public class JtesterReasoner implements IJob{
 		RemoveInIterationChecker riic = new RemoveInIterationChecker();
 		DividedByZeroChecker dbzc = new DividedByZeroChecker();
 		
+		// Â©¶´
 		FileContentInjectionChecker fcic = new FileContentInjectionChecker();
+		SensitiveDataExposureChecker sdec = new SensitiveDataExposureChecker();
 		
 		checkers.add(iasvc);
 		checkers.add(uvc);
@@ -68,6 +73,7 @@ public class JtesterReasoner implements IJob{
 		checkers.add(dbzc);
 		
 		checkers.add(fcic);
+		checkers.add(sdec);
 	}
 	
 	private void produceABox(TestData data) {

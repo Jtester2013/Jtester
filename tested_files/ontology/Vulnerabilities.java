@@ -25,7 +25,10 @@ public class Vulnerabilities {
 	    } catch(Exception e) {
 	        try {
 	        	PrintWriter writer = resp.getWriter();
-	        	writer.write(e.getMessage()); //VIOLATION
+	        	String message = e.getMessage();
+	        	//message = validate(message);
+	        	
+	        	writer.write(message); //VIOLATION
 	        } catch (IOException e1) {
 	        	
 	        }

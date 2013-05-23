@@ -93,6 +93,12 @@ public class JobConst {
 	public final static String INJECTION_STREAM_TYPE1 = "FileOutputStream";
 	public final static String INJECTION_REQUEST_TYPE1 = "HttpServletRequest";
 	
+	// Sensitive Data Exposure Checker
+	public final static String EXPOSURE_WRITE = "write";
+	public final static String EXPOSURE_RESPONSE_TYPE1 = "HttpServletResponse";
+	public final static String EXPOSURE_TYPE1 = "Exception";
+	public final static String EXPOSURE_TYPE2 = "IOException";
+	
 	// IProblem
 	public final static String COMPILER_PROBLEM = "Compiler Problems";
 	
@@ -106,6 +112,7 @@ public class JobConst {
 	public final static String ONTOLOGY_OUT_OF_BOUNDARY = "OUT_OF_BOUNDARY";
 	public final static String ONTOLOGY_DIVIDED_BY_ZERO = "DIVIDED_BY_ZERO";
 	public final static String ONTOLOGY_FILE_CONTENT_INJECTION = "FILE_CONTENT_INJECTION";
+	public final static String ONTOLOGY_SENSITIVE_DATA_EXPOSURE = "SENSITIVE_DATA_EXPOSURE";
 	
 	// Ontology
 	public final static String ONTOLOGY_DESCRIPTION_CN = "√Ë ˆ";
