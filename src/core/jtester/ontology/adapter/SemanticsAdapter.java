@@ -58,6 +58,10 @@ public class SemanticsAdapter implements IJob{
 			Iterator<InferenceSemantics> ir = store.iterator2();
 			while(ir.hasNext()){
 				InferenceSemantics is = ir.next();
+				if(is.getName() == null){
+					continue;
+				}
+				
 				if(is.getLine() == line && is.getName().toString().equals(name)){
 					Iterator<DeclarationSemantics> ir2 = store.iterator1();
 					while(ir2.hasNext()){

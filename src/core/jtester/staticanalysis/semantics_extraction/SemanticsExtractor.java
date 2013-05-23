@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.jdt.core.dom.ASTNode;
+import org.eclipse.jdt.core.dom.Annotation;
 import org.eclipse.jdt.core.dom.ArrayAccess;
 import org.eclipse.jdt.core.dom.Assignment;
 import org.eclipse.jdt.core.dom.CastExpression;
@@ -21,6 +22,7 @@ import org.eclipse.jdt.core.dom.PostfixExpression;
 import org.eclipse.jdt.core.dom.QualifiedName;
 import org.eclipse.jdt.core.dom.ReturnStatement;
 import org.eclipse.jdt.core.dom.SimpleName;
+import org.eclipse.jdt.core.dom.SingleVariableDeclaration;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 import org.eclipse.jdt.core.dom.VariableDeclarationStatement;
 
@@ -73,11 +75,6 @@ public class SemanticsExtractor implements IJob{
 		ms.setName(method.getName());
 		ms.setParametors(method.parameters());
 		store.putMethodStore(ms);
-		
-		List<ASTNode> parametors = method.parameters();
-		for(ASTNode node: parametors){
-			handleSemantics(node);
-		}
 	}
 	
 	private void handleCondition(List<ConditionExpression> ces) {
@@ -94,6 +91,7 @@ public class SemanticsExtractor implements IJob{
 		if(node == null){
 			return;
 		}
+		
 		switch(node.getNodeType()){
 		case ASTNode.VARIABLE_DECLARATION_STATEMENT:
 			VariableDeclarationStatement vds = (VariableDeclarationStatement)node;
@@ -121,7 +119,16 @@ public class SemanticsExtractor implements IJob{
 			handleExpression(ife);
 			break;
 		case ASTNode.TRY_STATEMENT:
+			break;
 		case ASTNode.SINGLE_VARIABLE_DECLARATION:
+			SingleVariableDeclaration svd = (SingleVariableDeclaration)node;
+			DeclarationSemantics svdSemantics = new DeclarationSemantics();
+			svdSemantics.setLine(getLineNumber(svd));
+			svdSemantics.setType(svd.getType());
+			svdSemantics.setName(svd.getName());
+			svdSemantics.setValue(svd.getInitializer());
+			svdSemantics.setIsArument(true);
+			store.putDeclarationStore(svdSemantics);
 			break;
 		case ASTNode.RETURN_STATEMENT:
 			ReturnStatement rs = (ReturnStatement)node;
@@ -211,6 +218,12 @@ public class SemanticsExtractor implements IJob{
 			miSemantics.setMethod(mi.getName());
 			miSemantics.setArguments(mi.arguments());
 			store.putInferenceStore(miSemantics);
+			
+			// handle argumetns in the method invocation
+			List<Expression> miArguments = miSemantics.getArguments();
+			for(Expression arg: miArguments){
+				handleExpression(arg);
+			}
 			break;
 		case ASTNode.PARENTHESIZED_EXPRESSION:
 			ParenthesizedExpression pte = (ParenthesizedExpression)exp;

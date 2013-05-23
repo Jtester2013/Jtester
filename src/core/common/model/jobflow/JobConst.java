@@ -88,6 +88,11 @@ public class JobConst {
 	public final static String METHOD_EQUALS = "equals";
 	public final static String METHOD_HASHCODE = "hashCode";
 	
+	// File Content Injection Checker
+	public final static String INJECTION_WRITE = "write";
+	public final static String INJECTION_STREAM_TYPE1 = "FileOutputStream";
+	public final static String INJECTION_REQUEST_TYPE1 = "HttpServletRequest";
+	
 	// IProblem
 	public final static String COMPILER_PROBLEM = "Compiler Problems";
 	
@@ -100,6 +105,7 @@ public class JobConst {
 	public final static String ONTOLOGY_CONDITION_ALWAYS_SAME_VALUE = "CONDITION_ALWAYS_SAME_VALUE";
 	public final static String ONTOLOGY_OUT_OF_BOUNDARY = "OUT_OF_BOUNDARY";
 	public final static String ONTOLOGY_DIVIDED_BY_ZERO = "DIVIDED_BY_ZERO";
+	public final static String ONTOLOGY_FILE_CONTENT_INJECTION = "FILE_CONTENT_INJECTION";
 	
 	// Ontology
 	public final static String ONTOLOGY_DESCRIPTION_CN = "√Ë ˆ";

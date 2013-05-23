@@ -38,6 +38,10 @@ public class UnusedVariableChecker implements IChecker{
 			Iterator<InferenceSemantics> ir2 = store.iterator2();
 			while(ir2.hasNext()){
 				InferenceSemantics is = ir2.next();
+				if(is.getName() == null){
+					continue;
+				}
+				
 				if(name.equals(is.getName().toString())){
 					used = true;
 					break;

@@ -48,7 +48,10 @@ public class InferenceSemantics {
 	}
 	
 	public ASTNode getContext(){
-		return name.getParent();
+		if(name != null){
+			return name.getParent();
+		}
+		return null;
 	}
 	
 	public void addDeclaration(DeclarationSemantics ds){
@@ -82,17 +85,17 @@ public class InferenceSemantics {
 		if(method!=null){
 			sb.append(".");
 			sb.append(method);
+			sb.append("(");
+			
+			if(!arguments.isEmpty()){
+				sb.append(arguments.get(0));
+			}
+			for(int i=1;i<arguments.size();i++){
+				sb.append(",");
+				sb.append(arguments.get(i));
+			}
+			sb.append(")");
 		}
-		
-		sb.append("(");
-		if(!arguments.isEmpty()){
-			sb.append(arguments.get(0));
-		}
-		for(int i=1;i<arguments.size();i++){
-			sb.append(",");
-			sb.append(arguments.get(i));
-		}
-		sb.append(")");
 
 		return sb.toString();
 	}

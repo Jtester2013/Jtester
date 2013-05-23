@@ -8,6 +8,7 @@ public class DeclarationSemantics {
 	private int line;
 	private Type type;
 	private Name name;
+	private boolean isArgument;
 	private Expression value;
 
 	public int getLine() {
@@ -42,8 +43,19 @@ public class DeclarationSemantics {
 		this.value = value;
 	}
 	
+	public boolean isArument() {
+		return isArgument;
+	}
+
+	public void setIsArument(boolean isArument) {
+		this.isArgument = isArument;
+	}
+
 	@Override
 	public String toString(){
+		if(isArgument){
+			return line + ": " + type + " " + name;
+		}
 		return line + ": " + name.getParent().getParent().toString().replace("\n", "");
 	}
 }

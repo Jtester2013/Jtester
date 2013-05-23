@@ -7,7 +7,7 @@ import org.eclipse.jdt.core.dom.Name;
 public class MethodSemantics {
 	private int line;
 	private Name name;
-	private List parametors;
+	private List parameters;
 	
 	public int getLine() {
 		return line;
@@ -22,7 +22,7 @@ public class MethodSemantics {
 	}
 	
 	public void setParametors(List parametors){
-		this.parametors = parametors;
+		this.parameters = parametors;
 	}
 
 	public void setName(Name name) {
@@ -38,8 +38,8 @@ public class MethodSemantics {
 		sb.append("(");
 		
 		int i=0;
-		while(i<parametors.size()){
-			sb.append(parametors.get(i));
+		while(i<parameters.size()){
+			sb.append(parameters.get(i));
 			sb.append(",");
 			i++;
 		}

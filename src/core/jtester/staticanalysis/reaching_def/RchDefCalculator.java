@@ -56,7 +56,6 @@ public class RchDefCalculator extends Calculator implements IJob {
 				}
 			}
 		}
-
 	}
 
 	protected void initWorklist() {

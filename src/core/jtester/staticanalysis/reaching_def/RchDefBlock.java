@@ -8,6 +8,7 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.ExpressionStatement;
 import org.eclipse.jdt.core.dom.SimpleName;
+import org.eclipse.jdt.core.dom.SingleVariableDeclaration;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 import org.eclipse.jdt.core.dom.VariableDeclarationStatement;
 
@@ -95,6 +96,11 @@ public class RchDefBlock extends AnalysisBlockImpl {
 				DefLocPair dl = new DefLocPair(exp.toString(),startline);
 				this._temp.add(dl);
 			}
+		} else if (node instanceof SingleVariableDeclaration){
+			int startline = parser.getLineNumber(node.getStartPosition());
+			SingleVariableDeclaration statement = (SingleVariableDeclaration) node;
+			DefLocPair dl = new DefLocPair(statement.getName().toString(),startline);
+			this._temp.add(dl);
 		}
 	}
 }

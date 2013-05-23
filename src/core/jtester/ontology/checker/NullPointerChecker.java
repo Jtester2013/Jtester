@@ -40,6 +40,11 @@ public class NullPointerChecker implements IChecker{
 				// primitive type can't be null
 				continue;
 			}
+			
+			if(semantics.isArument()){
+				// argument value is unknown
+				continue;
+			}
 
 			if(semantics.getValue() == null || semantics.getValue() instanceof NullLiteral){
 				toCheck.add(semantics);
@@ -67,7 +72,7 @@ public class NullPointerChecker implements IChecker{
 		boolean report = false;
 		System.err.println("Warning: “˝”√ø’÷∏’Î£°");
 		for(InferenceSemantics is : exceptions){
-			System.err.println("\t" + is);
+			System.err.println("\t" + is.toStringWithContext());
 			if(report == false){
 				report = true;
 			}

@@ -26,6 +26,7 @@ import core.common.model.test.TestData;
 import core.jtester.ontology.checker.CloseStreamChecker;
 import core.jtester.ontology.checker.DividedByZeroChecker;
 import core.jtester.ontology.checker.ConditionAlwaysSameValueChecker;
+import core.jtester.ontology.checker.FileContentInjectionChecker;
 import core.jtester.ontology.checker.MethodOverrideChecker;
 import core.jtester.ontology.checker.NullPointerChecker;
 import core.jtester.ontology.checker.OutOfBoundaryChecker;
@@ -40,7 +41,7 @@ public class JtesterReasoner implements IJob{
 	public boolean run(TestData data) {
 		init();
 		produceABox(data);
-		reasonOntology(data);
+		//reasonOntology(data);
 		return true;
 	}
 
@@ -55,6 +56,8 @@ public class JtesterReasoner implements IJob{
 		RemoveInIterationChecker riic = new RemoveInIterationChecker();
 		DividedByZeroChecker dbzc = new DividedByZeroChecker();
 		
+		FileContentInjectionChecker fcic = new FileContentInjectionChecker();
+		
 		checkers.add(iasvc);
 		checkers.add(uvc);
 		checkers.add(npc);
@@ -63,6 +66,8 @@ public class JtesterReasoner implements IJob{
 		checkers.add(oobc);
 		checkers.add(riic);
 		checkers.add(dbzc);
+		
+		checkers.add(fcic);
 	}
 	
 	private void produceABox(TestData data) {
