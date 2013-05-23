@@ -23,7 +23,7 @@ public class ContextInfo {
 		return this.calleeName;
 	}
 	
-	public List getCallerArguments(){
+	public List<ASTNode> getCallerArguments(){
 		return this.calleeArguments;
 	}
 	
