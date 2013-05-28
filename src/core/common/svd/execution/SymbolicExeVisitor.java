@@ -1,5 +1,7 @@
 package core.common.svd.execution;
 
+import java.awt.List;
+
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.AnnotationTypeDeclaration;
 import org.eclipse.jdt.core.dom.AnnotationTypeMemberDeclaration;
@@ -85,7 +87,14 @@ import org.eclipse.jdt.core.dom.VariableDeclarationStatement;
 import org.eclipse.jdt.core.dom.WhileStatement;
 import org.eclipse.jdt.core.dom.WildcardType;
 
-public class ExecutionVisitor extends ASTVisitor {
+import core.common.svd.path.ProgramEnv;
+
+public class SymbolicExeVisitor extends ASTVisitor {
+	ProgramEnv env;
+	
+	public SymbolicExeVisitor(ProgramEnv env){
+		this.env = env;
+	}
 
 	/**
 	 * @param args
@@ -634,6 +643,9 @@ public class ExecutionVisitor extends ASTVisitor {
 	 * be skipped
 	 */
 	public boolean visit(InfixExpression node) {
+		node.getLeftOperand();
+		node.getRightOperand();
+		node.getOperator();
 		return true;
 	}
 
@@ -1420,6 +1432,9 @@ public class ExecutionVisitor extends ASTVisitor {
 	 * be skipped
 	 */
 	public boolean visit(VariableDeclarationStatement node) {
+		node.fragments().iterator();// 获取声明语句中的list<VariableDeclarationFragment>.
+		node.getType();// 获取声明变量的类型
+//		if(node.INITIALIZER == null);
 		return true;
 	}
 
@@ -2560,5 +2575,13 @@ public class ExecutionVisitor extends ASTVisitor {
 		// default implementation: do nothing
 	}
 	*/
+
+	public ProgramEnv getEnv() {
+		return env;
+	}
+
+	public void setEnv(ProgramEnv env) {
+		this.env = env;
+	}
 
 }

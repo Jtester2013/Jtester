@@ -1,22 +1,16 @@
 package core.common.svd.test;
 
-public class SVDTest {
+public class ASTViewTest {
+
 	public int max(int a, int b) {
+		int adsf;
 		int result = 0;
 		if (a > b) {
 			result = a;
+			result++;
 			result = result + 5;
-			if (result < 3) {
-				System.out.println();
-			} else {
-				System.out.println();
-			}
 		} else {
 			result = b;
-		}
-		while (result > 0) {
-			result--;
-			System.out.println();
 		}
 		return result;
 	}

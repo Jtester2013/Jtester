@@ -25,7 +25,7 @@ import choco.kernel.model.variables.real.RealVariable;
 import choco.kernel.model.variables.set.SetVariable;
 import choco.kernel.solver.Configuration;
 
-public class CPDemo {
+public class CPExecutor {
 	// int、float、double类型数据的值域
 	public static final int intupperlimit = Integer.MAX_VALUE;
 	public static final int intlowerlimit = Integer.MIN_VALUE;
@@ -57,10 +57,25 @@ public class CPDemo {
 		solver.read(model);
 		boolean solverable = solver.solve();
 		println(solverable);
-//		simpleDemo();
-//		problem1();
 	}
 	
+	
+	public static boolean solve(Expression e){
+		if (e instanceof InfixExpression) {
+			// 构造Expression左边的表达式，产程相应的ExpressionNode
+			
+			// 构造Expression左边的表达式，产程相应的ExpressionNode
+			
+			// 得到Expression的逻辑判断符号，并对左右两边进行求解
+			
+			// 返回可否求解
+			
+		}else {
+			System.out.println("Expression: " + e +" is not applicable.");
+		}
+		
+		return false;
+	}
 	
 	/**
 	 * 遍历envVariableValueHashMap里的key
@@ -282,11 +297,6 @@ public class CPDemo {
 		/*
 		 * 被注释掉的这段应该是用不着的
 		 */
-//		else if (type==ExpressionType.single_int) {
-//			
-//		}else if (type==ExpressionType.single_variable) {
-//			
-//		}
 		return result;
 	}
 	
@@ -303,20 +313,20 @@ public class CPDemo {
 		return constraint;
 	}
 	
-	public static ExpressionNode getExpressionNode(Expression exp){
+	public static ExpressionNode getExpressionNode(Expression exp) {
 		ExpressionNode result = null;
-		ExpressionNode leftPart=null;
-		ExpressionNode rightPart=null;
-		ExpressionType type=null;
-		ExpressionOperator operator=null;
-//		InfixExpression.Operator operator;
-		
+		ExpressionNode leftPart = null;
+		ExpressionNode rightPart = null;
+		ExpressionType type = null;
+		ExpressionOperator operator = null;
+		// InfixExpression.Operator operator;
+
 		if (exp instanceof InfixExpression) {
 			((InfixExpression) exp).getOperator();
-		}else if (exp instanceof SimpleName) {
-			
-		}else if (exp instanceof NumberLiteral) {
-			
+		} else if (exp instanceof SimpleName) {
+
+		} else if (exp instanceof NumberLiteral) {
+
 		}
 		return result;
 	}

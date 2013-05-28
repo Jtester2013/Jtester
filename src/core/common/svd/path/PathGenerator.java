@@ -56,7 +56,7 @@ public class PathGenerator {
 		System.out.println("Begin path abstraction");
 		while(true){
 			if (currentNode instanceof PlainNode && !(currentNode instanceof BranchNode)) {
-				System.out.println("currentNode is " + "PlainNode: " + ((AbstractBasicBlock)currentNode).getData());
+				System.out.println("PlainNode: " + ((AbstractBasicBlock)currentNode).getData());
 				PlainNode tempNode = (PlainNode)currentNode;
 				path.add(tempNode);
 				currentNode = ((PlainNode) currentNode).getOutgoing();
@@ -152,7 +152,9 @@ public class PathGenerator {
 				ExitNode tempNode = (ExitNode)currentNode;
 				path.add(tempNode);
 				LinkedList<IBasicBlock> completePath = (LinkedList<IBasicBlock>)path.clone();
-				paths.add(new Path(completePath));
+				Path pathFinded = new Path(completePath);
+				pathFinded.env = new ProgramEnv();
+				paths.add(pathFinded);
 				if(!hasUpperDecisionNode(path)){
 					break;
 				}else {
@@ -174,7 +176,7 @@ public class PathGenerator {
 	
 	
 	private static void printExpression(DecisionNode decisionNode){
-		System.out.println("currentNode is DecisionNode "+((Expression)decisionNode.getData()));// print Decision Expression
+		System.out.println("DecisionNode "+((Expression)decisionNode.getData()));// print Decision Expression
 	}
 	
 	/**
@@ -201,18 +203,18 @@ public class PathGenerator {
 		}
 		return resultConnectorNode;
 	}
-	private static void printPath(LinkedList<IBasicBlock> path){
+	public static void printPath(LinkedList<IBasicBlock> path){
 		System.out.println("find a path, its size is: " + path.size()+" and its content is: ");
 		for (int i = 0; i < path.size(); i++) {// TODO extracted
 			IBasicBlock dataBasicBlock=path.get(i);
-			if (dataBasicBlock instanceof JavaPlainNode) {
-				System.out.print("node"+i+" is: "+((JavaPlainNode)dataBasicBlock).getData());
-			}else if(dataBasicBlock instanceof JavaBranchNode){// TODO print the condition
-				System.out.print("node"+i+" is: "+((JavaBranchNode)dataBasicBlock).getData());
-			}else if(dataBasicBlock instanceof JavaExitNode){
-				JavaExitNode dataNode = (JavaExitNode)dataBasicBlock;
+			if (dataBasicBlock instanceof PlainNode && !(dataBasicBlock instanceof BranchNode)) {
+				System.out.println("plain node"+i+" is: "+((PlainNode)dataBasicBlock).getData());
+			}else if(dataBasicBlock instanceof BranchNode){// TODO print the condition
+				System.out.println("branch node"+i+" is: "+((BranchNode)dataBasicBlock).getData());
+			}else if(dataBasicBlock instanceof ExitNode){
+				ExitNode dataNode = (ExitNode)dataBasicBlock;
 				if (dataNode.getData()!=null) {
-					System.out.print("node"+i+" is: "+dataNode.getData());
+					System.out.println("exit node"+i+" is: "+dataNode.getData());
 				}
 			}
 		}
@@ -253,7 +255,7 @@ public class PathGenerator {
 	 * @return
 	 * @throws IOException
 	 */
-	private static JavaControlFlowGraph[] read(String filePath) throws IOException {
+	public static JavaControlFlowGraph[] read(String filePath) throws IOException {
 		// 读取源文件
 		File file = new File(filePath);
 		byte[] b = new byte[(int) file.length()];

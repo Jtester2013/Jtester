@@ -1,19 +1,15 @@
-package core.common.svd.execution;
+package core.common.svd.path;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-
 import org.eclipse.jdt.core.dom.Expression;
-import org.eclipse.jdt.core.dom.NullLiteral;
 
-
-
-public class ProgramEnvironment {
+public class ProgramEnv {
 	private Map<String, Expression> svt;
 	private Map<String, String> vt;
 
-	public ProgramEnvironment() {
+	public ProgramEnv() {
 		vt = new HashMap<String, String>(); // its key means variable zzj
 		svt = new HashMap<String, Expression>(); // its key means value zzj
 	}

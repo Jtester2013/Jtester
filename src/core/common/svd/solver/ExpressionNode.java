@@ -66,6 +66,13 @@ public class ExpressionNode {
 		this.right = right;
 	}
 	
+	public ExpressionNode clone(){
+		ExpressionNode copyExpressionNode = new ExpressionNode(this.type, this.value);
+		copyExpressionNode.left = this.left.clone();
+		copyExpressionNode.right = this.right.clone();
+		copyExpressionNode.operator = this.operator;
+		return copyExpressionNode;
+	}
 	public static void main(String[] args){
 	}
 }
