@@ -115,10 +115,16 @@
         <Class IRI="#JavaNameExpression"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#JavaObjectType"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#JavaOperator"/>
     </Declaration>
     <Declaration>
         <Class IRI="#JavaOperatorPlus"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JavaPrimitiveType"/>
     </Declaration>
     <Declaration>
         <Class IRI="#JavaSeparator"/>
@@ -128,12 +134,6 @@
     </Declaration>
     <Declaration>
         <Class IRI="#JavaStringLiteralExpression"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#JavaStringType"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#JavaThreadType"/>
     </Declaration>
     <Declaration>
         <Class IRI="#JavaTryStatemnt"/>
@@ -298,7 +298,25 @@
         <DataProperty IRI="#JavaVariableDeclaratorID_hasName"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="#has_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#is_used"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#used_as_divisor"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#value_assigned"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Divided_by_zero"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#Override_method_equals_but_hashcode"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Use_NULL_pointer"/>
     </Declaration>
     <SubClassOf>
         <Class IRI="#BooleanLiteral"/>
@@ -389,20 +407,20 @@
         <Class IRI="#JavaStringLiteralExpression"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#JavaObjectType"/>
+        <Class IRI="#JavaType"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#JavaOperatorPlus"/>
         <Class IRI="#JavaOperator"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#JavaPrimitiveType"/>
+        <Class IRI="#JavaType"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#JavaStringLiteralExpression"/>
         <Class IRI="#JavaExpression"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#JavaStringType"/>
-        <Class IRI="#JavaType"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#JavaThreadType"/>
-        <Class IRI="#JavaType"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#JavaTryStatemnt"/>
@@ -465,9 +483,27 @@
         <Class IRI="#JavaMethod"/>
     </SubClassOf>
     <ClassAssertion>
+        <Class IRI="#JavaPrimitiveType"/>
+        <NamedIndividual IRI="#Divided_by_zero"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class IRI="#JavaClass"/>
         <NamedIndividual IRI="#Override_method_equals_but_hashcode"/>
     </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#JavaObjectType"/>
+        <NamedIndividual IRI="#Use_NULL_pointer"/>
+    </ClassAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_value"/>
+        <NamedIndividual IRI="#Divided_by_zero"/>
+        <Literal datatypeIRI="&xsd;long">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#used_as_divisor"/>
+        <NamedIndividual IRI="#Divided_by_zero"/>
+        <Literal datatypeIRI="&xsd;boolean">true</Literal>
+    </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#JavaClass_overridesEquals"/>
         <NamedIndividual IRI="#Override_method_equals_but_hashcode"/>
@@ -476,6 +512,16 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#JavaClass_overridesHashCode"/>
         <NamedIndividual IRI="#Override_method_equals_but_hashcode"/>
+        <Literal datatypeIRI="&xsd;boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#is_used"/>
+        <NamedIndividual IRI="#Use_NULL_pointer"/>
+        <Literal datatypeIRI="&xsd;boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#value_assigned"/>
+        <NamedIndividual IRI="#Use_NULL_pointer"/>
         <Literal datatypeIRI="&xsd;boolean">false</Literal>
     </DataPropertyAssertion>
     <SubObjectPropertyOf>
@@ -770,6 +816,54 @@
         <Head>
             <ClassAtom>
                 <Class IRI="#OVERRIDE_METHOD_EQUALS_BUT_HASHCODE"/>
+                <Variable IRI="urn:swrl#x"/>
+            </ClassAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#JavaObjectType"/>
+                <Variable IRI="urn:swrl#x"/>
+            </ClassAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#is_used"/>
+                <Variable IRI="urn:swrl#x"/>
+                <Literal datatypeIRI="&xsd;boolean">true</Literal>
+            </DataPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#value_assigned"/>
+                <Variable IRI="urn:swrl#x"/>
+                <Literal datatypeIRI="&xsd;boolean">false</Literal>
+            </DataPropertyAtom>
+        </Body>
+        <Head>
+            <ClassAtom>
+                <Class IRI="#USE_NULL_POINTER"/>
+                <Variable IRI="urn:swrl#x"/>
+            </ClassAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#JavaPrimitiveType"/>
+                <Variable IRI="urn:swrl#x"/>
+            </ClassAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#has_value"/>
+                <Variable IRI="urn:swrl#x"/>
+                <Literal datatypeIRI="&xsd;integer">0</Literal>
+            </DataPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#used_as_divisor"/>
+                <Variable IRI="urn:swrl#x"/>
+                <Literal datatypeIRI="&xsd;boolean">true</Literal>
+            </DataPropertyAtom>
+        </Body>
+        <Head>
+            <ClassAtom>
+                <Class IRI="#DIVIDED_BY_ZERO"/>
                 <Variable IRI="urn:swrl#x"/>
             </ClassAtom>
         </Head>

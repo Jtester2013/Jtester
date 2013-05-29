@@ -4,7 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.FileLocator;
@@ -14,14 +17,23 @@ import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAnnotation;
 import org.semanticweb.owlapi.model.OWLClass;
+import org.semanticweb.owlapi.model.OWLDataPropertyExpression;
+import org.semanticweb.owlapi.model.OWLLiteral;
+import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
+import org.semanticweb.owlapi.reasoner.Node;
+import org.semanticweb.owlapi.reasoner.NodeSet;
+
+import com.clarkparsia.pellet.owlapiv3.PelletReasoner;
+import com.clarkparsia.pellet.owlapiv3.PelletReasonerFactory;
 
 
 import plugin.util.Const;
 import core.common.model.jobflow.IJob;
 import core.common.model.jobflow.JobConst;
+import core.common.model.semantics.ViolationAxiom;
 import core.common.model.test.TestData;
 import core.jtester.ontology.checker.CloseStreamChecker;
 import core.jtester.ontology.checker.DividedByZeroChecker;
@@ -49,7 +61,7 @@ public class JtesterReasoner implements IJob{
 	private void init() {
 		checkers = new ArrayList<IChecker>();
 		
-		// 缺陷
+		// 针对缺陷的checker
 		ConditionAlwaysSameValueChecker iasvc = new ConditionAlwaysSameValueChecker();
 		UnusedVariableChecker uvc = new UnusedVariableChecker();
 		NullPointerChecker npc = new NullPointerChecker(); 
@@ -59,9 +71,11 @@ public class JtesterReasoner implements IJob{
 		RemoveInIterationChecker riic = new RemoveInIterationChecker();
 		DividedByZeroChecker dbzc = new DividedByZeroChecker();
 		
-		// 漏洞
+		// 针对漏洞的checker
 		FileContentInjectionChecker fcic = new FileContentInjectionChecker();
 		SensitiveDataExposureChecker sdec = new SensitiveDataExposureChecker();
+		
+		// 使用本体推理检测漏洞和缺陷的checker
 		
 		checkers.add(iasvc);
 		checkers.add(uvc);
@@ -83,8 +97,76 @@ public class JtesterReasoner implements IJob{
 	}
 
 	private void reasonOntology(TestData data) {
+		File owlFile = getOWLFile();
+		try {
+			
+			// 加载owl文件
+			OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
+			IRI docIRI = IRI.create(owlFile);
+			OWLOntology ont = manager.loadOntologyFromOntologyDocument(docIRI);
+			System.out.println("\nLoad: " + ont.getOntologyID());
+			
+			// 获取ABox
+			Set<ViolationAxiom> atoms = data.getTestResult().getViolations();
+			
+			// 获取owl中缺陷模式
+			Set<OWLNamedIndividual> individuals = ont.getIndividualsInSignature();
+			Set<OWLNamedIndividual> toCheck = new HashSet<OWLNamedIndividual>();
+			for(OWLNamedIndividual one: individuals){
+				if(matchRule(one.getDataPropertyValues(ont), atoms)){
+					toCheck.add(one);
+				}
+			}
+			
+			// 推理
+			PelletReasoner reasoner = PelletReasonerFactory.getInstance().createReasoner(ont);
+			Set<OWLClass> owlClasses = new HashSet<OWLClass>();
+			for(OWLNamedIndividual individual : toCheck){
+				NodeSet<OWLClass> owlcls =  reasoner.getTypes(individual, true);
+				Iterator<Node<OWLClass>> ir = owlcls.iterator();
+				while(ir.hasNext()){
+					owlClasses.addAll(ir.next().getEntities());
+				}
+			}
+			
+			// 报告
+			generateReport(atoms, owlClasses, ont);
+			
+		} catch (OWLOntologyCreationException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	// to complex 
+	// need refinement
+	private boolean matchRule(Map<OWLDataPropertyExpression, Set<OWLLiteral>> properties, Set<ViolationAxiom> atoms){
+		Iterator<OWLDataPropertyExpression> ir = properties.keySet().iterator();
+		while(ir.hasNext()){
+			OWLDataPropertyExpression de = ir.next();
+			Iterator<ViolationAxiom> ir2 = atoms.iterator();
+			while(ir2.hasNext()){
+				ViolationAxiom atom = ir2.next();
+				Map<String, String> dataProperties = atom.getDataProperties();
+				Set<String> keys = dataProperties.keySet();
+				for(String key: keys){
+					// 匹配 data property的属性名称
+					if(de.toString().contains(key)){
+						Set<OWLLiteral> values = properties.get(de);
+						for(OWLLiteral val: values){
+							if(val.getLiteral().equals(dataProperties.get(key))){
+								return true;
+							}
+						}
+					}
+				}
+			}
+		}
+		return false;
+	}
+	
+	private File getOWLFile(){
+		File file = null;
 		try { 
-			File file = null;
 			String filePath = "";
 			Bundle bundle = Platform.getBundle(Const.JTESTER);
 			
@@ -97,31 +179,18 @@ public class JtesterReasoner implements IJob{
 				filePath = Const.OWL_PATH;
 			}
 			file = new File(filePath);
-
-			OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-			IRI docIRI = IRI.create(file);
-			OWLOntology ont = manager.loadOntologyFromOntologyDocument(docIRI);
-			ont.getABoxAxioms(true);
-		    System.out.println("Load: " + ont.getOntologyID());
-		
-		    Set<String> violations = data.getTestResult().getViolations();
-            Set<OWLClass> owls = ont.getClassesInSignature();
-            
-            generateReport(violations, owls, ont);
-            
-            //System.out.println(results);
 		} catch (IOException e) {
 			e.printStackTrace();
-		} catch (OWLOntologyCreationException e) {
-			e.printStackTrace();
 		} 
+		
+		return file;
 	}
 	
-	private void generateReport(Set<String> violations,  Set<OWLClass> owls, OWLOntology ont){
+	private void generateReport(Set<ViolationAxiom> violations,  Set<OWLClass> owls, OWLOntology ont){
 		for(OWLClass owl: owls){
 			String owlName = owl.toString();
-			for(String violation: violations){
-				if(owlName.contains(violation)){
+			for(ViolationAxiom violation: violations){
+				if(owlName.contains(violation.getRuleName())){
 					// violation name
 					System.out.println(owlName);
 					

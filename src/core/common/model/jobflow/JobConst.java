@@ -114,8 +114,14 @@ public class JobConst {
 	public final static String ONTOLOGY_FILE_CONTENT_INJECTION = "FILE_CONTENT_INJECTION";
 	public final static String ONTOLOGY_SENSITIVE_DATA_EXPOSURE = "SENSITIVE_DATA_EXPOSURE";
 	
-	// Ontology
+	// Ontology description
 	public final static String ONTOLOGY_DESCRIPTION_CN = "ÃèÊö";
 	public final static String ONTOLOGY_LEVEL_CN = "¼¶±ð";
 	public final static String ONTOLOGY_EXAMPLE_CN = "Ê¾Àý";
+	
+	// Ontology data property
+	public final static String ONTOLOGY_DATA_PROPERTY_USED = "is_used";
+	public final static String ONTOLOGY_DATA_PROPERTY_VALUE = "has_value";
+	public final static String ONTOLOGY_DATA_PROPERTY_ASSIGNED = "value_assigned";
+	public final static String ONTOLOGY_DATA_PROPERTY_DIVISOR = "used_as_divisor";
 }

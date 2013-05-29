@@ -45,9 +45,9 @@ public class API {
 //		paths.add("tested_files/ontology/PetStore.java");
 //		paths.add("tested_files/ontology/SimpleIteration.java");
 //		
-//		paths.add("tested_files/ontology/Syndrome.java");
+		paths.add("tested_files/ontology/Syndrome.java");
 //		paths.add("tested_files/ontology/People.java");
-		paths.add("tested_files/ontology/Vulnerabilities.java");
+//		paths.add("tested_files/ontology/Vulnerabilities.java");
 		
 		List<String> rules = new ArrayList<String>();
 		rules.add(RuleSet.FUNCTION_INFO_VISITOR);

@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+import core.common.model.semantics.ViolationAxiom;
+
 public class TestResult {
 	private int totalFileNum;
 	private int filesCheckNum;
@@ -12,11 +14,11 @@ public class TestResult {
 	private String rule;
 	
 	private HashMap<String, ArrayList<TestResultItem>> result;
-	private HashSet<String> violations; // Ontology rules violations
+	private HashSet<ViolationAxiom> violations; // Ontology rules violations
 
 	public TestResult() {
 		result = new HashMap<String, ArrayList<TestResultItem>>();
-		violations = new HashSet<String>();
+		violations = new HashSet<ViolationAxiom>();
 	}
 
 	public void add(String filePath, TestResultItem item) {
@@ -71,10 +73,18 @@ public class TestResult {
 	public String getCurrentRule(){
 		return rule;
 	}
-	public void addViolation(String name){
-		violations.add(name);
+	
+	public void addViolation(ViolationAxiom axiom){
+		if(axiom != null){
+			violations.add(axiom);
+		}
 	}
-	public Set<String> getViolations(){
+	
+	public void addViolation(String ruleName){
+		violations.add(new ViolationAxiom(ruleName));
+	}
+	
+	public Set<ViolationAxiom> getViolations(){
 		return violations;
 	}
 }

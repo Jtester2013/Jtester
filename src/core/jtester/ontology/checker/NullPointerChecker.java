@@ -11,6 +11,7 @@ import core.common.model.jobflow.JobConst;
 import core.common.model.semantics.DeclarationSemantics;
 import core.common.model.semantics.InferenceSemantics;
 import core.common.model.semantics.SemanticsStore;
+import core.common.model.semantics.ViolationAxiom;
 import core.common.model.test.TestData;
 import core.common.model.test.TestFile;
 import core.jtester.ontology.reasoner.IChecker;
@@ -24,9 +25,9 @@ public class NullPointerChecker implements IChecker{
 		SemanticsStore store = (SemanticsStore) file.get(JobConst.SEMANTICS);
 		List<InferenceSemantics> exceptions = handleSemantics(store);
 		
-		if(generateReport(exceptions)){
-			data.getTestResult().addViolation(JobConst.ONTOLOGY_USE_NULL_POINTER);
-		}
+		generateReport(exceptions);
+		produceAbox(data, exceptions);
+		
 	}
 
 	private List<InferenceSemantics> handleSemantics(SemanticsStore store) {
@@ -78,5 +79,18 @@ public class NullPointerChecker implements IChecker{
 			}
 		}
 		return report;
+	}
+	
+	private void produceAbox(TestData data, List<InferenceSemantics> exceptions) {
+		if(exceptions != null && !exceptions.isEmpty()){
+			for(InferenceSemantics ds: exceptions){
+				ViolationAxiom axiom = new ViolationAxiom(JobConst.ONTOLOGY_USE_NULL_POINTER);
+				axiom.setName(ds.getName().toString());
+				axiom.setContext(ds.toStringWithContext());
+				axiom.addDataProperty(JobConst.ONTOLOGY_DATA_PROPERTY_ASSIGNED, Boolean.toString(false));
+				axiom.addDataProperty(JobConst.ONTOLOGY_DATA_PROPERTY_USED, Boolean.toString(true));
+				data.getTestResult().addViolation(axiom);
+			}
+		}
 	}
 }

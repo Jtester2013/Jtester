@@ -18,6 +18,7 @@ import core.common.model.jobflow.JobConst;
 import core.common.model.semantics.DeclarationSemantics;
 import core.common.model.semantics.InferenceSemantics;
 import core.common.model.semantics.SemanticsStore;
+import core.common.model.semantics.ViolationAxiom;
 import core.common.model.test.TestData;
 import core.common.model.test.TestFile;
 import core.common.util.ASTUtil;
@@ -34,11 +35,10 @@ public class DividedByZeroChecker implements IChecker{
 		SemanticsStore store = (SemanticsStore) file.get(JobConst.SEMANTICS);
 		List<InferenceSemantics> exceptions = handleSemantics(store);
 
-		if(generateReport(exceptions)){
-			data.getTestResult().addViolation(JobConst.ONTOLOGY_DIVIDED_BY_ZERO);
-		}
+		generateReport(exceptions);
+		produceAbox(data, exceptions);
 	}
-	
+
 	private List<InferenceSemantics> handleSemantics(SemanticsStore store){
 		List<InferenceSemantics> toCheck = new ArrayList<InferenceSemantics>();
 		List<InferenceSemantics> violations = new ArrayList<InferenceSemantics>();
@@ -177,7 +177,6 @@ public class DividedByZeroChecker implements IChecker{
 		fields.put(name, expValue);
 	}
 	
-	
 	private boolean isExpressionZero(String name, Expression exp, SemanticsStore store){
 		if(exp == null){
 			return false;
@@ -202,5 +201,18 @@ public class DividedByZeroChecker implements IChecker{
 		}
 		
 		return report;
+	}
+
+	private void produceAbox(TestData data, List<InferenceSemantics> exceptions) {
+		if(exceptions != null && !exceptions.isEmpty()){
+			for(InferenceSemantics ds: exceptions){
+				ViolationAxiom axiom = new ViolationAxiom(JobConst.ONTOLOGY_DIVIDED_BY_ZERO);
+				axiom.setName(ds.getName().toString());
+				axiom.setContext(ds.toStringWithContext());
+				axiom.addDataProperty(JobConst.ONTOLOGY_DATA_PROPERTY_VALUE, Integer.toString(0));
+				axiom.addDataProperty(JobConst.ONTOLOGY_DATA_PROPERTY_DIVISOR, Boolean.toString(true));
+				data.getTestResult().addViolation(axiom);
+			}
+		}
 	}
 }
