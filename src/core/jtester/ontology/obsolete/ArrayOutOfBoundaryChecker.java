@@ -1,4 +1,4 @@
-package core.jtester.ontology.array_out_of_boundary;
+package core.jtester.ontology.obsolete;
 
 import core.common.model.test.TestData;
 import core.jtester.ontology.reasoner.IChecker;

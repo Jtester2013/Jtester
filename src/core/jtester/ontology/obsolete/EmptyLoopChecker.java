@@ -1,4 +1,4 @@
-package core.jtester.ontology.empty_loop;
+package core.jtester.ontology.obsolete;
 
 import java.util.List;
 

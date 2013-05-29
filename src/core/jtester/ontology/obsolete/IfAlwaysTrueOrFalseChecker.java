@@ -1,4 +1,4 @@
-package core.jtester.ontology.ifalwaystrueorfalse;
+package core.jtester.ontology.obsolete;
 
 import java.util.HashMap;
 import java.util.List;

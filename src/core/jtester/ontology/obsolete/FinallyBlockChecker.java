@@ -1,4 +1,4 @@
-package core.jtester.ontology.return_from_finally;
+package core.jtester.ontology.obsolete;
 
 import java.util.List;
 
