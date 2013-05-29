@@ -187,6 +187,12 @@
         <Class IRI="#Warning"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#equals"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#hashcode"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="#Always"/>
     </Declaration>
     <Declaration>
@@ -265,6 +271,9 @@
         <ObjectProperty IRI="#JavaWhileStatement_hasBlock"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#override"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="#JavaBlockStatement_isNull"/>
     </Declaration>
     <Declaration>
@@ -289,10 +298,7 @@
         <DataProperty IRI="#JavaVariableDeclaratorID_hasName"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#OVERRIDING_EQUALS_WITHOUT_OVERRIDING_HASHCODE_00000000-0000-0000-0000-000000000000"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#OVERRIDING_TOSTRING_00000000-0000-0000-0000-000000000000"/>
+        <NamedIndividual IRI="#Override_method_equals_but_hashcode"/>
     </Declaration>
     <SubClassOf>
         <Class IRI="#BooleanLiteral"/>
@@ -450,6 +456,28 @@
         <Class IRI="#USE_NULL_POINTER"/>
         <Class IRI="#Error"/>
     </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#equals"/>
+        <Class IRI="#JavaMethod"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#hashcode"/>
+        <Class IRI="#JavaMethod"/>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class IRI="#JavaClass"/>
+        <NamedIndividual IRI="#Override_method_equals_but_hashcode"/>
+    </ClassAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#JavaClass_overridesEquals"/>
+        <NamedIndividual IRI="#Override_method_equals_but_hashcode"/>
+        <Literal datatypeIRI="&xsd;boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#JavaClass_overridesHashCode"/>
+        <NamedIndividual IRI="#Override_method_equals_but_hashcode"/>
+        <Literal datatypeIRI="&xsd;boolean">false</Literal>
+    </DataPropertyAssertion>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#In"/>
         <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
@@ -466,6 +494,9 @@
         <ObjectProperty IRI="#JavaTryStatement_hasTryBlock"/>
         <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
     </SubObjectPropertyOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#override"/>
+    </FunctionalObjectProperty>
     <AsymmetricObjectProperty>
         <ObjectProperty IRI="#JavaClass_hasMethod"/>
     </AsymmetricObjectProperty>
