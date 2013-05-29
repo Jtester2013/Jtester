@@ -719,6 +719,30 @@
         <DataProperty IRI="#JavaVariableDeclaratorID_hasName"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
+    <DLSafeRule>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#JavaClass"/>
+                <Variable IRI="urn:swrl#x"/>
+            </ClassAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#JavaClass_overridesEquals"/>
+                <Variable IRI="urn:swrl#x"/>
+                <Literal datatypeIRI="&xsd;boolean">true</Literal>
+            </DataPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#JavaClass_overridesHashCode"/>
+                <Variable IRI="urn:swrl#x"/>
+                <Literal datatypeIRI="&xsd;boolean">false</Literal>
+            </DataPropertyAtom>
+        </Body>
+        <Head>
+            <ClassAtom>
+                <Class IRI="#OVERRIDE_METHOD_EQUALS_BUT_HASHCODE"/>
+                <Variable IRI="urn:swrl#x"/>
+            </ClassAtom>
+        </Head>
+    </DLSafeRule>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#CONDITION_ALWAYS_SAME_VALUE</IRI>
