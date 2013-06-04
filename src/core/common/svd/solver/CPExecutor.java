@@ -3,19 +3,12 @@ package core.common.svd.solver;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Set;
 
 import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.InfixExpression;
 import org.eclipse.jdt.core.dom.NumberLiteral;
 import org.eclipse.jdt.core.dom.SimpleName;
 
-import core.common.svd.path.ConcreateExpression;
-import core.common.svd.path.Path;
-import core.common.svd.path.ProgramEnv;
-
-//import static choco.Choco;
 import choco.Choco;
 import choco.cp.model.CPModel;
 import choco.cp.solver.CPSolver;
@@ -30,11 +23,13 @@ import choco.kernel.model.variables.real.RealExpressionVariable;
 import choco.kernel.model.variables.real.RealVariable;
 import choco.kernel.model.variables.set.SetVariable;
 import choco.kernel.solver.Configuration;
+import core.common.svd.path.Path;
+import core.common.svd.path.ProgramEnv;
 
 public class CPExecutor {
 	// int、float、double类型数据的值域
-//	public static final int intupperlimit = Integer.MAX_VALUE;
-//	public static final int intlowerlimit = Integer.MIN_VALUE;
+	public static final int intupperlimit = Integer.MAX_VALUE;
+	public static final int intlowerlimit = Integer.MIN_VALUE;
 
 	public static final float floatupperlimit = Float.MAX_VALUE;
 	public static final float floatlowerlimit = Float.MIN_VALUE;

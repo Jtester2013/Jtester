@@ -10,7 +10,6 @@ import core.common.cfg.interfaces.IBasicBlock;
 import core.common.svd.solver.ExpressionNode;
 
 public class Path {
-	LinkedList<ConcreateExpression> constaintsCollection = new LinkedList<>();
 	LinkedList<IBasicBlock> pathNodes = new LinkedList<>();
 	ProgramEnv env = new ProgramEnv();
 	
@@ -53,24 +52,4 @@ public class Path {
 		this.pathNodes = pathNodes;
 	}
 	
-	public void printConstrain(){
-		Expression exp;
-		for (Iterator iterator = constaintsCollection.iterator(); iterator.hasNext();) {
-			exp = (Expression) iterator.next();
-			System.out.println(exp+", ");
-		}
-		System.out.println("");
-	}
-	public boolean addConstraint(Expression exp, boolean objective){
-		constaintsCollection.add(new ConcreateExpression(exp, objective));
-		return true;
-	}
-
-	public LinkedList<ConcreateExpression> getConstaints() {
-		return constaintsCollection;
-	}
-
-	public void setConstaints(LinkedList<ConcreateExpression> constaints) {
-		this.constaintsCollection = constaints;
-	}
 }

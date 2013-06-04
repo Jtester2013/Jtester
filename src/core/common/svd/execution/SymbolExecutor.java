@@ -25,7 +25,6 @@ import core.common.cfg.model.BranchNode;
 import core.common.cfg.model.DecisionNode;
 import core.common.cfg.model.ExitNode;
 import core.common.cfg.model.PlainNode;
-import core.common.svd.path.ConcreateExpression;
 import core.common.svd.path.Path;
 import core.common.svd.path.PathGenerator;
 import core.common.svd.path.ProgramEnv;
@@ -97,12 +96,12 @@ public class SymbolExecutor {
 		// 用path的env初始化visitor
 		CPExecutor cpExecutor = new CPExecutor();
 		SymbolicExeVisitor visitor = new SymbolicExeVisitor(path.getEnv());
-		LinkedList<ConcreateExpression> constraints = path.getConstaints();
 		IBasicBlock currentNode;
 		for (Iterator iterator = path.getPathNodes().iterator(); iterator.hasNext();) {
 			currentNode = (IBasicBlock)iterator.next();
 			// 设置节点的可达性
 			if (currentNode instanceof AbstractBasicBlock && !((AbstractBasicBlock)currentNode).isReachable()) {
+				System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 				((AbstractBasicBlock) currentNode).setReachable(true);
 			}
 			if (currentNode instanceof BranchNode) {

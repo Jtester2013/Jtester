@@ -17,6 +17,7 @@ public class ExecuteDemo {
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		String filePath = System.getProperty("user.dir")+"\\src\\core\\common\\svd\\test\\ASTViewTest.java";
+//		String filePath = System.getProperty("user.dir")+"\\tested_files\\ontology\\People.java";
 		System.out.println(filePath);
 		JavaControlFlowGraph[] cfgsArray = PathGenerator.read(filePath);
 		JavaControlFlowGraph cfgInstance;
@@ -45,20 +46,6 @@ public class ExecuteDemo {
 			System.out.println("For the method: " + methodNameString
 					+ ", there are " + executablePaths.size()
 					+ " executablePath");
-			// 对第一条路径进行符号执行
-//			if (paths.length>0) {
-//				Path exePath = paths[0];
-//				SymbolExecutor executor = new SymbolExecutor(exePath);
-//				boolean executable = executor.execute(exePath);
-//				if (executable) {
-//					executablePaths.add(exePath);
-//				}
-//				System.out.println("For the method: "+methodNameString + ", there are "+executablePaths.size()+" executablePath");
-//				exePath.getEnv().printValue();
-//			}else {
-//				System.out.println("path is not detected");
-//			}
 		}
 	}
-
 }
