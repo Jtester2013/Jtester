@@ -24,7 +24,6 @@ public class ExecuteDemo {
 		
 		LinkedList<Path> executablePaths = new LinkedList<>();
 		String methodNameString;
-		// 针对每一个method的cfg生成程序路径并进行符号执行
 		for (int cfgIndex = 0; cfgIndex < cfgsArray.length; cfgIndex++) {
 			methodNameString = cfgsArray[cfgIndex].getSignature();
 			System.out.println("Begin to analyse CFG: "+methodNameString);
