@@ -1,5 +1,9 @@
 package core.common.svd.solver;
 
+import java.util.HashMap;
+
+import choco.kernel.model.variables.integer.IntegerVariable;
+
 public class ExpressionNode {
 	ExpressionType type;// 这个ExpressionNode的类型，可以是int值/符号变量（此时right和left为null）、和复杂表达式（此时left和right不为null）
 	String value;
@@ -8,7 +12,7 @@ public class ExpressionNode {
 	ExpressionNode right;
 	
 	public ExpressionNode(ExpressionType type, String value){
-		if (type!=ExpressionType.single_int||type!=ExpressionType.single_variable) {
+		if (type!=ExpressionType.single_int && type!=ExpressionType.single_variable &&  type!=ExpressionType.not_defined) {
 			System.out.println("The type is not suitable for this construct method: "+ type);
 		}else{
 			this.type = type;
@@ -68,11 +72,39 @@ public class ExpressionNode {
 	
 	public ExpressionNode clone(){
 		ExpressionNode copyExpressionNode = new ExpressionNode(this.type, this.value);
-		copyExpressionNode.left = this.left.clone();
-		copyExpressionNode.right = this.right.clone();
-		copyExpressionNode.operator = this.operator;
+		if (this.left!=null) {
+			copyExpressionNode.left = this.left.clone();
+		}
+		if (this.right!=null) {
+			copyExpressionNode.right = this.right.clone();
+		}
+		if (this.operator!=null) {
+			copyExpressionNode.operator = this.operator;
+		}
 		return copyExpressionNode;
 	}
+	
+	public String toString(){
+		
+		return preVisitExpressionTree();
+	}
+	private String preVisitExpressionTree(){
+		String result = "";
+		HashMap<ExpressionOperator, String> expression_operator = new HashMap<>();
+		expression_operator.put(ExpressionOperator.div, "\\");
+		expression_operator.put(ExpressionOperator.plus, "+");
+		expression_operator.put(ExpressionOperator.minus, "-");
+		expression_operator.put(ExpressionOperator.multi, "*");
+		if (operator != null) {
+			result ="(" + left.preVisitExpressionTree()
+					+ expression_operator.get(operator)
+					+right.preVisitExpressionTree() + ")";
+		} else {
+			result = value;
+		}
+		return result;
+	}
+
 	public static void main(String[] args){
 	}
 }

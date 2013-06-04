@@ -22,6 +22,7 @@ public abstract class AbstractBasicBlock implements IBasicBlock, ICfgData {
 	 */
 	public final static IBasicBlock[] EMPTY_LIST = new IBasicBlock[0];
 	private Object data;
+	private boolean reachable = false;
 
 	public Object getData() {
 		return data;
@@ -57,5 +58,13 @@ public abstract class AbstractBasicBlock implements IBasicBlock, ICfgData {
 	@Override
 	public String toString() {
 		return getClass().getSimpleName() + ": " + toStringData();
+	}
+
+	public boolean isReachable() {
+		return reachable;
+	}
+
+	public void setReachable(boolean reachable) {
+		this.reachable = reachable;
 	}
 }

@@ -1,8 +1,12 @@
 package core.common.svd.execution;
 
 import java.awt.List;
+import java.util.Iterator;
 
-import org.eclipse.jdt.core.dom.ASTVisitor;
+import org.eclipse.jdt.core.dom.*;
+import org.eclipse.jdt.core.dom.Assignment.Operator;
+
+/**import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.AnnotationTypeDeclaration;
 import org.eclipse.jdt.core.dom.AnnotationTypeMemberDeclaration;
 import org.eclipse.jdt.core.dom.AnonymousClassDeclaration;
@@ -85,9 +89,12 @@ import org.eclipse.jdt.core.dom.VariableDeclarationExpression;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 import org.eclipse.jdt.core.dom.VariableDeclarationStatement;
 import org.eclipse.jdt.core.dom.WhileStatement;
-import org.eclipse.jdt.core.dom.WildcardType;
+import org.eclipse.jdt.core.dom.WildcardType;*/
 
 import core.common.svd.path.ProgramEnv;
+import core.common.svd.solver.ExpressionNode;
+import core.common.svd.solver.ExpressionOperator;
+import core.common.svd.solver.ExpressionType;
 
 public class SymbolicExeVisitor extends ASTVisitor {
 	ProgramEnv env;
@@ -101,7 +108,254 @@ public class SymbolicExeVisitor extends ASTVisitor {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+	}
+	
+	/**
+	 * do with the infix expression
+	 * @param exp
+	 */
+	public ExpressionNode InfixExpression2ExpressionNode(InfixExpression exp){
+		
+		Expression leftPart = exp.getLeftOperand(),
+				rightPart = exp.getRightOperand();
+		org.eclipse.jdt.core.dom.InfixExpression.Operator operator = exp.getOperator();
+		ExpressionNode resultNode =  new ExpressionNode(ExpressionType.not_defined, ""),
+				leftNode = new ExpressionNode(ExpressionType.not_defined, ""),
+				rightNode = new ExpressionNode(ExpressionType.not_defined, "");
+		
+		// 构造左操作数
+		if (leftPart instanceof NumberLiteral) {
+			leftNode = new ExpressionNode(ExpressionType.single_int, ((NumberLiteral)leftPart).getToken());
+		} else if (leftPart instanceof SimpleName) {
+			String sourceVarNameLeft = ((SimpleName)leftPart).getIdentifier();
+			leftNode = env.getMap().get(sourceVarNameLeft).clone();
+		} else if (leftPart instanceof InfixExpression) {
+			leftNode = InfixExpression2ExpressionNode((InfixExpression)leftPart);
+		}
+		// 构造右操作数
+		if (rightPart instanceof NumberLiteral) {
+			rightNode = new ExpressionNode(ExpressionType.single_int, ((NumberLiteral)rightPart).getToken());
+		} else if (rightPart instanceof SimpleName) {
+			String sourceVarNameRight = ((SimpleName)rightPart).getIdentifier();
+			rightNode = env.getMap().get(sourceVarNameRight).clone();
+		} else if (rightPart instanceof InfixExpression) {
+			rightNode = InfixExpression2ExpressionNode((InfixExpression)rightPart);
+		}
+		
+		if (operator.equals(org.eclipse.jdt.core.dom.InfixExpression.Operator.TIMES)) {
+			resultNode = new ExpressionNode(ExpressionType.expression, "", ExpressionOperator.multi, leftNode, rightNode);
+		}else if (operator.equals(org.eclipse.jdt.core.dom.InfixExpression.Operator.PLUS)) {
+			resultNode = new ExpressionNode(ExpressionType.expression, "", ExpressionOperator.plus, leftNode, rightNode);
+		}else if (operator.equals(org.eclipse.jdt.core.dom.InfixExpression.Operator.MINUS)) {
+			resultNode = new ExpressionNode(ExpressionType.expression, "", ExpressionOperator.minus, leftNode, rightNode);
+		}else if (operator.equals(org.eclipse.jdt.core.dom.InfixExpression.Operator.DIVIDE)) {
+			resultNode = new ExpressionNode(ExpressionType.expression, "", ExpressionOperator.div, leftNode, rightNode);
+		}else {
+			System.out.println("not supported operator : "+ operator);
+			return null;
+		}
+		return resultNode;
+	}
+	
+	public ExpressionNode generateExpressionNode(SimpleName varName){
+		return null;
+	}
+	/**
+	 * Visits the given type-specific AST node.
+	 * <p>
+	 * The default implementation does nothing and return true.
+	 * Subclasses may reimplement.
+	 * </p>
+	 *
+	 * @param node the node to visit
+	 * @return <code>true</code> if the children of this node should be
+	 * visited, and <code>false</code> if the children of this node should
+	 * be skipped
+	 */
+	public boolean visit(Assignment node) {
+//		System.out.println("Assignment left node type: "+node.getLeftHandSide().getNodeType());
+		Expression leftPart = node.getLeftHandSide(),
+				rightPart = node.getRightHandSide();
+		Operator operator = node.getOperator();
+		String varName;
+		if (leftPart instanceof SimpleName) {// 变量
+			
+			SimpleName var = (SimpleName)leftPart;
+			varName = var.getIdentifier();
+			if (env.existVar(varName)) { // 如果存在该变量,则用右侧的Expression赋值给左边变量，添加到env中
+				ExpressionNode valueNode = null;
+				// 处理右侧的表达式
+				if (rightPart instanceof SimpleName) { // 如果右侧
+					valueNode = env.getMap().get(((SimpleName)rightPart).getIdentifier()).clone();
+				}else if (rightPart instanceof NumberLiteral) {
+					String number = ((NumberLiteral)rightPart).getToken();
+					valueNode = new ExpressionNode(ExpressionType.single_int, number);
+					env.getMap().put(varName, valueNode);
+				}else if (rightPart instanceof InfixExpression) { // calculate the value of a infix expression
+					valueNode = InfixExpression2ExpressionNode((InfixExpression)rightPart);
+				}else {
+					System.out.println("not supported right part");
+				}
+				env.getMap().put(varName, valueNode);
+				return true;
+			}else {
+				System.out.println("The variable named \"" + varName +"\" not exist");
+				return false;
+			}
+		}else if (leftPart instanceof FieldAccess) { // 成员变量
+			
+			return false;
+		}else  {
+			System.out.println("not supported Assignment left type");
+			return false;
+		}
+	}
 
+	/**
+	 * Visits the given type-specific AST node.
+	 * <p>
+	 * The default implementation does nothing and return true.
+	 * Subclasses may reimplement.
+	 * </p>
+	 *
+	 * @param node the node to visit
+	 * @return <code>true</code> if the children of this node should be
+	 * visited, and <code>false</code> if the children of this node should
+	 * be skipped
+	 */
+	public boolean visit(InfixExpression node) {
+		node.getLeftOperand();
+		node.getRightOperand();
+		node.getOperator();
+		return true;
+	}
+	
+	/**
+	 * Visits the given type-specific AST node.
+	 * <p>
+	 * The default implementation does nothing and return true.
+	 * Subclasses may reimplement.
+	 * </p>
+	 *
+	 * @param node the node to visit
+	 * @return <code>true</code> if the children of this node should be
+	 * visited, and <code>false</code> if the children of this node should
+	 * be skipped
+	 */
+	public boolean visit(VariableDeclarationExpression node) {
+		System.out.println("VariableDeclarationExpression is : "+ node);
+		if (node.getType().toString().equals("int")) {
+			node.fragments();// 获取声明语句中的list<VariableDeclarationFragment>.
+			VariableDeclarationFragment fragment;
+			for (Iterator iterator = node.fragments().iterator(); iterator.hasNext();) {
+				fragment = (VariableDeclarationFragment) iterator.next(); // 初始化+赋值单元
+				String varNameString = fragment.getName().getIdentifier();// 变量部分
+				ExpressionNode valueNode;
+				Expression expression = fragment.getInitializer(); // 赋值部分
+				if (expression == null) {// 如果只是声明，没有初始化，则用符号变量初始化
+					valueNode = new ExpressionNode(ExpressionType.single_variable, UUIDGenerator.getUUID().toString(), null, null, null);
+					env.getMap().put(varNameString, valueNode);
+				}else if (expression instanceof NumberLiteral) { // 以数字初始化
+					NumberLiteral numberLiteral = (NumberLiteral)expression;
+					valueNode = new ExpressionNode(ExpressionType.single_int, numberLiteral.getToken()); // 用expression初始化tempNode
+					env.getMap().put(varNameString, valueNode);
+				}else if (expression instanceof SimpleName) {
+					String varName = ((SimpleName)expression).getIdentifier();// 赋值右边的变量
+					try {
+						valueNode = env.getMap().get(varName).clone();
+						env.getMap().put(varNameString, valueNode);
+					} catch (NullPointerException e) {
+						System.out.println("there is no var named as "+varNameString+" in the environment.");
+						e.printStackTrace();
+					}
+				}else if (expression instanceof InfixExpression) {
+					valueNode = InfixExpression2ExpressionNode((InfixExpression)expression);
+					env.getMap().put(varNameString, valueNode);
+				}
+			}
+			return true;
+		}else {
+			System.err.println("not supported type assignment: "+ node.getType());
+			return false;
+		}
+	}
+	
+	/**
+	 * Visits the given type-specific AST node.
+	 * <p>
+	 * The default implementation does nothing and return true.
+	 * Subclasses may reimplement.
+	 * </p>
+	 * @param node the node to visit
+	 * @return <code>true</code> if the children of this node should be
+	 * visited, and <code>false</code> if the children of this node should
+	 * be skipped
+	 */
+	public boolean visit(ExpressionStatement node) {
+		// 针对node中的expression调用visit方法
+		node.getExpression().accept(this);
+		return true;
+	}
+	
+	/**
+	 * Visits the given type-specific AST node.
+	 * <p>
+	 * The default implementation does nothing and return true.
+	 * Subclasses may reimplement.
+	 * </p>
+	 *
+	 * @param node the node to visit
+	 * @return <code>true</code> if the children of this node should be
+	 * visited, and <code>false</code> if the children of this node should
+	 * be skipped
+	 */
+	public boolean visit(SingleVariableDeclaration node) {
+		System.out.println(node.getClass().getName());
+		if (node.getType().toString().equals("int")) {
+			String varNameString = node.getName().getIdentifier();
+			ExpressionNode valueNode = new ExpressionNode(ExpressionType.single_variable, UUIDGenerator.getUUID().toString());
+			env.getMap().put(varNameString, valueNode);
+			/*
+			 * if (expression == null) {// 如果只是声明，没有初始化，则用符号变量初始化 valueNode =
+			 * new ExpressionNode(ExpressionType.single_variable,
+			 * UUIDGenerator.getUUID().toString(), null, null, null);
+			 * env.getMap().put(varNameString, valueNode); }else if (expression
+			 * instanceof NumberLiteral) { // 以数字初始化 NumberLiteral numberLiteral
+			 * = (NumberLiteral)expression;
+			 * 
+			 * valueNode = new ExpressionNode(ExpressionType.single_int,
+			 * numberLiteral.getToken()); // 用expression初始化tempNode
+			 * env.getMap().put(varNameString, valueNode); }else if (expression
+			 * instanceof SimpleName) { String varName =
+			 * ((SimpleName)expression).getIdentifier();// 赋值右边的变量 try {
+			 * valueNode = env.getMap().get(varName).clone();
+			 * env.getMap().put(varNameString, valueNode); } catch
+			 * (NullPointerException e) {
+			 * System.out.println("there is no var named as "
+			 * +varNameString+" in the environment."); e.printStackTrace(); } }
+			 */
+			return true;
+		} else {
+			return false;
+		}
+			
+	}
+
+	/**
+	 * Visits the given type-specific AST node.
+	 * <p>
+	 * The default implementation does nothing and return true.
+	 * Subclasses may reimplement.
+	 * </p>
+	 *
+	 * @param node the node to visit
+	 * @return <code>true</code> if the children of this node should be
+	 * visited, and <code>false</code> if the children of this node should
+	 * be skipped
+	 */
+	public boolean visit(PostfixExpression node) {
+		return true;
 	}
 	
 	/**
@@ -232,22 +486,6 @@ public class SymbolicExeVisitor extends ASTVisitor {
 	 * be skipped
 	 */
 	public boolean visit(AssertStatement node) {
-		return true;
-	}
-
-	/**
-	 * Visits the given type-specific AST node.
-	 * <p>
-	 * The default implementation does nothing and return true.
-	 * Subclasses may reimplement.
-	 * </p>
-	 *
-	 * @param node the node to visit
-	 * @return <code>true</code> if the children of this node should be
-	 * visited, and <code>false</code> if the children of this node should
-	 * be skipped
-	 */
-	public boolean visit(Assignment node) {
 		return true;
 	}
 
@@ -533,21 +771,6 @@ public class SymbolicExeVisitor extends ASTVisitor {
 		return true;
 	}
 
-	/**
-	 * Visits the given type-specific AST node.
-	 * <p>
-	 * The default implementation does nothing and return true.
-	 * Subclasses may reimplement.
-	 * </p>
-	 *
-	 * @param node the node to visit
-	 * @return <code>true</code> if the children of this node should be
-	 * visited, and <code>false</code> if the children of this node should
-	 * be skipped
-	 */
-	public boolean visit(ExpressionStatement node) {
-		return true;
-	}
 
 	/**
 	 * Visits the given type-specific AST node.
@@ -630,24 +853,6 @@ public class SymbolicExeVisitor extends ASTVisitor {
 		return true;
 	}
 
-	/**
-	 * Visits the given type-specific AST node.
-	 * <p>
-	 * The default implementation does nothing and return true.
-	 * Subclasses may reimplement.
-	 * </p>
-	 *
-	 * @param node the node to visit
-	 * @return <code>true</code> if the children of this node should be
-	 * visited, and <code>false</code> if the children of this node should
-	 * be skipped
-	 */
-	public boolean visit(InfixExpression node) {
-		node.getLeftOperand();
-		node.getRightOperand();
-		node.getOperator();
-		return true;
-	}
 
 	/**
 	 * Visits the given type-specific AST node.
@@ -961,21 +1166,7 @@ public class SymbolicExeVisitor extends ASTVisitor {
 		return true;
 	}
 
-	/**
-	 * Visits the given type-specific AST node.
-	 * <p>
-	 * The default implementation does nothing and return true.
-	 * Subclasses may reimplement.
-	 * </p>
-	 *
-	 * @param node the node to visit
-	 * @return <code>true</code> if the children of this node should be
-	 * visited, and <code>false</code> if the children of this node should
-	 * be skipped
-	 */
-	public boolean visit(PostfixExpression node) {
-		return true;
-	}
+
 
 	/**
 	 * Visits the given type-specific AST node.
@@ -1071,6 +1262,7 @@ public class SymbolicExeVisitor extends ASTVisitor {
 	 * be skipped
 	 */
 	public boolean visit(SimpleName node) {
+		String name = node.getIdentifier();
 		return true;
 	}
 
@@ -1109,21 +1301,6 @@ public class SymbolicExeVisitor extends ASTVisitor {
 	}
 
 
-	/**
-	 * Visits the given type-specific AST node.
-	 * <p>
-	 * The default implementation does nothing and return true.
-	 * Subclasses may reimplement.
-	 * </p>
-	 *
-	 * @param node the node to visit
-	 * @return <code>true</code> if the children of this node should be
-	 * visited, and <code>false</code> if the children of this node should
-	 * be skipped
-	 */
-	public boolean visit(SingleVariableDeclaration node) {
-		return true;
-	}
 
 	/**
 	 * Visits the given type-specific AST node.
@@ -1415,27 +1592,42 @@ public class SymbolicExeVisitor extends ASTVisitor {
 	 * visited, and <code>false</code> if the children of this node should
 	 * be skipped
 	 */
-	public boolean visit(VariableDeclarationExpression node) {
-		return true;
-	}
-
-	/**
-	 * Visits the given type-specific AST node.
-	 * <p>
-	 * The default implementation does nothing and return true.
-	 * Subclasses may reimplement.
-	 * </p>
-	 *
-	 * @param node the node to visit
-	 * @return <code>true</code> if the children of this node should be
-	 * visited, and <code>false</code> if the children of this node should
-	 * be skipped
-	 */
 	public boolean visit(VariableDeclarationStatement node) {
-		node.fragments().iterator();// 获取声明语句中的list<VariableDeclarationFragment>.
-		node.getType();// 获取声明变量的类型
-//		if(node.INITIALIZER == null);
-		return true;
+		System.out.println("VariableDeclarationStatement is : "+ node);// 2，这是什么？
+		if (node.getType().toString().equals("int")) {
+			node.fragments();// 获取声明语句中的list<VariableDeclarationFragment>.
+			VariableDeclarationFragment fragment;
+			for (Iterator iterator = node.fragments().iterator(); iterator.hasNext();) {
+				fragment = (VariableDeclarationFragment) iterator.next(); // 初始化+赋值单元
+				String varNameString = fragment.getName().getIdentifier();// 变量部分
+				ExpressionNode valueNode;
+				Expression expression = fragment.getInitializer(); // 赋值部分
+				if (expression == null) {// 如果只是声明，没有初始化，则用符号变量初始化
+					valueNode = new ExpressionNode(ExpressionType.single_variable, UUIDGenerator.getUUID().toString(), null, null, null);
+					env.getMap().put(varNameString, valueNode);
+				}else if (expression instanceof NumberLiteral) { // 以数字初始化
+					NumberLiteral numberLiteral = (NumberLiteral)expression;
+					valueNode = new ExpressionNode(ExpressionType.single_int, numberLiteral.getToken()); // 用expression初始化tempNode
+					env.getMap().put(varNameString, valueNode);
+				}else if (expression instanceof SimpleName) {
+					String varName = ((SimpleName)expression).getIdentifier();// 赋值右边的变量
+					try {
+						valueNode = env.getMap().get(varName).clone();
+						env.getMap().put(varNameString, valueNode);
+					} catch (NullPointerException e) {
+						System.out.println("there is no var named as "+varNameString+" in the environment.");
+						e.printStackTrace();
+					}
+				}else if (expression instanceof InfixExpression) {
+					valueNode = InfixExpression2ExpressionNode((InfixExpression)expression);
+					env.getMap().put(varNameString, valueNode);
+				}
+			}
+			return true;
+		}else {
+			System.err.println("not supported type assignment: "+ node.getType());
+			return false;
+		}
 	}
 
 	/**

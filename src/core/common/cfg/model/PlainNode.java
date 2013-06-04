@@ -53,4 +53,5 @@ public class PlainNode extends AbstractSingleIncomingNode implements IPlainNode 
 	public void addOutgoing(IBasicBlock node) {
 		setOutgoing(node);
 	}
+	
 }

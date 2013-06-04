@@ -1,13 +1,19 @@
 package core.common.svd.solver;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Set;
 
 import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.InfixExpression;
 import org.eclipse.jdt.core.dom.NumberLiteral;
 import org.eclipse.jdt.core.dom.SimpleName;
+
+import core.common.svd.path.ConcreateExpression;
+import core.common.svd.path.Path;
+import core.common.svd.path.ProgramEnv;
 
 //import static choco.Choco;
 import choco.Choco;
@@ -27,29 +33,48 @@ import choco.kernel.solver.Configuration;
 
 public class CPExecutor {
 	// int、float、double类型数据的值域
-	public static final int intupperlimit = Integer.MAX_VALUE;
-	public static final int intlowerlimit = Integer.MIN_VALUE;
+//	public static final int intupperlimit = Integer.MAX_VALUE;
+//	public static final int intlowerlimit = Integer.MIN_VALUE;
 
 	public static final float floatupperlimit = Float.MAX_VALUE;
 	public static final float floatlowerlimit = Float.MIN_VALUE;
 
 	public static final double doubleupperlimit = Double.MAX_VALUE;
 	public static final double doublelowerlimit = Double.MIN_VALUE;
+	public static HashSet<InfixExpression.Operator> feasible_operators = new HashSet<>();
+	static {
+		feasible_operators.add(InfixExpression.Operator.LESS);
+		feasible_operators.add(InfixExpression.Operator.LESS_EQUALS);
+		feasible_operators.add(InfixExpression.Operator.GREATER);
+		feasible_operators.add(InfixExpression.Operator.GREATER_EQUALS);
+		feasible_operators.add(InfixExpression.Operator.EQUALS);
+		feasible_operators.add(InfixExpression.Operator.NOT_EQUALS);
+	}
+	public HashMap<String, IntegerVariable> envVariableValueHashMap = new HashMap<String, IntegerVariable>();
+	public CPSolver solver = new CPSolver();
+	public CPModel model = new CPModel();
+	public ProgramEnv env;
 	
-	public static HashMap envVariableValueHashMap=new HashMap<String, IntegerVariable>();
-
+	public CPExecutor(){
+		env = new ProgramEnv();
+	}
+	public CPExecutor(Path path){
+		this.env = path.getEnv();
+	}
+	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		ExpressionNode root = null;
+		/*ExpressionNode root = null;
 		root = prepare();
+		CPExecutor cpExecutor = new CPExecutor();
 		// 先序遍历root为根的树，在遍历的同时建立envVariableValueHashMap环境
-		preVisitExpressionTree(root);
+		cpExecutor.updateVariable(root);
 		// 根据ExpressionNode为根的表达式树进行约束建模（Constraint Modeling）,并建立约束
 		println("");
-		println(expressionModeling(root));
-		Constraint constraint = Choco.lt(5, expressionModeling(root));
+		println(cpExecutor.expressionModeling(root));
+		Constraint constraint = Choco.lt(5, cpExecutor.expressionModeling(root));
 		// 进行求解
 		CPModel model = new CPModel();
 		model.addConstraint(constraint);
@@ -57,42 +82,95 @@ public class CPExecutor {
 		solver.read(model);
 		boolean solverable = solver.solve();
 		println(solverable);
+		*/
+		simpleDemo2();
 	}
 	
-	
-	public static boolean solve(Expression e){
-		if (e instanceof InfixExpression) {
-			// 构造Expression左边的表达式，产程相应的ExpressionNode
-			
-			// 构造Expression左边的表达式，产程相应的ExpressionNode
-			
-			// 得到Expression的逻辑判断符号，并对左右两边进行求解
-			
-			// 返回可否求解
-			
-		}else {
-			System.out.println("Expression: " + e +" is not applicable.");
-		}
+	/**
+	 * TODO
+	 * @param e
+	 * @return
+	 */
+	public static boolean solve(InfixExpression e) {
+		// 构造Expression左边的表达式，产程相应的ExpressionNode
 		
+		// 构造Expression左边的表达式，产程相应的ExpressionNode
+
+		// 得到Expression的逻辑判断符号，并对左右两边进行求解
+
+		// 返回可否求解
+
 		return false;
+	}
+	
+	/**
+	 * 此方法对若干条件判断表达式进行约束求解，在求解过程中将过滤掉无法处理的条件表达式
+	 * @param constraints
+	 * @return
+	 */
+	public boolean solve(ExpressionNode leftnNode, ExpressionNode rightNode, InfixExpression.Operator operator){
+		boolean solveable = true;
+		
+		CPSolver solver = new CPSolver();
+		solver.read(model);
+//		solveable = solver.solve();
+		return solveable;
+	}
+	
+	public Constraint generateConstraint(ExpressionNode leftNode, ExpressionNode rightNode, InfixExpression.Operator operator){
+		IntegerExpressionVariable leftVariable = expressionModeling(leftNode),
+				rightVariable = expressionModeling(rightNode);
+		Constraint constraint = null;
+		if (operator.equals(InfixExpression.Operator.LESS)) {
+			constraint =  Choco.lt(leftVariable, rightVariable);
+		}else if (operator.equals(InfixExpression.Operator.LESS_EQUALS)) {
+			constraint =  Choco.leq(leftVariable, rightVariable);
+		}else if (operator.equals(InfixExpression.Operator.GREATER)) {
+			constraint =  Choco.gt(leftVariable, rightVariable);
+		}else if (operator.equals(InfixExpression.Operator.GREATER_EQUALS)) {
+			constraint =  Choco.geq(leftVariable, rightVariable);
+		}else if (operator.equals(InfixExpression.Operator.EQUALS)) {
+			constraint =  Choco.eq(leftVariable, rightVariable);
+		}else if (operator.equals(InfixExpression.Operator.NOT_EQUALS)){
+			constraint =  Choco.neq(leftVariable, rightVariable);
+		}else{
+			System.out.println("Constraint solver can't do with the operator: "+operator);
+		}
+		if (constraint == null) {
+			System.out.println("can't solve this kind of constraint");
+		}
+		return constraint;
+	}
+	
+	public boolean solve(){
+		CPSolver solver = new CPSolver();
+		for (Iterator iterator = model.getConstraintIterator();iterator.hasNext();) {
+			Constraint constraint = (Constraint) iterator.next();
+			System.out.println(constraint);
+		}
+		System.out.println("****");
+		solver.read(model);
+		boolean solverable = solver.solve();
+		return solverable;
 	}
 	
 	/**
 	 * 遍历envVariableValueHashMap里的key
 	 */
-	private static void transEnv(){
-		Set variableSet=envVariableValueHashMap.keySet();
-		for (Iterator iterator = variableSet.iterator(); iterator.hasNext();) {
-			println(iterator.next());
+	private void transEnv(){
+		for (Iterator iterator = envVariableValueHashMap.keySet().iterator(); iterator.hasNext();) {
+			String key = (String)iterator.next();
+			IntegerVariable type = (IntegerVariable)envVariableValueHashMap.get(key);
+			System.out.println(key + ":\t" + type);
 		}
 	}
 	
 	/**
-	 * 对一个Expression建立其表达式变量并返回
+	 * 对一个ExpressionNode建立其表达式变量并返回
 	 * @param root the root of a expression tree which provided by symbolic execution environment
 	 * @return
 	 */
-	public static IntegerExpressionVariable expressionModeling(ExpressionNode root){
+	public IntegerExpressionVariable expressionModeling(ExpressionNode root){
 		IntegerExpressionVariable result = null;
 		ExpressionType type=root.getType();
 		if (type==ExpressionType.expression) {
@@ -293,6 +371,12 @@ public class CPExecutor {
 			}
 			}
 
+		}else if (type == ExpressionType.single_variable) {
+			result = (IntegerVariable) envVariableValueHashMap.get(root.getValue());
+		}else if (type == ExpressionType.single_int) {
+			
+		}else {
+			System.out.println("can't generate the cp variable" + type);
 		}
 		/*
 		 * 被注释掉的这段应该是用不着的
@@ -305,7 +389,7 @@ public class CPExecutor {
 	 * @param exp
 	 * @return
 	 */
-	public static Constraint constraintModelingaf(InfixExpression exp){
+	public Constraint constraintModeling(InfixExpression exp){
 		Constraint constraint = null;
 		exp.getOperator();
 		exp.getLeftOperand();
@@ -313,7 +397,12 @@ public class CPExecutor {
 		return constraint;
 	}
 	
-	public static ExpressionNode getExpressionNode(Expression exp) {
+	/**
+	 * 解析exp得到ExpressionNode
+	 * @param exp
+	 * @return
+	 */
+	public ExpressionNode getExpressionNode(Expression exp) {
 		ExpressionNode result = null;
 		ExpressionNode leftPart = null;
 		ExpressionNode rightPart = null;
@@ -340,27 +429,69 @@ public class CPExecutor {
 		return new ExpressionNode(ExpressionType.expression, null,ExpressionOperator.minus,branch1, leaf3);
 	}
 	
-	
-	// 先序访问ExpressionNode代表的表达式树
-	public static void preVisitExpressionTree(ExpressionNode root){
+	/**
+	 * 此方法，将root涉及到的符号变量初始化为约束求解中的基本变量
+	 * @param root
+	 */
+	public void updateVariable(ExpressionNode root){
+		HashMap<ExpressionOperator, String> expression_operator = new HashMap<>();
+		expression_operator.put(ExpressionOperator.div, "\\");
+		expression_operator.put(ExpressionOperator.plus, "+");
+		expression_operator.put(ExpressionOperator.minus, "-");
+		expression_operator.put(ExpressionOperator.multi, "*");
 		if (root!=null) {
-			if(root.operator!=null){
+//			if(root.operator!=null){
+			if(root.type==ExpressionType.expression){
+//				print("(");
+				updateVariable(root.getLeft());
+//				print(root.getOperator());
+				print(expression_operator.get(root.getOperator()));
+				updateVariable(root.getRight());
+//				print(")");
+			}else {
+//				print(root.getValue());
+				if(root.getType()==ExpressionType.single_variable){
+					String variableName = root.getValue();
+					if (!envVariableValueHashMap.containsKey(variableName)) {
+						envVariableValueHashMap.put(variableName, Choco.makeIntVar(variableName));
+					}
+				}
+			}
+		}
+	}
+
+	
+	/**
+	 * 此方法，将root涉及到的符号变量初始化为约束求解中的基本变量
+	 * @param root
+	 */
+	public void updateVariableAndPrintExpression(ExpressionNode root){
+		HashMap<ExpressionOperator, String> expression_operator = new HashMap<>();
+		expression_operator.put(ExpressionOperator.div, "\\");
+		expression_operator.put(ExpressionOperator.plus, "+");
+		expression_operator.put(ExpressionOperator.minus, "-");
+		expression_operator.put(ExpressionOperator.multi, "*");
+		if (root!=null) {
+//			if(root.operator!=null){
+			if(root.type==ExpressionType.expression){
 				print("(");
-				preVisitExpressionTree(root.getLeft());
-				print(root.getOperator());
-				preVisitExpressionTree(root.getRight());
+				updateVariable(root.getLeft());
+//				print(root.getOperator());
+				print(expression_operator.get(root.getOperator()));
+				updateVariable(root.getRight());
 				print(")");
 			}else {
 				print(root.getValue());
 				if(root.getType()==ExpressionType.single_variable){
 					String variableName = root.getValue();
 					if (!envVariableValueHashMap.containsKey(variableName)) {
-						envVariableValueHashMap.put(variableName, new IntegerVariable(variableName, intlowerlimit, intupperlimit));
+						envVariableValueHashMap.put(variableName, Choco.makeIntVar(variableName));
 					}
 				}
 			}
 		}
 	}
+
 
 	private static void println(Object o) {
 		System.out.println(o);
@@ -376,6 +507,21 @@ public class CPExecutor {
 		Constraint c = Choco.eq(v, new Integer(1));
 		CPModel model = new CPModel();
 		model.addConstraint(c);
+		CPSolver solver = new CPSolver();
+		solver.read(model);
+		boolean solverable = solver.solve();
+		println(solverable);
+	}
+	
+	// a simple demo 
+	private static void simpleDemo2(){
+		IntegerVariable a= Choco.makeIntVar("a");
+		IntegerVariable b = Choco.makeIntVar("b");
+		Constraint c = Choco.lt(a, b);
+		Constraint d = Choco.gt(a, b);
+		CPModel model = new CPModel();
+		model.addConstraint(c);
+		model.addConstraint(d);
 		CPSolver solver = new CPSolver();
 		solver.read(model);
 		boolean solverable = solver.solve();

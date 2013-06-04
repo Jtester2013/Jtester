@@ -141,14 +141,14 @@ public class PathGenerator {
 				continue;
 				
 			}else if (currentNode instanceof StartNode) {
-				System.out.println("if there is a DecisionNode in path when meet a StartNode " + hasUpperDecisionNode(path));
-				System.out.println("currentNode is " + "StartNode");
+//				System.out.println("if there is a DecisionNode in path when meet a StartNode " + hasUpperDecisionNode(path));
+//				System.out.println("currentNode is " + "StartNode");
 				StartNode tempNode = (StartNode)currentNode;
 				path.add(currentNode);
 				currentNode = tempNode.getOutgoing();
 				continue;
 			}else if (currentNode instanceof ExitNode) {
-				System.out.println("if there is a DecisionNode in path when meet a ExitNode " + hasUpperDecisionNode(path));
+//				System.out.println("if there is a DecisionNode in path when meet a ExitNode " + hasUpperDecisionNode(path));
 				ExitNode tempNode = (ExitNode)currentNode;
 				path.add(tempNode);
 				LinkedList<IBasicBlock> completePath = (LinkedList<IBasicBlock>)path.clone();
