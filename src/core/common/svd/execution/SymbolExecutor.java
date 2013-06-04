@@ -101,7 +101,7 @@ public class SymbolExecutor {
 			currentNode = (IBasicBlock)iterator.next();
 			// 设置节点的可达性
 			if (currentNode instanceof AbstractBasicBlock && !((AbstractBasicBlock)currentNode).isReachable()) {
-				System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+//				System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 				((AbstractBasicBlock) currentNode).setReachable(true);
 			}
 			if (currentNode instanceof BranchNode) {
