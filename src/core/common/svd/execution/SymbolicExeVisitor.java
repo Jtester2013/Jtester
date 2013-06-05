@@ -196,6 +196,20 @@ public class SymbolicExeVisitor extends ASTVisitor {
 					env.getMap().put(varName, valueNode);
 				}else if (rightPart instanceof InfixExpression) { // calculate the value of a infix expression
 					valueNode = InfixExpression2ExpressionNode((InfixExpression)rightPart);
+				}else if (rightPart instanceof PrefixExpression) { // TODO add support for "-1", "--i"
+					PrefixExpression rightPrefixExpression = (PrefixExpression)rightPart;
+					PrefixExpression.Operator preOperator = rightPrefixExpression.getOperator();
+					Expression preOperand = rightPrefixExpression.getOperand();
+					if (preOperator.equals(PrefixExpression.Operator.MINUS) && preOperand instanceof NumberLiteral) {
+						valueNode = new ExpressionNode(ExpressionType.single_int, "-"+((NumberLiteral)preOperand).getToken());
+					}else if (preOperator.equals(PrefixExpression.Operator.INCREMENT)) {
+						
+					}else if (preOperand.equals(PrefixExpression.Operator.DECREMENT)) {
+						
+					}
+				}else if (rightPart instanceof PostfixExpression) { // TODO add support for "i--"
+					PostfixExpression rightPostfixExpression = (PostfixExpression)rightPart;
+					
 				}else {
 					System.out.println("not supported right part");
 				}

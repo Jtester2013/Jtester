@@ -9,6 +9,8 @@ import org.eclipse.jdt.core.dom.InfixExpression;
 import org.eclipse.jdt.core.dom.NumberLiteral;
 import org.eclipse.jdt.core.dom.SimpleName;
 
+import com.clarkparsia.sparqlowl.parser.antlr.SparqlOwlParser.booleanLiteral_return;
+
 import choco.Choco;
 import choco.cp.model.CPModel;
 import choco.cp.solver.CPSolver;
@@ -113,23 +115,110 @@ public class CPExecutor {
 	}
 	
 	public Constraint generateConstraint(ExpressionNode leftNode, ExpressionNode rightNode, InfixExpression.Operator operator){
-		IntegerExpressionVariable leftVariable = expressionModeling(leftNode),
-				rightVariable = expressionModeling(rightNode);
+		IntegerExpressionVariable leftVariable = null, rightVariable = null;
+		if (leftNode.type!=ExpressionType.single_int ) {
+			leftVariable = expressionModeling(leftNode);
+		}
+		if (rightNode.type !=ExpressionType.single_int) {
+			rightVariable = expressionModeling(rightNode);
+		}
 		Constraint constraint = null;
-		if (operator.equals(InfixExpression.Operator.LESS)) {
-			constraint =  Choco.lt(leftVariable, rightVariable);
-		}else if (operator.equals(InfixExpression.Operator.LESS_EQUALS)) {
-			constraint =  Choco.leq(leftVariable, rightVariable);
-		}else if (operator.equals(InfixExpression.Operator.GREATER)) {
-			constraint =  Choco.gt(leftVariable, rightVariable);
-		}else if (operator.equals(InfixExpression.Operator.GREATER_EQUALS)) {
-			constraint =  Choco.geq(leftVariable, rightVariable);
-		}else if (operator.equals(InfixExpression.Operator.EQUALS)) {
-			constraint =  Choco.eq(leftVariable, rightVariable);
-		}else if (operator.equals(InfixExpression.Operator.NOT_EQUALS)){
-			constraint =  Choco.neq(leftVariable, rightVariable);
-		}else{
-			System.out.println("Constraint solver can't do with the operator: "+operator);
+		if (leftVariable!=null && rightVariable!=null) {
+			if (operator.equals(InfixExpression.Operator.LESS)) {
+				constraint =  Choco.lt(leftVariable, rightVariable);
+			}else if (operator.equals(InfixExpression.Operator.LESS_EQUALS)) {
+				constraint =  Choco.leq(leftVariable, rightVariable);
+			}else if (operator.equals(InfixExpression.Operator.GREATER)) {
+				constraint =  Choco.gt(leftVariable, rightVariable);
+			}else if (operator.equals(InfixExpression.Operator.GREATER_EQUALS)) {
+				constraint =  Choco.geq(leftVariable, rightVariable);
+			}else if (operator.equals(InfixExpression.Operator.EQUALS)) {
+				constraint =  Choco.eq(leftVariable, rightVariable);
+			}else if (operator.equals(InfixExpression.Operator.NOT_EQUALS)){
+				constraint =  Choco.neq(leftVariable, rightVariable);
+			}else{
+				System.out.println("Constraint solver can't do with the operator: "+operator);
+			}
+		}else if (leftVariable!=null && rightVariable==null) {
+			int rightValue = Integer.parseInt(rightNode.getValue());
+			if (operator.equals(InfixExpression.Operator.LESS)) {
+				constraint =  Choco.lt(leftVariable, rightValue);
+			}else if (operator.equals(InfixExpression.Operator.LESS_EQUALS)) {
+				constraint =  Choco.leq(leftVariable, rightValue);
+			}else if (operator.equals(InfixExpression.Operator.GREATER)) {
+				constraint =  Choco.gt(leftVariable, rightValue);
+			}else if (operator.equals(InfixExpression.Operator.GREATER_EQUALS)) {
+				constraint =  Choco.geq(leftVariable, rightValue);
+			}else if (operator.equals(InfixExpression.Operator.EQUALS)) {
+				constraint =  Choco.eq(leftVariable, rightValue);
+			}else if (operator.equals(InfixExpression.Operator.NOT_EQUALS)){
+				constraint =  Choco.neq(leftVariable, rightValue);
+			}else{
+				System.out.println("Constraint solver can't do with the operator: "+operator);
+			}
+		}else if (leftVariable==null && rightVariable!=null) {
+			int leftValue = Integer.parseInt(leftNode.getValue());
+			if (operator.equals(InfixExpression.Operator.LESS)) {
+				constraint =  Choco.lt(leftValue, rightVariable);
+			}else if (operator.equals(InfixExpression.Operator.LESS_EQUALS)) {
+				constraint =  Choco.leq(leftValue, rightVariable);
+			}else if (operator.equals(InfixExpression.Operator.GREATER)) {
+				constraint =  Choco.gt(leftValue, rightVariable);
+			}else if (operator.equals(InfixExpression.Operator.GREATER_EQUALS)) {
+				constraint =  Choco.geq(leftValue, rightVariable);
+			}else if (operator.equals(InfixExpression.Operator.EQUALS)) {
+				constraint =  Choco.eq(leftValue, rightVariable);
+			}else if (operator.equals(InfixExpression.Operator.NOT_EQUALS)){
+				constraint =  Choco.neq(leftValue, rightVariable);
+			}else{
+				System.out.println("Constraint solver can't do with the operator: "+operator);
+			}
+		}else if (leftVariable==null && rightVariable==null) {
+			int leftValue = Integer.parseInt(leftNode.getValue()),
+					rightValue = Integer.parseInt(rightNode.getValue());
+			boolean logicResult;
+			Constraint falseConstraint = Choco.lt(Choco.makeIntVar("bigger", 5,6), Choco.makeIntVar("smaller", 1,2)),
+					trueConstraint = Choco.gt(Choco.makeIntVar("bigger", 5,6), Choco.makeIntVar("smaller", 1,2));
+			
+			if (operator.equals(InfixExpression.Operator.LESS)) {
+				if (leftValue<rightValue) {
+					constraint = trueConstraint;
+				}else {
+					constraint = falseConstraint;
+				}
+			}else if (operator.equals(InfixExpression.Operator.LESS_EQUALS)) {
+				if (leftValue<=rightValue) {
+					constraint = trueConstraint;
+				}else {
+					constraint = falseConstraint;
+				}
+			}else if (operator.equals(InfixExpression.Operator.GREATER)) {
+				if (leftValue>rightValue) {
+					constraint = trueConstraint;
+				}else {
+					constraint = falseConstraint;
+				}
+			}else if (operator.equals(InfixExpression.Operator.GREATER_EQUALS)) {
+				if (leftValue>=rightValue) {
+					constraint = trueConstraint;
+				}else {
+					constraint = falseConstraint;
+				}
+			}else if (operator.equals(InfixExpression.Operator.EQUALS)) {
+				if (leftValue==rightValue) {
+					constraint = trueConstraint;
+				}else {
+					constraint = falseConstraint;
+				}
+			}else if (operator.equals(InfixExpression.Operator.NOT_EQUALS)){
+				if (leftValue!=rightValue) {
+					constraint = trueConstraint;
+				}else {
+					constraint = falseConstraint;
+				}
+			}else{
+				System.out.println("Constraint solver can't do with the operator: "+operator);
+			}
 		}
 		if (constraint == null) {
 			System.out.println("can't solve this kind of constraint");
@@ -369,7 +458,7 @@ public class CPExecutor {
 		}else if (type == ExpressionType.single_variable) {
 			result = (IntegerVariable) envVariableValueHashMap.get(root.getValue());
 		}else if (type == ExpressionType.single_int) {
-			
+			System.out.println("Try to make a integer into a variable: "+root.getValue());
 		}else {
 			System.out.println("can't generate the cp variable" + type);
 		}

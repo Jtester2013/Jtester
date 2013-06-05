@@ -164,7 +164,6 @@ public class SymbolExecutor {
 				// 对普通节点进行符号执行
 				System.out.println("Current node is: "+currentNode);
 				ASTNode dataNode = (ASTNode)(((PlainNode)currentNode).getData());
-				boolean testType = dataNode instanceof VariableDeclarationExpression;
 				dataNode.accept(visitor);
 			} else if (currentNode instanceof ExitNode) {
 				// 当运行至ExitNode，返回true
