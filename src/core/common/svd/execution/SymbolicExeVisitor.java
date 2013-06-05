@@ -120,7 +120,9 @@ public class SymbolicExeVisitor extends ASTVisitor {
 		Expression leftPart = exp.getLeftOperand(),
 				rightPart = exp.getRightOperand();
 		org.eclipse.jdt.core.dom.InfixExpression.Operator operator = exp.getOperator();
-		ExpressionNode resultNode =  new ExpressionNode(ExpressionType.not_defined, ""),
+		
+		ExpressionNode resultNode =  new ExpressionNode(ExpressionType.expression, ""),
+//		ExpressionNode resultNode =  new ExpressionNode(ExpressionType.not_defined, ""),
 				leftNode = new ExpressionNode(ExpressionType.not_defined, ""),
 				rightNode = new ExpressionNode(ExpressionType.not_defined, "");
 		

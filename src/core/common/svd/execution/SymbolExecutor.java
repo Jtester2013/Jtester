@@ -14,6 +14,9 @@ import org.eclipse.jdt.core.dom.NumberLiteral;
 import org.eclipse.jdt.core.dom.SimpleName;
 import org.eclipse.jdt.core.dom.VariableDeclarationExpression;
 
+import com.clarkparsia.sparqlowl.parser.antlr.SparqlOwlParser.booleanLiteral_return;
+import com.clarkparsia.sparqlowl.parser.antlr.SparqlOwlParser.object_return;
+
 import choco.kernel.model.Model;
 import choco.kernel.model.constraints.Constraint;
 
@@ -75,6 +78,21 @@ public class SymbolExecutor {
 		ControlFlowGraphBuilder builder = new ControlFlowGraphBuilder();
 		JavaControlFlowGraph cfg = builder.build(method);
 		Path[] pathCollection = PathGenerator.abstractPath(cfg);
+		
+		// 打印pathCollection的所有path的条件分支情况
+		for (int i = 0; i < pathCollection.length; i++) {
+			Path tempPath = pathCollection[i];
+			System.out.println("For path "+i);
+			for (Iterator iterator = tempPath.iterator(); iterator
+					.hasNext();) {
+				Object block = iterator.next();
+				if (block instanceof BranchNode) {
+					BranchNode branchNode = (BranchNode)block;
+					System.out.println("Expression:"+branchNode.getData()+"\t Label:"+branchNode.getLabel());
+				}
+				
+			}
+		}
 		// 对每条路径进行符号执行
 		Path tempPath;
 		for (int i = 0; i < pathCollection.length; i++) {
@@ -101,7 +119,6 @@ public class SymbolExecutor {
 			currentNode = (IBasicBlock)iterator.next();
 			// 设置节点的可达性
 			if (currentNode instanceof AbstractBasicBlock && !((AbstractBasicBlock)currentNode).isReachable()) {
-//				System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 				((AbstractBasicBlock) currentNode).setReachable(true);
 			}
 			if (currentNode instanceof BranchNode) {
@@ -123,11 +140,13 @@ public class SymbolExecutor {
 							cpExecutor.updateVariable(rightNode);
 						}
 						boolean positive = true;
-						if (((BranchNode) currentNode).getLabel().equals(BranchNode.IF_ELSE) || 
-								((BranchNode) currentNode).getLabel().equals(BranchNode.WHILE_ELSE)) {
+						BranchNode currentBranchNode = (BranchNode) currentNode;
+						String branchLabel = currentBranchNode.getLabel();
+						if (branchLabel.equals(BranchNode.IF_ELSE) || branchLabel.equals(BranchNode.WHILE_ELSE)) {
 							positive = false;
 						}
 						InfixExpression.Operator operator = getCorrespondOperator(infixExpression.getOperator(), positive);
+						
 						Constraint constraint = cpExecutor.generateConstraint(leftNode, rightNode, operator);
 						cpExecutor.model.addConstraint(constraint);
 						// TODO 此处对约束求解模块的model及constraint进行验证

@@ -81,6 +81,12 @@ public class ExpressionNode {
 		if (this.operator!=null) {
 			copyExpressionNode.operator = this.operator;
 		}
+		if (this.type != null){
+			copyExpressionNode.type = this.type;
+		}
+		if (this.value != null){
+			copyExpressionNode.value = this.value;
+		}
 		return copyExpressionNode;
 	}
 	
