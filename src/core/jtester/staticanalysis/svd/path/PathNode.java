@@ -1,4 +1,4 @@
-package core.common.svd.path;
+package core.jtester.staticanalysis.svd.path;
 
 import core.common.cfg.model.*;
 import core.common.cfg.interfaces.*;

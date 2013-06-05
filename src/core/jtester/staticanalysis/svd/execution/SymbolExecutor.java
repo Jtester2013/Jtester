@@ -1,4 +1,4 @@
-package core.common.svd.execution;
+package core.jtester.staticanalysis.svd.execution;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,13 +28,13 @@ import core.common.cfg.model.BranchNode;
 import core.common.cfg.model.DecisionNode;
 import core.common.cfg.model.ExitNode;
 import core.common.cfg.model.PlainNode;
-import core.common.svd.path.Path;
-import core.common.svd.path.PathGenerator;
-import core.common.svd.path.ProgramEnv;
-import core.common.svd.solver.CPExecutor;
-import core.common.svd.solver.ExpressionNode;
-import core.common.svd.solver.ExpressionOperator;
-import core.common.svd.solver.ExpressionType;
+import core.jtester.staticanalysis.svd.path.Path;
+import core.jtester.staticanalysis.svd.path.PathGenerator;
+import core.jtester.staticanalysis.svd.path.ProgramEnv;
+import core.jtester.staticanalysis.svd.solver.CPExecutor;
+import core.jtester.staticanalysis.svd.solver.ExpressionNode;
+import core.jtester.staticanalysis.svd.solver.ExpressionOperator;
+import core.jtester.staticanalysis.svd.solver.ExpressionType;
 
 public class SymbolExecutor {
 	public static HashSet<InfixExpression.Operator> feasible_operators = new HashSet<>();

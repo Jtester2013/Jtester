@@ -1,4 +1,4 @@
-package core.common.svd.solver;
+package core.jtester.staticanalysis.svd.solver;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -25,8 +25,8 @@ import choco.kernel.model.variables.real.RealExpressionVariable;
 import choco.kernel.model.variables.real.RealVariable;
 import choco.kernel.model.variables.set.SetVariable;
 import choco.kernel.solver.Configuration;
-import core.common.svd.path.Path;
-import core.common.svd.path.ProgramEnv;
+import core.jtester.staticanalysis.svd.path.Path;
+import core.jtester.staticanalysis.svd.path.ProgramEnv;
 
 public class CPExecutor {
 	// int、float、double类型数据的值域

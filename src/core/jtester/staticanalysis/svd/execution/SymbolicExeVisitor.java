@@ -1,4 +1,4 @@
-package core.common.svd.execution;
+package core.jtester.staticanalysis.svd.execution;
 
 import java.awt.List;
 import java.util.Iterator;
@@ -91,10 +91,10 @@ import org.eclipse.jdt.core.dom.VariableDeclarationStatement;
 import org.eclipse.jdt.core.dom.WhileStatement;
 import org.eclipse.jdt.core.dom.WildcardType;*/
 
-import core.common.svd.path.ProgramEnv;
-import core.common.svd.solver.ExpressionNode;
-import core.common.svd.solver.ExpressionOperator;
-import core.common.svd.solver.ExpressionType;
+import core.jtester.staticanalysis.svd.path.ProgramEnv;
+import core.jtester.staticanalysis.svd.solver.ExpressionNode;
+import core.jtester.staticanalysis.svd.solver.ExpressionOperator;
+import core.jtester.staticanalysis.svd.solver.ExpressionType;
 
 public class SymbolicExeVisitor extends ASTVisitor {
 	ProgramEnv env;

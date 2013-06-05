@@ -1,11 +1,11 @@
-package core.common.svd.path;
+package core.jtester.staticanalysis.svd.path;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import org.eclipse.jdt.core.dom.Expression;
 
-import core.common.svd.solver.ExpressionNode;
+import core.jtester.staticanalysis.svd.solver.ExpressionNode;
 
 public class ProgramEnv {
 	private Map<String, ExpressionNode> svt;

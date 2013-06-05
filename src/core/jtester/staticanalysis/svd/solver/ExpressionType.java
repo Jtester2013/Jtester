@@ -1,4 +1,4 @@
-package core.common.svd.solver;
+package core.jtester.staticanalysis.svd.solver;
 
 public enum ExpressionType {
 	expression,

@@ -1,4 +1,4 @@
-package core.common.svd.test;
+package core.jtester.staticanalysis.svd.test;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jdt.core.dom.ASTNode;

@@ -1,4 +1,4 @@
-package core.common.svd.test;
+package core.jtester.staticanalysis.svd.test;
 
 public class ASTViewTest {
 	public int member;

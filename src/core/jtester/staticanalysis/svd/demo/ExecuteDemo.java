@@ -1,4 +1,4 @@
-package core.common.svd.demo;
+package core.jtester.staticanalysis.svd.demo;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -6,9 +6,9 @@ import java.util.LinkedList;
 
 import core.common.cfg.javacfg.JavaControlFlowGraph;
 import core.common.cfg.model.BranchNode;
-import core.common.svd.execution.SymbolExecutor;
-import core.common.svd.path.Path;
-import core.common.svd.path.PathGenerator;
+import core.jtester.staticanalysis.svd.execution.SymbolExecutor;
+import core.jtester.staticanalysis.svd.path.Path;
+import core.jtester.staticanalysis.svd.path.PathGenerator;
 
 public class ExecuteDemo {
 
@@ -18,7 +18,7 @@ public class ExecuteDemo {
 	 */
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		String filePath = System.getProperty("user.dir")+"\\src\\core\\common\\svd\\test\\ASTViewTest.java";
+		String filePath = System.getProperty("user.dir")+"\\src\\core\\jtester\\staticanalysis\\svd\\test\\ASTViewTest.java";
 //		String filePath = System.getProperty("user.dir")+"\\tested_files\\ontology\\People.java";
 		System.out.println(filePath);
 		JavaControlFlowGraph[] cfgsArray = PathGenerator.read(filePath);

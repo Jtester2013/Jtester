@@ -1,4 +1,4 @@
-package core.common.svd.path;
+package core.jtester.staticanalysis.svd.path;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import org.eclipse.jdt.core.dom.Expression;
 
 import core.common.cfg.interfaces.IBasicBlock;
-import core.common.svd.solver.ExpressionNode;
+import core.jtester.staticanalysis.svd.solver.ExpressionNode;
 
 public class Path {
 	LinkedList<IBasicBlock> pathNodes = new LinkedList<>();

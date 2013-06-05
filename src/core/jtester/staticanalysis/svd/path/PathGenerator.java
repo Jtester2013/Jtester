@@ -1,4 +1,4 @@
-package core.common.svd.path;
+package core.jtester.staticanalysis.svd.path;
 
 import java.io.File;
 import java.io.FileInputStream;

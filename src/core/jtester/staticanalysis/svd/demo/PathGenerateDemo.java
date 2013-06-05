@@ -1,4 +1,4 @@
-package core.common.svd.demo;
+package core.jtester.staticanalysis.svd.demo;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,8 +14,8 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 import core.common.cfg.javacfg.ControlFlowGraphBuilder;
 import core.common.cfg.javacfg.JavaControlFlowGraph;
-import core.common.svd.path.Path;
-import core.common.svd.path.PathGenerator;
+import core.jtester.staticanalysis.svd.path.Path;
+import core.jtester.staticanalysis.svd.path.PathGenerator;
 
 public class PathGenerateDemo {
 
@@ -25,7 +25,7 @@ public class PathGenerateDemo {
 	 */
 	public static void main(String[] args) throws IOException {
 		
-		String filePath = System.getProperty("user.dir")+"\\src\\core\\common\\svd\\test\\SVDTest.java";
+		String filePath = System.getProperty("user.dir")+"\\src\\core\\jtester\\staticanalysis\\svd\\test\\SVDTest.java";
 		System.out.println(filePath);
 		JavaControlFlowGraph[] cfgsArray = PathGenerator.read(filePath);
 		JavaControlFlowGraph cfgInstance;
