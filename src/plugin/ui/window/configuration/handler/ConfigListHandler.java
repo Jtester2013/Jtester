@@ -2,12 +2,13 @@ package plugin.ui.window.configuration.handler;
 
 public class ConfigListHandler {
 
+	public ConfigListHandler(){
+		super();
+	}
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public boolean loadConfigListFile(String fileName){
+		return true;
 	}
-
 }

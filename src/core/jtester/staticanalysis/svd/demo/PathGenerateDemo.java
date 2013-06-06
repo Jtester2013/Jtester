@@ -24,7 +24,6 @@ public class PathGenerateDemo {
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException {
-		
 		String filePath = System.getProperty("user.dir")+"\\src\\core\\jtester\\staticanalysis\\svd\\test\\SVDTest.java";
 		System.out.println(filePath);
 		JavaControlFlowGraph[] cfgsArray = PathGenerator.read(filePath);
@@ -42,10 +41,4 @@ public class PathGenerateDemo {
 			}
 		}
 	}
-	
-	private MethodDeclaration[] abstractMethodDeclarations(TypeDeclaration typeDeclaration){
-		MethodDeclaration[] methods = typeDeclaration.getMethods();
-		return methods;
-	}
-
 }

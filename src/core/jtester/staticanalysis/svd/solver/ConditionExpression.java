@@ -1,5 +1,7 @@
 package core.jtester.staticanalysis.svd.solver;
 
+import core.jtester.staticanalysis.svd.execution.ExpressionNode;
+
 public class ConditionExpression {
 	ExpressionNode leftExpression;
 	ExpressionNode rightExpression;

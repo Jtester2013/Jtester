@@ -1,0 +1,1666 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:JavaProfile_1="http:///_aZXakH6MEdmbwasWWc4yvw.profile.uml2" xmlns:Omondo_1="http:///_zrN_0SUoEdmNXYQzyImvfA.profile.uml2" xmlns:Standard="http://www.eclipse.org/uml2/schemas/Standard/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http:///_aZXakH6MEdmbwasWWc4yvw.profile.uml2 platform:/plugin/com.omondo.uml.core/profiles/Java.profile.uml#_aZhLlH6MEdmbwasWWc4yvw http:///_zrN_0SUoEdmNXYQzyImvfA.profile.uml2 platform:/plugin/com.omondo.uml.core/profiles/Omondo.profile.uml#_zrN_1iUoEdmNXYQzyImvfA http://www.eclipse.org/uml2/schemas/Standard/1 platform:/plugin/org.eclipse.uml2.uml.resources/profiles/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w">
+  <uml:Model xmi:id="_8NK2UM6bEeKYAfIrCjJ_8A" name="Jtester">
+    <packageImport xmi:id="_8OqrIM6bEeKYAfIrCjJ_8A">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Package" xmi:id="_8ZroUM6bEeKYAfIrCjJ_8A" name="plugin">
+      <packagedElement xmi:type="uml:Package" xmi:id="_8ZsPYM6bEeKYAfIrCjJ_8A" name="ui">
+        <packagedElement xmi:type="uml:Package" xmi:id="_8ZsPYc6bEeKYAfIrCjJ_8A" name="window">
+          <packagedElement xmi:type="uml:Package" xmi:id="_8ZsPYs6bEeKYAfIrCjJ_8A" name="configuration">
+            <eAnnotations xmi:id="_-m1cYM6bEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/plugin.ui.window.configurationClassDiagram.ucd" references="_-m01UM6bEeKYAfIrCjJ_8A _-vGnkM6bEeKYAfIrCjJ_8A _-vwu4M6bEeKYAfIrCjJ_8A _-wIiUM6bEeKYAfIrCjJ_8A _-zYqoM6bEeKYAfIrCjJ_8A _-0VF0M6bEeKYAfIrCjJ_8A _-0vVgM6bEeKYAfIrCjJ_8A _-2C9EM6bEeKYAfIrCjJ_8A _-3XLsM6bEeKYAfIrCjJ_8A _-4PVcM6bEeKYAfIrCjJ_8A"/>
+            <eAnnotations xmi:id="_M8tVwM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/configuration-d-s.ucd" references="_-m01UM6bEeKYAfIrCjJ_8A _-vGnkM6bEeKYAfIrCjJ_8A _-vwu4M6bEeKYAfIrCjJ_8A _-wIiUM6bEeKYAfIrCjJ_8A _-zYqoM6bEeKYAfIrCjJ_8A _-0VF0M6bEeKYAfIrCjJ_8A _-0vVgM6bEeKYAfIrCjJ_8A _-2C9EM6bEeKYAfIrCjJ_8A _-3XLsM6bEeKYAfIrCjJ_8A _-4PVcM6bEeKYAfIrCjJ_8A"/>
+            <eAnnotations xmi:id="_VyuUMM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/configuration-a-s.ucd" references="_-m01UM6bEeKYAfIrCjJ_8A _-zYqoM6bEeKYAfIrCjJ_8A _-3XLsM6bEeKYAfIrCjJ_8A _-0VF0M6bEeKYAfIrCjJ_8A _-wIiUM6bEeKYAfIrCjJ_8A _-4PVcM6bEeKYAfIrCjJ_8A _-vGnkM6bEeKYAfIrCjJ_8A _-vwu4M6bEeKYAfIrCjJ_8A _-0vVgM6bEeKYAfIrCjJ_8A _-2C9EM6bEeKYAfIrCjJ_8A"/>
+            <packagedElement xmi:type="uml:Class" xmi:id="_-m01UM6bEeKYAfIrCjJ_8A" name="ConfigTree" clientDependency="_-rhIEM6bEeKYAfIrCjJ_8A _-rq5EM6bEeKYAfIrCjJ_8A">
+              <eAnnotations xmi:id="_-m1cYc6bEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/plugin.ui.window.configurationClassDiagram.ucd"/>
+              <eAnnotations xmi:id="_NAuTEM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/configuration-d-s.ucd"/>
+              <eAnnotations xmi:id="_V-NygM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/configuration-a-s.ucd"/>
+              <ownedAttribute xmi:id="_-oozMM6bEeKYAfIrCjJ_8A" name="defaultConfigName" visibility="private" isStatic="true">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-o0ZYM6bEeKYAfIrCjJ_8A" value="&quot;N&quot;"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-o21oM6bEeKYAfIrCjJ_8A" name="trtmBuiltin" visibility="public" isStatic="true">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-o3csM6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-o548M6bEeKYAfIrCjJ_8A" name="tree" visibility="public">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-o6gAM6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-o88QM6bEeKYAfIrCjJ_8A" name="selectedItem" visibility="public" isStatic="true">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-o9jUM6bEeKYAfIrCjJ_8A" value="null"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-o_YgM6bEeKYAfIrCjJ_8A" name="configTreeFilePath" visibility="public" isStatic="true">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-o__kM6bEeKYAfIrCjJ_8A" value="System.getProperty(&quot;user.dir&quot;) + &quot;\\src\\plugin\\ui\\window\\configuration\\configuration_list.xml&quot;"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-pBNsM6bEeKYAfIrCjJ_8A" name="exportAction" visibility="private">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-pB0wM6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-pDp8M6bEeKYAfIrCjJ_8A" name="setAsDefaultAction" visibility="private">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-pDp8c6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-pFfIM6bEeKYAfIrCjJ_8A" name="trtmTeam" visibility="public" isStatic="true">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-pFfIc6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-pHUUM6bEeKYAfIrCjJ_8A" name="trtmUser" visibility="public" isStatic="true">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-pHUUc6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-pJJgM6bEeKYAfIrCjJ_8A" name="duplicateAction" visibility="private">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-pJJgc6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-pKXoM6bEeKYAfIrCjJ_8A" name="deleteAction" visibility="private">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-pK-sM6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-pMM0M6bEeKYAfIrCjJ_8A" name="newAction" visibility="private">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-pMz4M6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedOperation xmi:id="_-pOCAM6bEeKYAfIrCjJ_8A" name="createActions" visibility="private" concurrency="concurrent"/>
+              <ownedOperation xmi:id="_-pOpEM6bEeKYAfIrCjJ_8A" name="createConfig" visibility="private" concurrency="concurrent">
+                <ownedParameter xmi:id="_bes_kM6cEeKYAfIrCjJ_8A" name="configName">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_betmoM6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_beuNsM6cEeKYAfIrCjJ_8A" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_beuNsc6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_-pfu0M6bEeKYAfIrCjJ_8A" name="addNode" visibility="private" concurrency="concurrent">
+                <ownedParameter xmi:id="_belDwM6cEeKYAfIrCjJ_8A" name="configList">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bemR4M6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_bengAM6cEeKYAfIrCjJ_8A" name="configFileRootPath">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_beouIM6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_bep8QM6cEeKYAfIrCjJ_8A" name="configName">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_berKYM6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_-pkAQc6bEeKYAfIrCjJ_8A" name="constructTreeFromConfigFile" visibility="private" concurrency="concurrent">
+                <ownedParameter xmi:id="_beeWEM6cEeKYAfIrCjJ_8A" name="filePath">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_befkMM6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_-pnqoM6bEeKYAfIrCjJ_8A" name="removeConfig" visibility="private" concurrency="concurrent">
+                <ownedParameter xmi:id="_bebSwM6cEeKYAfIrCjJ_8A" name="configName">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_becg4M6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_bedH8M6cEeKYAfIrCjJ_8A" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bedH8c6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_-pw0kM6bEeKYAfIrCjJ_8A" name="initializeMenu" visibility="private" concurrency="concurrent"/>
+              <ownedOperation xmi:id="_-pxboM6bEeKYAfIrCjJ_8A" name="addTreeItem" visibility="public" concurrency="concurrent">
+                <ownedParameter xmi:id="_beyfIM6cEeKYAfIrCjJ_8A" name="parent">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_beztQM6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_be07YM6cEeKYAfIrCjJ_8A" name="name">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_be2JgM6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_be2Jgc6cEeKYAfIrCjJ_8A" name="expandable">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_be2Jgs6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_-p3iQs6bEeKYAfIrCjJ_8A" name="initMenu" visibility="public" concurrency="concurrent">
+                <ownedParameter xmi:id="_behZYM6cEeKYAfIrCjJ_8A" name="event">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bejOkM6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_-p7zsc6bEeKYAfIrCjJ_8A" name="contentCreate" visibility="protected" concurrency="concurrent"/>
+              <ownedOperation xmi:id="_-p8awM6bEeKYAfIrCjJ_8A" name="ConfigTree" visibility="public" concurrency="concurrent">
+                <ownedParameter xmi:id="_bevb0M6cEeKYAfIrCjJ_8A" name="parent">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bewp8M6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_bexRAM6cEeKYAfIrCjJ_8A" name="style">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bexRAc6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+              </ownedOperation>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_-vGnkM6bEeKYAfIrCjJ_8A" name="BottomConfigWindow">
+              <eAnnotations xmi:id="_-vHOoM6bEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/plugin.ui.window.configurationClassDiagram.ucd"/>
+              <eAnnotations xmi:id="_NBDDMM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/configuration-d-s.ucd"/>
+              <eAnnotations xmi:id="_WC43IM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/configuration-a-s.ucd"/>
+              <ownedAttribute xmi:id="_-vTb4M6bEeKYAfIrCjJ_8A" name="btnRunTest" visibility="public">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-vTb4c6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-vUC8M6bEeKYAfIrCjJ_8A" name="btnClose" visibility="public">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-vUqAM6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-vUqAc6bEeKYAfIrCjJ_8A" name="bottomComposite" visibility="public">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-vVREM6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedOperation xmi:id="_-vV4IM6bEeKYAfIrCjJ_8A" name="getComposite" visibility="public" concurrency="concurrent"/>
+              <ownedOperation xmi:id="_-vV4Ic6bEeKYAfIrCjJ_8A" name="BottomConfigWindow" visibility="public" concurrency="concurrent">
+                <ownedParameter xmi:id="_bhHaYM6cEeKYAfIrCjJ_8A" name="parent">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bhHaYc6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_bhIBcM6cEeKYAfIrCjJ_8A" name="style">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bhIBcc6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+              </ownedOperation>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_-vwu4M6bEeKYAfIrCjJ_8A" name="TempWindowForDesign">
+              <eAnnotations xmi:id="_-vxV8M6bEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/plugin.ui.window.configurationClassDiagram.ucd"/>
+              <eAnnotations xmi:id="_NBUwAM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/configuration-d-s.ucd"/>
+              <eAnnotations xmi:id="_WDEdUM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/configuration-a-s.ucd"/>
+              <ownedAttribute xmi:id="_-v4DoM6bEeKYAfIrCjJ_8A" name="shell" visibility="protected">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-v4qsM6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedOperation xmi:id="_-v5RwM6bEeKYAfIrCjJ_8A" name="main" visibility="public" isStatic="true" concurrency="concurrent">
+                <ownedParameter xmi:id="_bhWD4M6cEeKYAfIrCjJ_8A" name="args">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bhWq8M6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_-v7G8c6bEeKYAfIrCjJ_8A" name="open" visibility="public" concurrency="concurrent"/>
+              <ownedOperation xmi:id="_-v7uAM6bEeKYAfIrCjJ_8A" name="createContents" visibility="protected" concurrency="concurrent"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_-wIiUM6bEeKYAfIrCjJ_8A" name="OneConfigSelectedComposite" clientDependency="_-yVhwM6bEeKYAfIrCjJ_8A _-ycPcc6bEeKYAfIrCjJ_8A">
+              <eAnnotations xmi:id="_-wJJYM6bEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/plugin.ui.window.configurationClassDiagram.ucd"/>
+              <eAnnotations xmi:id="_ND0qYM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/configuration-d-s.ucd"/>
+              <eAnnotations xmi:id="_WCOv0M6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/configuration-a-s.ucd"/>
+              <generalization xmi:id="_-wMMsM6bEeKYAfIrCjJ_8A"/>
+              <generalization xmi:id="_NBWlMM6cEeKYAfIrCjJ_8A"/>
+              <generalization xmi:id="_V4ng0M6cEeKYAfIrCjJ_8A"/>
+              <generalization xmi:id="_WACXcM6cEeKYAfIrCjJ_8A"/>
+              <generalization xmi:id="_bhdYoM6cEeKYAfIrCjJ_8A"/>
+              <ownedAttribute xmi:id="_-w8aoM6bEeKYAfIrCjJ_8A" name="tabFolder" visibility="private">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-w8aoc6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-w-P0M6bEeKYAfIrCjJ_8A" name="detailTabFolder" visibility="package" type="_-xAsEM6bEeKYAfIrCjJ_8A" association="_-zLPQM6bEeKYAfIrCjJ_8A">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-w-P0c6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-xAsE86bEeKYAfIrCjJ_8A" name="btnApply" visibility="private">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-xBTIM6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-xChQM6bEeKYAfIrCjJ_8A" name="nameparentComposite" visibility="package">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-xDIUM6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-xEWcM6bEeKYAfIrCjJ_8A" name="textParent" visibility="private">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-xEWcc6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-xGLoM6bEeKYAfIrCjJ_8A" name="btnRevert" visibility="private">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-xGLoc6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-xHZwM6bEeKYAfIrCjJ_8A" name="btnDisconnect" visibility="private">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-xIA0M6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-xJO8M6bEeKYAfIrCjJ_8A" name="lblParent" visibility="private">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-xJ2AM6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-xLEIM6bEeKYAfIrCjJ_8A" name="lblName" visibility="private">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-xLrMM6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-xM5UM6bEeKYAfIrCjJ_8A" name="textName" visibility="private">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-xNgYM6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-xPVkM6bEeKYAfIrCjJ_8A" name="rightActionComposite" visibility="package">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-xP8oM6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedOperation xmi:id="_-xRx0M6bEeKYAfIrCjJ_8A" name="OneConfigSelectedComposite" visibility="public" concurrency="concurrent">
+                <ownedParameter xmi:id="_biRQ8M6cEeKYAfIrCjJ_8A" name="parent">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_biSfEM6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_biTGIM6cEeKYAfIrCjJ_8A" name="style">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_biTGIc6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_biUUQM6cEeKYAfIrCjJ_8A" name="configName">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_biViYM6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_-xbi0M6bEeKYAfIrCjJ_8A" name="setBottemComposite" visibility="private" concurrency="concurrent"/>
+              <ownedOperation xmi:id="_-xbi0c6bEeKYAfIrCjJ_8A" name="setNameAndParentComposite" visibility="private" concurrency="concurrent"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_-w-24M6bEeKYAfIrCjJ_8A" name="detailtabs">
+              <eAnnotations xmi:id="_-xAsEc6bEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/plugin.ui.window.configurationClassDiagram.ucd" references="_-xAsEM6bEeKYAfIrCjJ_8A"/>
+              <eAnnotations xmi:id="_NB-3UM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/configuration-d-s.ucd" references="_-xAsEM6bEeKYAfIrCjJ_8A"/>
+              <eAnnotations xmi:id="_V5N9wM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/configuration-a-s.ucd" references="_-xAsEM6bEeKYAfIrCjJ_8A"/>
+              <eAnnotations xmi:id="_4T_I0M6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/detailtabs/detailtabs-d-s.ucd" references="_4T-hwM6cEeKYAfIrCjJ_8A _4Udp8M6cEeKYAfIrCjJ_8A _4Ue4EM6cEeKYAfIrCjJ_8A _4UffIc6cEeKYAfIrCjJ_8A _4VF8EM6cEeKYAfIrCjJ_8A _4Vrx8M6cEeKYAfIrCjJ_8A _4X7NoM6cEeKYAfIrCjJ_8A _4YxiMM6cEeKYAfIrCjJ_8A _4a7eUM6cEeKYAfIrCjJ_8A _4c0UsM6cEeKYAfIrCjJ_8A _4eg90M6cEeKYAfIrCjJ_8A _4fDJUM6cEeKYAfIrCjJ_8A _4fgcUM6cEeKYAfIrCjJ_8A _4gDO4M6cEeKYAfIrCjJ_8A _4gzc0M6cEeKYAfIrCjJ_8A _4hR98M6cEeKYAfIrCjJ_8A _4h2lsM6cEeKYAfIrCjJ_8A _4i1dIM6cEeKYAfIrCjJ_8A _4kPLUM6cEeKYAfIrCjJ_8A _4lLmgM6cEeKYAfIrCjJ_8A _4lZo8M6cEeKYAfIrCjJ_8A _4lcFMc6cEeKYAfIrCjJ_8A _4nSfUM6cEeKYAfIrCjJ_8A _4nghwM6cEeKYAfIrCjJ_8A _4nhv4M6cEeKYAfIrCjJ_8A _-xAsEM6bEeKYAfIrCjJ_8A"/>
+              <packagedElement xmi:type="uml:Class" xmi:id="_-xAsEM6bEeKYAfIrCjJ_8A" name="DetailTabFolder" clientDependency="_4rFaMM6cEeKYAfIrCjJ_8A _4rLg0c6cEeKYAfIrCjJ_8A _4rRncc6cEeKYAfIrCjJ_8A _4rXuEc6cEeKYAfIrCjJ_8A _4rd0sc6cEeKYAfIrCjJ_8A _4rjUQc6cEeKYAfIrCjJ_8A _4roz0c6cEeKYAfIrCjJ_8A">
+                <eAnnotations xmi:id="_-xAsEs6bEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/plugin.ui.window.configurationClassDiagram.ucd"/>
+                <eAnnotations xmi:id="_4r0aAM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/detailtabs/detailtabs-d-s.ucd"/>
+                <ownedAttribute xmi:id="_4q07gM6cEeKYAfIrCjJ_8A" name="tabFolder" visibility="public">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4q07gc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4q1ikM6cEeKYAfIrCjJ_8A" name="scopeTab" visibility="package" type="_4a7eUM6cEeKYAfIrCjJ_8A" association="_4rx9wM6cEeKYAfIrCjJ_8A">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4q1ikc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4q2JoM6cEeKYAfIrCjJ_8A" name="generationTab" visibility="package" type="_4kPLUM6cEeKYAfIrCjJ_8A" association="_4ryk0s6cEeKYAfIrCjJ_8A">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4q2Joc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4q2wsM6cEeKYAfIrCjJ_8A" name="staticTab" visibility="package" type="_4Vrx8M6cEeKYAfIrCjJ_8A" association="_4ryk0M6cEeKYAfIrCjJ_8A">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4q2wsc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4q2wss6cEeKYAfIrCjJ_8A" name="commonTab" visibility="package" type="_4i1dIM6cEeKYAfIrCjJ_8A" association="_4rzL4s6cEeKYAfIrCjJ_8A">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4q3XwM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4q3Xwc6cEeKYAfIrCjJ_8A" name="codeReviewTab" visibility="package" type="_4lLmgM6cEeKYAfIrCjJ_8A" association="_4rzL5M6cEeKYAfIrCjJ_8A">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4q3Xws6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4q3-0M6cEeKYAfIrCjJ_8A" name="executionTab" visibility="package" type="_4nSfUM6cEeKYAfIrCjJ_8A" association="_4rzL4M6cEeKYAfIrCjJ_8A">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4q3-0c6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4q3-0s6cEeKYAfIrCjJ_8A" name="goalsTab" visibility="package" type="_4h2lsM6cEeKYAfIrCjJ_8A" association="_4rzy8M6cEeKYAfIrCjJ_8A">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4q4l4M6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedOperation xmi:id="_4q4l4c6cEeKYAfIrCjJ_8A" name="DetailTabFolder" visibility="public" concurrency="concurrent">
+                  <ownedParameter xmi:id="_4q5M8M6cEeKYAfIrCjJ_8A" name="parent">
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4q50AM6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:id="_4q50Ac6cEeKYAfIrCjJ_8A" name="style">
+                    <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4q50As6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                </ownedOperation>
+                <ownedOperation xmi:id="_4q6bEM6cEeKYAfIrCjJ_8A" name="getTabFolder" visibility="package" concurrency="concurrent"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_4T-hwM6cEeKYAfIrCjJ_8A" name="StaticInnerTabFolder" clientDependency="_4UuIoM6cEeKYAfIrCjJ_8A _4U0PQc6cEeKYAfIrCjJ_8A _4U6V4c6cEeKYAfIrCjJ_8A">
+                <eAnnotations xmi:id="_4T_I0c6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/detailtabs/detailtabs-d-s.ucd"/>
+                <ownedAttribute xmi:id="_4Ub0wM6cEeKYAfIrCjJ_8A" name="tabFolder" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4Ub0wc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4Ucb0M6cEeKYAfIrCjJ_8A" name="metricsTabInStatic" visibility="package" type="_4Udp8M6cEeKYAfIrCjJ_8A" association="_4VEG4s6cEeKYAfIrCjJ_8A">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4UdC4M6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4Udp8s6cEeKYAfIrCjJ_8A" name="optionsTabInStatic" visibility="package" type="_4Ue4EM6cEeKYAfIrCjJ_8A" association="_4VEG5M6cEeKYAfIrCjJ_8A">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4UeRAM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4Ue4Es6cEeKYAfIrCjJ_8A" name="rulesTreeTabInStatic" visibility="package" type="_4UffIc6cEeKYAfIrCjJ_8A" association="_4VEG4M6cEeKYAfIrCjJ_8A">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4UffIM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedOperation xmi:id="_4UgGMc6cEeKYAfIrCjJ_8A" name="StaticInnerTabFolder" visibility="public" concurrency="concurrent">
+                  <ownedParameter xmi:id="_4UgtQM6cEeKYAfIrCjJ_8A" name="parent">
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4UhUUM6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_4Udp8M6cEeKYAfIrCjJ_8A" name="MetricsTabInStatic">
+                <eAnnotations xmi:id="_4Udp8c6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/detailtabs/detailtabs-d-s.ucd"/>
+                <ownedAttribute xmi:id="_4ak5AM6cEeKYAfIrCjJ_8A" name="tabItem" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4algEM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4amHIM6cEeKYAfIrCjJ_8A" name="metricsTable" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4amHIc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedOperation xmi:id="_4amuMM6cEeKYAfIrCjJ_8A" name="MetricsTabInStatic" visibility="public" concurrency="concurrent">
+                  <ownedParameter xmi:id="_4anVQM6cEeKYAfIrCjJ_8A" name="tabFolder">
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4an8UM6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_4Ue4EM6cEeKYAfIrCjJ_8A" name="OptionsTabInStatic" clientDependency="_4prsAM6cEeKYAfIrCjJ_8A _4pxyoc6cEeKYAfIrCjJ_8A">
+                <eAnnotations xmi:id="_4Ue4Ec6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/detailtabs/detailtabs-d-s.ucd"/>
+                <ownedAttribute xmi:id="_4pdpkM6cEeKYAfIrCjJ_8A" name="tabItem" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4peQoM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4pe3sM6cEeKYAfIrCjJ_8A" name="generalInOptionsTab" visibility="package" type="_4VF8EM6cEeKYAfIrCjJ_8A" association="_4p68kM6cEeKYAfIrCjJ_8A">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4pe3sc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4pe3ss6cEeKYAfIrCjJ_8A" name="bugDetectiveInOptionsTab" visibility="package" type="_4eg90M6cEeKYAfIrCjJ_8A" association="_4p7joM6cEeKYAfIrCjJ_8A">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4pfewM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4pfewc6cEeKYAfIrCjJ_8A" name="subTabFolder" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4pgF0M6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedOperation xmi:id="_4pgF0c6cEeKYAfIrCjJ_8A" name="OptionsTabInStatic" visibility="public" concurrency="concurrent">
+                  <ownedParameter xmi:id="_4pgs4M6cEeKYAfIrCjJ_8A" name="tabFolder">
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4phT8M6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_4UffIc6cEeKYAfIrCjJ_8A" name="RulesTreeTabInStatic">
+                <eAnnotations xmi:id="_4UgGMM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/detailtabs/detailtabs-d-s.ucd"/>
+                <ownedAttribute xmi:id="_4d7vAM6cEeKYAfIrCjJ_8A" name="rulesTree" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4d8WEM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4d89IM6cEeKYAfIrCjJ_8A" name="tabItem" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4d-LQM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedOperation xmi:id="_4d-yUM6cEeKYAfIrCjJ_8A" name="RulesTreeTabInStatic" visibility="public" concurrency="concurrent">
+                  <ownedParameter xmi:id="_4d_ZYM6cEeKYAfIrCjJ_8A" name="tabFolder">
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4eAAcM6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_4VEG4M6cEeKYAfIrCjJ_8A" memberEnd="_4Ue4Es6cEeKYAfIrCjJ_8A _4VEG4c6cEeKYAfIrCjJ_8A">
+                <ownedEnd xmi:id="_4VEG4c6cEeKYAfIrCjJ_8A" name="ownedEnd" type="_4T-hwM6cEeKYAfIrCjJ_8A" association="_4VEG4M6cEeKYAfIrCjJ_8A"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_4VEG4s6cEeKYAfIrCjJ_8A" memberEnd="_4Ucb0M6cEeKYAfIrCjJ_8A _4VEG486cEeKYAfIrCjJ_8A">
+                <ownedEnd xmi:id="_4VEG486cEeKYAfIrCjJ_8A" name="ownedEnd" type="_4T-hwM6cEeKYAfIrCjJ_8A" association="_4VEG4s6cEeKYAfIrCjJ_8A"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_4VEG5M6cEeKYAfIrCjJ_8A" memberEnd="_4Udp8s6cEeKYAfIrCjJ_8A _4VEG5c6cEeKYAfIrCjJ_8A">
+                <ownedEnd xmi:id="_4VEG5c6cEeKYAfIrCjJ_8A" name="ownedEnd" type="_4T-hwM6cEeKYAfIrCjJ_8A" association="_4VEG5M6cEeKYAfIrCjJ_8A"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_4VF8EM6cEeKYAfIrCjJ_8A" name="GeneralInOptionsTab">
+                <eAnnotations xmi:id="_4VF8Ec6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/detailtabs/detailtabs-d-s.ucd"/>
+                <ownedAttribute xmi:id="_4VXB0M6cEeKYAfIrCjJ_8A" name="text_3" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4VXB0c6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4VXo4M6cEeKYAfIrCjJ_8A" name="tabItem" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4VYP8M6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4VYP8c6cEeKYAfIrCjJ_8A" name="text_2" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4VY3AM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4VZeEM6cEeKYAfIrCjJ_8A" name="text_1" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4VZeEc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedOperation xmi:id="_4VaFIM6cEeKYAfIrCjJ_8A" name="GeneralInOptionsTab" visibility="public" concurrency="concurrent">
+                  <ownedParameter xmi:id="_4VasMM6cEeKYAfIrCjJ_8A" name="tabFolder">
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4VasMc6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_4Vrx8M6cEeKYAfIrCjJ_8A" name="StaticTab" clientDependency="_4XJxkM6cEeKYAfIrCjJ_8A _4XP4Mc6cEeKYAfIrCjJ_8A _4XWl4c6cEeKYAfIrCjJ_8A">
+                <eAnnotations xmi:id="_4Vrx8c6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/detailtabs/detailtabs-d-s.ucd"/>
+                <ownedAttribute xmi:id="_4WGBoM6cEeKYAfIrCjJ_8A" name="staticInnerTabFolder" visibility="package" type="_4T-hwM6cEeKYAfIrCjJ_8A" association="_4X4KUM6cEeKYAfIrCjJ_8A">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4WGosM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4WGosc6cEeKYAfIrCjJ_8A" name="btnDoNotApply" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4WGoss6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4WH20M6cEeKYAfIrCjJ_8A" name="staticTabFolder" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4WId4M6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4WJsAM6cEeKYAfIrCjJ_8A" name="btnEnableStaticAnalysis" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4WKTEM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4WMIQM6cEeKYAfIrCjJ_8A" name="btnSkipAutomaticallyGenerated" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4WMvUM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4WN9cM6cEeKYAfIrCjJ_8A" name="tbtmStatic" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4WOkgM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4WPLkM6cEeKYAfIrCjJ_8A" name="txtLimitMaxTask" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4WPyoM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4WRAwM6cEeKYAfIrCjJ_8A" name="btnLimitMaximumNumber" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4WRn0M6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedOperation xmi:id="_4WS18M6cEeKYAfIrCjJ_8A" name="StaticTab" visibility="public" concurrency="concurrent">
+                  <ownedParameter xmi:id="_4WUEEM6cEeKYAfIrCjJ_8A" name="tabFolder">
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4WVSMM6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:id="_4WV5QM6cEeKYAfIrCjJ_8A" name="style">
+                    <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4WV5Qc6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_4X4KUM6cEeKYAfIrCjJ_8A" memberEnd="_4WGBoM6cEeKYAfIrCjJ_8A _4X4KUc6cEeKYAfIrCjJ_8A">
+                <ownedEnd xmi:id="_4X4KUc6cEeKYAfIrCjJ_8A" name="ownedEnd" type="_4Vrx8M6cEeKYAfIrCjJ_8A" association="_4X4KUM6cEeKYAfIrCjJ_8A"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_4X7NoM6cEeKYAfIrCjJ_8A" name="GenerationInputTab">
+                <eAnnotations xmi:id="_4X7Noc6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/detailtabs/detailtabs-d-s.ucd"/>
+                <ownedAttribute xmi:id="_4YLsUM6cEeKYAfIrCjJ_8A" name="text_ReadPrerecordFile" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4YMTYM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4YMTYc6cEeKYAfIrCjJ_8A" name="text_monitoringNewApp" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4YM6cM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4YNhgM6cEeKYAfIrCjJ_8A" name="text_ConnectingToRunningApp" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4YNhgc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4YOIkM6cEeKYAfIrCjJ_8A" name="tbtmGeneration" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4YOIkc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4YOvoM6cEeKYAfIrCjJ_8A" name="tbtmInputs" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4YOvoc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedOperation xmi:id="_4YPWsM6cEeKYAfIrCjJ_8A" name="GenerationInputTab" visibility="public" concurrency="concurrent">
+                  <ownedParameter xmi:id="_4YP9wM6cEeKYAfIrCjJ_8A" name="tabFolderInGeneration">
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4YQk0M6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_4YxiMM6cEeKYAfIrCjJ_8A" name="ExecutionInGoalsTab">
+                <eAnnotations xmi:id="_4YyJQM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/detailtabs/detailtabs-d-s.ucd"/>
+                <ownedAttribute xmi:id="_4ZGSUM6cEeKYAfIrCjJ_8A" name="text_maxTaskReviewUnverifiedExceptions" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4ZGSUc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4ZG5YM6cEeKYAfIrCjJ_8A" name="text_maxTaskReviewUnverifiedOutcomes" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4ZG5Yc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4ZHgcM6cEeKYAfIrCjJ_8A" name="dateTimeByReviewUnverifiedExceptions" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4ZIHgM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4ZIHgc6cEeKYAfIrCjJ_8A" name="text_maxTaskReviewUnverifiedFailures" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4ZIukM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4ZJVoM6cEeKYAfIrCjJ_8A" name="text_numberOfTasksReviewUnverifiedOutcomes" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4ZJVoc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4ZJ8sM6cEeKYAfIrCjJ_8A" name="text_numberOfTasksFixUnitTestingProblems" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4ZJ8sc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4ZKjwM6cEeKYAfIrCjJ_8A" name="text_numberOfTasksReviewUnverifiedExceptions" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4ZKjwc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4ZLK0M6cEeKYAfIrCjJ_8A" name="tabItem" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4ZLK0c6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4ZLx4M6cEeKYAfIrCjJ_8A" name="dateTimeByReviewUnverifiedFailures" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4ZMY8M6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4ZMY8c6cEeKYAfIrCjJ_8A" name="dateTimeByReviewUnverifiedOutcomes" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4ZNAAM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4ZNnEM6cEeKYAfIrCjJ_8A" name="text_maxTaskFixUnitTestingProblems" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4ZNnEc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4ZOOIM6cEeKYAfIrCjJ_8A" name="text_numberOfTasksReviewUnverifiedFailures" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4ZOOIc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4ZO1MM6cEeKYAfIrCjJ_8A" name="dateTimeByFixUnitTestingProblems" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4ZPcQM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedOperation xmi:id="_4ZPcQc6cEeKYAfIrCjJ_8A" name="ExecutionInGoalsTab" visibility="public" concurrency="concurrent">
+                  <ownedParameter xmi:id="_4ZQDUM6cEeKYAfIrCjJ_8A" name="tabFolder">
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4ZQqYM6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_4a7eUM6cEeKYAfIrCjJ_8A" name="ScopeTab" clientDependency="_4cRiIM6cEeKYAfIrCjJ_8A _4cXowc6cEeKYAfIrCjJ_8A">
+                <eAnnotations xmi:id="_4a7eUc6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/detailtabs/detailtabs-d-s.ucd"/>
+                <ownedAttribute xmi:id="_4biiUM6cEeKYAfIrCjJ_8A" name="tbtmScope" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4biiUc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4bjwcM6cEeKYAfIrCjJ_8A" name="text_authorNameInLineFilter" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4bkXgM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4bk-kM6cEeKYAfIrCjJ_8A" name="text_minMethodNum" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4blloM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4bmzwM6cEeKYAfIrCjJ_8A" name="text_lastDaysInLineFilter" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4bmzwc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4boB4M6cEeKYAfIrCjJ_8A" name="tableMethodsPattern" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4boo8M6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedOperation xmi:id="_4bp3EM6cEeKYAfIrCjJ_8A" name="getTabItem" visibility="public" concurrency="concurrent"/>
+                <ownedOperation xmi:id="_4brFMM6cEeKYAfIrCjJ_8A" name="ScopeTab" visibility="public" concurrency="concurrent">
+                  <ownedParameter xmi:id="_4bsTUM6cEeKYAfIrCjJ_8A" name="tabFolder">
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4bs6YM6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:id="_4bthcM6cEeKYAfIrCjJ_8A" name="style">
+                    <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4bthcc6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_4c0UsM6cEeKYAfIrCjJ_8A" name="StaticInGoalsTab">
+                <eAnnotations xmi:id="_4c0Usc6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/detailtabs/detailtabs-d-s.ucd"/>
+                <ownedAttribute xmi:id="_4dQZkM6cEeKYAfIrCjJ_8A" name="text_numberOfTasks" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4dRAoM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4dRnsM6cEeKYAfIrCjJ_8A" name="tabItem" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4dRnsc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4dSOwM6cEeKYAfIrCjJ_8A" name="dateTimeBy" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4dS10M6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4dTc4M6cEeKYAfIrCjJ_8A" name="text_maxTask" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4dTc4c6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedOperation xmi:id="_4dUD8M6cEeKYAfIrCjJ_8A" name="StaticInGoalsTab" visibility="public" concurrency="concurrent">
+                  <ownedParameter xmi:id="_4dUrAM6cEeKYAfIrCjJ_8A" name="tabFolder">
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4dVSEM6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_4eg90M6cEeKYAfIrCjJ_8A" name="BugDetectiveInOptionsTab">
+                <eAnnotations xmi:id="_4eg90c6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/detailtabs/detailtabs-d-s.ucd"/>
+                <ownedAttribute xmi:id="_4ekoMM6cEeKYAfIrCjJ_8A" name="tabItem" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4elPQM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4el2UM6cEeKYAfIrCjJ_8A" name="text_TimeLimit" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4el2Uc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedOperation xmi:id="_4emdYM6cEeKYAfIrCjJ_8A" name="BugDetectiveInOptionsTab" visibility="public" concurrency="concurrent">
+                  <ownedParameter xmi:id="_4enEcM6cEeKYAfIrCjJ_8A" name="tabFolder">
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4enEcc6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_4fDJUM6cEeKYAfIrCjJ_8A" name="ReviewersTab">
+                <eAnnotations xmi:id="_4fDwYM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/detailtabs/detailtabs-d-s.ucd"/>
+                <ownedAttribute xmi:id="_4fJ3AM6cEeKYAfIrCjJ_8A" name="tabItem" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4fJ3Ac6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4fLFIM6cEeKYAfIrCjJ_8A" name="table" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4fLsMM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedOperation xmi:id="_4fNhYM6cEeKYAfIrCjJ_8A" name="ReviewersTab" visibility="public" concurrency="concurrent">
+                  <ownedParameter xmi:id="_4fP9oM6cEeKYAfIrCjJ_8A" name="tabFolder">
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4fQksM6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_4fgcUM6cEeKYAfIrCjJ_8A" name="GenerationFilterTab">
+                <eAnnotations xmi:id="_4fhDYM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/detailtabs/detailtabs-d-s.ucd"/>
+                <ownedAttribute xmi:id="_4fktwM6cEeKYAfIrCjJ_8A" name="tabItem" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4flU0M6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedOperation xmi:id="_4fl74M6cEeKYAfIrCjJ_8A" name="GenerationFilterTab" visibility="public" concurrency="concurrent">
+                  <ownedParameter xmi:id="_4fmi8M6cEeKYAfIrCjJ_8A" name="tabFolderInGeneration">
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4fnKAM6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_4gDO4M6cEeKYAfIrCjJ_8A" name="GenerationTestClassTab">
+                <eAnnotations xmi:id="_4gDO4c6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/detailtabs/detailtabs-d-s.ucd"/>
+                <ownedAttribute xmi:id="_4gMY0M6cEeKYAfIrCjJ_8A" name="text" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4gMY0c6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4gM_4M6cEeKYAfIrCjJ_8A" name="javadocText" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4gNm8M6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4gNm8c6cEeKYAfIrCjJ_8A" name="textOutputClass" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4gOOAM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4gOOAc6cEeKYAfIrCjJ_8A" name="testClassTabItem" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4gO1EM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedOperation xmi:id="_4gPcIM6cEeKYAfIrCjJ_8A" name="GenerationTestClassTab" visibility="public" concurrency="concurrent">
+                  <ownedParameter xmi:id="_4gQDMM6cEeKYAfIrCjJ_8A" name="tabFolderInGeneration">
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4gQDMc6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_4gzc0M6cEeKYAfIrCjJ_8A" name="AuthorsTab">
+                <eAnnotations xmi:id="_4gzc0c6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/detailtabs/detailtabs-d-s.ucd"/>
+                <ownedAttribute xmi:id="_4g5jcM6cEeKYAfIrCjJ_8A" name="tabItem" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4g6KgM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4g6xkM6cEeKYAfIrCjJ_8A" name="table" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4g6xkc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedOperation xmi:id="_4g7YoM6cEeKYAfIrCjJ_8A" name="AuthorsTab" visibility="public" concurrency="concurrent">
+                  <ownedParameter xmi:id="_4g7_sM6cEeKYAfIrCjJ_8A" name="tabFolder">
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4g8mwM6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_4hR98M6cEeKYAfIrCjJ_8A" name="SearchInExecutionTab">
+                <eAnnotations xmi:id="_4hR98c6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/detailtabs/detailtabs-d-s.ucd"/>
+                <ownedAttribute xmi:id="_4hc9EM6cEeKYAfIrCjJ_8A" name="table_Patterns" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4hdkIM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4heLMM6cEeKYAfIrCjJ_8A" name="tabItem" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4heLMc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4heyQM6cEeKYAfIrCjJ_8A" name="table_RelativeToProjects" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4heyQc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedOperation xmi:id="_4hfZUM6cEeKYAfIrCjJ_8A" name="SearchInExecutionTab" visibility="public" concurrency="concurrent">
+                  <ownedParameter xmi:id="_4hgAYM6cEeKYAfIrCjJ_8A" name="tabFolder">
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4hgncM6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_4h2lsM6cEeKYAfIrCjJ_8A" name="GoalsTab" clientDependency="_4iSDgM6cEeKYAfIrCjJ_8A _4iYxMM6cEeKYAfIrCjJ_8A _4ie30c6cEeKYAfIrCjJ_8A _4imMkc6cEeKYAfIrCjJ_8A">
+                <eAnnotations xmi:id="_4h3MwM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/detailtabs/detailtabs-d-s.ucd"/>
+                <ownedAttribute xmi:id="_4h_IkM6cEeKYAfIrCjJ_8A" name="tbtmGoals" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4h_Ikc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4iAWsM6cEeKYAfIrCjJ_8A" name="executionTabItem" visibility="package" type="_4YxiMM6cEeKYAfIrCjJ_8A" association="_4i0PAM6cEeKYAfIrCjJ_8A">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4iAWsc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4iA9wM6cEeKYAfIrCjJ_8A" name="staticTabItem" visibility="package" type="_4c0UsM6cEeKYAfIrCjJ_8A" association="_4izn8M6cEeKYAfIrCjJ_8A">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4iA9wc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4iBk0M6cEeKYAfIrCjJ_8A" name="subTabFolder" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4iBk0c6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedOperation xmi:id="_4iCy8M6cEeKYAfIrCjJ_8A" name="GoalsTab" visibility="public" concurrency="concurrent">
+                  <ownedParameter xmi:id="_4iDaAM6cEeKYAfIrCjJ_8A" name="tabFolder">
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4iEoIM6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:id="_4iFPMM6cEeKYAfIrCjJ_8A" name="style">
+                    <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4iFPMc6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_4izn8M6cEeKYAfIrCjJ_8A" memberEnd="_4iA9wM6cEeKYAfIrCjJ_8A _4izn8c6cEeKYAfIrCjJ_8A">
+                <ownedEnd xmi:id="_4izn8c6cEeKYAfIrCjJ_8A" name="ownedEnd" type="_4h2lsM6cEeKYAfIrCjJ_8A" association="_4izn8M6cEeKYAfIrCjJ_8A"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_4i0PAM6cEeKYAfIrCjJ_8A" memberEnd="_4iAWsM6cEeKYAfIrCjJ_8A _4i0PAc6cEeKYAfIrCjJ_8A">
+                <ownedEnd xmi:id="_4i0PAc6cEeKYAfIrCjJ_8A" name="ownedEnd" type="_4h2lsM6cEeKYAfIrCjJ_8A" association="_4i0PAM6cEeKYAfIrCjJ_8A"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_4i1dIM6cEeKYAfIrCjJ_8A" name="CommonTab" clientDependency="_4ju1AM6cEeKYAfIrCjJ_8A _4j1isc6cEeKYAfIrCjJ_8A">
+                <eAnnotations xmi:id="_4i2EMM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/detailtabs/detailtabs-d-s.ucd"/>
+                <ownedAttribute xmi:id="_4jKNQM6cEeKYAfIrCjJ_8A" name="txt_localDir" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4jK0UM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4jMpgM6cEeKYAfIrCjJ_8A" name="tbtmCommon" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4jNQkM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4jPFwM6cEeKYAfIrCjJ_8A" name="txt_workspace" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4jPFwc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4jQT4M6cEeKYAfIrCjJ_8A" name="txtVmArguments" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4jQ68M6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4jSJEM6cEeKYAfIrCjJ_8A" name="text_RecordTestCoverage" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4jSJEc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4jTXMM6cEeKYAfIrCjJ_8A" name="text_GenerateAndExecute" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4jTXMc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedOperation xmi:id="_4jUlUM6cEeKYAfIrCjJ_8A" name="CommonTab" visibility="public" concurrency="concurrent">
+                  <ownedParameter xmi:id="_4jVzcM6cEeKYAfIrCjJ_8A" name="tabFolder">
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4jXBkM6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:id="_4jXBkc6cEeKYAfIrCjJ_8A" name="style">
+                    <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4jXooM6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_4kPLUM6cEeKYAfIrCjJ_8A" name="GenerationTab" clientDependency="_4kjUYM6cEeKYAfIrCjJ_8A _4kpbAc6cEeKYAfIrCjJ_8A _4kyk8c6cEeKYAfIrCjJ_8A _4k5Soc6cEeKYAfIrCjJ_8A _4k_ZQc6cEeKYAfIrCjJ_8A">
+                <eAnnotations xmi:id="_4kPyYM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/detailtabs/detailtabs-d-s.ucd"/>
+                <ownedAttribute xmi:id="_4kVR8M6cEeKYAfIrCjJ_8A" name="testClassTab" visibility="public" type="_4gDO4M6cEeKYAfIrCjJ_8A" association="_4lJxVM6cEeKYAfIrCjJ_8A">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4kV5AM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4kV5Ac6cEeKYAfIrCjJ_8A" name="filterTab" visibility="public" type="_4fgcUM6cEeKYAfIrCjJ_8A" association="_4lJxUs6cEeKYAfIrCjJ_8A">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4kWgEM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4kWgEc6cEeKYAfIrCjJ_8A" name="inputTab" visibility="public" type="_4X7NoM6cEeKYAfIrCjJ_8A" association="_4lJxUM6cEeKYAfIrCjJ_8A">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4kWgEs6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4kXHIM6cEeKYAfIrCjJ_8A" name="tbtmGeneration" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4kXHIc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedOperation xmi:id="_4kYVQM6cEeKYAfIrCjJ_8A" name="GenerationTab" visibility="public" concurrency="concurrent">
+                  <ownedParameter xmi:id="_4kZjYM6cEeKYAfIrCjJ_8A" name="tabFolder">
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4kaxgM6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:id="_4kaxgc6cEeKYAfIrCjJ_8A" name="style">
+                    <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4kaxgs6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_4lJxUM6cEeKYAfIrCjJ_8A" memberEnd="_4kWgEc6cEeKYAfIrCjJ_8A _4lJxUc6cEeKYAfIrCjJ_8A">
+                <ownedEnd xmi:id="_4lJxUc6cEeKYAfIrCjJ_8A" name="ownedEnd" type="_4kPLUM6cEeKYAfIrCjJ_8A" association="_4lJxUM6cEeKYAfIrCjJ_8A"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_4lJxUs6cEeKYAfIrCjJ_8A" memberEnd="_4kV5Ac6cEeKYAfIrCjJ_8A _4lJxU86cEeKYAfIrCjJ_8A">
+                <ownedEnd xmi:id="_4lJxU86cEeKYAfIrCjJ_8A" name="ownedEnd" type="_4kPLUM6cEeKYAfIrCjJ_8A" association="_4lJxUs6cEeKYAfIrCjJ_8A"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_4lJxVM6cEeKYAfIrCjJ_8A" memberEnd="_4kVR8M6cEeKYAfIrCjJ_8A _4lJxVc6cEeKYAfIrCjJ_8A">
+                <ownedEnd xmi:id="_4lJxVc6cEeKYAfIrCjJ_8A" name="ownedEnd" type="_4kPLUM6cEeKYAfIrCjJ_8A" association="_4lJxVM6cEeKYAfIrCjJ_8A"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_4lLmgM6cEeKYAfIrCjJ_8A" name="CodeReviewTab" clientDependency="_4lwOQM6cEeKYAfIrCjJ_8A _4l2U4M6cEeKYAfIrCjJ_8A _4l8bgc6cEeKYAfIrCjJ_8A _4mCiIc6cEeKYAfIrCjJ_8A _4mIowc6cEeKYAfIrCjJ_8A _4mOvYc6cEeKYAfIrCjJ_8A">
+                <eAnnotations xmi:id="_4lMNkM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/detailtabs/detailtabs-d-s.ucd"/>
+                <ownedAttribute xmi:id="_4lXMsM6cEeKYAfIrCjJ_8A" name="tbtmCodeReview" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4lXzwM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4lZB4M6cEeKYAfIrCjJ_8A" name="filtersTab" visibility="package" type="_4lZo8M6cEeKYAfIrCjJ_8A" association="_4mcKxM6cEeKYAfIrCjJ_8A">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4lZB4c6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4lZo8s6cEeKYAfIrCjJ_8A" name="text_Identifier" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4laQAM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4lbeIM6cEeKYAfIrCjJ_8A" name="monitorsTab" visibility="package" type="_4lcFMc6cEeKYAfIrCjJ_8A" association="_4mcKws6cEeKYAfIrCjJ_8A">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4lcFMM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4lcsQc6cEeKYAfIrCjJ_8A" name="reviewersTab" visibility="package" type="_4fDJUM6cEeKYAfIrCjJ_8A" association="_4mcKwM6cEeKYAfIrCjJ_8A">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4lcsQs6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4ldTUM6cEeKYAfIrCjJ_8A" name="authorsTab" visibility="package" type="_4gzc0M6cEeKYAfIrCjJ_8A" association="_4mbjsM6cEeKYAfIrCjJ_8A">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4ldTUc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedOperation xmi:id="_4ldTUs6cEeKYAfIrCjJ_8A" name="CodeReviewTab" visibility="public" concurrency="concurrent">
+                  <ownedParameter xmi:id="_4lfIgM6cEeKYAfIrCjJ_8A" name="tabFolder">
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4lfvkM6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:id="_4lgWoM6cEeKYAfIrCjJ_8A" name="style">
+                    <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4lgWoc6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_4lZo8M6cEeKYAfIrCjJ_8A" name="FiltersTab">
+                <eAnnotations xmi:id="_4lZo8c6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/detailtabs/detailtabs-d-s.ucd"/>
+                <ownedAttribute xmi:id="_4mlUsM6cEeKYAfIrCjJ_8A" name="text_pathsAccept" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4mlUsc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4ml7wM6cEeKYAfIrCjJ_8A" name="tabItem" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4mmi0M6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4mnJ4M6cEeKYAfIrCjJ_8A" name="text_acceptPostToPrecommitAccept" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4mnJ4c6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4mnw8M6cEeKYAfIrCjJ_8A" name="text_pathsReject" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4mnw8c6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4moYAM6cEeKYAfIrCjJ_8A" name="text_filesAccept" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4mo_EM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4mo_Ec6cEeKYAfIrCjJ_8A" name="text_filesReject" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4mpmIM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedOperation xmi:id="_4mpmIc6cEeKYAfIrCjJ_8A" name="FiltersTab" visibility="public" concurrency="concurrent">
+                  <ownedParameter xmi:id="_4mqNMM6cEeKYAfIrCjJ_8A" name="tabFolder">
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4mq0QM6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_4lcFMc6cEeKYAfIrCjJ_8A" name="MonitorsTab">
+                <eAnnotations xmi:id="_4lcsQM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/detailtabs/detailtabs-d-s.ucd"/>
+                <ownedAttribute xmi:id="_4pHEQM6cEeKYAfIrCjJ_8A" name="tabItem" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4pHrUM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4pISYM6cEeKYAfIrCjJ_8A" name="table" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4pISYc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedOperation xmi:id="_4pI5cM6cEeKYAfIrCjJ_8A" name="MonitorsTab" visibility="public" concurrency="concurrent">
+                  <ownedParameter xmi:id="_4pJggM6cEeKYAfIrCjJ_8A" name="tabFolder">
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4pKHkM6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_4mbjsM6cEeKYAfIrCjJ_8A" memberEnd="_4ldTUM6cEeKYAfIrCjJ_8A _4mbjsc6cEeKYAfIrCjJ_8A">
+                <ownedEnd xmi:id="_4mbjsc6cEeKYAfIrCjJ_8A" name="ownedEnd" type="_4lLmgM6cEeKYAfIrCjJ_8A" association="_4mbjsM6cEeKYAfIrCjJ_8A"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_4mcKwM6cEeKYAfIrCjJ_8A" memberEnd="_4lcsQc6cEeKYAfIrCjJ_8A _4mcKwc6cEeKYAfIrCjJ_8A">
+                <ownedEnd xmi:id="_4mcKwc6cEeKYAfIrCjJ_8A" name="ownedEnd" type="_4lLmgM6cEeKYAfIrCjJ_8A" association="_4mcKwM6cEeKYAfIrCjJ_8A"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_4mcKws6cEeKYAfIrCjJ_8A" memberEnd="_4lbeIM6cEeKYAfIrCjJ_8A _4mcKw86cEeKYAfIrCjJ_8A">
+                <ownedEnd xmi:id="_4mcKw86cEeKYAfIrCjJ_8A" name="ownedEnd" type="_4lLmgM6cEeKYAfIrCjJ_8A" association="_4mcKws6cEeKYAfIrCjJ_8A"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_4mcKxM6cEeKYAfIrCjJ_8A" memberEnd="_4lZB4M6cEeKYAfIrCjJ_8A _4mcKxc6cEeKYAfIrCjJ_8A">
+                <ownedEnd xmi:id="_4mcKxc6cEeKYAfIrCjJ_8A" name="ownedEnd" type="_4lLmgM6cEeKYAfIrCjJ_8A" association="_4mcKxM6cEeKYAfIrCjJ_8A"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_4nSfUM6cEeKYAfIrCjJ_8A" name="ExecutionTab" clientDependency="_4n_p8M6cEeKYAfIrCjJ_8A _4oFwkc6cEeKYAfIrCjJ_8A _4oL3Mc6cEeKYAfIrCjJ_8A _4oR90c6cEeKYAfIrCjJ_8A _4oXdYc6cEeKYAfIrCjJ_8A">
+                <eAnnotations xmi:id="_4nSfUc6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/detailtabs/detailtabs-d-s.ucd"/>
+                <ownedAttribute xmi:id="_4ndecM6cEeKYAfIrCjJ_8A" name="tabFolder" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4neFgM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4nfToM6cEeKYAfIrCjJ_8A" name="optionsInExecutionTab" visibility="package" type="_4nghwM6cEeKYAfIrCjJ_8A" association="_4on8EM6cEeKYAfIrCjJ_8A">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4nf6sM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4nghws6cEeKYAfIrCjJ_8A" name="severitiesInExecutionTab" visibility="package" type="_4nhv4M6cEeKYAfIrCjJ_8A" association="_4on8Es6cEeKYAfIrCjJ_8A">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4nhI0M6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4niW8c6cEeKYAfIrCjJ_8A" name="tbtmExecution" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4niW8s6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4nkzMM6cEeKYAfIrCjJ_8A" name="searchInExecutionTab" visibility="package" type="_4hR98M6cEeKYAfIrCjJ_8A" association="_4onVAM6cEeKYAfIrCjJ_8A">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4nlaQM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedOperation xmi:id="_4nmBUM6cEeKYAfIrCjJ_8A" name="ExecutionTab" visibility="public" concurrency="concurrent">
+                  <ownedParameter xmi:id="_4nodkM6cEeKYAfIrCjJ_8A" name="tabFolder">
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4nqSwM6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:id="_4nq50M6cEeKYAfIrCjJ_8A" name="style">
+                    <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4nrg4M6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_4nghwM6cEeKYAfIrCjJ_8A" name="OptionsInExecutionTab">
+                <eAnnotations xmi:id="_4nghwc6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/detailtabs/detailtabs-d-s.ucd"/>
+                <ownedAttribute xmi:id="_4qDfcM6cEeKYAfIrCjJ_8A" name="table_PluginTestsToRun" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4qEGgM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4qEtkM6cEeKYAfIrCjJ_8A" name="text_TimeoutMaxLimitForEachClassOrSuite" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4qEtkc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4qFUoM6cEeKYAfIrCjJ_8A" name="text_ReportUnverifiedOutcomeMaxLimit" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4qFUoc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4qF7sM6cEeKYAfIrCjJ_8A" name="text_TimeoutMaxLimit" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4qGiwM6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4qGiwc6cEeKYAfIrCjJ_8A" name="tabItem" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4qHJ0M6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4qHw4M6cEeKYAfIrCjJ_8A" name="text_ReportFailureLessThanCoverage" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4qHw4c6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedOperation xmi:id="_4qIX8M6cEeKYAfIrCjJ_8A" name="OptionsInExecutionTab" visibility="public" concurrency="concurrent">
+                  <ownedParameter xmi:id="_4qI_AM6cEeKYAfIrCjJ_8A" name="tabFolder">
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4qI_Ac6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_4nhv4M6cEeKYAfIrCjJ_8A" name="SeveritiesInExecutionTab">
+                <eAnnotations xmi:id="_4niW8M6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/detailtabs/detailtabs-d-s.ucd"/>
+                <ownedAttribute xmi:id="_4ouCsM6cEeKYAfIrCjJ_8A" name="table_SensitiveMethods" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4ouCsc6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4oupwM6cEeKYAfIrCjJ_8A" name="tabItem" visibility="package">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4ovQ0M6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedAttribute xmi:id="_4ovQ0c6cEeKYAfIrCjJ_8A" name="table_SeverityForUncaughtExceptionType" visibility="private">
+                  <defaultValue xmi:type="uml:LiteralString" xmi:id="_4ov34M6cEeKYAfIrCjJ_8A">
+                    <value xsi:nil="true"/>
+                  </defaultValue>
+                </ownedAttribute>
+                <ownedOperation xmi:id="_4ov34c6cEeKYAfIrCjJ_8A" name="SeveritiesInExecutionTab" visibility="public" concurrency="concurrent">
+                  <ownedParameter xmi:id="_4owe8M6cEeKYAfIrCjJ_8A" name="tabFolder">
+                    <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4oxGAM6cEeKYAfIrCjJ_8A" value="1"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_4onVAM6cEeKYAfIrCjJ_8A" memberEnd="_4nkzMM6cEeKYAfIrCjJ_8A _4onVAc6cEeKYAfIrCjJ_8A">
+                <ownedEnd xmi:id="_4onVAc6cEeKYAfIrCjJ_8A" name="ownedEnd" type="_4nSfUM6cEeKYAfIrCjJ_8A" association="_4onVAM6cEeKYAfIrCjJ_8A"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_4on8EM6cEeKYAfIrCjJ_8A" memberEnd="_4nfToM6cEeKYAfIrCjJ_8A _4on8Ec6cEeKYAfIrCjJ_8A">
+                <ownedEnd xmi:id="_4on8Ec6cEeKYAfIrCjJ_8A" name="ownedEnd" type="_4nSfUM6cEeKYAfIrCjJ_8A" association="_4on8EM6cEeKYAfIrCjJ_8A"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_4on8Es6cEeKYAfIrCjJ_8A" memberEnd="_4nghws6cEeKYAfIrCjJ_8A _4on8E86cEeKYAfIrCjJ_8A">
+                <ownedEnd xmi:id="_4on8E86cEeKYAfIrCjJ_8A" name="ownedEnd" type="_4nSfUM6cEeKYAfIrCjJ_8A" association="_4on8Es6cEeKYAfIrCjJ_8A"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_4p68kM6cEeKYAfIrCjJ_8A" memberEnd="_4pe3sM6cEeKYAfIrCjJ_8A _4p68kc6cEeKYAfIrCjJ_8A">
+                <ownedEnd xmi:id="_4p68kc6cEeKYAfIrCjJ_8A" name="ownedEnd" type="_4Ue4EM6cEeKYAfIrCjJ_8A" association="_4p68kM6cEeKYAfIrCjJ_8A"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_4p7joM6cEeKYAfIrCjJ_8A" memberEnd="_4pe3ss6cEeKYAfIrCjJ_8A _4p7joc6cEeKYAfIrCjJ_8A">
+                <ownedEnd xmi:id="_4p7joc6cEeKYAfIrCjJ_8A" name="ownedEnd" type="_4Ue4EM6cEeKYAfIrCjJ_8A" association="_4p7joM6cEeKYAfIrCjJ_8A"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_4rx9wM6cEeKYAfIrCjJ_8A" memberEnd="_4q1ikM6cEeKYAfIrCjJ_8A _4rx9wc6cEeKYAfIrCjJ_8A">
+                <ownedEnd xmi:id="_4rx9wc6cEeKYAfIrCjJ_8A" name="ownedEnd" type="_-xAsEM6bEeKYAfIrCjJ_8A" association="_4rx9wM6cEeKYAfIrCjJ_8A"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_4ryk0M6cEeKYAfIrCjJ_8A" memberEnd="_4q2wsM6cEeKYAfIrCjJ_8A _4ryk0c6cEeKYAfIrCjJ_8A">
+                <ownedEnd xmi:id="_4ryk0c6cEeKYAfIrCjJ_8A" name="ownedEnd" type="_-xAsEM6bEeKYAfIrCjJ_8A" association="_4ryk0M6cEeKYAfIrCjJ_8A"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_4ryk0s6cEeKYAfIrCjJ_8A" memberEnd="_4q2JoM6cEeKYAfIrCjJ_8A _4ryk086cEeKYAfIrCjJ_8A">
+                <ownedEnd xmi:id="_4ryk086cEeKYAfIrCjJ_8A" name="ownedEnd" type="_-xAsEM6bEeKYAfIrCjJ_8A" association="_4ryk0s6cEeKYAfIrCjJ_8A"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_4rzL4M6cEeKYAfIrCjJ_8A" memberEnd="_4q3-0M6cEeKYAfIrCjJ_8A _4rzL4c6cEeKYAfIrCjJ_8A">
+                <ownedEnd xmi:id="_4rzL4c6cEeKYAfIrCjJ_8A" name="ownedEnd" type="_-xAsEM6bEeKYAfIrCjJ_8A" association="_4rzL4M6cEeKYAfIrCjJ_8A"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_4rzL4s6cEeKYAfIrCjJ_8A" memberEnd="_4q2wss6cEeKYAfIrCjJ_8A _4rzL486cEeKYAfIrCjJ_8A">
+                <ownedEnd xmi:id="_4rzL486cEeKYAfIrCjJ_8A" name="ownedEnd" type="_-xAsEM6bEeKYAfIrCjJ_8A" association="_4rzL4s6cEeKYAfIrCjJ_8A"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_4rzL5M6cEeKYAfIrCjJ_8A" memberEnd="_4q3Xwc6cEeKYAfIrCjJ_8A _4rzL5c6cEeKYAfIrCjJ_8A">
+                <ownedEnd xmi:id="_4rzL5c6cEeKYAfIrCjJ_8A" name="ownedEnd" type="_-xAsEM6bEeKYAfIrCjJ_8A" association="_4rzL5M6cEeKYAfIrCjJ_8A"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Association" xmi:id="_4rzy8M6cEeKYAfIrCjJ_8A" memberEnd="_4q3-0s6cEeKYAfIrCjJ_8A _4rzy8c6cEeKYAfIrCjJ_8A">
+                <ownedEnd xmi:id="_4rzy8c6cEeKYAfIrCjJ_8A" name="ownedEnd" type="_-xAsEM6bEeKYAfIrCjJ_8A" association="_4rzy8M6cEeKYAfIrCjJ_8A"/>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Association" xmi:id="_-zLPQM6bEeKYAfIrCjJ_8A" memberEnd="_-w-P0M6bEeKYAfIrCjJ_8A _-zL2UM6bEeKYAfIrCjJ_8A">
+              <ownedEnd xmi:id="_-zL2UM6bEeKYAfIrCjJ_8A" name="ownedEnd" type="_-wIiUM6bEeKYAfIrCjJ_8A" association="_-zLPQM6bEeKYAfIrCjJ_8A"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_-zYqoM6bEeKYAfIrCjJ_8A" name="ConfigSelectWindow" clientDependency="_-z5A8M6bEeKYAfIrCjJ_8A">
+              <eAnnotations xmi:id="_-zZRsM6bEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/plugin.ui.window.configurationClassDiagram.ucd"/>
+              <eAnnotations xmi:id="_NEeKoM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/configuration-d-s.ucd"/>
+              <eAnnotations xmi:id="_V-rFgM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/configuration-a-s.ucd"/>
+              <ownedAttribute xmi:id="_-zk34M6bEeKYAfIrCjJ_8A" name="treeComposite" visibility="public">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-zle8M6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-zmGAM6bEeKYAfIrCjJ_8A" name="btnDelete" visibility="package">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-zmGAc6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-zmtEM6bEeKYAfIrCjJ_8A" name="btnNew" visibility="package">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-zmtEc6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-znUIM6bEeKYAfIrCjJ_8A" name="scrolledComposite" visibility="package">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-zn7MM6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-zoiQM6bEeKYAfIrCjJ_8A" name="configTree" visibility="package" type="_-m01UM6bEeKYAfIrCjJ_8A" association="_-0QNUM6bEeKYAfIrCjJ_8A">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-zoiQc6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-zpJUM6bEeKYAfIrCjJ_8A" name="actionComposite" visibility="public">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-zpJUc6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-zpwYM6bEeKYAfIrCjJ_8A" name="configSelectComposite" visibility="public">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-zpwYc6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedOperation xmi:id="_-zqXcM6bEeKYAfIrCjJ_8A" name="ConfigSelectWindow" visibility="public" concurrency="concurrent">
+                <ownedParameter xmi:id="_bj8E4M6cEeKYAfIrCjJ_8A" name="parent">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bj8r8M6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_bj8r8c6cEeKYAfIrCjJ_8A" name="style">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bj9TAM6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+              </ownedOperation>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Association" xmi:id="_-0QNUM6bEeKYAfIrCjJ_8A" memberEnd="_-zoiQM6bEeKYAfIrCjJ_8A _-0QNUc6bEeKYAfIrCjJ_8A">
+              <ownedEnd xmi:id="_-0QNUc6bEeKYAfIrCjJ_8A" name="ownedEnd" type="_-zYqoM6bEeKYAfIrCjJ_8A" association="_-0QNUM6bEeKYAfIrCjJ_8A"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_-0VF0M6bEeKYAfIrCjJ_8A" name="NoneConfigSelectedComposite">
+              <eAnnotations xmi:id="_-0VF0c6bEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/plugin.ui.window.configurationClassDiagram.ucd"/>
+              <eAnnotations xmi:id="_NFHq4M6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/configuration-d-s.ucd"/>
+              <eAnnotations xmi:id="_WABJUM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/configuration-a-s.ucd"/>
+              <generalization xmi:id="_-0WT8M6bEeKYAfIrCjJ_8A"/>
+              <generalization xmi:id="_NEfYwM6cEeKYAfIrCjJ_8A"/>
+              <generalization xmi:id="_V4XCIM6cEeKYAfIrCjJ_8A"/>
+              <generalization xmi:id="_V_3_YM6cEeKYAfIrCjJ_8A"/>
+              <generalization xmi:id="_bkT4UM6cEeKYAfIrCjJ_8A"/>
+              <ownedAttribute xmi:id="_-0ePwM6bEeKYAfIrCjJ_8A" name="noSelectedMessage" visibility="package">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-0e20M6bEeKYAfIrCjJ_8A" value="&quot;Select a configuration to view it&quot;"/>
+              </ownedAttribute>
+              <ownedOperation xmi:id="_-0fd4M6bEeKYAfIrCjJ_8A" name="main" visibility="public" isStatic="true" concurrency="concurrent">
+                <ownedParameter xmi:id="_bkW7oM6cEeKYAfIrCjJ_8A" name="args">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bkXisM6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_-0gsAs6bEeKYAfIrCjJ_8A" name="NoneConfigSelectedComposite" visibility="public" concurrency="concurrent">
+                <ownedParameter xmi:id="_bkYJwM6cEeKYAfIrCjJ_8A" name="parent">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bkYw0M6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_bkYw0c6cEeKYAfIrCjJ_8A" name="style">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bkZX4M6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+              </ownedOperation>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_-0vVgM6bEeKYAfIrCjJ_8A" name="ConstantcLayoutData">
+              <eAnnotations xmi:id="_-0vVgc6bEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/plugin.ui.window.configurationClassDiagram.ucd"/>
+              <eAnnotations xmi:id="_NGFUMM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/configuration-d-s.ucd"/>
+              <eAnnotations xmi:id="_WD_DUM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/configuration-a-s.ucd"/>
+              <ownedAttribute xmi:id="_-1BpYM6bEeKYAfIrCjJ_8A" name="composite_formlayoutData" visibility="public" isLeaf="true" isStatic="true" isReadOnly="true">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-1CQcM6bEeKYAfIrCjJ_8A" value="new FormData()"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-1CQcc6bEeKYAfIrCjJ_8A" name="left_FormAttachment" visibility="public" isLeaf="true" isStatic="true" isReadOnly="true">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-1C3gM6bEeKYAfIrCjJ_8A" value="null"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-1DekM6bEeKYAfIrCjJ_8A" name="ZH_FONT" visibility="public" isLeaf="true" isStatic="true" isReadOnly="true">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-1Dekc6bEeKYAfIrCjJ_8A" value="null"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-1EFoM6bEeKYAfIrCjJ_8A" name="left_margin" visibility="public" isLeaf="true" isStatic="true" isReadOnly="true">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-1EFoc6bEeKYAfIrCjJ_8A" value="5"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-1EssM6bEeKYAfIrCjJ_8A" name="right_margin" visibility="public" isLeaf="true" isStatic="true" isReadOnly="true">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-1Essc6bEeKYAfIrCjJ_8A" value="3"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-1Esss6bEeKYAfIrCjJ_8A" name="up_margin" visibility="public" isLeaf="true" isStatic="true" isReadOnly="true">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-1FTwM6bEeKYAfIrCjJ_8A" value="5"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-1FTwc6bEeKYAfIrCjJ_8A" name="tabfolder_formlayoutData" visibility="public" isLeaf="true" isStatic="true" isReadOnly="true">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-1FTws6bEeKYAfIrCjJ_8A" value="null"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-1F60M6bEeKYAfIrCjJ_8A" name="right_FormAttachment" visibility="public" isLeaf="true" isStatic="true" isReadOnly="true">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-1Gh4M6bEeKYAfIrCjJ_8A" value="null"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-1Gh4c6bEeKYAfIrCjJ_8A" name="bottom_FormAttachment" visibility="public" isLeaf="true" isStatic="true" isReadOnly="true">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-1HI8M6bEeKYAfIrCjJ_8A" value="null"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-1HI8c6bEeKYAfIrCjJ_8A" name="up_FormAttachment" visibility="public" isLeaf="true" isStatic="true" isReadOnly="true">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-1HwAM6bEeKYAfIrCjJ_8A" value="null"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-1IXEM6bEeKYAfIrCjJ_8A" name="en_font" visibility="public" isLeaf="true" isStatic="true" isReadOnly="true">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-1IXEc6bEeKYAfIrCjJ_8A" value="null"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-1I-IM6bEeKYAfIrCjJ_8A" name="botton_margin" visibility="public" isLeaf="true" isStatic="true" isReadOnly="true">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-1I-Ic6bEeKYAfIrCjJ_8A" value="3"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-1JlMM6bEeKYAfIrCjJ_8A" name="sashform_formlayoutData" visibility="public" isLeaf="true" isStatic="true" isReadOnly="true">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-1JlMc6bEeKYAfIrCjJ_8A" value="null"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-1KMQM6bEeKYAfIrCjJ_8A" name="font_color" visibility="public" isLeaf="true" isStatic="true" isReadOnly="true">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-1KMQc6bEeKYAfIrCjJ_8A" value="null"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-1KzUM6bEeKYAfIrCjJ_8A" name="composite_spacing" visibility="public" isLeaf="true" isStatic="true" isReadOnly="true">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-1KzUc6bEeKYAfIrCjJ_8A" value="3"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-1KzUs6bEeKYAfIrCjJ_8A" name="group_formlayoutData" visibility="public" isLeaf="true" isStatic="true" isReadOnly="true">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-1LaYM6bEeKYAfIrCjJ_8A" value="null"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-1MBcM6bEeKYAfIrCjJ_8A" name="foreground_color" visibility="public" isLeaf="true" isStatic="true" isReadOnly="true">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-1MBcc6bEeKYAfIrCjJ_8A" value="null"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-1MogM6bEeKYAfIrCjJ_8A" name="background_color" visibility="public" isLeaf="true" isStatic="true" isReadOnly="true">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-1Mogc6bEeKYAfIrCjJ_8A" value="null"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-1NPkM6bEeKYAfIrCjJ_8A" name="tabitem_formlayoutData" visibility="public" isLeaf="true" isStatic="true" isReadOnly="true">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-1N2oM6bEeKYAfIrCjJ_8A" value="null"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_-2C9EM6bEeKYAfIrCjJ_8A" name="TitleConfigWindow" clientDependency="_-27t4M6bEeKYAfIrCjJ_8A _-3B0gc6bEeKYAfIrCjJ_8A">
+              <eAnnotations xmi:id="_-2DkIM6bEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/plugin.ui.window.configurationClassDiagram.ucd"/>
+              <eAnnotations xmi:id="_NHLgYM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/configuration-d-s.ucd"/>
+              <eAnnotations xmi:id="_WFBlIM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/configuration-a-s.ucd"/>
+              <ownedAttribute xmi:id="_-2XGIM6bEeKYAfIrCjJ_8A" name="titleComposite" visibility="public">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-2XtMM6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-2Y7UM6bEeKYAfIrCjJ_8A" name="lblTitle" visibility="public">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-2ZiYM6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-2awgM6bEeKYAfIrCjJ_8A" name="lblTitleImage" visibility="public">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-2awgc6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-2b-oM6bEeKYAfIrCjJ_8A" name="TITLE_STRING" visibility="public" isLeaf="true" isStatic="true" isReadOnly="true">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-2clsM6bEeKYAfIrCjJ_8A" value="&quot;Create, manage and run test configuration.&quot;"/>
+              </ownedAttribute>
+              <ownedOperation xmi:id="_-2dz0M6bEeKYAfIrCjJ_8A" name="getComposite" visibility="public" concurrency="concurrent"/>
+              <ownedOperation xmi:id="_-2fB8M6bEeKYAfIrCjJ_8A" name="TitleConfigWindow" visibility="public" concurrency="concurrent">
+                <ownedParameter xmi:id="_blouAM6cEeKYAfIrCjJ_8A" name="shell">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_blp8IM6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_blp8Ic6cEeKYAfIrCjJ_8A" name="style">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_blqjMM6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+              </ownedOperation>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_-3XLsM6bEeKYAfIrCjJ_8A" name="ConfigDetailWindow" clientDependency="_-34JEM6bEeKYAfIrCjJ_8A _-39ooc6bEeKYAfIrCjJ_8A">
+              <eAnnotations xmi:id="_-3XywM6bEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/plugin.ui.window.configurationClassDiagram.ucd"/>
+              <eAnnotations xmi:id="_NH7uUM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/configuration-d-s.ucd"/>
+              <eAnnotations xmi:id="_V_3YUM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/configuration-a-s.ucd"/>
+              <ownedAttribute xmi:id="_-3nqYM6bEeKYAfIrCjJ_8A" name="selectedComposite" visibility="package">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-3oRcM6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-3o4gM6bEeKYAfIrCjJ_8A" name="detaiLayout" visibility="package">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-3pfkM6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-3pfkc6bEeKYAfIrCjJ_8A" name="noneConfigSelected" visibility="package" type="_-0VF0M6bEeKYAfIrCjJ_8A" association="_-4LEAM6bEeKYAfIrCjJ_8A">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-3qGoM6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-3qGoc6bEeKYAfIrCjJ_8A" name="oneConfigSelectedComposite" visibility="package" type="_-wIiUM6bEeKYAfIrCjJ_8A" association="_-4LrEM6bEeKYAfIrCjJ_8A">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-3qtsM6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-3qtsc6bEeKYAfIrCjJ_8A" name="showedComposite" visibility="package">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-3qtss6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedOperation xmi:id="_-3rUwM6bEeKYAfIrCjJ_8A" name="getComposite" visibility="public" concurrency="concurrent"/>
+              <ownedOperation xmi:id="_-3r70M6bEeKYAfIrCjJ_8A" name="ConfigDetailWindow" visibility="public" concurrency="concurrent">
+                <ownedParameter xmi:id="_bmebgM6cEeKYAfIrCjJ_8A" name="parent">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bmfCkM6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_bmfCkc6cEeKYAfIrCjJ_8A" name="style">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bmfpoM6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_bmfpoc6cEeKYAfIrCjJ_8A" name="configName">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bmgQsM6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+              </ownedOperation>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Association" xmi:id="_-4LEAM6bEeKYAfIrCjJ_8A" memberEnd="_-3pfkc6bEeKYAfIrCjJ_8A _-4LEAc6bEeKYAfIrCjJ_8A">
+              <ownedEnd xmi:id="_-4LEAc6bEeKYAfIrCjJ_8A" name="ownedEnd" type="_-3XLsM6bEeKYAfIrCjJ_8A" association="_-4LEAM6bEeKYAfIrCjJ_8A"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Association" xmi:id="_-4LrEM6bEeKYAfIrCjJ_8A" memberEnd="_-3qGoc6bEeKYAfIrCjJ_8A _-4LrEc6bEeKYAfIrCjJ_8A">
+              <ownedEnd xmi:id="_-4LrEc6bEeKYAfIrCjJ_8A" name="ownedEnd" type="_-3XLsM6bEeKYAfIrCjJ_8A" association="_-4LrEM6bEeKYAfIrCjJ_8A"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_-4PVcM6bEeKYAfIrCjJ_8A" name="ConfigurationWindow" clientDependency="_-4wS0M6bEeKYAfIrCjJ_8A _-42Zcc6bEeKYAfIrCjJ_8A _-475Ac6bEeKYAfIrCjJ_8A _-5BYkc6bEeKYAfIrCjJ_8A _-5G4Ic6bEeKYAfIrCjJ_8A">
+              <eAnnotations xmi:id="_-4PVcc6bEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/plugin.ui.window.configurationClassDiagram.ucd"/>
+              <eAnnotations xmi:id="_NIz4EM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/configuration-d-s.ucd"/>
+              <eAnnotations xmi:id="_V_SJgM6cEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/configuration-a-s.ucd"/>
+              <ownedAttribute xmi:id="_-4a7oM6bEeKYAfIrCjJ_8A" name="shell" visibility="protected">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-4a7oc6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-4bisM6bEeKYAfIrCjJ_8A" name="compositePortion" visibility="private">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-4cJws6bEeKYAfIrCjJ_8A" value="*"/>
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-4cJwc6bEeKYAfIrCjJ_8A"/>
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-4cJwM6bEeKYAfIrCjJ_8A" value="new int[]{3,7}"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-4cw0M6bEeKYAfIrCjJ_8A" name="detailConfigComposite" visibility="public" type="_-3XLsM6bEeKYAfIrCjJ_8A" association="_-5SeUM6bEeKYAfIrCjJ_8A">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-4cw0c6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-4cw0s6bEeKYAfIrCjJ_8A" name="configListTreeComposite" visibility="public" type="_-zYqoM6bEeKYAfIrCjJ_8A" association="_-5R3QM6bEeKYAfIrCjJ_8A">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-4dX4M6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-4dX4c6bEeKYAfIrCjJ_8A" name="titleWindowComposite" visibility="public">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-4dX4s6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-4d-8M6bEeKYAfIrCjJ_8A" name="centerSashFormComposite" visibility="private">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-4emAM6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_-4emAc6bEeKYAfIrCjJ_8A" name="bottomComposite" visibility="public">
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_-4fNEM6bEeKYAfIrCjJ_8A">
+                  <value xsi:nil="true"/>
+                </defaultValue>
+              </ownedAttribute>
+              <ownedOperation xmi:id="_-4f0IM6bEeKYAfIrCjJ_8A" name="main" visibility="public" isStatic="true" concurrency="concurrent">
+                <ownedParameter xmi:id="_bnOCYM6cEeKYAfIrCjJ_8A" name="args">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bnOpcM6cEeKYAfIrCjJ_8A" value="1"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_-4hCQc6bEeKYAfIrCjJ_8A" name="open" visibility="public" concurrency="concurrent"/>
+              <ownedOperation xmi:id="_-4hpUM6bEeKYAfIrCjJ_8A" name="createContents" visibility="protected" concurrency="concurrent"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Association" xmi:id="_-5R3QM6bEeKYAfIrCjJ_8A" memberEnd="_-4cw0s6bEeKYAfIrCjJ_8A _-5R3Qc6bEeKYAfIrCjJ_8A">
+              <ownedEnd xmi:id="_-5R3Qc6bEeKYAfIrCjJ_8A" name="ownedEnd" type="_-4PVcM6bEeKYAfIrCjJ_8A" association="_-5R3QM6bEeKYAfIrCjJ_8A"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Association" xmi:id="_-5SeUM6bEeKYAfIrCjJ_8A" memberEnd="_-4cw0M6bEeKYAfIrCjJ_8A _-5SeUc6bEeKYAfIrCjJ_8A">
+              <ownedEnd xmi:id="_-5SeUc6bEeKYAfIrCjJ_8A" name="ownedEnd" type="_-4PVcM6bEeKYAfIrCjJ_8A" association="_-5SeUM6bEeKYAfIrCjJ_8A"/>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_-rG4YM6bEeKYAfIrCjJ_8A" name="util">
+        <eAnnotations xmi:id="_-rHfcc6bEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/plugin.ui.window.configurationClassDiagram.ucd" references="_-rHfcM6bEeKYAfIrCjJ_8A _-rIGgM6bEeKYAfIrCjJ_8A _-4udoM6bEeKYAfIrCjJ_8A"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_-rHfcM6bEeKYAfIrCjJ_8A" name="Const">
+          <eAnnotations xmi:id="_-rHfcs6bEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/plugin.ui.window.configurationClassDiagram.ucd"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_-rIGgM6bEeKYAfIrCjJ_8A" name="SWTResourceManager">
+          <eAnnotations xmi:id="_-rIGgc6bEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/plugin.ui.window.configurationClassDiagram.ucd"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_-4udoM6bEeKYAfIrCjJ_8A" name="LayoutFactory">
+          <eAnnotations xmi:id="_-4udoc6bEeKYAfIrCjJ_8A" source="Jtester/src/plugin/ui/window/configuration/plugin.ui.window.configurationClassDiagram.ucd"/>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_-rhIEM6bEeKYAfIrCjJ_8A" supplier="_-rIGgM6bEeKYAfIrCjJ_8A" client="_-m01UM6bEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_-rq5EM6bEeKYAfIrCjJ_8A" supplier="_-rHfcM6bEeKYAfIrCjJ_8A" client="_-m01UM6bEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_-yVhwM6bEeKYAfIrCjJ_8A" supplier="_-rIGgM6bEeKYAfIrCjJ_8A" client="_-wIiUM6bEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_-ycPcc6bEeKYAfIrCjJ_8A" supplier="_-xAsEM6bEeKYAfIrCjJ_8A" client="_-wIiUM6bEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_-z5A8M6bEeKYAfIrCjJ_8A" supplier="_-m01UM6bEeKYAfIrCjJ_8A" client="_-zYqoM6bEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_-27t4M6bEeKYAfIrCjJ_8A" supplier="_-rIGgM6bEeKYAfIrCjJ_8A" client="_-2C9EM6bEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_-3B0gc6bEeKYAfIrCjJ_8A" supplier="_-rHfcM6bEeKYAfIrCjJ_8A" client="_-2C9EM6bEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_-34JEM6bEeKYAfIrCjJ_8A" supplier="_-wIiUM6bEeKYAfIrCjJ_8A" client="_-3XLsM6bEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_-39ooc6bEeKYAfIrCjJ_8A" supplier="_-0VF0M6bEeKYAfIrCjJ_8A" client="_-3XLsM6bEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_-4wS0M6bEeKYAfIrCjJ_8A" supplier="_-4udoM6bEeKYAfIrCjJ_8A" client="_-4PVcM6bEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_-42Zcc6bEeKYAfIrCjJ_8A" supplier="_-vGnkM6bEeKYAfIrCjJ_8A" client="_-4PVcM6bEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_-475Ac6bEeKYAfIrCjJ_8A" supplier="_-2C9EM6bEeKYAfIrCjJ_8A" client="_-4PVcM6bEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_-5BYkc6bEeKYAfIrCjJ_8A" supplier="_-zYqoM6bEeKYAfIrCjJ_8A" client="_-4PVcM6bEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_-5G4Ic6bEeKYAfIrCjJ_8A" supplier="_-3XLsM6bEeKYAfIrCjJ_8A" client="_-4PVcM6bEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4UuIoM6cEeKYAfIrCjJ_8A" supplier="_4UffIc6cEeKYAfIrCjJ_8A" client="_4T-hwM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4U0PQc6cEeKYAfIrCjJ_8A" supplier="_4Ue4EM6cEeKYAfIrCjJ_8A" client="_4T-hwM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4U6V4c6cEeKYAfIrCjJ_8A" supplier="_4Udp8M6cEeKYAfIrCjJ_8A" client="_4T-hwM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4XJxkM6cEeKYAfIrCjJ_8A" supplier="_-rIGgM6bEeKYAfIrCjJ_8A" client="_4Vrx8M6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4XP4Mc6cEeKYAfIrCjJ_8A" supplier="_-rHfcM6bEeKYAfIrCjJ_8A" client="_4Vrx8M6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4XWl4c6cEeKYAfIrCjJ_8A" supplier="_4T-hwM6cEeKYAfIrCjJ_8A" client="_4Vrx8M6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4cRiIM6cEeKYAfIrCjJ_8A" supplier="_-rIGgM6bEeKYAfIrCjJ_8A" client="_4a7eUM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4cXowc6cEeKYAfIrCjJ_8A" supplier="_-rHfcM6bEeKYAfIrCjJ_8A" client="_4a7eUM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4iSDgM6cEeKYAfIrCjJ_8A" supplier="_-rIGgM6bEeKYAfIrCjJ_8A" client="_4h2lsM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4iYxMM6cEeKYAfIrCjJ_8A" supplier="_4c0UsM6cEeKYAfIrCjJ_8A" client="_4h2lsM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4ie30c6cEeKYAfIrCjJ_8A" supplier="_4YxiMM6cEeKYAfIrCjJ_8A" client="_4h2lsM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4imMkc6cEeKYAfIrCjJ_8A" supplier="_-rHfcM6bEeKYAfIrCjJ_8A" client="_4h2lsM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4ju1AM6cEeKYAfIrCjJ_8A" supplier="_-rIGgM6bEeKYAfIrCjJ_8A" client="_4i1dIM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4j1isc6cEeKYAfIrCjJ_8A" supplier="_-rHfcM6bEeKYAfIrCjJ_8A" client="_4i1dIM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4kjUYM6cEeKYAfIrCjJ_8A" supplier="_-rIGgM6bEeKYAfIrCjJ_8A" client="_4kPLUM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4kpbAc6cEeKYAfIrCjJ_8A" supplier="_4fgcUM6cEeKYAfIrCjJ_8A" client="_4kPLUM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4kyk8c6cEeKYAfIrCjJ_8A" supplier="_4gDO4M6cEeKYAfIrCjJ_8A" client="_4kPLUM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4k5Soc6cEeKYAfIrCjJ_8A" supplier="_-rHfcM6bEeKYAfIrCjJ_8A" client="_4kPLUM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4k_ZQc6cEeKYAfIrCjJ_8A" supplier="_4X7NoM6cEeKYAfIrCjJ_8A" client="_4kPLUM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4lwOQM6cEeKYAfIrCjJ_8A" supplier="_-rIGgM6bEeKYAfIrCjJ_8A" client="_4lLmgM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4l2U4M6cEeKYAfIrCjJ_8A" supplier="_4gzc0M6cEeKYAfIrCjJ_8A" client="_4lLmgM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4l8bgc6cEeKYAfIrCjJ_8A" supplier="_-rHfcM6bEeKYAfIrCjJ_8A" client="_4lLmgM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4mCiIc6cEeKYAfIrCjJ_8A" supplier="_4lZo8M6cEeKYAfIrCjJ_8A" client="_4lLmgM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4mIowc6cEeKYAfIrCjJ_8A" supplier="_4lcFMc6cEeKYAfIrCjJ_8A" client="_4lLmgM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4mOvYc6cEeKYAfIrCjJ_8A" supplier="_4fDJUM6cEeKYAfIrCjJ_8A" client="_4lLmgM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4n_p8M6cEeKYAfIrCjJ_8A" supplier="_-rIGgM6bEeKYAfIrCjJ_8A" client="_4nSfUM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4oFwkc6cEeKYAfIrCjJ_8A" supplier="_4nhv4M6cEeKYAfIrCjJ_8A" client="_4nSfUM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4oL3Mc6cEeKYAfIrCjJ_8A" supplier="_4hR98M6cEeKYAfIrCjJ_8A" client="_4nSfUM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4oR90c6cEeKYAfIrCjJ_8A" supplier="_-rHfcM6bEeKYAfIrCjJ_8A" client="_4nSfUM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4oXdYc6cEeKYAfIrCjJ_8A" supplier="_4nghwM6cEeKYAfIrCjJ_8A" client="_4nSfUM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4prsAM6cEeKYAfIrCjJ_8A" supplier="_4VF8EM6cEeKYAfIrCjJ_8A" client="_4Ue4EM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4pxyoc6cEeKYAfIrCjJ_8A" supplier="_4eg90M6cEeKYAfIrCjJ_8A" client="_4Ue4EM6cEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4rFaMM6cEeKYAfIrCjJ_8A" supplier="_4lLmgM6cEeKYAfIrCjJ_8A" client="_-xAsEM6bEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4rLg0c6cEeKYAfIrCjJ_8A" supplier="_4h2lsM6cEeKYAfIrCjJ_8A" client="_-xAsEM6bEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4rRncc6cEeKYAfIrCjJ_8A" supplier="_4kPLUM6cEeKYAfIrCjJ_8A" client="_-xAsEM6bEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4rXuEc6cEeKYAfIrCjJ_8A" supplier="_4a7eUM6cEeKYAfIrCjJ_8A" client="_-xAsEM6bEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4rd0sc6cEeKYAfIrCjJ_8A" supplier="_4Vrx8M6cEeKYAfIrCjJ_8A" client="_-xAsEM6bEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4rjUQc6cEeKYAfIrCjJ_8A" supplier="_4i1dIM6cEeKYAfIrCjJ_8A" client="_-xAsEM6bEeKYAfIrCjJ_8A"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4roz0c6cEeKYAfIrCjJ_8A" supplier="_4nSfUM6cEeKYAfIrCjJ_8A" client="_-xAsEM6bEeKYAfIrCjJ_8A"/>
+    <profileApplication xmi:id="_8SKEAM6bEeKYAfIrCjJ_8A">
+      <eAnnotations xmi:id="_8SKrEM6bEeKYAfIrCjJ_8A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/com.omondo.uml.core/profiles/Omondo.profile.uml#_zrN_1iUoEdmNXYQzyImvfA"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.omondo.uml.core/profiles/Omondo.profile.uml#_zrN_0iUoEdmNXYQzyImvfA"/>
+    </profileApplication>
+    <profileApplication xmi:id="_8SMgQM6bEeKYAfIrCjJ_8A">
+      <eAnnotations xmi:id="_8SMgQc6bEeKYAfIrCjJ_8A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Common_3.2_SN.profile.uml#_7hMtlSK5EdujMN-Mf6X4Bw"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Common_3.2_SN.profile.uml#_RgfPHCK2Edu07u_JJk0LDQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_8SNHUM6bEeKYAfIrCjJ_8A">
+      <eAnnotations xmi:id="_8SNHUc6bEeKYAfIrCjJ_8A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/com.omondo.uml.core/profiles/Archetype.profile.uml#_f6v3QOROEduiB7qvAtFfTA"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.omondo.uml.core/profiles/Archetype.profile.uml#_j-cLoORNEduiB7qvAtFfTA"/>
+    </profileApplication>
+    <profileApplication xmi:id="_8SNHUs6bEeKYAfIrCjJ_8A">
+      <eAnnotations xmi:id="_8SNHU86bEeKYAfIrCjJ_8A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/com.omondo.uml.core/profiles/Meta.profile.uml#_kycnUIE4EduiecUdqhZMrw"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.omondo.uml.core/profiles/Meta.profile.uml#_EJn30IE0EduiecUdqhZMrw"/>
+    </profileApplication>
+    <profileApplication xmi:id="_8SNHVM6bEeKYAfIrCjJ_8A">
+      <eAnnotations xmi:id="_8SNHVc6bEeKYAfIrCjJ_8A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/com.omondo.uml.core/profiles/Java.profile.uml#_aZhLlH6MEdmbwasWWc4yvw"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.omondo.uml.core/profiles/Java.profile.uml#_aZhLkH6MEdmbwasWWc4yvw"/>
+    </profileApplication>
+    <profileApplication xmi:id="_8SNHVs6bEeKYAfIrCjJ_8A">
+      <eAnnotations xmi:id="_8SNHV86bEeKYAfIrCjJ_8A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Process_3.2_SN.profile.uml#_7D2DMCK5EdujMN-Mf6X4Bw"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Process_3.2_SN.profile.uml#_RgfOnSK2Edu07u_JJk0LDQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_8SNuYM6bEeKYAfIrCjJ_8A">
+      <eAnnotations xmi:id="_8SNuYc6bEeKYAfIrCjJ_8A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Persistence_3.2_SN.profile.uml#_AevloCK6EdujMN-Mf6X4Bw"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Persistence_3.2_SN.profile.uml#_RgVfdiK2Edu07u_JJk0LDQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_8SNuYs6bEeKYAfIrCjJ_8A">
+      <eAnnotations xmi:id="_8SOVcM6bEeKYAfIrCjJ_8A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/com.omondo.uml.core/profiles/Deployment.profile.uml#_gPzkoXlkEdyC2_BXA89-Eg"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.omondo.uml.core/profiles/Deployment.profile.uml#_69q0IGkDEd2C2vBXA89-Eg"/>
+    </profileApplication>
+    <profileApplication xmi:id="_8SOVcc6bEeKYAfIrCjJ_8A">
+      <eAnnotations xmi:id="_8SOVcs6bEeKYAfIrCjJ_8A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Meta_3.2_SN.profile.uml#_7sFH4CK5EdujMN-Mf6X4Bw"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Meta_3.2_SN.profile.uml#_RgVcYiK2Edu07u_JJk0LDQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_8SOVc86bEeKYAfIrCjJ_8A">
+      <eAnnotations xmi:id="_8SO8gM6bEeKYAfIrCjJ_8A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Xml_3.2_SN.profile.uml#_7JNEVSK5EdujMN-Mf6X4Bw"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Xml_3.2_SN.profile.uml#_RgVfXCK2Edu07u_JJk0LDQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_8SO8gc6bEeKYAfIrCjJ_8A">
+      <eAnnotations xmi:id="_8SO8gs6bEeKYAfIrCjJ_8A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Webservice_3.2_SN.profile.uml#_6jgWRSK5EdujMN-Mf6X4Bw"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Webservice_3.2_SN.profile.uml#_RgVmWCK2Edu07u_JJk0LDQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_8SQKoM6bEeKYAfIrCjJ_8A">
+      <eAnnotations xmi:id="_8SQKoc6bEeKYAfIrCjJ_8A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/org.eclipse.uml2.uml.resources/profiles/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/org.eclipse.uml2.uml.resources/profiles/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_8SQxsM6bEeKYAfIrCjJ_8A">
+      <eAnnotations xmi:id="_8SQxsc6bEeKYAfIrCjJ_8A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Presentation_3.2_SN.profile.uml#_4Um1wCK5EdujMN-Mf6X4Bw"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Presentation_3.2_SN.profile.uml#_RgVcjiK2Edu07u_JJk0LDQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_8SQxss6bEeKYAfIrCjJ_8A">
+      <eAnnotations xmi:id="_8SQxs86bEeKYAfIrCjJ_8A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Service_3.2_SN.profile.uml#_6VpgcCK5EdujMN-Mf6X4Bw"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/com.omondo.uml.core/profiles/Omondo_Service_3.2_SN.profile.uml#_RgMRQCK2Edu07u_JJk0LDQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_8SRYwM6bEeKYAfIrCjJ_8A">
+      <eAnnotations xmi:id="_8SRYwc6bEeKYAfIrCjJ_8A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/org.eclipse.uml2.uml.resources/profiles/UML2.profile.uml#_f9NXwJIyEd2ymsRPCrfQAQ"/>
+      </eAnnotations>
+      <appliedProfile href="platform:/plugin/org.eclipse.uml2.uml.resources/profiles/UML2.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Model>
+  <Standard:Call xmi:id="_-rqSAM6bEeKYAfIrCjJ_8A" base_Usage="_-rhIEM6bEeKYAfIrCjJ_8A"/>
+  <Standard:Call xmi:id="_-ryN0M6bEeKYAfIrCjJ_8A" base_Usage="_-rq5EM6bEeKYAfIrCjJ_8A"/>
+  <Standard:Call xmi:id="_-ycPcM6bEeKYAfIrCjJ_8A" base_Usage="_-yVhwM6bEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Access xmi:id="_-yi9IM6bEeKYAfIrCjJ_8A" base_Usage="_-ycPcc6bEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_-ypDwM6bEeKYAfIrCjJ_8A" base_Usage="_-ycPcc6bEeKYAfIrCjJ_8A"/>
+  <Standard:Call xmi:id="_-z_HkM6bEeKYAfIrCjJ_8A" base_Usage="_-z5A8M6bEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Access xmi:id="_-0EAEM6bEeKYAfIrCjJ_8A" base_Usage="_-z5A8M6bEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_-0KGsM6bEeKYAfIrCjJ_8A" base_Usage="_-z5A8M6bEeKYAfIrCjJ_8A"/>
+  <Standard:Call xmi:id="_-3B0gM6bEeKYAfIrCjJ_8A" base_Usage="_-27t4M6bEeKYAfIrCjJ_8A"/>
+  <Standard:Call xmi:id="_-3HUEM6bEeKYAfIrCjJ_8A" base_Usage="_-3B0gc6bEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_-39ooM6bEeKYAfIrCjJ_8A" base_Usage="_-34JEM6bEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_-4DIMM6bEeKYAfIrCjJ_8A" base_Usage="_-39ooc6bEeKYAfIrCjJ_8A"/>
+  <Standard:Call xmi:id="_-42ZcM6bEeKYAfIrCjJ_8A" base_Usage="_-4wS0M6bEeKYAfIrCjJ_8A"/>
+  <Standard:Call xmi:id="_-475AM6bEeKYAfIrCjJ_8A" base_Usage="_-42Zcc6bEeKYAfIrCjJ_8A"/>
+  <Standard:Call xmi:id="_-5BYkM6bEeKYAfIrCjJ_8A" base_Usage="_-475Ac6bEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_-5G4IM6bEeKYAfIrCjJ_8A" base_Usage="_-5BYkc6bEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_-5MXsM6bEeKYAfIrCjJ_8A" base_Usage="_-5G4Ic6bEeKYAfIrCjJ_8A"/>
+  <JavaProfile_1:JavaProfile__MultidimensionalArray xmi:id="_bhWq8c6cEeKYAfIrCjJ_8A" base_Parameter="_bhWD4M6cEeKYAfIrCjJ_8A" dimension="1"/>
+  <JavaProfile_1:JavaProfile__MultidimensionalArray xmi:id="_bkXisc6cEeKYAfIrCjJ_8A" base_Parameter="_bkW7oM6cEeKYAfIrCjJ_8A" dimension="1"/>
+  <JavaProfile_1:JavaProfile__MultidimensionalArray xmi:id="_bnOpcc6cEeKYAfIrCjJ_8A" base_Parameter="_bnOCYM6cEeKYAfIrCjJ_8A" dimension="1"/>
+  <Omondo_1:Omondo__Import xmi:id="_4U0PQM6cEeKYAfIrCjJ_8A" base_Usage="_4UuIoM6cEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_4U6V4M6cEeKYAfIrCjJ_8A" base_Usage="_4U0PQc6cEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_4VAcgM6cEeKYAfIrCjJ_8A" base_Usage="_4U6V4c6cEeKYAfIrCjJ_8A"/>
+  <Standard:Call xmi:id="_4XP4MM6cEeKYAfIrCjJ_8A" base_Usage="_4XJxkM6cEeKYAfIrCjJ_8A"/>
+  <Standard:Call xmi:id="_4XWl4M6cEeKYAfIrCjJ_8A" base_Usage="_4XP4Mc6cEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Access xmi:id="_4XcsgM6cEeKYAfIrCjJ_8A" base_Usage="_4XWl4c6cEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_4XiMEM6cEeKYAfIrCjJ_8A" base_Usage="_4XWl4c6cEeKYAfIrCjJ_8A"/>
+  <Standard:Call xmi:id="_4cXowM6cEeKYAfIrCjJ_8A" base_Usage="_4cRiIM6cEeKYAfIrCjJ_8A"/>
+  <Standard:Call xmi:id="_4cdvYM6cEeKYAfIrCjJ_8A" base_Usage="_4cXowc6cEeKYAfIrCjJ_8A"/>
+  <Standard:Call xmi:id="_4iYKIM6cEeKYAfIrCjJ_8A" base_Usage="_4iSDgM6cEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_4ie30M6cEeKYAfIrCjJ_8A" base_Usage="_4iYxMM6cEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_4imMkM6cEeKYAfIrCjJ_8A" base_Usage="_4ie30c6cEeKYAfIrCjJ_8A"/>
+  <Standard:Call xmi:id="_4is6QM6cEeKYAfIrCjJ_8A" base_Usage="_4imMkc6cEeKYAfIrCjJ_8A"/>
+  <Standard:Call xmi:id="_4j1isM6cEeKYAfIrCjJ_8A" base_Usage="_4ju1AM6cEeKYAfIrCjJ_8A"/>
+  <Standard:Call xmi:id="_4j7pUM6cEeKYAfIrCjJ_8A" base_Usage="_4j1isc6cEeKYAfIrCjJ_8A"/>
+  <Standard:Call xmi:id="_4kpbAM6cEeKYAfIrCjJ_8A" base_Usage="_4kjUYM6cEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_4kyk8M6cEeKYAfIrCjJ_8A" base_Usage="_4kpbAc6cEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_4k5SoM6cEeKYAfIrCjJ_8A" base_Usage="_4kyk8c6cEeKYAfIrCjJ_8A"/>
+  <Standard:Call xmi:id="_4k_ZQM6cEeKYAfIrCjJ_8A" base_Usage="_4k5Soc6cEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_4lFf4M6cEeKYAfIrCjJ_8A" base_Usage="_4k_ZQc6cEeKYAfIrCjJ_8A"/>
+  <Standard:Call xmi:id="_4l1t0M6cEeKYAfIrCjJ_8A" base_Usage="_4lwOQM6cEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_4l8bgM6cEeKYAfIrCjJ_8A" base_Usage="_4l2U4M6cEeKYAfIrCjJ_8A"/>
+  <Standard:Call xmi:id="_4mCiIM6cEeKYAfIrCjJ_8A" base_Usage="_4l8bgc6cEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_4mIowM6cEeKYAfIrCjJ_8A" base_Usage="_4mCiIc6cEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_4mOvYM6cEeKYAfIrCjJ_8A" base_Usage="_4mIowc6cEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_4mU2AM6cEeKYAfIrCjJ_8A" base_Usage="_4mOvYc6cEeKYAfIrCjJ_8A"/>
+  <Standard:Call xmi:id="_4oFwkM6cEeKYAfIrCjJ_8A" base_Usage="_4n_p8M6cEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_4oL3MM6cEeKYAfIrCjJ_8A" base_Usage="_4oFwkc6cEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_4oR90M6cEeKYAfIrCjJ_8A" base_Usage="_4oL3Mc6cEeKYAfIrCjJ_8A"/>
+  <Standard:Call xmi:id="_4oXdYM6cEeKYAfIrCjJ_8A" base_Usage="_4oR90c6cEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_4odkAM6cEeKYAfIrCjJ_8A" base_Usage="_4oXdYc6cEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_4pxyoM6cEeKYAfIrCjJ_8A" base_Usage="_4prsAM6cEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_4p35QM6cEeKYAfIrCjJ_8A" base_Usage="_4pxyoc6cEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_4rLg0M6cEeKYAfIrCjJ_8A" base_Usage="_4rFaMM6cEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_4rRncM6cEeKYAfIrCjJ_8A" base_Usage="_4rLg0c6cEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_4rXuEM6cEeKYAfIrCjJ_8A" base_Usage="_4rRncc6cEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_4rd0sM6cEeKYAfIrCjJ_8A" base_Usage="_4rXuEc6cEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_4rjUQM6cEeKYAfIrCjJ_8A" base_Usage="_4rd0sc6cEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_4roz0M6cEeKYAfIrCjJ_8A" base_Usage="_4rjUQc6cEeKYAfIrCjJ_8A"/>
+  <Omondo_1:Omondo__Import xmi:id="_4ru6cM6cEeKYAfIrCjJ_8A" base_Usage="_4roz0c6cEeKYAfIrCjJ_8A"/>
+</xmi:XMI>

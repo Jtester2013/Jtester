@@ -1,4 +1,4 @@
-package core.jtester.staticanalysis.svd.solver;
+package core.jtester.staticanalysis.svd.execution;
 
 import java.util.HashMap;
 
@@ -13,7 +13,7 @@ public class ExpressionNode {
 	
 	public ExpressionNode(ExpressionType type, String value){
 		if (type!=ExpressionType.single_int && type!=ExpressionType.single_variable &&  type!=ExpressionType.not_defined) {
-			System.out.println("The type is not suitable for this construct method: "+ type);
+//			System.err.println("The type is not suitable for this construct method: "+ type);
 		}else{
 			this.type = type;
 			this.value=value;
@@ -109,8 +109,5 @@ public class ExpressionNode {
 			result = value;
 		}
 		return result;
-	}
-
-	public static void main(String[] args){
 	}
 }

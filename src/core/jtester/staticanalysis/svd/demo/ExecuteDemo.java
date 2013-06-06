@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import org.omg.CORBA.PRIVATE_MEMBER;
+
 import core.common.cfg.javacfg.JavaControlFlowGraph;
 import core.common.cfg.model.BranchNode;
 import core.jtester.staticanalysis.svd.execution.SymbolExecutor;
@@ -31,20 +33,26 @@ public class ExecuteDemo {
 			System.out.println("Begin to analyse CFG: "+methodNameString);
 			// 抽取程序路径
 			cfgInstance = cfgsArray[cfgIndex];
-			Path[] paths = PathGenerator.abstractPath(cfgInstance);
+//			LinkedList<Path> pathList = new LinkedList<>();
+			Path[] paths = PathGenerator.abstractPath(cfgInstance, 0);
+//			Path[] paths1 =  PathGenerator.abstractPath(cfgInstance, 1);
+//			Path[] paths2  = PathGenerator.abstractPath(cfgInstance, 2);
+//			for (int i = 0; i < paths.length; i++) {
+//				pathList.add(paths[i]);
+//			}
+//			for (int i = 0; i < paths1.length; i++) {
+//				pathList.add(paths1[i]);
+//			}
+//			for (int i = 0; i < paths2.length; i++) {
+//				pathList.add(paths2[i]);
+//			}
+//			pathList.toArray(paths);
 			System.out.println("There are "+paths.length+" generated paths"+" for the method "+ methodNameString);
 			// 打印pathCollection的所有path的条件分支情况
 			for (int i = 0; i < paths.length; i++) {
 				Path tempPath = paths[i];
 				System.out.println("For path "+i);
-				for (Iterator iterator = tempPath.iterator(); iterator
-						.hasNext();) {
-					Object block = iterator.next();
-					if (block instanceof BranchNode) {
-						BranchNode branchNode = (BranchNode)block;
-						System.out.println("Expression:"+branchNode.getData()+"\t Label:"+branchNode.getLabel());
-					}
-				}
+				printDecisionExpressions(tempPath);
 			}
 			// 对所有路径进行符号执行
 			Path exePath;
@@ -62,5 +70,17 @@ public class ExecuteDemo {
 					+ ", there are " + executablePaths.size()
 					+ " executablePath");
 		}
+		
 	}
+		private static void printDecisionExpressions(Path path){
+			for (Iterator iterator = path.iterator(); iterator
+					.hasNext();) {
+				Object block = iterator.next();
+				if (block instanceof BranchNode) {
+					BranchNode branchNode = (BranchNode)block;
+					System.out.println("Expression:"+branchNode.getData()+"\t Label:"+branchNode.getLabel());
+				}
+			}
+		}
+		
 }

@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import org.eclipse.jdt.core.dom.Expression;
 
 import core.common.cfg.interfaces.IBasicBlock;
-import core.jtester.staticanalysis.svd.solver.ExpressionNode;
+import core.jtester.staticanalysis.svd.execution.ExpressionNode;
 
 public class Path {
 	LinkedList<IBasicBlock> pathNodes = new LinkedList<>();

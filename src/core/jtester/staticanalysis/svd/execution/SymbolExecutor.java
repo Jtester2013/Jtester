@@ -31,10 +31,7 @@ import core.common.cfg.model.PlainNode;
 import core.jtester.staticanalysis.svd.path.Path;
 import core.jtester.staticanalysis.svd.path.PathGenerator;
 import core.jtester.staticanalysis.svd.path.ProgramEnv;
-import core.jtester.staticanalysis.svd.solver.CPExecutor;
-import core.jtester.staticanalysis.svd.solver.ExpressionNode;
-import core.jtester.staticanalysis.svd.solver.ExpressionOperator;
-import core.jtester.staticanalysis.svd.solver.ExpressionType;
+import core.jtester.staticanalysis.svd.solver.ConstraintSolver;
 
 public class SymbolExecutor {
 	public static HashSet<InfixExpression.Operator> feasible_operators = new HashSet<>();
@@ -112,8 +109,8 @@ public class SymbolExecutor {
 	 */
 	public boolean execute(Path path){
 		// 用path的env初始化visitor
-		CPExecutor cpExecutor = new CPExecutor();
-		SymbolicExeVisitor visitor = new SymbolicExeVisitor(path.getEnv());
+		ConstraintSolver cpExecutor = new ConstraintSolver();
+		SymbolExeVisitor visitor = new SymbolExeVisitor(path.getEnv());
 		IBasicBlock currentNode;
 		for (Iterator iterator = path.getPathNodes().iterator(); iterator.hasNext();) {
 			currentNode = (IBasicBlock)iterator.next();
@@ -153,16 +150,15 @@ public class SymbolExecutor {
 						boolean solvable = cpExecutor.solve();
 						System.out.println("is solvable: "+solvable);
 						if(!solvable){ // 如果不可解，则此路径不可解
-							System.out.println("is not solvable: "+solvable);
 							return false;
 						}
 					}else {
-						System.out.println("the operator of InfixExpression.Operator "+infixExpression.getOperator()+" is not supported");
+						System.err.println("the operator of InfixExpression.Operator "+infixExpression.getOperator()+" is not supported");
 					}
 				}
 			} else if (currentNode instanceof PlainNode && !(currentNode instanceof DecisionNode)) {
 				// 对普通节点进行符号执行
-				System.out.println("Current node is: "+currentNode);
+//				System.out.println("Current node is: "+currentNode);
 				ASTNode dataNode = (ASTNode)(((PlainNode)currentNode).getData());
 				dataNode.accept(visitor);
 			} else if (currentNode instanceof ExitNode) {

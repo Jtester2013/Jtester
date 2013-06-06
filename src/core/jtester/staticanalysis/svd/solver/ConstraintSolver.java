@@ -25,10 +25,13 @@ import choco.kernel.model.variables.real.RealExpressionVariable;
 import choco.kernel.model.variables.real.RealVariable;
 import choco.kernel.model.variables.set.SetVariable;
 import choco.kernel.solver.Configuration;
+import core.jtester.staticanalysis.svd.execution.ExpressionNode;
+import core.jtester.staticanalysis.svd.execution.ExpressionOperator;
+import core.jtester.staticanalysis.svd.execution.ExpressionType;
 import core.jtester.staticanalysis.svd.path.Path;
 import core.jtester.staticanalysis.svd.path.ProgramEnv;
 
-public class CPExecutor {
+public class ConstraintSolver {
 	// int、float、double类型数据的值域
 	public static final int intupperlimit = Integer.MAX_VALUE;
 	public static final int intlowerlimit = Integer.MIN_VALUE;
@@ -52,10 +55,10 @@ public class CPExecutor {
 	public CPModel model = new CPModel();
 	public ProgramEnv env;
 	
-	public CPExecutor(){
+	public ConstraintSolver(){
 		env = new ProgramEnv();
 	}
-	public CPExecutor(Path path){
+	public ConstraintSolver(Path path){
 		this.env = path.getEnv();
 	}
 	
@@ -116,11 +119,11 @@ public class CPExecutor {
 	
 	public Constraint generateConstraint(ExpressionNode leftNode, ExpressionNode rightNode, InfixExpression.Operator operator){
 		IntegerExpressionVariable leftVariable = null, rightVariable = null;
-		if (leftNode.type!=ExpressionType.single_int ) {
-			leftVariable = expressionModeling(leftNode);
+		if (leftNode.getType()!=ExpressionType.single_int ) {
+			leftVariable = constraintVariableModeling(leftNode);
 		}
-		if (rightNode.type !=ExpressionType.single_int) {
-			rightVariable = expressionModeling(rightNode);
+		if (rightNode.getType() !=ExpressionType.single_int) {
+			rightVariable = constraintVariableModeling(rightNode);
 		}
 		Constraint constraint = null;
 		if (leftVariable!=null && rightVariable!=null) {
@@ -254,7 +257,7 @@ public class CPExecutor {
 	 * @param root the root of a expression tree which provided by symbolic execution environment
 	 * @return
 	 */
-	public IntegerExpressionVariable expressionModeling(ExpressionNode root){
+	public IntegerExpressionVariable constraintVariableModeling(ExpressionNode root){
 		IntegerExpressionVariable result = null;
 		ExpressionType type=root.getType();
 		if (type==ExpressionType.expression) {
@@ -287,27 +290,27 @@ public class CPExecutor {
 				// int and expression
 				else if (leftType == ExpressionType.single_int && rightType == ExpressionType.expression) {
 					int leftValue = Integer.parseInt(leftPart.getValue());
-					IntegerExpressionVariable rightValue = expressionModeling(rightPart);
+					IntegerExpressionVariable rightValue = constraintVariableModeling(rightPart);
 					result = Choco.minus(leftValue, rightValue);
 				}else if (rightType == ExpressionType.single_int && leftType == ExpressionType.expression) {
 					int rightValue = Integer.parseInt(rightPart.getValue());
-					IntegerExpressionVariable leftValue = expressionModeling(leftPart);
+					IntegerExpressionVariable leftValue = constraintVariableModeling(leftPart);
 					result = Choco.minus(leftValue, rightValue);
 				}
 				// expression and variable
 				else if (leftType == ExpressionType.expression && rightType == ExpressionType.single_variable) {
 					IntegerVariable rightValue = (IntegerVariable) envVariableValueHashMap.get(rightPart.getValue());
-					IntegerExpressionVariable leftValue = expressionModeling(leftPart);
+					IntegerExpressionVariable leftValue = constraintVariableModeling(leftPart);
 					result = Choco.minus(leftValue, rightValue);
 				}else if (rightType == ExpressionType.expression && leftType == ExpressionType.single_variable) {
 					IntegerVariable leftValue = (IntegerVariable) envVariableValueHashMap.get(leftPart.getValue());
-					IntegerExpressionVariable rightValue = expressionModeling(rightPart);
+					IntegerExpressionVariable rightValue = constraintVariableModeling(rightPart);
 					result = Choco.minus(leftValue, rightValue);
 				}
 				// both are expression
 				else if (leftType == ExpressionType.expression && rightType == ExpressionType.expression) {
-					IntegerExpressionVariable leftValue = expressionModeling(leftPart);
-					IntegerExpressionVariable rightValue = expressionModeling(rightPart);
+					IntegerExpressionVariable leftValue = constraintVariableModeling(leftPart);
+					IntegerExpressionVariable rightValue = constraintVariableModeling(rightPart);
 					result = Choco.minus(leftValue, rightValue);
 				}
 				// both are variable
@@ -332,27 +335,27 @@ public class CPExecutor {
 				// int and expression
 				else if (leftType == ExpressionType.single_int && rightType == ExpressionType.expression) {
 					int leftValue = Integer.parseInt(leftPart.getValue());
-					IntegerExpressionVariable rightValue = expressionModeling(rightPart);
+					IntegerExpressionVariable rightValue = constraintVariableModeling(rightPart);
 					result = Choco.plus(leftValue, rightValue);
 				}else if (rightType == ExpressionType.single_int && leftType == ExpressionType.expression) {
 					int rightValue = Integer.parseInt(rightPart.getValue());
-					IntegerExpressionVariable leftValue = expressionModeling(leftPart);
+					IntegerExpressionVariable leftValue = constraintVariableModeling(leftPart);
 					result = Choco.plus(leftValue, rightValue);
 				}
 				// expression and variable
 				else if (leftType == ExpressionType.expression && rightType == ExpressionType.single_variable) {
 					IntegerVariable rightValue = (IntegerVariable) envVariableValueHashMap.get(rightPart.getValue());
-					IntegerExpressionVariable leftValue = expressionModeling(leftPart);
+					IntegerExpressionVariable leftValue = constraintVariableModeling(leftPart);
 					result = Choco.plus(leftValue, rightValue);
 				}else if (rightType == ExpressionType.expression && leftType == ExpressionType.single_variable) {
 					IntegerVariable leftValue = (IntegerVariable) envVariableValueHashMap.get(leftPart.getValue());
-					IntegerExpressionVariable rightValue = expressionModeling(rightPart);
+					IntegerExpressionVariable rightValue = constraintVariableModeling(rightPart);
 					result = Choco.plus(leftValue, rightValue);
 				}
 				// both are expression
 				else if (leftType == ExpressionType.expression && rightType == ExpressionType.expression) {
-					IntegerExpressionVariable leftValue = expressionModeling(leftPart);
-					IntegerExpressionVariable rightValue = expressionModeling(rightPart);
+					IntegerExpressionVariable leftValue = constraintVariableModeling(leftPart);
+					IntegerExpressionVariable rightValue = constraintVariableModeling(rightPart);
 					result = Choco.plus(leftValue, rightValue);
 				}
 				// both are variable
@@ -377,27 +380,27 @@ public class CPExecutor {
 				// int and expression
 				else if (leftType == ExpressionType.single_int && rightType == ExpressionType.expression) {
 					int leftValue = Integer.parseInt(leftPart.getValue());
-					IntegerExpressionVariable rightValue = expressionModeling(rightPart);
+					IntegerExpressionVariable rightValue = constraintVariableModeling(rightPart);
 					result = Choco.mult(leftValue, rightValue);
 				}else if (rightType == ExpressionType.single_int && leftType == ExpressionType.expression) {
 					int rightValue = Integer.parseInt(rightPart.getValue());
-					IntegerExpressionVariable leftValue = expressionModeling(leftPart);
+					IntegerExpressionVariable leftValue = constraintVariableModeling(leftPart);
 					result = Choco.mult(leftValue, rightValue);
 				}
 				// expression and variable
 				else if (leftType == ExpressionType.expression && rightType == ExpressionType.single_variable) {
 					IntegerVariable rightValue = (IntegerVariable) envVariableValueHashMap.get(rightPart.getValue());
-					IntegerExpressionVariable leftValue = expressionModeling(leftPart);
+					IntegerExpressionVariable leftValue = constraintVariableModeling(leftPart);
 					result = Choco.mult(leftValue, rightValue);
 				}else if (rightType == ExpressionType.expression && leftType == ExpressionType.single_variable) {
 					IntegerVariable leftValue = (IntegerVariable) envVariableValueHashMap.get(leftPart.getValue());
-					IntegerExpressionVariable rightValue = expressionModeling(rightPart);
+					IntegerExpressionVariable rightValue = constraintVariableModeling(rightPart);
 					result = Choco.mult(leftValue, rightValue);
 				}
 				// both are expression
 				else if (leftType == ExpressionType.expression && rightType == ExpressionType.expression) {
-					IntegerExpressionVariable leftValue = expressionModeling(leftPart);
-					IntegerExpressionVariable rightValue = expressionModeling(rightPart);
+					IntegerExpressionVariable leftValue = constraintVariableModeling(leftPart);
+					IntegerExpressionVariable rightValue = constraintVariableModeling(rightPart);
 					result = Choco.mult(leftValue, rightValue);
 				}
 				// both are variable
@@ -422,27 +425,27 @@ public class CPExecutor {
 				// int and expression
 				else if (leftType == ExpressionType.single_int && rightType == ExpressionType.expression) {
 					int leftValue = Integer.parseInt(leftPart.getValue());
-					IntegerExpressionVariable rightValue = expressionModeling(rightPart);
+					IntegerExpressionVariable rightValue = constraintVariableModeling(rightPart);
 					result = Choco.div(leftValue, rightValue);
 				}else if (rightType == ExpressionType.single_int && leftType == ExpressionType.expression) {
 					int rightValue = Integer.parseInt(rightPart.getValue());
-					IntegerExpressionVariable leftValue = expressionModeling(leftPart);
+					IntegerExpressionVariable leftValue = constraintVariableModeling(leftPart);
 					result = Choco.div(leftValue, rightValue);
 				}
 				// expression and variable
 				else if (leftType == ExpressionType.expression && rightType == ExpressionType.single_variable) {
 					IntegerVariable rightValue = (IntegerVariable) envVariableValueHashMap.get(rightPart.getValue());
-					IntegerExpressionVariable leftValue = expressionModeling(leftPart);
+					IntegerExpressionVariable leftValue = constraintVariableModeling(leftPart);
 					result = Choco.div(leftValue, rightValue);
 				}else if (rightType == ExpressionType.expression && leftType == ExpressionType.single_variable) {
 					IntegerVariable leftValue = (IntegerVariable) envVariableValueHashMap.get(leftPart.getValue());
-					IntegerExpressionVariable rightValue = expressionModeling(rightPart);
+					IntegerExpressionVariable rightValue = constraintVariableModeling(rightPart);
 					result = Choco.div(leftValue, rightValue);
 				}
 				// both are expression
 				else if (leftType == ExpressionType.expression && rightType == ExpressionType.expression) {
-					IntegerExpressionVariable leftValue = expressionModeling(leftPart);
-					IntegerExpressionVariable rightValue = expressionModeling(rightPart);
+					IntegerExpressionVariable leftValue = constraintVariableModeling(leftPart);
+					IntegerExpressionVariable rightValue = constraintVariableModeling(rightPart);
 					result = Choco.div(leftValue, rightValue);
 				}
 				// both are variable
@@ -525,7 +528,7 @@ public class CPExecutor {
 		expression_operator.put(ExpressionOperator.multi, "*");
 		if (root!=null) {
 //			if(root.operator!=null){
-			if(root.type==ExpressionType.expression){
+			if(root.getType()==ExpressionType.expression){
 //				print("(");
 				updateVariable(root.getLeft());
 //				print(root.getOperator());
@@ -557,7 +560,7 @@ public class CPExecutor {
 		expression_operator.put(ExpressionOperator.multi, "*");
 		if (root!=null) {
 //			if(root.operator!=null){
-			if(root.type==ExpressionType.expression){
+			if(root.getType()==ExpressionType.expression){
 				print("(");
 				updateVariable(root.getLeft());
 //				print(root.getOperator());

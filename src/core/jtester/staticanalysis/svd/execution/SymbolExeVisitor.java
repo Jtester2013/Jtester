@@ -92,14 +92,11 @@ import org.eclipse.jdt.core.dom.WhileStatement;
 import org.eclipse.jdt.core.dom.WildcardType;*/
 
 import core.jtester.staticanalysis.svd.path.ProgramEnv;
-import core.jtester.staticanalysis.svd.solver.ExpressionNode;
-import core.jtester.staticanalysis.svd.solver.ExpressionOperator;
-import core.jtester.staticanalysis.svd.solver.ExpressionType;
 
-public class SymbolicExeVisitor extends ASTVisitor {
+public class SymbolExeVisitor extends ASTVisitor {
 	ProgramEnv env;
 	
-	public SymbolicExeVisitor(ProgramEnv env){
+	public SymbolExeVisitor(ProgramEnv env){
 		this.env = env;
 	}
 
@@ -1609,7 +1606,7 @@ public class SymbolicExeVisitor extends ASTVisitor {
 	 * be skipped
 	 */
 	public boolean visit(VariableDeclarationStatement node) {
-		System.out.println("VariableDeclarationStatement is : "+ node);// 2，这是什么？
+//		System.out.println("VariableDeclarationStatement is : "+ node);// 2，这是什么？
 		if (node.getType().toString().equals("int")) {
 			node.fragments();// 获取声明语句中的list<VariableDeclarationFragment>.
 			VariableDeclarationFragment fragment;
