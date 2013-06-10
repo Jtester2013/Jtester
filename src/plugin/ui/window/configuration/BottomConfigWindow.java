@@ -18,6 +18,7 @@ public class BottomConfigWindow{
 	 * @param style
 	 */
 	public BottomConfigWindow(Composite parent, int style) {
+		int tempValue = ConstantcLayoutData.botton_margin;
 		bottomComposite = new Composite(parent, style);
 		bottomComposite.setLayout(new FormLayout());
 		FormData fd_bottomComposite = new FormData();

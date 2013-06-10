@@ -18,6 +18,7 @@ public class ConfigSelectWindow {
 	ConfigTree configTree;
 
 	public ConfigSelectWindow(Composite parent, int style) {
+		int tempValue = ConstantcLayoutData.botton_margin;
 		configSelectComposite = new Composite(parent, style);
 		configSelectComposite.setLayout(new FormLayout());
 		// set actionComposite

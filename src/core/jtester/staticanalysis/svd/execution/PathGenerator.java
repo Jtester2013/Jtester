@@ -1,4 +1,4 @@
-package core.jtester.staticanalysis.svd.path;
+package core.jtester.staticanalysis.svd.execution;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -20,6 +20,7 @@ import core.common.cfg.javacfg.*;
 import core.common.cfg.model.*;
 
 public class PathGenerator {
+	private Path path;
 	public static final int limitOfloop = 3;
 
 	public static LinkedList<Path> getPaths(JavaControlFlowGraph cfg) {
@@ -433,4 +434,5 @@ public class PathGenerator {
 		JavaControlFlowGraph[] cfgArrayControlFlowGraphs = new JavaControlFlowGraph[methods.length];
 		return cfgs.toArray(cfgArrayControlFlowGraphs);
 	}
+
 }

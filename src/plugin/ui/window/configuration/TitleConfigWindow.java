@@ -24,7 +24,7 @@ public class TitleConfigWindow {
 	 */
 	public TitleConfigWindow(Composite shell, int style) {
 		titleComposite = new Composite(shell, style);
-
+		int tempValue = ConstantcLayoutData.botton_margin;
 		lblTitle = new CLabel(titleComposite, SWT.NONE);
 		lblTitleImage = new CLabel(titleComposite, SWT.NONE);
 

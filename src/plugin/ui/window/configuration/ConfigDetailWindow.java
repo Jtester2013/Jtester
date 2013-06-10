@@ -11,6 +11,7 @@ public class ConfigDetailWindow{
 	StackLayout detaiLayout;
 
 	public ConfigDetailWindow(Composite parent, int style, String configName) {
+		int tempValue = ConstantcLayoutData.botton_margin;
 		showedComposite = new Composite(parent, style);
 		detaiLayout = new StackLayout();
 		showedComposite.setLayout(detaiLayout);

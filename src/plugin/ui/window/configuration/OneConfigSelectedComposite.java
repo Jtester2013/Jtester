@@ -36,7 +36,9 @@ public class OneConfigSelectedComposite extends Composite {
 	private TabFolder tabFolder;
 
 	public OneConfigSelectedComposite(Composite parent, int style, String configName) {
+		
 		super(parent, style);
+		int tempValue = ConstantcLayoutData.botton_margin;
 		// TODO Auto-generated constructor stub
 		// when a configuration selected, this composite will appear in the
 		// detail composite

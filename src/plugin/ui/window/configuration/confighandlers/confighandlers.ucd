@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" id="{UMLID=_ZD7ecM8ZEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers}" metadata="uml2-1.0" initialized="true" tag="10" key="3230303730363239204A746573746572">
+  <children xsi:type="editmodel:ClassEditModel" name="CodeReviewHandler" location="792,50" size="170,47" timstampe="8" stereotype="" id="{UMLID=_DHAXUM8dEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/CodeReviewHandler}" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="StaticHandler" location="50,50" size="206,542" timstampe="16" stereotype="" id="{UMLID=_ZVQfAM8ZEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/StaticHandler}" runTimeClassModel="setApplySuppresions(Z),setEnableStaticAnalysis(Z),rulesTreeHandler,setReportLimitForPerRule(I),setMetricsHandler(Lplugin.ui.window.configuration.confighandlers.Static.MetricsHandler;),applySuppresions,isSkipGeneratedTestClasses(),getMetrics(),setSkipGeneratedTestClasses(Z),getReportLimitForPerRule(),isEnableStaticAnalysis(),enableStaticAnalysis,reportLimitForPerRule,setMetrics(Lplugin.ui.window.configuration.confighandlers.Static.MetricData;),optionsHandler,getRulesTreeHandler(),getRules(),setRulesTreeHandler(Lplugin.ui.window.configuration.confighandlers.Static.RulesTreeHandler;),getMetricsHandler(),setRule(Ljava.lang.String;),metricsHandler,skipGeneratedTestClasses,getOptionsHandler(),setOptionsHandler(Lplugin.ui.window.configuration.confighandlers.Static.OptionsHandler;),isApplySuppresions()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="158,72">
+      <children xsi:type="editmodel:AttributeEditModel" name="enableStaticAnalysis" size="130,16" id="{UMLID=_rK5D0s8ZEeKDK6kTUcDgjQ}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="reportLimitForPerRule" size="132,16" id="{UMLID=_rK5q4c8ZEeKDK6kTUcDgjQ}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="skipGeneratedTestClasses" size="158,16" id="{UMLID=_rK6R8M8ZEeKDK6kTUcDgjQ}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="applySuppresions" size="116,16" id="{UMLID=_rK31sc8ZEeKDK6kTUcDgjQ}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="rulesTreeHandler" size="118,21" id="{UMLID=_rK4cwc8ZEeKDK6kTUcDgjQ}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="metricsHandler" size="107,21" id="{UMLID=_rK31s88ZEeKDK6kTUcDgjQ}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="optionsHandler" size="107,21" id="{UMLID=_rK2nkM8ZEeKDK6kTUcDgjQ}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="185,354">
+      <children xsi:type="editmodel:MethodEditModel" name="setRule" size="76,16" id="{UMLID=_rLIUYc8ZEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/StaticHandler#setRule(Ljava.lang.String;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getRules" size="82,16" id="{UMLID=_rLEC8M8ZEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/StaticHandler#getRules()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMetrics" size="90,16" id="{UMLID=_rLCNwM8ZEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/StaticHandler#setMetrics(Lplugin.ui.window.configuration.confighandlers.Static.MetricData;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMetrics" size="90,16" id="{UMLID=_rK8uMM8ZEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/StaticHandler#getMetrics()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isEnableStaticAnalysis" size="149,16" id="{UMLID=_rK98Us8ZEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/StaticHandler#isEnableStaticAnalysis()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setEnableStaticAnalysis" size="156,16" id="{UMLID=_rK8HIM8ZEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/StaticHandler#setEnableStaticAnalysis(Z)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getReportLimitForPerRule" size="161,16" id="{UMLID=_rLHtUM8ZEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/StaticHandler#getReportLimitForPerRule()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setReportLimitForPerRule" size="161,16" id="{UMLID=_rLGfMs8ZEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/StaticHandler#setReportLimitForPerRule(I)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isSkipGeneratedTestClasses" size="178,16" id="{UMLID=_rK_KcM8ZEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/StaticHandler#isSkipGeneratedTestClasses()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setSkipGeneratedTestClasses" size="185,16" id="{UMLID=_rK7gEM8ZEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/StaticHandler#setSkipGeneratedTestClasses(Z)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isApplySuppresions" size="137,16" id="{UMLID=_rLA_os8ZEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/StaticHandler#isApplySuppresions()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setApplySuppresions" size="144,16" id="{UMLID=_rK_xgc8ZEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/StaticHandler#setApplySuppresions(Z)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getRulesTreeHandler" size="147,21" id="{UMLID=_rK6R8s8ZEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/StaticHandler#getRulesTreeHandler()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setRulesTreeHandler" size="147,21" id="{UMLID=_rLJigM8ZEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/StaticHandler#setRulesTreeHandler(Lplugin.ui.window.configuration.confighandlers.Static.RulesTreeHandler;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMetricsHandler" size="133,21" id="{UMLID=_rLF4Is8ZEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/StaticHandler#getMetricsHandler()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMetricsHandler" size="133,21" id="{UMLID=_rLFREc8ZEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/StaticHandler#setMetricsHandler(Lplugin.ui.window.configuration.confighandlers.Static.MetricsHandler;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getOptionsHandler" size="135,21" id="{UMLID=_rLAYks8ZEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/StaticHandler#getOptionsHandler()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setOptionsHandler" size="135,21" id="{UMLID=_rLDb4M8ZEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/StaticHandler#setOptionsHandler(Lplugin.ui.window.configuration.confighandlers.Static.OptionsHandler;)}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="CommonHandler" location="464,573" size="147,47" timstampe="6" stereotype="" id="{UMLID=_H56ssM8dEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/CommonHandler}" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="ConfigurationHandler" location="557,50" size="185,244" timstampe="21" stereotype="" id="{UMLID=_ZJq6EM8ZEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/ConfigurationHandler}" runTimeClassModel="codeReviewHandler,goalsHandler,synchronizeConfiguration(Ljava.lang.String;),generationHandler,scopeHandler,staticHandler,executionHandler,commonHandler,saveConfiguration(Ljava.lang.String;)">
+    <children xsi:type="editmodel:CompartmentEditModel">
+      <children xsi:type="editmodel:AttributeEditModel" name="codeReviewHandler" size="133,21" id="{UMLID=_ZVDqsM8ZEeKDK6kTUcDgjQ}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="executionHandler" size="119,21" id="{UMLID=_ZVQfA88ZEeKDK6kTUcDgjQ}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="generationHandler" size="123,21" id="{UMLID=_ZVGuA88ZEeKDK6kTUcDgjQ}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="goalsHandler" size="98,21" id="{UMLID=_ZVFf4s8ZEeKDK6kTUcDgjQ}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="scopeHandler" size="102,21" id="{UMLID=_ZVIjMs8ZEeKDK6kTUcDgjQ}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="staticHandler" size="98,21" id="{UMLID=_ZVJxU88ZEeKDK6kTUcDgjQ}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="commonHandler" size="112,21" id="{UMLID=_6_6mgM8_EeKiYY_9qLqu5g}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="164,36">
+      <children xsi:type="editmodel:MethodEditModel" name="synchronizeConfiguration" size="164,16" id="{UMLID=_ZVRtI88ZEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/ConfigurationHandler#synchronizeConfiguration(Ljava.lang.String;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="saveConfiguration" size="128,16" id="{UMLID=_ZVTiUs8ZEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/ConfigurationHandler#saveConfiguration(Ljava.lang.String;)}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="ExecutionHandler" location="261,573" size="153,47" timstampe="9" stereotype="" id="{UMLID=_DHA-Yc8dEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/ExecutionHandler}" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="GenerationHandler" location="50,573" size="161,47" timstampe="9" stereotype="" id="{UMLID=_DHCMgM8dEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/GenerationHandler}" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="GoalsHandler" location="661,573" size="126,47" timstampe="9" stereotype="" id="{UMLID=_DHCzkM8dEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/GoalsHandler}" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="ScopeHandler" location="306,50" size="201,468" timstampe="9" stereotype="" id="{UMLID=_DHDaoM8dEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/ScopeHandler}" runTimeClassModel="dayLimit,setCyclomaticLimit(I),ScopeHandler(Lplugin.ui.window.configuration.confighandlers.scope.FileFiltersHandler;Lplugin.ui.window.configuration.confighandlers.scope.LineFiltersHandler;Lplugin.ui.window.configuration.confighandlers.scope.MethodFilterHandler;),methodFilterHandler,setDayLimit(I),ifTestDeprecatedElements,lineFiltersHandler,authorNameFilter,cyclomaticLimit,setFileFiltersHandler(Lplugin.ui.window.configuration.confighandlers.scope.FileFiltersHandler;),getFileTimeOption(),getAuthorNameFilter(),isIfTestDeprecatedElements(),setFileTimeOption(I),onlyModifiedFiel,fileFiltersHandler,getCyclomaticLimit(),fileTimeOption,setIfTestDeprecatedElements(Z),getFileFiltersHandler(),setAuthorNameFilter(Ljava.lang.String;),getDayLimit()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="154,108">
+      <children xsi:type="editmodel:AttributeEditModel" name="fileTimeOption" size="96,16" id="{UMLID=_DIHKks8dEeKDK6kTUcDgjQ}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="dayLimit" size="68,16" id="{UMLID=_DIDgMM8dEeKDK6kTUcDgjQ}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="authorNameFilter" size="110,16" id="{UMLID=_DII_ws8dEeKDK6kTUcDgjQ}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="onlyModifiedFiel" size="105,16" id="{UMLID=_DIF8cs8dEeKDK6kTUcDgjQ}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="cyclomaticLimit" size="101,16" id="{UMLID=_DIJm0M8dEeKDK6kTUcDgjQ}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="ifTestDeprecatedElements" size="154,16" id="{UMLID=_DIHxoM8dEeKDK6kTUcDgjQ}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="fileFiltersHandler" size="115,21" id="{UMLID=_DIGjgM8dEeKDK6kTUcDgjQ}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="lineFiltersHandler" size="117,21" id="{UMLID=_DIIYsM8dEeKDK6kTUcDgjQ}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="methodFilterHandler" size="130,21" id="{UMLID=_DIEHQM8dEeKDK6kTUcDgjQ}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="180,244">
+      <children xsi:type="editmodel:MethodEditModel" name="ScopeHandler" size="108,16" id="{UMLID=_DINRMs8dEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/ScopeHandler#ScopeHandler(Lplugin.ui.window.configuration.confighandlers.scope.FileFiltersHandler;Lplugin.ui.window.configuration.confighandlers.scope.LineFiltersHandler;Lplugin.ui.window.configuration.confighandlers.scope.MethodFilterHandler;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getFileTimeOption" size="124,16" id="{UMLID=_DIQ7kc8dEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/ScopeHandler#getFileTimeOption()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setFileTimeOption" size="124,16" id="{UMLID=_DIKN4M8dEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/ScopeHandler#setFileTimeOption(I)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getDayLimit" size="95,16" id="{UMLID=_DIMDEs8dEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/ScopeHandler#getDayLimit()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setDayLimit" size="95,16" id="{UMLID=_DIMqIs8dEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/ScopeHandler#setDayLimit(I)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getAuthorNameFilter" size="138,16" id="{UMLID=_DIPtcs8dEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/ScopeHandler#getAuthorNameFilter()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setAuthorNameFilter" size="138,16" id="{UMLID=_DILcAc8dEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/ScopeHandler#setAuthorNameFilter(Ljava.lang.String;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getCyclomaticLimit" size="128,16" id="{UMLID=_DISJss8dEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/ScopeHandler#getCyclomaticLimit()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setCyclomaticLimit" size="128,16" id="{UMLID=_DISwws8dEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/ScopeHandler#setCyclomaticLimit(I)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isIfTestDeprecatedElements" size="173,16" id="{UMLID=_DIPGYs8dEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/ScopeHandler#isIfTestDeprecatedElements()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setIfTestDeprecatedElements" size="180,16" id="{UMLID=_DIK08M8dEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/ScopeHandler#setIfTestDeprecatedElements(Z)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getFileFiltersHandler" size="143,21" id="{UMLID=_DIT-4M8dEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/ScopeHandler#getFileFiltersHandler()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setFileFiltersHandler" size="143,21" id="{UMLID=_DIRioc8dEeKDK6kTUcDgjQ,JavaID=plugin.ui.window.configuration.confighandlers/ScopeHandler#setFileFiltersHandler(Lplugin.ui.window.configuration.confighandlers.scope.FileFiltersHandler;)}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true" ShowInnerEntity="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" interactive="false" level="4" properties="wireOptions=0"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="14,14" gridOrigin="0,0" rulerUnit="cm" gridShow="true">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" attributeSorter="Natural" methodSorter="Natural" shortPackageNameFormat="true" showClassStereotype="true" showPackageStereotype="true" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showInterfaceStereotype="true" showMethods="true" showAttributes="true" showLiterlas="true" showInnerEntity="true"/>
+</editmodel:ClassDiagramEditModel>

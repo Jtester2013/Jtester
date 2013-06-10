@@ -28,10 +28,6 @@ import core.common.cfg.model.BranchNode;
 import core.common.cfg.model.DecisionNode;
 import core.common.cfg.model.ExitNode;
 import core.common.cfg.model.PlainNode;
-import core.jtester.staticanalysis.svd.path.Path;
-import core.jtester.staticanalysis.svd.path.PathGenerator;
-import core.jtester.staticanalysis.svd.path.ProgramEnv;
-import core.jtester.staticanalysis.svd.solver.ConstraintSolver;
 
 public class SymbolExecutor {
 	public static HashSet<InfixExpression.Operator> feasible_operators = new HashSet<>();

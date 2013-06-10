@@ -91,7 +91,6 @@ import org.eclipse.jdt.core.dom.VariableDeclarationStatement;
 import org.eclipse.jdt.core.dom.WhileStatement;
 import org.eclipse.jdt.core.dom.WildcardType;*/
 
-import core.jtester.staticanalysis.svd.path.ProgramEnv;
 
 public class SymbolExeVisitor extends ASTVisitor {
 	ProgramEnv env;

@@ -8,9 +8,9 @@ import org.omg.CORBA.PRIVATE_MEMBER;
 
 import core.common.cfg.javacfg.JavaControlFlowGraph;
 import core.common.cfg.model.BranchNode;
+import core.jtester.staticanalysis.svd.execution.Path;
+import core.jtester.staticanalysis.svd.execution.PathGenerator;
 import core.jtester.staticanalysis.svd.execution.SymbolExecutor;
-import core.jtester.staticanalysis.svd.path.Path;
-import core.jtester.staticanalysis.svd.path.PathGenerator;
 
 public class ExecuteDemo {
 
@@ -70,7 +70,6 @@ public class ExecuteDemo {
 					+ ", there are " + executablePaths.size()
 					+ " executablePath");
 		}
-		
 	}
 		private static void printDecisionExpressions(Path path){
 			for (Iterator iterator = path.iterator(); iterator

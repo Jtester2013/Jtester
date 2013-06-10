@@ -28,6 +28,7 @@ public class ConfigurationWindow {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		int tempValue = ConstantcLayoutData.botton_margin;
 		try {
 			ConfigurationWindow window = new ConfigurationWindow();
 			window.open();

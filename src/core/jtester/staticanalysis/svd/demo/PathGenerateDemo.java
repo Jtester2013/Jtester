@@ -14,8 +14,8 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 import core.common.cfg.javacfg.ControlFlowGraphBuilder;
 import core.common.cfg.javacfg.JavaControlFlowGraph;
-import core.jtester.staticanalysis.svd.path.Path;
-import core.jtester.staticanalysis.svd.path.PathGenerator;
+import core.jtester.staticanalysis.svd.execution.Path;
+import core.jtester.staticanalysis.svd.execution.PathGenerator;
 
 public class PathGenerateDemo {
 

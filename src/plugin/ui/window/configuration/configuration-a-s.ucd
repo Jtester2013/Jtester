@@ -1,119 +1,224 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="configuration-a-s" id="{UMLID=_8ZsPYs6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration}" metadata="uml2-1.0" initialized="true" tag="10" key="3230303730363239204A746573746572" Shrink="true">
-  <children xsi:type="editmodel:ClassEditModel" name="BottomConfigWindow" location="291,643" size="178,27" timstampe="5" stereotype="" id="{UMLID=_-vGnkM6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/BottomConfigWindow}" shortShow="true" runTimeClassModel="BottomConfigWindow(I),getComposite(),btnRunTest,btnClose,bottomComposite">
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="configuration-a-s" id="{UMLID=_8ZsPYs6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration}" metadata="uml2-1.0" initialized="true" scrolledY="54" tag="10" key="3230303730363239204A746573746572">
+  <children xsi:type="editmodel:ClassEditModel" name="BottomConfigWindow" location="50,643" size="178,137" timstampe="9" stereotype="" id="{UMLID=_-vGnkM6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/BottomConfigWindow}" runTimeClassModel="BottomConfigWindow(I),getComposite(),btnRunTest,btnClose,bottomComposite">
+    <children xsi:type="editmodel:CompartmentEditModel">
+      <children xsi:type="editmodel:AttributeEditModel" name="btnClose" size="71,16" id="{UMLID=_-vUC8M6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="btnRunTest" size="83,16" id="{UMLID=_-vTb4M6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="bottomComposite" size="111,16" id="{UMLID=_-vUqAc6bEeKYAfIrCjJ_8A}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel">
+      <children xsi:type="editmodel:MethodEditModel" name="BottomConfigWindow" size="144,16" id="{UMLID=_-vV4Ic6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/BottomConfigWindow#BottomConfigWindow(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getComposite" size="105,16" id="{UMLID=_-vV4IM6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/BottomConfigWindow#getComposite()"/>
+    </children>
     <children xsi:type="editmodel:CompartmentEditModel"/>
-    <children xsi:type="editmodel:CompartmentEditModel"/>
-    <children xsi:type="editmodel:CompartmentEditModel"/>
-    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="TempWindowForDesign" location="50,643" size="191,27" timstampe="5" stereotype="" id="{UMLID=_-vwu4M6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/TempWindowForDesign}" shortShow="true" runTimeClassModel="createContents(),shell,open(),main()">
+  <children xsi:type="editmodel:ClassEditModel" name="ConstantcLayoutData" location="238,784" size="178,379" timstampe="9" stereotype="" id="{UMLID=_-0vVgM6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/ConstantcLayoutData}" runTimeClassModel="composite_formlayoutData,left_FormAttachment,ZH_FONT,left_margin,right_margin,up_margin,tabfolder_formlayoutData,right_FormAttachment,bottom_FormAttachment,up_FormAttachment,en_font,botton_margin,sashform_formlayoutData,font_color,composite_spacing,group_formlayoutData,foreground_color,background_color,tabitem_formlayoutData">
+    <children xsi:type="editmodel:CompartmentEditModel">
+      <children xsi:type="editmodel:AttributeEditModel" name="composite_spacing" size="122,16" id="{UMLID=_-1KzUM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="up_margin" size="79,16" id="{UMLID=_-1Esss6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="botton_margin" size="97,16" id="{UMLID=_-1I-IM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="left_margin" size="82,16" id="{UMLID=_-1EFoM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="right_margin" size="88,16" id="{UMLID=_-1EssM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="composite_formlayoutData" size="157,16" id="{UMLID=_-1BpYM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="sashform_formlayoutData" size="154,16" id="{UMLID=_-1JlMM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="group_formlayoutData" size="136,16" id="{UMLID=_-1KzUs6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="tabfolder_formlayoutData" size="151,16" id="{UMLID=_-1FTwc6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="tabitem_formlayoutData" size="142,16" id="{UMLID=_-1NPkM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="left_FormAttachment" size="129,16" id="{UMLID=_-1CQcc6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="right_FormAttachment" size="135,16" id="{UMLID=_-1F60M6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="up_FormAttachment" size="126,16" id="{UMLID=_-1HI8c6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="bottom_FormAttachment" size="146,16" id="{UMLID=_-1Gh4c6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="en_font" size="66,16" id="{UMLID=_-1IXEM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="ZH_FONT" size="76,16" id="{UMLID=_-1DekM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="font_color" size="78,16" id="{UMLID=_-1KMQM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="background_color" size="116,16" id="{UMLID=_-1MogM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="foreground_color" size="113,16" id="{UMLID=_-1MBcM6bEeKYAfIrCjJ_8A}"/>
+    </children>
     <children xsi:type="editmodel:CompartmentEditModel"/>
     <children xsi:type="editmodel:CompartmentEditModel"/>
-    <children xsi:type="editmodel:CompartmentEditModel"/>
-    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="ConstantcLayoutData" location="519,643" size="174,27" timstampe="5" stereotype="" id="{UMLID=_-0vVgM6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/ConstantcLayoutData}" shortShow="true" runTimeClassModel="composite_formlayoutData,left_FormAttachment,ZH_FONT,left_margin,right_margin,up_margin,tabfolder_formlayoutData,right_FormAttachment,bottom_FormAttachment,up_FormAttachment,en_font,botton_margin,sashform_formlayoutData,font_color,composite_spacing,group_formlayoutData,tabitem_formlayoutData,background_color,foreground_color">
+  <children xsi:type="editmodel:ClassEditModel" name="TitleConfigWindow" location="462,755" size="161,155" timstampe="10" stereotype="" id="{UMLID=_-2C9EM6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/TitleConfigWindow}" runTimeClassModel="titleComposite,lblTitle,TitleConfigWindow(I),lblTitleImage,getComposite(),TITLE_STRING">
+    <children xsi:type="editmodel:CompartmentEditModel">
+      <children xsi:type="editmodel:AttributeEditModel" name="TITLE_STRING" size="98,16" id="{UMLID=_-2b-oM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="lblTitleImage" size="86,16" id="{UMLID=_-2awgM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="lblTitle" size="58,16" id="{UMLID=_-2Y7UM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="titleComposite" size="95,16" id="{UMLID=_-2XGIM6bEeKYAfIrCjJ_8A}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel">
+      <children xsi:type="editmodel:MethodEditModel" name="TitleConfigWindow" size="130,16" id="{UMLID=_-2fB8M6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/TitleConfigWindow#TitleConfigWindow(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getComposite" size="105,16" id="{UMLID=_-2dz0M6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/TitleConfigWindow#getComposite()"/>
+    </children>
     <children xsi:type="editmodel:CompartmentEditModel"/>
-    <children xsi:type="editmodel:CompartmentEditModel"/>
-    <children xsi:type="editmodel:CompartmentEditModel"/>
-    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="TitleConfigWindow" location="743,643" size="161,27" timstampe="5" stereotype="" id="{UMLID=_-2C9EM6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/TitleConfigWindow}" shortShow="true" runTimeClassModel="titleComposite,TitleConfigWindow(I),lblTitle,lblTitleImage,getComposite(),TITLE_STRING">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.5/@sourceConnections.0" name="ConfigDetailWindow" location="700,322" size="197,183" timstampe="11" stereotype="" id="{UMLID=_-3XLsM6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/ConfigDetailWindow}" runTimeClassModel="selectedComposite,detaiLayout,noneConfigSelected,getComposite(),oneConfigSelectedComposite,ConfigDetailWindow(ILjava.lang.String;),showedComposite">
+    <children xsi:type="editmodel:CompartmentEditModel">
+      <children xsi:type="editmodel:AttributeEditModel" name="showedComposite" size="119,16" id="{UMLID=_-3qtsc6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="noneConfigSelected" size="132,21" id="{UMLID=_-3pfkc6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="oneConfigSelectedComposite" size="176,21" id="{UMLID=_-3qGoc6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="selectedComposite" size="120,16" id="{UMLID=_-3nqYM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="detaiLayout" size="85,16" id="{UMLID=_-3o4gM6bEeKYAfIrCjJ_8A}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel">
+      <children xsi:type="editmodel:MethodEditModel" name="ConfigDetailWindow" size="137,16" id="{UMLID=_-3r70M6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/ConfigDetailWindow#ConfigDetailWindow(ILjava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getComposite" size="105,16" id="{UMLID=_-3rUwM6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/ConfigDetailWindow#getComposite()"/>
+    </children>
     <children xsi:type="editmodel:CompartmentEditModel"/>
-    <children xsi:type="editmodel:CompartmentEditModel"/>
-    <children xsi:type="editmodel:CompartmentEditModel"/>
-    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true"/>
-  </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.7/@sourceConnections.0" name="ConfigSelectWindow" location="251,142" size="173,27" timstampe="6" stereotype="" id="{UMLID=_-zYqoM6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/ConfigSelectWindow}" shortShow="true" runTimeClassModel="treeComposite,btnDelete,ConfigSelectWindow(I),btnNew,scrolledComposite,configTree,configSelectComposite,actionComposite">
-    <children xsi:type="editmodel:CompartmentEditModel"/>
-    <children xsi:type="editmodel:CompartmentEditModel"/>
-    <children xsi:type="editmodel:CompartmentEditModel"/>
-    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="{UMLID=_-5R3QM6bEeKYAfIrCjJ_8A}" source="//@children.4" target="//@children.6" targetEnd="//@children.4/@sourceConnections.0/@children.2" label="//@children.4/@sourceConnections.0/@children.0" sourceEnd="//@children.4/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="{UMLID=_-4LEAM6bEeKYAfIrCjJ_8A}" source="//@children.3" target="//@children.8" targetEnd="//@children.3/@sourceConnections.0/@children.2" label="//@children.3/@sourceConnections.0/@children.0" sourceEnd="//@children.3/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
       <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="configListTreeComposite" location="173,17" id="{UMLID=_-4cw0s6bEeKYAfIrCjJ_8A}" attachSource="true" multiplicityLabel="//@children.4/@sourceConnections.0/@children.1/@children.0" roleLabel="//@children.4/@sourceConnections.0/@children.1/@children.1" navigable="true" flags="1">
-        <children xsi:type="editmodel:LabelEditModel" name="1" location="431,166" size="6,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
-        <children xsi:type="editmodel:LabelEditModel" name="+ configListTreeComposite" location="431,138" size="128,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="ownedEnd" location="105,183" id="{UMLID=_-4LEAc6bEeKYAfIrCjJ_8A}" attachSource="true" multiplicityLabel="//@children.3/@sourceConnections.0/@children.1/@children.0" flags="1">
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="812,512" size="6,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
       </children>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="ownedEnd" location="10,0" id="{UMLID=_-5R3Qc6bEeKYAfIrCjJ_8A}" multiplicityLabel="//@children.4/@sourceConnections.0/@children.2/@children.0" flags="1">
-        <children xsi:type="editmodel:LabelEditModel" name="1" location="471,214" size="6,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="noneConfigSelected" location="91,0" id="{UMLID=_-3pfkc6bEeKYAfIrCjJ_8A}" multiplicityLabel="//@children.3/@sourceConnections.0/@children.2/@children.0" roleLabel="//@children.3/@sourceConnections.0/@children.2/@children.1" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="792,539" size="6,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="noneConfigSelected" location="812,539" size="97,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
       </children>
     </sourceConnections>
-    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true"/>
-  </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.6/@sourceConnections.0" name="ConfigDetailWindow" location="667,332" size="170,27" timstampe="6" stereotype="" id="{UMLID=_-3XLsM6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/ConfigDetailWindow}" shortShow="true" runTimeClassModel="selectedComposite,noneConfigSelected,detaiLayout,ConfigDetailWindow(II),getComposite(),oneConfigSelectedComposite,showedComposite">
-    <children xsi:type="editmodel:CompartmentEditModel"/>
-    <children xsi:type="editmodel:CompartmentEditModel"/>
-    <children xsi:type="editmodel:CompartmentEditModel"/>
-    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="{UMLID=_-4LEAM6bEeKYAfIrCjJ_8A}" source="//@children.5" target="//@children.9" targetEnd="//@children.5/@sourceConnections.0/@children.2" label="//@children.5/@sourceConnections.0/@children.0" sourceEnd="//@children.5/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="{UMLID=_-4LrEM6bEeKYAfIrCjJ_8A}" source="//@children.3" target="//@children.6" targetEnd="//@children.3/@sourceConnections.1/@children.2" label="//@children.3/@sourceConnections.1/@children.0" sourceEnd="//@children.3/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
       <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="ownedEnd" location="105,27" id="{UMLID=_-4LEAc6bEeKYAfIrCjJ_8A}" attachSource="true" multiplicityLabel="//@children.5/@sourceConnections.0/@children.1/@children.0" flags="1">
-        <children xsi:type="editmodel:LabelEditModel" name="1" location="779,366" size="6,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="ownedEnd" location="197,126" id="{UMLID=_-4LrEc6bEeKYAfIrCjJ_8A}" attachSource="true" multiplicityLabel="//@children.3/@sourceConnections.1/@children.1/@children.0" flags="1">
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="904,427" size="6,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
       </children>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="noneConfigSelected" location="63,0" id="{UMLID=_-3pfkc6bEeKYAfIrCjJ_8A}" multiplicityLabel="//@children.5/@sourceConnections.0/@children.2/@children.0" roleLabel="//@children.5/@sourceConnections.0/@children.2/@children.1" navigable="true">
-        <children xsi:type="editmodel:LabelEditModel" name="1" location="759,545" size="6,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
-        <children xsi:type="editmodel:LabelEditModel" name="noneConfigSelected" location="779,545" size="97,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="oneConfigSelectedComposite" location="0,56" id="{UMLID=_-3qGoc6bEeKYAfIrCjJ_8A}" multiplicityLabel="//@children.3/@sourceConnections.1/@children.2/@children.0" roleLabel="//@children.3/@sourceConnections.1/@children.2/@children.1" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="1037,455" size="6,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="oneConfigSelectedComposite" location="902,427" size="141,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
       </children>
     </sourceConnections>
-    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="{UMLID=_-4LrEM6bEeKYAfIrCjJ_8A}" source="//@children.5" target="//@children.8" targetEnd="//@children.5/@sourceConnections.1/@children.2" label="//@children.5/@sourceConnections.1/@children.0" sourceEnd="//@children.5/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.7/@sourceConnections.0" name="ConfigSelectWindow" location="251,142" size="173,196" timstampe="11" stereotype="" id="{UMLID=_-zYqoM6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/ConfigSelectWindow}" runTimeClassModel="treeComposite,btnDelete,ConfigSelectWindow(I),btnNew,scrolledComposite,configTree,actionComposite,configSelectComposite">
+    <children xsi:type="editmodel:CompartmentEditModel">
+      <children xsi:type="editmodel:AttributeEditModel" name="configSelectComposite" size="139,16" id="{UMLID=_-zpwYM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="treeComposite" size="98,16" id="{UMLID=_-zk34M6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="actionComposite" size="108,16" id="{UMLID=_-zpJUM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="scrolledComposite" size="117,16" id="{UMLID=_-znUIM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="btnNew" size="67,16" id="{UMLID=_-zmtEM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="btnDelete" size="74,16" id="{UMLID=_-zmGAM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="configTree" size="87,21" id="{UMLID=_-zoiQM6bEeKYAfIrCjJ_8A}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel">
+      <children xsi:type="editmodel:MethodEditModel" name="ConfigSelectWindow" size="141,16" id="{UMLID=_-zqXcM6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/ConfigSelectWindow#ConfigSelectWindow(I)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="{UMLID=_-5R3QM6bEeKYAfIrCjJ_8A}" source="//@children.4" target="//@children.5" targetEnd="//@children.4/@sourceConnections.0/@children.2" label="//@children.4/@sourceConnections.0/@children.0" sourceEnd="//@children.4/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
       <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="ownedEnd" location="170,10" id="{UMLID=_-4LrEc6bEeKYAfIrCjJ_8A}" attachSource="true" multiplicityLabel="//@children.5/@sourceConnections.1/@children.1/@children.0" flags="1">
-        <children xsi:type="editmodel:LabelEditModel" name="1" location="844,349" size="6,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="configListTreeComposite" location="173,68" id="{UMLID=_-4cw0s6bEeKYAfIrCjJ_8A}" attachSource="true" multiplicityLabel="//@children.4/@sourceConnections.0/@children.1/@children.0" roleLabel="//@children.4/@sourceConnections.0/@children.1/@children.1" navigable="true" flags="1">
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="431,217" size="6,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="+ configListTreeComposite" location="431,189" size="128,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
       </children>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="oneConfigSelectedComposite" location="10,27" id="{UMLID=_-3qGoc6bEeKYAfIrCjJ_8A}" multiplicityLabel="//@children.5/@sourceConnections.1/@children.2/@children.0" roleLabel="//@children.5/@sourceConnections.1/@children.2/@children.1" navigable="true">
-        <children xsi:type="editmodel:LabelEditModel" name="1" location="869,242" size="6,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
-        <children xsi:type="editmodel:LabelEditModel" name="oneConfigSelectedComposite" location="889,242" size="141,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="ownedEnd" location="0,168" id="{UMLID=_-5R3Qc6bEeKYAfIrCjJ_8A}" multiplicityLabel="//@children.4/@sourceConnections.0/@children.2/@children.0" flags="1">
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="519,189" size="6,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
       </children>
     </sourceConnections>
-    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.4/@sourceConnections.0" name="ConfigurationWindow" location="454,235" size="178,27" timstampe="6" stereotype="" id="{UMLID=_-4PVcM6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/ConfigurationWindow}" shortShow="true" runTimeClassModel="createContents(),shell,open(),compositePortion,detailConfigComposite,titleWindowComposite,configListTreeComposite,centerSashFormComposite,main(),bottomComposite">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.4/@sourceConnections.0" name="ConfigurationWindow" location="532,42" size="180,237" timstampe="11" stereotype="" id="{UMLID=_-4PVcM6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/ConfigurationWindow}" runTimeClassModel="main([Ljava.lang.String;),createContents(),shell,compositePortion,open(),detailConfigComposite,configListTreeComposite,titleWindowComposite,centerSashFormComposite,bottomComposite">
+    <children xsi:type="editmodel:CompartmentEditModel">
+      <children xsi:type="editmodel:AttributeEditModel" name="shell" size="51,16" id="{UMLID=_-4a7oM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="titleWindowComposite" size="135,16" id="{UMLID=_-4dX4c6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="bottomComposite" size="111,16" id="{UMLID=_-4emAc6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="centerSashFormComposite" size="159,16" id="{UMLID=_-4d-8M6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="configListTreeComposite" size="154,21" id="{UMLID=_-4cw0s6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="detailConfigComposite" size="141,21" id="{UMLID=_-4cw0M6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="compositePortion" size="111,16" id="{UMLID=_-4bisM6bEeKYAfIrCjJ_8A}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel">
+      <children xsi:type="editmodel:MethodEditModel" name="main" size="62,16" id="{UMLID=_-4f0IM6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/ConfigurationWindow#main([Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="open" size="64,16" id="{UMLID=_-4hCQc6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/ConfigurationWindow#open()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="createContents" size="114,16" id="{UMLID=_-4hpUM6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/ConfigurationWindow#createContents()"/>
+    </children>
     <children xsi:type="editmodel:CompartmentEditModel"/>
-    <children xsi:type="editmodel:CompartmentEditModel"/>
-    <children xsi:type="editmodel:CompartmentEditModel"/>
-    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="{UMLID=_-5SeUM6bEeKYAfIrCjJ_8A}" source="//@children.6" target="//@children.5" targetEnd="//@children.6/@sourceConnections.0/@children.2" label="//@children.6/@sourceConnections.0/@children.0" sourceEnd="//@children.6/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="{UMLID=_-5SeUM6bEeKYAfIrCjJ_8A}" source="//@children.5" target="//@children.3" targetEnd="//@children.5/@sourceConnections.0/@children.2" label="//@children.5/@sourceConnections.0/@children.0" sourceEnd="//@children.5/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
       <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="ownedEnd" location="168,27" id="{UMLID=_-5SeUc6bEeKYAfIrCjJ_8A}" attachSource="true" multiplicityLabel="//@children.6/@sourceConnections.0/@children.1/@children.0" flags="1">
-        <children xsi:type="editmodel:LabelEditModel" name="1" location="609,269" size="6,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="ownedEnd" location="173,237" id="{UMLID=_-5SeUc6bEeKYAfIrCjJ_8A}" attachSource="true" multiplicityLabel="//@children.5/@sourceConnections.0/@children.1/@children.0" flags="1">
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="712,286" size="6,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
       </children>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="detailConfigComposite" location="0,10" id="{UMLID=_-4cw0M6bEeKYAfIrCjJ_8A}" multiplicityLabel="//@children.6/@sourceConnections.0/@children.2/@children.0" roleLabel="//@children.6/@sourceConnections.0/@children.2/@children.1" navigable="true" flags="1">
-        <children xsi:type="editmodel:LabelEditModel" name="1" location="654,321" size="6,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
-        <children xsi:type="editmodel:LabelEditModel" name="+ detailConfigComposite" location="545,349" size="115,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="detailConfigComposite" location="5,0" id="{UMLID=_-4cw0M6bEeKYAfIrCjJ_8A}" multiplicityLabel="//@children.5/@sourceConnections.0/@children.2/@children.0" roleLabel="//@children.5/@sourceConnections.0/@children.2/@children.1" navigable="true" flags="1">
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="692,301" size="6,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="+ detailConfigComposite" location="712,301" size="115,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
       </children>
     </sourceConnections>
-    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="ConfigTree" location="50,50" size="109,27" timstampe="6" stereotype="" id="{UMLID=_-m01UM6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/ConfigTree}" shortShow="true" runTimeClassModel="createActions(),contentCreate(),trtmBuiltin,initMenu(),selectedItem,createConfig(),ConfigTree(I),initializeMenu(),constructTreeFromConfigFile(),removeConfig(),duplicateAction,deleteAction,defaultConfigName,tree,addTreeItem(Z),configTreeFilePath,exportAction,addNode(),setAsDefaultAction,trtmTeam,trtmUser,newAction">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.3/@sourceConnections.1" name="OneConfigSelectedComposite" location="1050,392" size="230,304" timstampe="12" stereotype="" id="{UMLID=_-wIiUM6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/OneConfigSelectedComposite}" runTimeClassModel="OneConfigSelectedComposite(ILjava.lang.String;),btnApply,nameparentComposite,textParent,btnRevert,lblName,setBottemComposite(),tabFolder,detailTabFolder,setNameAndParentComposite(),rightActionComposite,btnDisconnect,lblParent,textName">
+    <children xsi:type="editmodel:CompartmentEditModel">
+      <children xsi:type="editmodel:AttributeEditModel" name="nameparentComposite" size="136,16" id="{UMLID=_-xChQM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="rightActionComposite" size="131,16" id="{UMLID=_-xPVkM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="detailTabFolder" size="107,21" id="{UMLID=_-w-P0M6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="textName" size="74,16" id="{UMLID=_-xM5UM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="textParent" size="78,16" id="{UMLID=_-xEWcM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="lblName" size="66,16" id="{UMLID=_-xLEIM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="lblParent" size="70,16" id="{UMLID=_-xJO8M6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="btnDisconnect" size="98,16" id="{UMLID=_-xHZwM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="btnApply" size="72,16" id="{UMLID=_-xAsE86bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="btnRevert" size="76,16" id="{UMLID=_-xGLoM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="tabFolder" size="74,16" id="{UMLID=_-w8aoM6bEeKYAfIrCjJ_8A}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel">
+      <children xsi:type="editmodel:MethodEditModel" name="OneConfigSelectedComposite" size="183,16" id="{UMLID=_-xRx0M6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/OneConfigSelectedComposite#OneConfigSelectedComposite(ILjava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setNameAndParentComposite" size="183,16" id="{UMLID=_-xbi0c6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/OneConfigSelectedComposite#setNameAndParentComposite()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setBottemComposite" size="138,16" id="{UMLID=_-xbi0M6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/OneConfigSelectedComposite#setBottemComposite()"/>
+    </children>
     <children xsi:type="editmodel:CompartmentEditModel"/>
-    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="ConfigTree" location="50,50" size="200,443" timstampe="11" stereotype="" id="{UMLID=_-m01UM6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/ConfigTree}" runTimeClassModel="createActions(),constructTreeFromConfigFile(Ljava.lang.String;),contentCreate(),trtmBuiltin,initMenu(),selectedItem,initializeMenu(),ConfigTree(I),addNode(Lorg.w3c.dom.Document;Ljava.lang.String;Ljava.lang.String;),duplicateAction,deleteAction,createConfig(Ljava.lang.String;),defaultConfigName,addTreeItem(Ljava.lang.String;Z),removeConfig(Ljava.lang.String;),tree,configTreeFilePath,exportAction,trtmUser,trtmTeam,setAsDefaultAction,newAction">
+    <children xsi:type="editmodel:CompartmentEditModel">
+      <children xsi:type="editmodel:AttributeEditModel" name="configTreeFilePath" size="118,16" id="{UMLID=_-o_YgM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="tree" size="48,16" id="{UMLID=_-o548M6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="trtmUser" size="70,16" id="{UMLID=_-pHUUM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="trtmBuiltin" size="75,16" id="{UMLID=_-o21oM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="trtmTeam" size="72,16" id="{UMLID=_-pFfIM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="selectedItem" size="89,16" id="{UMLID=_-o88QM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="duplicateAction" size="103,16" id="{UMLID=_-pJJgM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="newAction" size="82,16" id="{UMLID=_-pMM0M6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="deleteAction" size="89,16" id="{UMLID=_-pKXoM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="exportAction" size="91,16" id="{UMLID=_-pBNsM6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="setAsDefaultAction" size="123,16" id="{UMLID=_-pDp8M6bEeKYAfIrCjJ_8A}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="defaultConfigName" size="120,16" id="{UMLID=_-oozMM6bEeKYAfIrCjJ_8A}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel">
+      <children xsi:type="editmodel:MethodEditModel" name="ConfigTree" size="93,16" id="{UMLID=_-pnqoM6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/ConfigTree#ConfigTree(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="contentCreate" size="108,16" id="{UMLID=_-p7zsc6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/ConfigTree#contentCreate()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="initMenu" size="79,16" id="{UMLID=_-pxboM6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/ConfigTree#initMenu()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="initializeMenu" size="103,16" id="{UMLID=_-pw0kM6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/ConfigTree#initializeMenu()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="createActions" size="108,16" id="{UMLID=_-pOCAM6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/ConfigTree#createActions()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="constructTreeFromConfigFile" size="179,16" id="{UMLID=_-p8awM6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/ConfigTree#constructTreeFromConfigFile(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="addTreeItem" size="99,16" id="{UMLID=_-pkAQc6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/ConfigTree#addTreeItem(Ljava.lang.String;Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="removeConfig" size="107,16" id="{UMLID=_-p3iQs6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/ConfigTree#removeConfig(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="createConfig" size="102,16" id="{UMLID=_-pOpEM6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/ConfigTree#createConfig(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="addNode" size="83,16" id="{UMLID=_-pfu0M6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/ConfigTree#addNode(Lorg.w3c.dom.Document;Ljava.lang.String;Ljava.lang.String;)"/>
+    </children>
     <children xsi:type="editmodel:CompartmentEditModel"/>
     <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="{UMLID=_-0QNUM6bEeKYAfIrCjJ_8A}" source="//@children.7" target="//@children.4" targetEnd="//@children.7/@sourceConnections.0/@children.2" label="//@children.7/@sourceConnections.0/@children.0" sourceEnd="//@children.7/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
       <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="configTree" location="109,17" id="{UMLID=_-zoiQM6bEeKYAfIrCjJ_8A}" attachSource="true" multiplicityLabel="//@children.7/@sourceConnections.0/@children.1/@children.0" roleLabel="//@children.7/@sourceConnections.0/@children.1/@children.1" navigable="true">
-        <children xsi:type="editmodel:LabelEditModel" name="1" location="166,74" size="6,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
-        <children xsi:type="editmodel:LabelEditModel" name="configTree" location="166,46" size="52,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="configTree" location="190,443" id="{UMLID=_-zoiQM6bEeKYAfIrCjJ_8A}" attachSource="true" multiplicityLabel="//@children.7/@sourceConnections.0/@children.1/@children.0" roleLabel="//@children.7/@sourceConnections.0/@children.1/@children.1" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="247,500" size="6,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="configTree" location="181,500" size="52,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
       </children>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="ownedEnd" location="10,0" id="{UMLID=_-0QNUc6bEeKYAfIrCjJ_8A}" multiplicityLabel="//@children.7/@sourceConnections.0/@children.2/@children.0" flags="1">
-        <children xsi:type="editmodel:LabelEditModel" name="1" location="268,121" size="6,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="ownedEnd" location="0,10" id="{UMLID=_-0QNUc6bEeKYAfIrCjJ_8A}" multiplicityLabel="//@children.7/@sourceConnections.0/@children.2/@children.0" flags="1">
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="238,131" size="6,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
       </children>
     </sourceConnections>
-    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.5/@sourceConnections.1" name="OneConfigSelectedComposite" location="872,208" size="230,27" timstampe="6" stereotype="" id="{UMLID=_-wIiUM6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/OneConfigSelectedComposite}" shortShow="true" runTimeClassModel="btnApply,nameparentComposite,textParent,btnRevert,lblName,OneConfigSelectedComposite(II),setBottemComposite(),tabFolder,detailTabFolder,setNameAndParentComposite(),btnDisconnect,lblParent,textName,rightActionComposite">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.3/@sourceConnections.0" name="NoneConfigSelectedComposite" location="714,560" size="237,101" timstampe="10" stereotype="" id="{UMLID=_-0VF0M6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/NoneConfigSelectedComposite}" runTimeClassModel="main([Ljava.lang.String;),NoneConfigSelectedComposite(I),noSelectedMessage">
+    <children xsi:type="editmodel:CompartmentEditModel">
+      <children xsi:type="editmodel:AttributeEditModel" name="noSelectedMessage" size="127,16" id="{UMLID=_-0ePwM6bEeKYAfIrCjJ_8A}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel">
+      <children xsi:type="editmodel:MethodEditModel" name="NoneConfigSelectedComposite" size="188,16" id="{UMLID=_-0gsAs6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/NoneConfigSelectedComposite#NoneConfigSelectedComposite(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="main" size="62,16" id="{UMLID=_-0fd4M6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/NoneConfigSelectedComposite#main([Ljava.lang.String;)"/>
+    </children>
     <children xsi:type="editmodel:CompartmentEditModel"/>
-    <children xsi:type="editmodel:CompartmentEditModel"/>
-    <children xsi:type="editmodel:CompartmentEditModel"/>
-    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true"/>
-  </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.5/@sourceConnections.0" name="NoneConfigSelectedComposite" location="709,566" size="237,27" timstampe="6" stereotype="" id="{UMLID=_-0VF0M6bEeKYAfIrCjJ_8A,JavaID=plugin.ui.window.configuration/NoneConfigSelectedComposite}" shortShow="true" runTimeClassModel="NoneConfigSelectedComposite(I),main(),noSelectedMessage">
-    <children xsi:type="editmodel:CompartmentEditModel"/>
-    <children xsi:type="editmodel:CompartmentEditModel"/>
-    <children xsi:type="editmodel:CompartmentEditModel"/>
-    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true" showLiterals="true"/>
   </children>
   <diagramOptions xsi:type="options:ClassDiagramOptions" interactive="false" level="4" showScope="InPackage" properties="wireOptions=2"/>
-  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="14,14" gridOrigin="56,210" rulerUnit="cm" gridShow="true">
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="14,14" gridOrigin="1204,938" rulerUnit="cm" gridShow="true">
     <leftRuler/>
     <topRuler/>
   </boardSetting>
-  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" attributeSorter="Natural" methodSorter="Natural" shortPackageNameFormat="true" showClassStereotype="true" showPackageStereotype="true" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showInterfaceStereotype="true" showInnerEntity="true"/>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" attributeSorter="Natural" methodSorter="Natural" shortPackageNameFormat="true" showClassStereotype="true" showPackageStereotype="true" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showInterfaceStereotype="true" showMethods="true" showAttributes="true" showLiterlas="true" showInnerEntity="true"/>
 </editmodel:ClassDiagramEditModel>
